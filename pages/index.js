@@ -1,11 +1,12 @@
 import Head from "next/head";
+// import Script from "next/script";
 
-import { getEvents, getPosts } from "../utils/wordpress";
+import { getPosts } from "../utils/wordpress";
 
 import Post from "../components/Post";
-import Event from "../components/Event";
+import Home from "../components/Home";
 
-export default function Home({ posts }) {
+export default function index({ posts }) {
   const jsxPosts = posts.map((post) => {
     // console.log(post);
     let featuredMedia = "";
@@ -26,18 +27,17 @@ export default function Home({ posts }) {
           content="Keep up to date with the latest trends in tech"
         />
         <link rel="icon" href="/favicon.ico" />
-        {/* You can add more metadata here, like open graph tags for social media, etc */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300;1,500&family=Poppins:ital,wght@0,300;0,500;0,700;1,300;1,400&display=swap"
+          rel="stylesheet"
+        />
+        {/* <Script
+          src="../public/scripts/script.js"
+          onLoad={() => console.log("hey")}
+        /> */}
       </Head>
 
-      <div className="container pt-5">
-        <h1 className="text-center pb-5">Tech Blog</h1>
-        <div className="row">
-          <div className="col-lg-8">
-            <h2 className="pb-3">Our blog posts</h2>
-            {jsxPosts}
-          </div>
-        </div>
-      </div>
+      <Home />
     </>
   );
 }
