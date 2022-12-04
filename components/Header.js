@@ -1,7 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import DateShow from "./DateShow";
+import { getCategories } from "../utils/wordpress";
 
-const Header = () => {
+const Header = ({ categories }) => {
+  // console.log("categories", categories);
+
   return (
     <>
       {/* <!-- loading --> */}
@@ -39,7 +43,9 @@ const Header = () => {
             <div className="row">
               <div className="col-sm-12 col-md-5">
                 <div className="topbar-left">
-                  <div className="topbar-text">Monday, March 22, 2020</div>
+                  <div className="topbar-text">
+                    <DateShow />
+                  </div>
                 </div>
               </div>
               <div className="col-sm-12 col-md-7">
@@ -107,6 +113,9 @@ const Header = () => {
                   />
                 </a>
               </figure> */}
+              <div>
+                <h1>TWELFTH MAN TIMES</h1>
+              </div>
 
               <div
                 className="collapse navbar-collapse justify-content-between"
@@ -915,5 +924,16 @@ const Header = () => {
     </>
   );
 };
+
+export async function getStaticProps({ params }) {
+  // console.log("hi");
+  const categories = await getCategories();
+  return {
+    props: {
+      categories,
+    },
+    revalidate: 10, // In seconds
+  };
+}
 
 export default Header;

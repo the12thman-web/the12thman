@@ -1,7 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
-const Home = () => {
+const Home = ({ posts }) => {
+  // console.log("posts", posts);
   return (
     <>
       {/* <!-- Tranding news  carousel-->*/}

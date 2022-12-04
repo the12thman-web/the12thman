@@ -7,17 +7,6 @@ import Post from "../components/Post";
 import Home from "../components/Home";
 
 export default function index({ posts }) {
-  const jsxPosts = posts.map((post) => {
-    // console.log(post);
-    let featuredMedia = "";
-    if (post["_embedded"] && post["_embedded"]["wp:featuredmedia"]) {
-      featuredMedia = post["_embedded"]["wp:featuredmedia"][0];
-    } else {
-      featuredMedia = "";
-    }
-    return <Post post={post} featuredMedia={featuredMedia} key={post.id} />;
-  });
-
   return (
     <>
       <Head>
@@ -37,7 +26,7 @@ export default function index({ posts }) {
         /> */}
       </Head>
 
-      <Home />
+      <Home posts={posts} />
     </>
   );
 }
