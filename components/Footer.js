@@ -133,13 +133,14 @@ const Footer = () => {
                 <div className="container">
                   <div className="row">
                     <div className="col-md-4">
-                      <figure className="image-logo">
+                      <p>The term “12th Man” in sports is used for the fans, as sports is nothing without its fans. Twelfth Man Times is a product of JTSC Sportsfan Private Limited. We at TWELFTH MAN TIMES make your experiences as a fan more exciting and make sure you develop an even more passionate connection with the player or team you love to be a fan of.</p>
+                      {/* <figure className="image-logo">
                         <img
                           src="images/placeholder/logo.jpg"
                           alt=""
                           className="logo-footer"
                         />
-                      </figure>
+                      </figure> */}
                     </div>
                     <div className="col-md-8 my-auto ">
                       <div className="social__media">
