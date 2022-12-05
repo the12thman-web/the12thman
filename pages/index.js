@@ -4,7 +4,9 @@ import Head from "next/head";
 import { getPosts } from "../utils/wordpress";
 
 import Post from "../components/Post";
-import Home from "../components/Home";
+// import Home from "../components/Home";
+import Blog from "../components/Blog";
+// import Category from "./category";
 
 export default function index({ posts }) {
   const jsxPosts = posts.map((post) => {
@@ -37,7 +39,9 @@ export default function index({ posts }) {
         /> */}
       </Head>
 
-      <Home />
+      {/* <Home /> */}
+      <Blog />
+      {/* <Category /> */}
     </>
   );
 }
