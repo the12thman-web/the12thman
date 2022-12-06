@@ -51,7 +51,7 @@ const Header = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="">
+                      <a href="/contact" title="">
                         Contact Us
                       </a>
                     </li>
@@ -160,7 +160,7 @@ const Header = () => {
                     </a>
                     <ul className="dropdown-menu animate fade-up">
                       <li>
-                        <a className="dropdown-item icon-arrow" href="#">
+                        <a className="dropdown-item icon-arrow" href="/blogscat">
                           {" "}
                           Blog{" "}
                         </a>
@@ -168,7 +168,7 @@ const Header = () => {
                           <li>
                             <a
                               className="dropdown-item"
-                              href="/category-style-v1.html"
+                              href="/category"
                             >
                               Style 1
                             </a>
@@ -220,7 +220,7 @@ const Header = () => {
                         </ul>
                       </li>
                       <li>
-                        <a className="dropdown-item icon-arrow" href="#">
+                        <a className="dropdown-item icon-arrow" href="/blogscat">
                           {" "}
                           Blog single detail{" "}
                         </a>
@@ -526,13 +526,13 @@ const Header = () => {
                     {/* <!-- dropdown-mega-menu.// --> */}
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
+                    <a className="nav-link" href="/category">
                       {" "}
                       Category{" "}
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/contact.html">
+                    <a className="nav-link" href="/contact">
                       {" "}
                       contact{" "}
                     </a>
@@ -873,7 +873,7 @@ const Header = () => {
                     </li>
 
                     <li className="nav-item">
-                      <a className="nav-link  text-dark" href="#">
+                      <a className="nav-link  text-dark" href="/category">
                         {" "}
                         Category{" "}
                       </a>
