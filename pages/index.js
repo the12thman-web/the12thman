@@ -16,10 +16,10 @@ export default function index({ posts }) {
           content="Keep up to date with the latest trends in tech"
         />
         <link rel="icon" href="/favicon.ico" />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;1,300;1,500&family=Poppins:ital,wght@0,300;0,500;0,700;1,300;1,400&display=swap"
           rel="stylesheet"
-        />
+        /> */}
         {/* <Script
           src="../public/scripts/script.js"
           onLoad={() => console.log("hey")}
