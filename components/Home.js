@@ -1,8 +1,14 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import Image from "next/image";
 
 const Home = ({ posts }) => {
-  // console.log("posts", posts);
+  // console.log("posts", posts.length);
+
+  const mainCarousel = posts.nodes.slice(0, 5);
+  const sideCard = posts.nodes.slice(5, 7);
+  const lowerCarousel = posts.nodes.slice(7, 12);
+
   return (
     <>
       {/* <!-- Tranding news  carousel-->*/}
@@ -11,270 +17,56 @@ const Home = ({ posts }) => {
           <div className="row">
             <div className="col-md-12">
               <div className="wrapp__list__article-responsive wrapp__list__article-responsive-carousel">
-                <div className="item">
-                  {/* <!-- Post Article -->*/}
-                  <div className="card__post card__post-list">
-                    <div className="image-sm">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/500x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div className="card__post__body ">
-                      <div className="card__post__content">
-                        <div className="card__post__author-info mb-2">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <span className="text-primary">
-                                by david hall
-                              </span>
-                            </li>
-                            <li className="list-inline-item">
-                              <span className="text-dark text-capitalize">
-                                descember 09, 2016
-                              </span>
-                            </li>
-                          </ul>
+                {posts.nodes.map((items) => {
+                  return (
+                    <div className="item">
+                      {/* <!-- Post Article -->*/}
+                      <div className="card__post card__post-list">
+                        <div className="image-sm">
+                          <a href="./card-article-detail-v1.html">
+                            <Image
+                              src={items.featuredImage.node.sourceUrl}
+                              className="img-fluid"
+                              alt=""
+                              width={500}
+                              height={400}
+                            />
+                          </a>
                         </div>
-                        <div className="card__post__title">
-                          <h6>
-                            <a href="./card-article-detail-v1.html">
-                              6 Best Tips for Building a Good Shipping Boat
-                            </a>
-                          </h6>
-                          {/* <!-- <p className="d-none d-lg-block d-xl-block">
+
+                        <div className="card__post__body ">
+                          <div className="card__post__content">
+                            <div className="card__post__author-info mb-2">
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    {items.author.node.name}
+                                  </span>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span className="text-dark text-capitalize">
+                                    {items.date}
+                                  </span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="card__post__title">
+                              <h6>
+                                <a href="./card-article-detail-v1.html">
+                                  {items.title}
+                                </a>
+                              </h6>
+                              {/* <!-- <p className="d-none d-lg-block d-xl-block">
                     Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
                     sollicitudin ut est. In fringilla dui dui.
                 </p> -->*/}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="item">
-                  {/* <!-- Post Article -->*/}
-                  <div className="card__post card__post-list">
-                    <div className="image-sm">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/500x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div className="card__post__body ">
-                      <div className="card__post__content">
-                        <div className="card__post__author-info mb-2">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <span className="text-primary">
-                                by david hall
-                              </span>
-                            </li>
-                            <li className="list-inline-item">
-                              <span className="text-dark text-capitalize">
-                                descember 09, 2016
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="card__post__title">
-                          <h6>
-                            <a href="./card-article-detail-v1.html">
-                              6 Best Tips for Building a Good Shipping Boat
-                            </a>
-                          </h6>
-                          {/* <!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> -->*/}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
-                  {/* <!-- Post Article -->*/}
-                  <div className="card__post card__post-list">
-                    <div className="image-sm">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/500x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div className="card__post__body ">
-                      <div className="card__post__content">
-                        <div className="card__post__author-info mb-2">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <span className="text-primary">
-                                by david hall
-                              </span>
-                            </li>
-                            <li className="list-inline-item">
-                              <span className="text-dark text-capitalize">
-                                descember 09, 2016
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="card__post__title">
-                          <h6>
-                            <a href="./card-article-detail-v1.html">
-                              6 Best Tips for Building a Good Shipping Boat
-                            </a>
-                          </h6>
-                          {/* <!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> -->*/}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
-                  {/* <!-- Post Article -->*/}
-                  <div className="card__post card__post-list">
-                    <div className="image-sm">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/500x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div className="card__post__body ">
-                      <div className="card__post__content">
-                        <div className="card__post__author-info mb-2">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <span className="text-primary">
-                                by david hall
-                              </span>
-                            </li>
-                            <li className="list-inline-item">
-                              <span className="text-dark text-capitalize">
-                                descember 09, 2016
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="card__post__title">
-                          <h6>
-                            <a href="./card-article-detail-v1.html">
-                              6 Best Tips for Building a Good Shipping Boat
-                            </a>
-                          </h6>
-                          {/* <!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> -->*/}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
-                  {/* <!-- Post Article -->*/}
-                  <div className="card__post card__post-list">
-                    <div className="image-sm">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/500x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div className="card__post__body ">
-                      <div className="card__post__content">
-                        <div className="card__post__author-info mb-2">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <span className="text-primary">
-                                by david hall
-                              </span>
-                            </li>
-                            <li className="list-inline-item">
-                              <span className="text-dark text-capitalize">
-                                descember 09, 2016
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="card__post__title">
-                          <h6>
-                            <a href="./card-article-detail-v1.html">
-                              6 Best Tips for Building a Good Shipping Boat
-                            </a>
-                          </h6>
-                          {/* <!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> -->*/}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
-                  {/* <!-- Post Article -->*/}
-                  <div className="card__post card__post-list">
-                    <div className="image-sm">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/500x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div className="card__post__body ">
-                      <div className="card__post__content">
-                        <div className="card__post__author-info mb-2">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <span className="text-primary">
-                                by david hall
-                              </span>
-                            </li>
-                            <li className="list-inline-item">
-                              <span className="text-dark text-capitalize">
-                                descember 09, 2016
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="card__post__title">
-                          <h6>
-                            <a href="./card-article-detail-v1.html">
-                              6 Best Tips for Building a Good Shipping Boat
-                            </a>
-                          </h6>
-                          {/* <!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> -->*/}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -290,150 +82,92 @@ const Home = ({ posts }) => {
             <div className="row no-gutters">
               <div className="col-md-8 ">
                 <div className="card__post-carousel">
-                  <div className="item">
-                    {/* <!-- Post Article -->*/}
-                    <div className="card__post">
-                      <div className="card__post__body">
-                        <a href="./card-article-detail-v1.html">
-                          <img
-                            src="images/placeholder/800x600.jpg"
-                            className="img-fluid"
-                            alt=""
-                          />
-                        </a>
-                        <div className="card__post__content bg__post-cover">
-                          <div className="card__post__category">covid-19</div>
-                          <div className="card__post__title">
-                            <h2>
-                              <a href="#">
-                                Global solidarity to fight COVID-19, and
-                                indonesia stay safe and health
-                              </a>
-                            </h2>
-                          </div>
-                          <div className="card__post__author-info">
-                            <ul className="list-inline">
-                              <li className="list-inline-item">
-                                <a href="#">by david hall</a>
-                              </li>
-                              <li className="list-inline-item">
-                                <span>Descember 09, 2016</span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!-- Post Article -->*/}
-                    <div className="card__post">
-                      <div className="card__post__body">
-                        <a href="./card-article-detail-v1.html">
-                          <img
-                            src="images/placeholder/800x600.jpg"
-                            className="img-fluid"
-                            alt=""
-                          />
-                        </a>
-                        <div className="card__post__content bg__post-cover">
-                          <div className="card__post__category">covid-19</div>
-                          <div className="card__post__title">
-                            <h2>
-                              <a href="#">
-                                Global solidarity to fight COVID-19, and
-                                indonesia stay safe and health
-                              </a>
-                            </h2>
-                          </div>
-                          <div className="card__post__author-info">
-                            <ul className="list-inline">
-                              <li className="list-inline-item">
-                                <a href="#">by david hall</a>
-                              </li>
-                              <li className="list-inline-item">
-                                <span>Descember 09, 2016</span>
-                              </li>
-                            </ul>
+                  {mainCarousel.map((items) => {
+                    return (
+                      <div className="item">
+                        {/* <!-- Post Article -->*/}
+                        <div className="card__post">
+                          <div className="card__post__body">
+                            <a href="./card-article-detail-v1.html">
+                              <Image
+                                src={items.featuredImage.node.sourceUrl}
+                                className="img-fluid"
+                                alt=""
+                                width={800}
+                                height={600}
+                              />
+                            </a>
+                            <div className="card__post__content bg__post-cover">
+                              <div className="card__post__category">
+                                {items.categories.nodes[0].name}
+                              </div>
+                              <div className="card__post__title">
+                                <h2>
+                                  <a href="#">{items.title}</a>
+                                </h2>
+                              </div>
+                              <div className="card__post__author-info">
+                                <ul className="list-inline">
+                                  <li className="list-inline-item">
+                                    <a href="#">{items.author.node.name}</a>
+                                  </li>
+                                  <li className="list-inline-item">
+                                    <span>{items.date}</span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="popular__news-right">
                   {/* <!-- Post Article -->*/}
-                  <div className="card__post ">
-                    <div className="card__post__body card__post__transition">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/600x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                      <div className="card__post__content bg__post-cover">
-                        <div className="card__post__category">politics</div>
-                        <div className="card__post__title">
-                          <h5>
-                            <a href="./card-article-detail-v1.html">
-                              Barack Obama and Family Visit borobudur temple
-                              enjoy holiday indonesia.
-                            </a>
-                          </h5>
-                        </div>
-                        <div className="card__post__author-info">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <a href="./card-article-detail-v1.html">
-                                by david hall
-                              </a>
-                            </li>
-                            <li className="list-inline-item">
-                              <span>Descember 09, 2016</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* <!-- Post Article -->*/}
-                  <div className="card__post ">
-                    <div className="card__post__body card__post__transition">
-                      <a href="./card-article-detail-v1.html">
-                        <img
-                          src="images/placeholder/600x400.jpg"
-                          className="img-fluid"
-                          alt=""
-                        />
-                      </a>
-                      <div className="card__post__content bg__post-cover">
-                        <div className="card__post__category">politics</div>
-                        <div className="card__post__title">
-                          <h5>
-                            <a href="./card-article-detail-v1.html">
-                              Barack Obama and Family Visit borobudur temple
-                              enjoy holiday indonesia.
-                            </a>
-                          </h5>
-                        </div>
-                        <div className="card__post__author-info">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <a href="./card-article-detail-v1.html">
-                                by david hall
-                              </a>
-                            </li>
-                            <li className="list-inline-item">
-                              <span>Descember 09, 2016</span>
-                            </li>
-                          </ul>
+                  {sideCard.map((items) => {
+                    return (
+                      <div className="card__post ">
+                        <div className="card__post__body card__post__transition">
+                          <a href="./card-article-detail-v1.html">
+                            <Image
+                              src={items.featuredImage.node.sourceUrl}
+                              className="img-fluid"
+                              width={600}
+                              height={400}
+                              alt=""
+                            />
+                          </a>
+                          <div className="card__post__content bg__post-cover">
+                            <div className="card__post__category">
+                              {items.categories.nodes[0].name}
+                            </div>
+                            <div className="card__post__title">
+                              <h5>
+                                <a href="./card-article-detail-v1.html">
+                                  {items.title}
+                                </a>
+                              </h5>
+                            </div>
+                            <div className="card__post__author-info">
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <a href="./card-article-detail-v1.html">
+                                    {items.author.node.name}
+                                  </a>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span>{items.date}</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -446,161 +180,43 @@ const Home = ({ posts }) => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="top__news__slider">
-                  <div className="item">
-                    {/* <!-- Post Article -->*/}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>,
-                          </li>
+                  {lowerCarousel.map((items) => {
+                    return (
+                      <div className="item">
+                        {/* <!-- Post Article -->*/}
+                        <div className="article__entry">
+                          <div className="article__image">
+                            <a href="#">
+                              <Image
+                                src={items.featuredImage.node.sourceUrl}
+                                alt=""
+                                className="img-fluid"
+                                width={500}
+                                height={400}
+                              />
+                            </a>
+                          </div>
+                          <div className="article__content">
+                            <ul className="list-inline">
+                              <li className="list-inline-item">
+                                <span className="text-primary">
+                                  {items.author.node.name}
+                                </span>
+                                ,
+                              </li>
 
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est.
-                          </a>
-                        </h5>
+                              <li className="list-inline-item">
+                                <span>{items.date}</span>
+                              </li>
+                            </ul>
+                            <h5>
+                              <a href="#">{items.title}</a>
+                            </h5>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!-- Post Article -->*/}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>,
-                          </li>
-
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!-- Post Article -->*/}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>,
-                          </li>
-
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!-- Post Article -->*/}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>,
-                          </li>
-
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!-- Post Article -->*/}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>,
-                          </li>
-
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

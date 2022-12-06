@@ -5,6 +5,7 @@ import { getCategories } from "../utils/wordpress";
 
 const Header = ({ categories }) => {
   // console.log("categories", categories);
+  // useEffect(() => console.log("Hi "), [varOne, varTwo]);
 
   return (
     <>
@@ -114,7 +115,7 @@ const Header = ({ categories }) => {
                 </a>
               </figure> */}
               <div>
-                <h1>TWELFTH MAN TIMES</h1>
+                <h2>TWELFTH MAN TIMES</h2>
               </div>
 
               <div

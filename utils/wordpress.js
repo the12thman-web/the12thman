@@ -1,7 +1,7 @@
 const BASE_URL = "https://the12thman.in/wp-json/wp/v2";
 
 export async function getPosts() {
-  const postsRes = await fetch(BASE_URL + "/posts?per_page=20&sticky=true");
+  const postsRes = await fetch(BASE_URL + "/posts?per_page=20");
   const posts = await postsRes.json();
   return posts;
 }
