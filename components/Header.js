@@ -58,7 +58,7 @@ const Header = ({ categories }) => {
                       </a>
                     </li>
                     <li>
-                      <a href="#" title="">
+                      <a href="/contact" title="">
                         Contact Us
                       </a>
                     </li>
@@ -170,7 +170,7 @@ const Header = ({ categories }) => {
                     </a>
                     <ul className="dropdown-menu animate fade-up">
                       <li>
-                        <a className="dropdown-item icon-arrow" href="#">
+                        <a className="dropdown-item icon-arrow" href="/blogscat">
                           {" "}
                           Blog{" "}
                         </a>
@@ -178,7 +178,7 @@ const Header = ({ categories }) => {
                           <li>
                             <a
                               className="dropdown-item"
-                              href="/category-style-v1.html"
+                              href="/category"
                             >
                               Style 1
                             </a>
@@ -230,7 +230,7 @@ const Header = ({ categories }) => {
                         </ul>
                       </li>
                       <li>
-                        <a className="dropdown-item icon-arrow" href="#">
+                        <a className="dropdown-item icon-arrow" href="/blogscat">
                           {" "}
                           Blog single detail{" "}
                         </a>
@@ -298,7 +298,7 @@ const Header = ({ categories }) => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="/contact.html">
+                        <a className="dropdown-item" href="/contact">
                           {" "}
                           Contact{" "}
                         </a>
@@ -315,7 +315,7 @@ const Header = ({ categories }) => {
                   <li className="nav-item dropdown">
                     <a
                       className="nav-link active dropdown-toggle"
-                      href="#"
+                      href="/about"
                       data-toggle="dropdown"
                     >
                       {" "}
@@ -323,7 +323,7 @@ const Header = ({ categories }) => {
                     </a>
                     <ul className="dropdown-menu dropdown-menu-left">
                       <li>
-                        <a className="dropdown-item" href="/about-us.html">
+                        <a className="dropdown-item" href="/about">
                           {" "}
                           Style 1{" "}
                         </a>
@@ -536,13 +536,13 @@ const Header = ({ categories }) => {
                     {/* <!-- dropdown-mega-menu.// --> */}
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
+                    <a className="nav-link" href="/category">
                       {" "}
                       Category{" "}
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/contact.html">
+                    <a className="nav-link" href="/contact">
                       {" "}
                       contact{" "}
                     </a>
@@ -693,7 +693,7 @@ const Header = ({ categories }) => {
                         <li>
                           <a
                             className="dropdown-item icon-arrow  text-dark"
-                            href="#"
+                            href="/blogscat"
                           >
                             {" "}
                             Blog{" "}
@@ -759,7 +759,7 @@ const Header = ({ categories }) => {
                         <li>
                           <a
                             className="dropdown-item icon-arrow  text-dark"
-                            href="#"
+                            href="/blogscat"
                           >
                             {" "}
                             Blog single detail{" "}
@@ -839,7 +839,7 @@ const Header = ({ categories }) => {
                         <li>
                           <a
                             className="dropdown-item  text-dark"
-                            href="/contact.html"
+                            href="/contact"
                           >
                             {" "}
                             Contact{" "}
@@ -868,7 +868,7 @@ const Header = ({ categories }) => {
                       </a>
                       <ul className="dropdown-menu dropdown-menu-left">
                         <li>
-                          <a className="dropdown-item" href="/about-us.html">
+                          <a className="dropdown-item" href="/about">
                             {" "}
                             Style 1{" "}
                           </a>
@@ -883,13 +883,13 @@ const Header = ({ categories }) => {
                     </li>
 
                     <li className="nav-item">
-                      <a className="nav-link  text-dark" href="#">
+                      <a className="nav-link  text-dark" href="/category">
                         {" "}
                         Category{" "}
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link  text-dark" href="/contact.html">
+                      <a className="nav-link  text-dark" href="/contact">
                         {" "}
                         contact{" "}
                       </a>

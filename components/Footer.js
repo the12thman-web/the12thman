@@ -132,16 +132,13 @@ const Footer = () => {
               <div className="mt-4">
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-4">
-                      <figure className="image-logo">
-                        <img
-                          src="images/placeholder/logo.jpg"
-                          alt=""
-                          className="logo-footer"
-                        />
-                      </figure>
+                    <div className="col-md-8 text-light">
+                      <p>The term “12th Man” in sports is used for the fans, as sports is nothing without its fans.
+                        <br />Twelfth Man Times is a product of JTSC Sportsfan Private Limited. We at TWELFTH MAN TIMES make your experiences as a fan more exciting and make sure you develop an even more passionate connection with the player or team.
+                      </p>
+
                     </div>
-                    <div className="col-md-8 my-auto ">
+                    <div className="col-md-4 my-auto ">
                       <div className="social__media">
                         <ul className="list-inline">
                           <li className="list-inline-item">
@@ -200,31 +197,23 @@ const Footer = () => {
                     <div className="border-top-1 bg__footer-bottom-section">
                       <ul className="list-inline link-column">
                         <li className="list-inline-item">
-                          <a href="/contact-us.html">contact us</a>
+                          <a href="/contact">contact us</a>
                         </li>
                         <li className="list-inline-item">
-                          <a href="#"> terms of use</a>
+                          <a href="/privacy"> Privacy & Policy</a>
                         </li>
                         <li className="list-inline-item">
-                          <a href="#">adchoice</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="/about-us.html">about us</a>
+                          <a href="/about">about us</a>
                         </li>
                         <li className="list-inline-item">
                           <a href="#">newsletters</a>
                         </li>
-                        <li className="list-inline-item">
-                          <a href="#">sitemap</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">magrenvi store</a>
-                        </li>
+
                       </ul>
                       <ul className="list-inline">
                         <li className="list-inline-item">
                           <span>
-                            Copyright © 2019 News and Magazine template based on
+                            Copyright © 2022 News and Magazine template based on
                             Bootstrap 4 Theme by <a href="#">retenvi</a>
                           </span>
                         </li>
