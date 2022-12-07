@@ -11,7 +11,7 @@ const blogscat = () => {
                   {/* <!--  Breadcrumb  --> */}
                   <ul className="breadcrumbs bg-light mb-4">
                     <li className="breadcrumbs__item">
-                      <a href="index.html" className="breadcrumbs__url">
+                      <a href="/" className="breadcrumbs__url">
                         <i className="fa fa-home"></i> Home
                       </a>
                     </li>

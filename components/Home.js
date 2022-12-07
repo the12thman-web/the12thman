@@ -23,7 +23,7 @@ const Home = ({ posts }) => {
                       {/* <!-- Post Article -->*/}
                       <div className="card__post card__post-list">
                         <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
+                          <a href={`/posts/${items.slug}`}>
                             <Image
                               src={items.featuredImage.node.sourceUrl}
                               className="img-fluid"
@@ -52,7 +52,7 @@ const Home = ({ posts }) => {
                             </div>
                             <div className="card__post__title">
                               <h6>
-                                <a href="./card-article-detail-v1.html">
+                                <a href={`/posts/${items.slug}`}>
                                   {items.title}
                                 </a>
                               </h6>

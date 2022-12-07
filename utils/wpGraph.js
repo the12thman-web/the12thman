@@ -153,7 +153,7 @@ export async function getPost(
       variables: { slug },
     }
   );
-  console.log("data", data);
+  // console.log("data", data);
 
-  return data?.menus;
+  return data?.post;
 }
