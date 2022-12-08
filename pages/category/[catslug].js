@@ -3,6 +3,13 @@ import Image from "next/image";
 import { getAllPosts, getAllCategories } from '../../utils/wpGraph'
 
 const Category = ({ menus }) => {
+  const categoryDatafirstCol = menus.nodes.slice(0, 4);
+  const categoryDatasecCol = menus.nodes.slice(5, 9);
+  const categoryDataSlider = menus.nodes.slice(10, 14);
+  const categoryDataSingle = menus.nodes.slice(10, 11);
+  const categoryTagsData = menus.nodes
+
+
   console.log("menu", menus);
   return (
     <>
@@ -33,365 +40,117 @@ const Category = ({ menus }) => {
           <div className="row">
             <div className="col-md-8">
               <aside className="wrapper__list__article ">
-                {/* <h4 className="border_section">Category title</h4> */}
+                <h4 className="border_section">Category title</h4>
 
-                <h4 className="border_section">{menus.nodes[0].author.node.name}
-                  {/* {menus.nodes[0].menuItems.nodes[0].label} */}
-                </h4>
+
                 <div className="row">
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <Image className="image-profile"
-                            // src={menus.featuredImage.node.sourceUrl}
-                            width={500}
-                            height={400}
-                            alt='xyz'
-                          />
-                          {/* <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          /> */}
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
-                    {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
-                    {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
-                    {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
+
+
+                    {
+                      categoryDatafirstCol.map((item) => {
+
+                        return (
+                          <>
+                            <div className="article__entry">
+                              <div className="article__image">
+                                {/* <a href='.../posts/${node.slug}'> */}
+                                <a href=''>
+                                  <Image className="image-profile"
+                                    src={item.featuredImage.node.sourceUrl}
+                                    width={500}
+                                    height={400}
+                                    alt={item.featuredImage.node.altText}
+                                  />
+
+                                </a>
+                              </div>
+                              <div className="article__content">
+                                <div className="article__category">{item.categories.nodes[0].name}</div>
+                                <ul className="list-inline">
+                                  <li className="list-inline-item">
+                                    <span className="text-primary">by {item.author.node.name}</span>
+                                  </li>
+                                  <li className="list-inline-item">
+                                    <span className="text-dark text-capitalize">
+                                      descember 09, 2016
+                                    </span>
+                                  </li>
+                                </ul>
+                                <h5>
+                                  <a href="#">
+                                    {item.title}
+                                  </a>
+                                </h5>
+                                <p>
+                                  {item.slug.slice(0, 30)} ....
+                                </p>
+                                <a
+                                  href="#"
+                                  className="btn btn-outline-primary mb-4 text-capitalize"
+                                >
+                                  readmore
+
+                                </a>
+                              </div>
+                            </div>
+                          </>
+                        )
+                      })
+                    }
+
+
                   </div>
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
-                    {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
-                    {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
-                    {/* <!-- Post Article --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
-                    </div>
+                    {categoryDatasecCol.map((item) => {
+                      return (
+                        <>
+                          <div className="article__entry">
+                            <div className="article__image">
+                              <a href="#">
+                                <Image className="image-profile"
+                                  src={item.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt={item.featuredImage.node.altText}
+                                />
+                              </a>
+                            </div>
+                            <div className="article__content">
+                              <div className="article__category">{item.categories.nodes[0].name}</div>
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">by  {item.author.node.name}</span>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span className="text-dark text-capitalize">
+                                    descember 09, 2016
+                                  </span>
+                                </li>
+                              </ul>
+                              <h5>
+                                <a href="#">
+                                  {item.title}
+                                </a>
+                              </h5>
+                              <p>
+                                {item.slug.slice(0, 30)} .....
+                              </p>
+                              <a
+                                href="#"
+                                className="btn btn-outline-primary mb-4 text-capitalize"
+                              >
+                                readmore
+                              </a>
+                            </div>
+                          </div>
+                        </>
+                      )
+                    })}
+
+
                   </div>
                 </div>
               </aside>
@@ -401,236 +160,130 @@ const Category = ({ menus }) => {
                 <aside className="wrapper__list__article ">
                   <h4 className="border_section">Sidebar</h4>
                   <div className="wrapper__list__article-small">
-                    <div className="mb-3">
-                      {/* <!-- Post Article --> */}
-                      <div className="card__post card__post-list">
-                        <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
-                            <img
-                              src="images/placeholder/500x400.jpg"
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </a>
-                        </div>
+                    {
+                      categoryDataSlider.map((item) => {
+                        return (
+                          <>
+                            <div className="mb-3">
+                              {/* <!-- Post Article --> */}
+                              <div className="card__post card__post-list">
+                                <div className="image-sm">
+                                  <a href="./card-article-detail-v1.html">
+                                    <Image className="image-profile"
+                                      src={item.featuredImage.node.sourceUrl}
+                                      width={500}
+                                      height={400}
+                                      alt={item.featuredImage.node.altText}
+                                    />
+                                  </a>
+                                </div>
 
-                        <div className="card__post__body ">
-                          <div className="card__post__content">
-                            <div className="card__post__author-info mb-2">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    by david hall
-                                  </span>
-                                </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="card__post__title">
-                              <h6>
-                                <a href="./card-article-detail-v1.html">
-                                  6 Best Tips for Building a Good Shipping Boat
-                                </a>
-                              </h6>
-                              {/* <!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> --> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      {/* <!-- Post Article --> */}
-                      <div className="card__post card__post-list">
-                        <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
-                            <img
-                              src="images/placeholder/500x400.jpg"
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </a>
-                        </div>
+                                <div className="card__post__body ">
+                                  <div className="card__post__content">
+                                    <div className="card__post__author-info mb-2">
+                                      <ul className="list-inline">
+                                        <li className="list-inline-item">
+                                          <span className="text-primary">
+                                            by {item.author.node.name}
+                                          </span>
+                                        </li>
+                                        <li className="list-inline-item">
+                                          <span className="text-dark text-capitalize">
+                                            descember 09, 2016
+                                          </span>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div className="card__post__title">
+                                      <h6>
+                                        <a href="./card-article-detail-v1.html">
+                                          {item.title}
+                                        </a>
+                                      </h6>
 
-                        <div className="card__post__body ">
-                          <div className="card__post__content">
-                            <div className="card__post__author-info mb-2">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    by david hall
-                                  </span>
-                                </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li>
-                              </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div className="card__post__title">
-                              <h6>
-                                <a href="./card-article-detail-v1.html">
-                                  6 Best Tips for Building a Good Shipping Boat
-                                </a>
-                              </h6>
-                              {/* <!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> --> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      {/* <!-- Post Article --> */}
-                      <div className="card__post card__post-list">
-                        <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
-                            <img
-                              src="images/placeholder/500x400.jpg"
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </a>
-                        </div>
+                          </>
+                        )
+                      })
+                    }
 
-                        <div className="card__post__body ">
-                          <div className="card__post__content">
-                            <div className="card__post__author-info mb-2">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    by david hall
-                                  </span>
-                                </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="card__post__title">
-                              <h6>
-                                <a href="./card-article-detail-v1.html">
-                                  6 Best Tips for Building a Good Shipping Boat
-                                </a>
-                              </h6>
-                              {/*<!-- <p className="d-none d-lg-block d-xl-block">
-                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                    sollicitudin ut est. In fringilla dui dui.
-                </p> --> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
                     {/* <!-- Post Article --> */}
                     <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
+                      {
+                        categoryDataSingle.map((item) => {
+                          return (
+                            <>
+                              <div className="article__image">
+                                <a href="#">
+                                  <Image className="image-profile"
+                                    src={item.featuredImage.node.sourceUrl}
+                                    width={500}
+                                    height={400}
+                                    alt={item.featuredImage.node.altText}
+                                  />
+                                </a>
+                              </div>
+                              <div className="article__content">
+                                <div className="article__category">{item.categories.nodes[0].name}</div>
+                                <ul className="list-inline">
+                                  <li className="list-inline-item">
+                                    <span className="text-primary">by  {item.author.node.name}</span>
+                                  </li>
+                                  <li className="list-inline-item">
+                                    <span className="text-dark text-capitalize">
+                                      descember 09, 2016
+                                    </span>
+                                  </li>
+                                </ul>
+                                <h5>
+                                  <a href="#">
+                                    {item.title}
+                                  </a>
+                                </h5>
+                                <p>
+                                  {item.slug.slice(0, 30)} .....
+                                </p>
+                                <a
+                                  href="#"
+                                  className="btn btn-outline-primary mb-4 text-capitalize"
+                                >
+                                  {" "}
+                                  read more
+                                </a>
+                              </div>
+                            </>
+                          )
+                        })
+                      }
+
                     </div>
                   </div>
                 </aside>
 
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">tags</h4>
-                  <div className="blog-tags p-0">
-                    <ul className="list-inline">
-                      <li className="list-inline-item">
-                        <a href="#">#property</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sea</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#programming</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sea</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#property</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#life style</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#technology</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#framework</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sport</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#game</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#wfh</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sport</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#game</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#wfh</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#framework</a>
-                      </li>
-                    </ul>
-                  </div>
+                  {
+                    categoryTagsData.map((item) => {
+                      return (
+                        <>
+                          <div className="blog-tags p-0">
+                            <ul className="list-inline">
+                              <li className="list-inline-item">
+                                <a href="#">{item.tags.nodes[0].name}</a>
+                              </li>
+
+                            </ul>
+                          </div>
+                        </>
+                      )
+                    })
+                  }
+
                 </aside>
 
                 <aside className="wrapper__list__article">
@@ -714,7 +367,7 @@ export default Category;
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
   const allPosts = await getAllPosts()
-  // console.log(allPosts)
+  console.log(allPosts)
   return {
     paths: allPosts.nodes.map((node) => `/category/${node.catslug}`) || [],
     fallback: "blocking",

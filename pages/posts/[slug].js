@@ -4,7 +4,7 @@ import { getAllPosts, getPost } from "../../utils/wpGraph";
 
 
 export default function PostPage({ post }) {
-  console.log('post', post)
+  // console.log('post', post)
   return (
     <>
       <section className="pb-80">
