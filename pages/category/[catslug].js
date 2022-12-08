@@ -1,6 +1,9 @@
 import React from "react";
+import Image from "next/image";
+import { getAllPostsForHome, getAllCategories } from '../../utils/wpGraph'
 
-const Category = () => {
+const Category = ({ menus }) => {
+  console.log("menu", menus);
   return (
     <>
       <section>
@@ -10,7 +13,7 @@ const Category = () => {
               {/* <!-- Breadcrumb --> */}
               <ul className="breadcrumbs bg-light mb-4">
                 <li className="breadcrumbs__item">
-                  <a href="index.html" className="breadcrumbs__url">
+                  <a href="/" className="breadcrumbs__url">
                     <i className="fa fa-home"></i> Home
                   </a>
                 </li>
@@ -30,19 +33,25 @@ const Category = () => {
           <div className="row">
             <div className="col-md-8">
               <aside className="wrapper__list__article ">
-                <h4 className="border_section">Category title</h4>
+                {/* <h4 className="border_section">Category title</h4> */}
 
+                <h4 className="border_section">{menus.nodes[0].menuItems.nodes[0].label}</h4>
                 <div className="row">
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
                     <div className="article__entry">
                       <div className="article__image">
                         <a href="#">
-                          <img
+                          <Image className="image-profile" src={menus.nodes[0].menuItems.nodes[0].url}
+                            width={500}
+                            height={400}
+                            alt='xyz'
+                          />
+                          {/* <img
                             src="images/placeholder/500x400.jpg"
                             alt=""
                             className="img-fluid"
-                          />
+                          /> */}
                         </a>
                       </div>
                       <div className="article__content">
@@ -697,3 +706,28 @@ const Category = () => {
 };
 
 export default Category;
+
+
+//hey Next, these are the possible slugs
+export async function getStaticPaths(params) {
+  const allPosts = await getAllPostsForHome()
+  // console.log(allPosts)
+  return {
+    paths: allPosts.nodes.map((node) => `/category/${node.catslug}`) || [],
+    fallback: "blocking",
+  }
+}
+
+//access the router, get the id, and get the data for that post
+
+export async function getStaticProps({ params }) {
+  console.log('slug', params.catslug)
+  const menus = await getAllCategories(params.catslug);
+
+  return {
+    props: {
+      menus,
+    },
+    revalidate: 10, // In seconds
+  };
+}
