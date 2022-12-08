@@ -1,42 +1,107 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import DateShow from "./DateShow";
-import { getCategories } from "../utils/wordpress";
+import { getAllMenus } from "../utils/wpGraph";
 
-const Header = ({ categories }) => {
-  // console.log("categories", categories);
-  // useEffect(() => console.log("Hi "), [varOne, varTwo]);
+const Header = () => {
+  const [data, setData] = useState([]);
+  // const [newData, setNewData] = useState([]);
+  const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
+
+  const dataPost = async () => {
+    const value = await getAllMenus();
+
+    setData(value);
+  };
+  console.log("values", data);
+
+  useEffect(() => {
+    dataPost();
+  }, []);
+
+  const filterData = () => {
+    const newData = [];
+    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
+
+    for (let i = 0; i < newValue.length; i++) {
+      if (newValue[i].node.parentId === null) {
+        const dataObj = {};
+        dataObj.menu = newValue[i].node.label;
+        dataObj.id = newValue[i].node.id;
+        newData.push(dataObj);
+      }
+    }
+    return newData;
+
+    // console.log("d", newData);
+  };
+
+  const getListByParentID = (id) => {
+    const newData = [];
+    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
+
+    for (let i = 0; i < newValue.length; i++) {
+      if (newValue[i].node.parentId === id) {
+        const dataObj = {};
+        dataObj.name = newValue[i].node.label;
+        dataObj.id = newValue[i].node.id;
+        newData.push(dataObj);
+      }
+    }
+    return newData;
+
+    // console.log("d", newData);
+  };
+
+  // filterData(data);
+
+  const getChildByParentId = (id) => {
+    const newData = [];
+    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
+
+    for (let i = 0; i < newValue.length; i++) {
+      if (newValue[i].node.parentId === id) {
+        const dataObj = {};
+        dataObj.newLineName = newValue[i].node.label;
+        dataObj.id = newValue[i].node.id;
+        newData.push(dataObj);
+      }
+    }
+    return newData;
+  };
+
+  const getNewChildByParentId = (id) => {
+    const newData = [];
+    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
+
+    for (let i = 0; i < newValue.length; i++) {
+      if (newValue[i].node.parentId === id) {
+        const dataObj = {};
+        dataObj.newNextLineName = newValue[i].node.label;
+        dataObj.id = newValue[i].node.id;
+        newData.push(dataObj);
+      }
+    }
+    return newData;
+  };
+
+  const getNewChildrenByParentId = (id) => {
+    const newData = [];
+    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
+
+    for (let i = 0; i < newValue.length; i++) {
+      if (newValue[i].node.parentId === id) {
+        const dataObj = {};
+        dataObj.newChildrenName = newValue[i].node.label;
+        dataObj.id = newValue[i].node.id;
+        newData.push(dataObj);
+      }
+    }
+    return newData;
+  };
 
   return (
     <>
-      {/* <!-- loading --> */}
-      {/* <div className="loading-container">
-        <div className="h-100 d-flex align-items-center justify-content-center">
-          <ul className="list-unstyled"> */}
-      {/* <li>
-              <img
-                src="images/placeholder/loading.png"
-                alt="Alternate Text"
-                height="100"
-              />
-            </li> */}
-      {/* <li>
-              <div className="spinner">
-                <div className="rect1"></div>
-                <div className="rect2"></div>
-                <div className="rect3"></div>
-                <div className="rect4"></div>
-                <div className="rect5"></div>
-              </div>
-            </li>
-            <li>
-              <p>Loading</p>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-      {/* <!-- End loading --> */}
-
       <header className="bg-light">
         {/* <!-- Navbar  Top--> */}
         <div className="topbar d-none d-sm-block">
@@ -123,43 +188,74 @@ const Header = ({ categories }) => {
                 id="main_nav99"
               >
                 <ul className="navbar-nav ml-auto ">
-                  <li className="nav-item dropdown">
-                    <a
-                      className="nav-link active dropdown-toggle"
-                      href="#"
-                      data-toggle="dropdown"
-                    >
-                      {" "}
-                      Home{" "}
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-left">
-                      <li>
-                        <a className="dropdown-item" href="/homepage-v1.html">
-                          {" "}
-                          Home version one{" "}
+                  {filterData().map((items) => {
+                    // console.log("id", items.id);
+                    return (
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link active dropdown-toggle"
+                          href="#"
+                          data-toggle="dropdown"
+                        >
+                          {items.menu}
                         </a>
+                        <ul className="dropdown-menu dropdown-menu-left">
+                          {getListByParentID(items.id).map((val) => (
+                            <li>
+                              <a
+                                className="dropdown-item"
+                                href="/homepage-v1.html"
+                              >
+                                {val.name}
+                              </a>
+                              <ul className="dropdown-menu dropdown-menu-left">
+                                {getChildByParentId(val.id).map((child) => (
+                                  <li>
+                                    <a
+                                      className="dropdown-item"
+                                      href="/homepage-v1.html"
+                                    >
+                                      {child.newLineName}
+                                    </a>
+                                    <ul className="dropdown-menu dropdown-menu-right">
+                                      {getNewChildByParentId(child.id).map(
+                                        (pre_child) => (
+                                          <li>
+                                            <a
+                                              className="dropdown-item"
+                                              href="/homepage-v1.html"
+                                            >
+                                              {pre_child.newNextLineName}
+                                            </a>
+                                            <ul className="dropdown-menu dropdown-menu-right">
+                                              {getNewChildrenByParentId(
+                                                pre_child.id
+                                              ).map((children) => (
+                                                <li>
+                                                  <a
+                                                    className="dropdown-item"
+                                                    href="/homepage-v1.html"
+                                                  >
+                                                    {children.newChildrenName}
+                                                  </a>
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </li>
+                                        )
+                                      )}
+                                    </ul>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          ))}
+                        </ul>
                       </li>
-                      <li>
-                        <a className="dropdown-item" href="homepage-v2.html">
-                          {" "}
-                          Home version two{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/homepage-v3.html">
-                          {" "}
-                          Home version three{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/homepage-v4.html">
-                          {" "}
-                          Home version four{" "}
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="nav-item dropdown">
+                    );
+                  })}
+
+                  {/* <li className="nav-item dropdown">
                     <a
                       className="nav-link dropdown-toggle"
                       href="#"
@@ -170,16 +266,16 @@ const Header = ({ categories }) => {
                     </a>
                     <ul className="dropdown-menu animate fade-up">
                       <li>
-                        <a className="dropdown-item icon-arrow" href="/blogscat">
+                        <a
+                          className="dropdown-item icon-arrow"
+                          href="/blogscat"
+                        >
                           {" "}
                           Blog{" "}
                         </a>
                         <ul className="submenu dropdown-menu  animate fade-up">
                           <li>
-                            <a
-                              className="dropdown-item"
-                              href="/category"
-                            >
+                            <a className="dropdown-item" href="/category">
                               Style 1
                             </a>
                           </li>
@@ -230,7 +326,10 @@ const Header = ({ categories }) => {
                         </ul>
                       </li>
                       <li>
-                        <a className="dropdown-item icon-arrow" href="/blogscat">
+                        <a
+                          className="dropdown-item icon-arrow"
+                          href="/blogscat"
+                        >
                           {" "}
                           Blog single detail{" "}
                         </a>
@@ -310,9 +409,9 @@ const Header = ({ categories }) => {
                         </a>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
 
-                  <li className="nav-item dropdown">
+                  {/* <li className="nav-item dropdown">
                     <a
                       className="nav-link active dropdown-toggle"
                       href="/about"
@@ -335,7 +434,7 @@ const Header = ({ categories }) => {
                         </a>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
 
                   <li className="nav-item dropdown has-megamenu">
                     <a
@@ -535,18 +634,18 @@ const Header = ({ categories }) => {
                     </div>
                     {/* <!-- dropdown-mega-menu.// --> */}
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <a className="nav-link" href="/category">
                       {" "}
                       Category{" "}
                     </a>
-                  </li>
-                  <li className="nav-item">
+                  </li> */}
+                  {/* <li className="nav-item">
                     <a className="nav-link" href="/contact">
                       {" "}
                       contact{" "}
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
 
                 {/* <!-- Search bar.// --> */}
@@ -588,6 +687,7 @@ const Header = ({ categories }) => {
                 </div>
                 {/* <!-- Search content bar.// --> */}
               </div>
+
               {/* <!-- navbar-collapse.// --> */}
             </div>
           </nav>
@@ -926,15 +1026,15 @@ const Header = ({ categories }) => {
   );
 };
 
-export async function getStaticProps({ params }) {
-  // console.log("hi");
-  const categories = await getCategories();
-  return {
-    props: {
-      categories,
-    },
-    revalidate: 10, // In seconds
-  };
-}
-
 export default Header;
+
+// export async function getStaticProps({ params }) {
+//   console.log("hi");
+//   const menus = await getAllMenus();
+//   return {
+//     props: {
+//       menus,
+//     },
+//     revalidate: 10, // In seconds
+//   };
+// }

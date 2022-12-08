@@ -17,9 +17,9 @@ const Home = ({ posts }) => {
           <div className="row">
             <div className="col-md-12">
               <div className="wrapp__list__article-responsive wrapp__list__article-responsive-carousel">
-                {posts.nodes.map((items) => {
+                {posts.nodes.map((items, index) => {
                   return (
-                    <div className="item">
+                    <div className="item" key={`home_${index}`}>
                       {/* <!-- Post Article -->*/}
                       <div className="card__post card__post-list">
                         <div className="image-sm">
@@ -45,7 +45,7 @@ const Home = ({ posts }) => {
                                 </li>
                                 <li className="list-inline-item">
                                   <span className="text-dark text-capitalize">
-                                    {items.date}
+                                    {items.dateGmt}
                                   </span>
                                 </li>
                               </ul>

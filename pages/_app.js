@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Script from "next/script";
 import Footer from "../components/Footer";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, menus }) {
   return (
     <>
       <Head></Head>
