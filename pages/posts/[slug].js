@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPostsForHome, getPost } from "../../utils/wpGraph";
+import { getAllPosts, getPost } from "../../utils/wpGraph";
 
 
 export default function PostPage({ post }) {
@@ -998,7 +998,7 @@ export default function PostPage({ post }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  const allPosts = await getAllPostsForHome()
+  const allPosts = await getAllPosts()
   // console.log(allPosts)
   return {
     paths: allPosts.nodes.map((node) => `/posts/${node.slug}`) || [],

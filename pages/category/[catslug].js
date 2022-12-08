@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { getAllPostsForHome, getAllCategories } from '../../utils/wpGraph'
+import { getAllPosts, getAllCategories } from '../../utils/wpGraph'
 
 const Category = ({ menus }) => {
   console.log("menu", menus);
@@ -35,14 +35,17 @@ const Category = ({ menus }) => {
               <aside className="wrapper__list__article ">
                 {/* <h4 className="border_section">Category title</h4> */}
 
-                <h4 className="border_section">{menus.nodes[0].menuItems.nodes[0].label}</h4>
+                <h4 className="border_section">{menus.nodes[0].author.node.name}
+                  {/* {menus.nodes[0].menuItems.nodes[0].label} */}
+                </h4>
                 <div className="row">
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
                     <div className="article__entry">
                       <div className="article__image">
                         <a href="#">
-                          <Image className="image-profile" src={menus.nodes[0].menuItems.nodes[0].url}
+                          <Image className="image-profile"
+                            // src={menus.featuredImage.node.sourceUrl}
                             width={500}
                             height={400}
                             alt='xyz'
@@ -710,7 +713,7 @@ export default Category;
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  const allPosts = await getAllPostsForHome()
+  const allPosts = await getAllPosts()
   // console.log(allPosts)
   return {
     paths: allPosts.nodes.map((node) => `/category/${node.catslug}`) || [],
@@ -721,8 +724,8 @@ export async function getStaticPaths(params) {
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
-  console.log('slug', params.catslug)
-  const menus = await getAllCategories(params.catslug);
+  console.log('slug2', params.catslug)
+  const menus = await getAllPosts(params.catslug);
 
   return {
     props: {

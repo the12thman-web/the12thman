@@ -157,11 +157,8 @@ export async function getPost(
       variables: { slug },
     }
   );
-<<<<<<< HEAD
-  // console.log("data", data);
-=======
   //   console.log("data", data);
->>>>>>> dev
+
 
   return data?.post;
 }
