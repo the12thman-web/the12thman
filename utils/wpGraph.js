@@ -27,11 +27,11 @@ async function fetchAPI(query = "", { variables } = {}) {
   return json.data;
 }
 
-export async function getAllPostsForHome() {
+export async function getAllPosts(category = "") {
   const data = await fetchAPI(
     `
     query AllPosts {
-        posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC}},first: 20) {
+        posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: ""},first: 20) {
             nodes {
             author {
                 node {
@@ -62,25 +62,28 @@ export async function getAllPostsForHome() {
     }
   `,
     {
-      variables: {},
+      variables: { category },
     }
   );
 
   return data?.posts;
 }
 
-export async function getAllCategories() {
+export async function getAllMenus() {
   const data = await fetchAPI(
     `
     query AllMenus {
-        menus {
-            nodes {
-            menuItems {
-                nodes {
-                url
-                label
-                parentId
-                id
+        menus(where: {id: 7836}) {
+            edges {
+            node {
+                menuItems(first: 200) {
+                edges {
+                    node {
+                    label
+                    id
+                    parentId
+                    }
+                }
                 }
             }
             }
@@ -92,6 +95,7 @@ export async function getAllCategories() {
     }
   );
   console.log("data", data);
+  //   console.log("data1", data);
 
   return data?.menus;
 }
@@ -153,7 +157,7 @@ export async function getPost(
       variables: { slug },
     }
   );
-  console.log("data", data);
+  //   console.log("data", data);
 
   return data?.menus;
 }

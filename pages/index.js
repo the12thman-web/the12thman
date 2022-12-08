@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Home from "../components/Home";
-import { getAllPostsForHome } from "../utils/wpGraph";
+import { getAllPosts } from "../utils/wpGraph";
 
 export default function index({ posts }) {
   // console.log("posts", posts);
@@ -21,7 +21,7 @@ export default function index({ posts }) {
 }
 
 export async function getStaticProps({ params }) {
-  const posts = await getAllPostsForHome();
+  const posts = await getAllPosts();
   return {
     props: {
       posts,
