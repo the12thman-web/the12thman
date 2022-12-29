@@ -1,7 +1,16 @@
-const API_URL = "https://the12thman.in/graphql";
+const API_URL = "https://staging.the12thman.in/graphql";
+
+
+
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
+
 
 async function fetchAPI(query = "", { variables } = {}) {
-  const headers = { "Content-Type": "application/json" };
+  const headers = {
+    "Content-Type": "application/json",
+    // "Cache-Control": "max-age=604800",
+  };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
     headers[
@@ -28,45 +37,46 @@ async function fetchAPI(query = "", { variables } = {}) {
 }
 
 export async function getAllPosts(category = "") {
-  const data = await fetchAPI(
-    `
-    query AllPosts {
+  const { data } = await client.query({
+  query: gql`
+      query AllPosts {
         posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: ""},first: 20) {
-            nodes {
+          nodes {
             author {
-                node {
+              node {
                 name
-                }
+              }
             }
             categories {
-                nodes {
+              nodes {
                 name
-                }
+              }
             }
             featuredImage {
-                node {
+              node {
                 altText
                 sourceUrl
-                }
+              }
             }
             postId
             slug
             title
             tags {
-                nodes {
+              nodes {
                 name
-                }
+              }
             }
-            }
+          }
         }
-    }
-  `,
-    {
-      variables: { category },
-    }
-  );
+      }
+      `
+    });
 
-  return data?.posts;
+return {
+      props: {
+        countries: data.posts,
+      },
+   };
 }
 
 export async function getAllMenus() {
@@ -158,7 +168,6 @@ export async function getPost(
     }
   );
   //   console.log("data", data);
-
 
   return data?.post;
 }

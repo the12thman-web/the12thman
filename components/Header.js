@@ -2,26 +2,36 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import DateShow from "./DateShow";
 import { getAllMenus } from "../utils/wpGraph";
+import Link from "next/link";
 
 const Header = () => {
   const [data, setData] = useState([]);
+  const [text, setText] = useState("");
+  // const [show, setShow] = useState(false);
+
   // const [newData, setNewData] = useState([]);
+
+  // console.log("data", data);
   const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
 
   const dataPost = async () => {
     const value = await getAllMenus();
-
+    console.log("value", value);
     setData(value);
   };
   console.log("values", data);
 
   useEffect(() => {
     dataPost();
+    // setShow(true);
   }, []);
+
+  const searchHandler = (e) => {
+    setText(e.target.value);
+  };
 
   const filterData = () => {
     const newData = [];
-    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
 
     for (let i = 0; i < newValue.length; i++) {
       if (newValue[i].node.parentId === null) {
@@ -38,7 +48,6 @@ const Header = () => {
 
   const getListByParentID = (id) => {
     const newData = [];
-    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
 
     for (let i = 0; i < newValue.length; i++) {
       if (newValue[i].node.parentId === id) {
@@ -57,7 +66,6 @@ const Header = () => {
 
   const getChildByParentId = (id) => {
     const newData = [];
-    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
 
     for (let i = 0; i < newValue.length; i++) {
       if (newValue[i].node.parentId === id) {
@@ -72,7 +80,6 @@ const Header = () => {
 
   const getNewChildByParentId = (id) => {
     const newData = [];
-    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
 
     for (let i = 0; i < newValue.length; i++) {
       if (newValue[i].node.parentId === id) {
@@ -87,7 +94,6 @@ const Header = () => {
 
   const getNewChildrenByParentId = (id) => {
     const newData = [];
-    const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
 
     for (let i = 0; i < newValue.length; i++) {
       if (newValue[i].node.parentId === id) {
@@ -118,20 +124,16 @@ const Header = () => {
                 <div className="list-unstyled topbar-right">
                   <ul className="topbar-link">
                     <li>
-                      <a href="#" title="">
-                        Career
-                      </a>
+                      <Link href="/about">About</Link>
                     </li>
                     <li>
-                      <a href="/contact" title="">
-                        Contact Us
-                      </a>
+                      <Link href="/contact">Contact Us</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="#" title="">
                         Login / Register
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                   <ul className="topbar-sosmed">
                     <li>
@@ -180,7 +182,9 @@ const Header = () => {
                 </a>
               </figure> */}
               <div>
-                <h2>TWELFTH MAN TIMES</h2>
+                <Link href="/">
+                  <h2>TWELFTH MAN TIMES</h2>
+                </Link>
               </div>
 
               <div
@@ -189,55 +193,59 @@ const Header = () => {
               >
                 <ul className="navbar-nav ml-auto ">
                   {filterData().map((items) => {
+                    const dropDown = getListByParentID(items.id);
+
                     // console.log("id", items.id);
                     return (
                       <li className="nav-item dropdown">
-                        <a
-                          className="nav-link active dropdown-toggle"
-                          href="#"
+                        <Link
+                          className={`nav-link active ${
+                            dropDown?.length ? "dropdown-toggle" : ""
+                          }`}
+                          href={`/category/${items.catslug}`}
                           data-toggle="dropdown"
                         >
                           {items.menu}
-                        </a>
+                        </Link>
                         <ul className="dropdown-menu dropdown-menu-left">
-                          {getListByParentID(items.id).map((val) => (
+                          {dropDown.map((val) => (
                             <li>
-                              <a
+                              <Link
                                 className="dropdown-item"
-                                href="/homepage-v1.html"
+                                href={`/category/${items.catslug}`}
                               >
                                 {val.name}
-                              </a>
+                              </Link>
                               <ul className="dropdown-menu dropdown-menu-left">
                                 {getChildByParentId(val.id).map((child) => (
                                   <li>
-                                    <a
+                                    <Link
                                       className="dropdown-item"
-                                      href="/homepage-v1.html"
+                                      href={`/category/${child.catslug}`}
                                     >
                                       {child.newLineName}
-                                    </a>
+                                    </Link>
                                     <ul className="dropdown-menu dropdown-menu-right">
                                       {getNewChildByParentId(child.id).map(
                                         (pre_child) => (
                                           <li>
-                                            <a
+                                            <Link
                                               className="dropdown-item"
-                                              href="/homepage-v1.html"
+                                              href={`/category/${pre_child.catslug}`}
                                             >
                                               {pre_child.newNextLineName}
-                                            </a>
+                                            </Link>
                                             <ul className="dropdown-menu dropdown-menu-right">
                                               {getNewChildrenByParentId(
                                                 pre_child.id
                                               ).map((children) => (
                                                 <li>
-                                                  <a
+                                                  <Link
                                                     className="dropdown-item"
-                                                    href="/homepage-v1.html"
+                                                    href={`/category/${children.catslug}`}
                                                   >
                                                     {children.newChildrenName}
-                                                  </a>
+                                                  </Link>
                                                 </li>
                                               ))}
                                             </ul>
@@ -254,414 +262,23 @@ const Header = () => {
                       </li>
                     );
                   })}
-
-                  {/* <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      data-toggle="dropdown"
-                    >
-                      {" "}
-                      Pages{" "}
-                    </a>
-                    <ul className="dropdown-menu animate fade-up">
-                      <li>
-                        <a
-                          className="dropdown-item icon-arrow"
-                          href="/blogscat"
-                        >
-                          {" "}
-                          Blog{" "}
-                        </a>
-                        <ul className="submenu dropdown-menu  animate fade-up">
-                          <li>
-                            <a className="dropdown-item" href="/category">
-                              Style 1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="/category-style-v2.html"
-                            >
-                              Style 2
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="/category-style-v3.html"
-                            >
-                              Style 3
-                            </a>
-                          </li>
-
-                          <li>
-                            <a className="dropdown-item icon-arrow" href="">
-                              Submenu item 3{" "}
-                            </a>
-                            <ul className="submenu dropdown-menu  animate fade-up">
-                              <li>
-                                <a className="dropdown-item" href="">
-                                  Multi level 1
-                                </a>
-                              </li>
-                              <li>
-                                <a className="dropdown-item" href="">
-                                  Multi level 2
-                                </a>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="">
-                              Submenu item 4
-                            </a>
-                          </li>
-                          <li>
-                            <a className="dropdown-item" href="">
-                              Submenu item 5
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item icon-arrow"
-                          href="/blogscat"
-                        >
-                          {" "}
-                          Blog single detail{" "}
-                        </a>
-                        <ul className="submenu dropdown-menu  animate fade-up">
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="/article-detail-v1.html"
-                            >
-                              Style 1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="/article-detail-v2.html"
-                            >
-                              Style 2
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="/article-detail-v3.html"
-                            >
-                              Style 3
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-
-                      <li>
-                        <a className="dropdown-item icon-arrow" href="#">
-                          {" "}
-                          Search Result{" "}
-                        </a>
-                        <ul className="submenu dropdown-menu  animate fade-up">
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="/search-result.html"
-                            >
-                              Style 1
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="/search-result-v1.html"
-                            >
-                              Style 2
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/login.html">
-                          Login{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/register.html">
-                          {" "}
-                          Register{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/contact">
-                          {" "}
-                          Contact{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/404.html">
-                          {" "}
-                          404 Error{" "}
-                        </a>
-                      </li>
-                    </ul>
-                  </li> */}
-
-                  {/* <li className="nav-item dropdown">
-                    <a
-                      className="nav-link active dropdown-toggle"
-                      href="/about"
-                      data-toggle="dropdown"
-                    >
-                      {" "}
-                      About{" "}
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-left">
-                      <li>
-                        <a className="dropdown-item" href="/about">
-                          {" "}
-                          Style 1{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="/about-us-v1.html">
-                          {" "}
-                          Style 2{" "}
-                        </a>
-                      </li>
-                    </ul>
-                  </li> */}
-
-                  <li className="nav-item dropdown has-megamenu">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      data-toggle="dropdown"
-                    >
-                      {" "}
-                      News{" "}
-                    </a>
-                    <div
-                      className="dropdown-menu animate fade-down megamenu mx-auto"
-                      role="menu"
-                    >
-                      <div className="container wrap__mobile-megamenu">
-                        <div className="col-megamenu">
-                          <h5 className="title">Recent news</h5>
-                          <hr />
-                          {/* <!-- Popular news carousel --> */}
-                          <div className="popular__news-header-carousel">
-                            <div className="top__news__slider">
-                              <div className="item">
-                                {/* <!-- Post Article --> */}
-                                <div className="article__entry">
-                                  <div className="article__image">
-                                    {/* <a href="#">
-                                      <img
-                                        src="images/placeholder/500x400.jpg"
-                                        alt=""
-                                        className="img-fluid"
-                                      />
-                                    </a> */}
-                                  </div>
-                                  <div className="article__content">
-                                    <ul className="list-inline">
-                                      <li className="list-inline-item">
-                                        <span className="text-primary">
-                                          by david hall
-                                        </span>
-                                        ,
-                                      </li>
-
-                                      <li className="list-inline-item">
-                                        <span>descember 09, 2016</span>
-                                      </li>
-                                    </ul>
-                                    <h5>
-                                      <a href="#">
-                                        Proin eu nisl et arcu iaculis placerat
-                                        sollicitudin ut est.
-                                      </a>
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="item">
-                                {/* <!-- Post Article --> */}
-                                <div className="article__entry">
-                                  <div className="article__image">
-                                    {/* <a href="#">
-                                      <img
-                                        src="images/placeholder/500x400.jpg"
-                                        alt=""
-                                        className="img-fluid"
-                                      />
-                                    </a> */}
-                                  </div>
-                                  <div className="article__content">
-                                    <ul className="list-inline">
-                                      <li className="list-inline-item">
-                                        <span className="text-primary">
-                                          by david hall
-                                        </span>
-                                        ,
-                                      </li>
-
-                                      <li className="list-inline-item">
-                                        <span>descember 09, 2016</span>
-                                      </li>
-                                    </ul>
-                                    <h5>
-                                      <a href="#">
-                                        Proin eu nisl et arcu iaculis placerat
-                                        sollicitudin ut est.
-                                      </a>
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="item">
-                                {/* <!-- Post Article --> */}
-                                <div className="article__entry">
-                                  <div className="article__image">
-                                    {/* <a href="#">
-                                      <img
-                                        src="images/placeholder/500x400.jpg"
-                                        alt=""
-                                        className="img-fluid"
-                                      />
-                                    </a> */}
-                                  </div>
-                                  <div className="article__content">
-                                    <ul className="list-inline">
-                                      <li className="list-inline-item">
-                                        <span className="text-primary">
-                                          by david hall
-                                        </span>
-                                        ,
-                                      </li>
-
-                                      <li className="list-inline-item">
-                                        <span>descember 09, 2016</span>
-                                      </li>
-                                    </ul>
-                                    <h5>
-                                      <a href="#">
-                                        Proin eu nisl et arcu iaculis placerat
-                                        sollicitudin ut est.
-                                      </a>
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="item">
-                                {/* <!-- Post Article --> */}
-                                <div className="article__entry">
-                                  <div className="article__image">
-                                    {/* <a href="#">
-                                      <img
-                                        src="images/placeholder/500x400.jpg"
-                                        alt=""
-                                        className="img-fluid"
-                                      />
-                                    </a> */}
-                                  </div>
-                                  <div className="article__content">
-                                    <ul className="list-inline">
-                                      <li className="list-inline-item">
-                                        <span className="text-primary">
-                                          by david hall
-                                        </span>
-                                        ,
-                                      </li>
-
-                                      <li className="list-inline-item">
-                                        <span>descember 09, 2016</span>
-                                      </li>
-                                    </ul>
-                                    <h5>
-                                      <a href="#">
-                                        Proin eu nisl et arcu iaculis placerat
-                                        sollicitudin ut est.
-                                      </a>
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="item">
-                                {/* <!-- Post Article --> */}
-                                <div className="article__entry">
-                                  <div className="article__image">
-                                    {/* <a href="#">
-                                      <img
-                                        src="images/placeholder/500x400.jpg"
-                                        alt=""
-                                        className="img-fluid"
-                                      />
-                                    </a> */}
-                                  </div>
-                                  <div className="article__content">
-                                    <ul className="list-inline">
-                                      <li className="list-inline-item">
-                                        <span className="text-primary">
-                                          by david hall
-                                        </span>
-                                        ,
-                                      </li>
-
-                                      <li className="list-inline-item">
-                                        <span>descember 09, 2016</span>
-                                      </li>
-                                    </ul>
-                                    <h5>
-                                      <a href="#">
-                                        Proin eu nisl et arcu iaculis placerat
-                                        sollicitudin ut est.
-                                      </a>
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        {/* <!-- col-mega// --> */}
-                      </div>
-                    </div>
-                    {/* <!-- dropdown-mega-menu.// --> */}
-                  </li>
-                  {/* <li className="nav-item">
-                    <a className="nav-link" href="/category">
-                      {" "}
-                      Category{" "}
-                    </a>
-                  </li> */}
-                  {/* <li className="nav-item">
-                    <a className="nav-link" href="/contact">
-                      {" "}
-                      contact{" "}
-                    </a>
-                  </li> */}
                 </ul>
 
                 {/* <!-- Search bar.// --> */}
                 <ul className="navbar-nav ">
                   <li className="nav-item search hidden-xs hidden-sm ">
                     {" "}
-                    <a className="nav-link" href="#">
+                    <Link className="nav-link" href="/search">
                       <i className="fa fa-search"></i>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
                 {/* <!-- Search content bar.// --> */}
+
                 <div className="top-search navigation-shadow">
                   <div className="container">
                     <div className="input-group ">
-                      <form action="#">
+                      <form action="/search">
                         <div className="row no-gutters mt-3">
                           <div className="col">
                             <input
@@ -670,21 +287,24 @@ const Header = () => {
                               //   value=""
                               placeholder="Search "
                               id="example-search-input4"
+                              value={text}
+                              onChange={searchHandler}
                             />
                           </div>
                           <div className="col-auto">
-                            <a
+                            <Link
                               className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-                              href="/search-result.html"
+                              href="/search"
                             >
                               <i className="fa fa-search"></i>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>
+
                 {/* <!-- Search content bar.// --> */}
               </div>
 
