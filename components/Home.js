@@ -6,7 +6,7 @@ import Link from "next/link";
 const Home = ({ posts }) => {
   console.log("posts", posts);
 
-  const postData = posts?.props?.countries?.nodes;
+  const postData = posts?.nodes;
   const mainCarousel = postData.slice(0, 5);
   const sideCard = postData.slice(5, 7);
   const lowerCarousel = postData.slice(7, 12);
