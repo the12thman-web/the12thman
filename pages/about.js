@@ -1,5 +1,5 @@
 import React from "react";
-export const config = { amp: true };
+// export const config = { amp: true };
 
 const About = () => {
   return (

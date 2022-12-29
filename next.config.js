@@ -1,6 +1,6 @@
 module.exports = {
   images: {
     //enter the domain or subdomain where you have WordPress installed
-    domains: ["i0.wp.com"],
+    domains: ["i0.wp.com","https://staging.the12thman.in"],
   },
 };
