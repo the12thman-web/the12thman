@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts, getPost } from "../../utils/wpGraph";
 
-
 export default function PostPage({ post }) {
   // console.log('post', post)
   return (
@@ -36,17 +35,17 @@ export default function PostPage({ post }) {
               <div className="wrap__article-detail">
                 <div className="wrap__article-detail-title">
                   <h1>{post.title}</h1>
-
                 </div>
                 <hr />
                 <div className="wrap__article-detail-info">
                   <ul className="list-inline">
                     <li className="list-inline-item">
-                      <Image className="image-profile" src={post.featuredImage.node.sourceUrl}
+                      <Image
+                        className="image-profile"
+                        src={post.featuredImage.node.sourceUrl}
                         width={80}
                         height={50}
                       />
-
 
                       {/* <figure className="image-profile">
                         <img src={post.featuredImage.node.sourceUrl} alt="" />
@@ -62,14 +61,18 @@ export default function PostPage({ post }) {
                       </span>
                     </li>
                     <li className="list-inline-item">
-                      <span className="text-dark text-capitalize">the12thman</span>
+                      <span className="text-dark text-capitalize">
+                        the12thman
+                      </span>
                       <a href="#">.in</a>
                     </li>
                   </ul>
                 </div>
 
                 <div className="wrap__article-detail-image mt-4">
-                  <Image className="image-profile" src={post.featuredImage.node.sourceUrl}
+                  <Image
+                    className="image-profile"
+                    src={post.featuredImage.node.sourceUrl}
                     width={800}
                     height={500}
                   />
@@ -79,7 +82,6 @@ export default function PostPage({ post }) {
                     alt=""
                     className="img-fluid"
                   /> */}
-
                 </div>
                 <div className="wrap__article-detail-content">
                   <div className="total-views">
@@ -123,8 +125,10 @@ export default function PostPage({ post }) {
                       </li>
                     </ul>
                   </div>
-                  <div className="has-drop-cap-fluid" dangerouslySetInnerHTML={{ __html: post.content }}>
-                  </div>
+                  <div
+                    className="has-drop-cap-fluid"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  ></div>
 
                   {/* <!--  Blockquote   --> */}
                   {/* <blockquote className="block-quote">
@@ -158,7 +162,7 @@ export default function PostPage({ post }) {
                     <i className="fa fa-tags"></i>
                   </li>
                   <li className="list-inline-item">
-                    <a href="#">{post.tags.nodes[0].name}</a>
+                    <a href="#">{post.tags.nodes.name}</a>
                   </li>
                   <li className="list-inline-item">
                     <a href="#">#sea</a>
@@ -180,7 +184,9 @@ export default function PostPage({ post }) {
               {/* <!--  Profile author  --> */}
               <div className="wrap__profile">
                 <div className="wrap__profile-author">
-                  <Image className="img-fluid rounded-circle" src={post.featuredImage.node.sourceUrl}
+                  <Image
+                    className="img-fluid rounded-circle"
+                    src={post.featuredImage.node.sourceUrl}
                     width={80}
                     height={80}
                   />
@@ -258,7 +264,9 @@ export default function PostPage({ post }) {
                     <aside className="comment-body">
                       <div className="comment-meta">
                         <div className="comment-author vcard">
-                          <Image className="avatar" src={post.featuredImage.node.sourceUrl}
+                          <Image
+                            className="avatar"
+                            src={post.featuredImage.node.sourceUrl}
                             width={80}
                             height={80}
                           />
@@ -299,7 +307,9 @@ export default function PostPage({ post }) {
                         <aside className="comment-body">
                           <div className="comment-meta">
                             <div className="comment-author vcard">
-                              <Image className="avatar" src={post.featuredImage.node.sourceUrl}
+                              <Image
+                                className="avatar"
+                                src={post.featuredImage.node.sourceUrl}
                                 width={80}
                                 height={80}
                               />
@@ -442,7 +452,7 @@ export default function PostPage({ post }) {
                         name="submit"
                         id="submit"
                         className="submit"
-                      // value="Post Comment"
+                        // value="Post Comment"
                       />
                     </p>
                   </form>
@@ -481,7 +491,9 @@ export default function PostPage({ post }) {
                     <div className="article__entry">
                       <div className="article__image">
                         <a href="#">
-                          <Image className="img-fluid" src={post.featuredImage.node.sourceUrl}
+                          <Image
+                            className="img-fluid"
+                            src={post.featuredImage.node.sourceUrl}
                             width={500}
                             height={400}
                           />
@@ -975,14 +987,6 @@ export default function PostPage({ post }) {
       </section>
     </>
 
-
-
-
-
-
-
-
-
     // <div className="container pt-5">
     //   <h1 className="text-center pb-5">{post.title}</h1>
     //   <div
@@ -998,18 +1002,18 @@ export default function PostPage({ post }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  const allPosts = await getAllPosts()
+  const allPosts = await getAllPosts();
   // console.log(allPosts)
   return {
     paths: allPosts.nodes.map((node) => `/posts/${node.slug}`) || [],
     fallback: "blocking",
-  }
+  };
 }
 
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
-  console.log('slug', params.slug)
+  console.log("slug", params.slug);
   const post = await getPost(params.slug);
 
   return {
