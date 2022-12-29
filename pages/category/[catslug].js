@@ -362,7 +362,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      posts,
+      menus,
     },
     revalidate: 10, // In seconds
   };
