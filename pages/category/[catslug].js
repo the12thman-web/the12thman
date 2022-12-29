@@ -349,7 +349,7 @@ export async function getStaticPaths(params) {
   const allPosts = await getAllPosts();
   console.log(allPosts);
   return {
-    paths: ['/category/cricket'],
+    paths: [],
     fallback: "blocking",
   };
 }
