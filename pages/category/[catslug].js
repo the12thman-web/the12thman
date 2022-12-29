@@ -345,14 +345,14 @@ const Category = ({ menus }) => {
 export default Category;
 
 //hey Next, these are the possible slugs
-export async function getStaticPaths(params) {
-  const allPosts = await getAllPosts();
-  console.log(allPosts);
-  return {
-    paths: allPosts.nodes.map((node) => `/category/${node.catslug}`) || [],
-    fallback: "blocking",
-  };
-}
+// export async function getStaticPaths(params) {
+//   const allPosts = await getAllPosts();
+//   console.log(allPosts);
+//   return {
+//     paths: allPosts.nodes.map((node) => `/category/${node.catslug}`) || [],
+//     fallback: "blocking",
+//   };
+// }
 
 //access the router, get the id, and get the data for that post
 
