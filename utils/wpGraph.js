@@ -71,7 +71,7 @@ export async function getAllPosts(category = "") {
 }
 
 export async function getAllMenus() {
-  const data = await fetchAPI(
+  const data1 = await fetchAPI(
     `
     query AllMenus {
         menus(where: {id: 7836}) {
@@ -95,10 +95,41 @@ export async function getAllMenus() {
       variables: {},
     }
   );
-  //console.log("data", data);
-  //   console.log("data1", data);
 
-  return data?.menus;
+  const data2 = await fetchAPI(
+    `
+      query AllMenus {
+        menus(where: {id: 7836}) {
+          edges {
+            node {
+              menuItems(first: 100, after: "YXJyYXljb25uZWN0aW9uOjIzOTQ4NA==") {
+                edges {
+                  node {
+                    label
+                    id
+                    parentId
+                  }
+                }
+                pageInfo {
+                  endCursor
+                  hasNextPage
+                  hasPreviousPage
+                  startCursor
+                }
+              }
+            }
+          }
+        }
+  }
+  `,
+    {
+      variables: {},
+    }
+  );
+  data1.menus.edges[0].node.menuItems.edges.push(...data2.menus.edges[0].node.menuItems.edges)
+  console.log('result', data1);
+
+  return data1.menus;
 }
 
 export async function getPost(
