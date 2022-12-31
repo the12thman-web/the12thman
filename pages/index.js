@@ -3,7 +3,7 @@ import Home from "../components/Home";
 import { getAllMenus, getAllPosts } from "../utils/wpGraph";
 
 export default function index({ posts, menus }) {
-  console.log("pos", posts);
+  // console.log("pos", posts);
   return (
     <>
       <Head>
@@ -23,7 +23,7 @@ export default function index({ posts, menus }) {
 export async function getStaticProps({ params }) {
   const posts = await getAllPosts();
   const menus = await getAllMenus();
-  console.log(posts)
+  // console.log(posts)
   return {
     props: {
       posts,
