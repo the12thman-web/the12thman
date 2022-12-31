@@ -7,7 +7,6 @@ const Privacy = () => {
                 <div className=" row shadow-sm p-3 mb-5 bg-body rounded">
                     <div className='shadow-sm p-3 mb-5 bg-body rounded'>
                         <h2>Privacy Policy</h2>
-
                     </div>
                     <div>
                         <h5>Privacy Policy</h5>
@@ -298,6 +297,7 @@ const Privacy = () => {
                     </div>
                 </div>
                 <div className=" row shadow-sm p-3 mb-5 bg-body rounded">
+                    {/* ------------privacy/contact footer--------------- */}
                     <div>
                         <h4>Contact Us</h4>
 

@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps, menus }) {
     <>
       <Head></Head>
 
-      <Header />
+      {/* <Header /> */}
       <Script type="text/javascript" src="scripts/script.js" />
       <Component {...pageProps} />
       <Footer />

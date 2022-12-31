@@ -20,6 +20,7 @@ async function fetchAPI(query = "", { variables } = {}) {
   });
 
   const json = await res.json();
+  // console.log('json', json)
   if (json.errors) {
     console.error(json.errors);
     throw new Error("Failed to fetch API");
@@ -94,7 +95,7 @@ export async function getAllMenus() {
       variables: {},
     }
   );
-  console.log("data", data);
+  //console.log("data", data);
   //   console.log("data1", data);
 
   return data?.menus;

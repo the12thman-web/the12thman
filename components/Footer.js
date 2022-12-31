@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -10,6 +11,7 @@ const Footer = () => {
             <div className="wrapper__footer bg__footer-dark pb-0">
               <div className="container">
                 <div className="row">
+                  {/* -------------Footer menu dropdown------------- */}
                   <div className="col-md-3">
                     <div className="widget__footer">
                       <div className="dropdown-footer ">
@@ -130,6 +132,8 @@ const Footer = () => {
                 </div>
               </div>
               <div className="mt-4">
+
+                {/* -------------Footer Title------------- */}
                 <div className="container">
                   <div className="row">
                     <div className="col-md-8 text-light">
@@ -213,8 +217,7 @@ const Footer = () => {
                       <ul className="list-inline">
                         <li className="list-inline-item">
                           <span>
-                            Copyright © 2022 News and Magazine template based on
-                            Bootstrap 4 Theme by <a href="#">retenvi</a>
+                            Copyright © 2023 News and Magazine templet by <Link href="/">THE12THMAN</Link>
                           </span>
                         </li>
                       </ul>
