@@ -4,29 +4,14 @@ import DateShow from "./DateShow";
 import { getAllMenus } from "../utils/wpGraph";
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({menus}) => {
+  console.log(menus)
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
-  // const [show, setShow] = useState(false);
+  const newValue = menus?.edges ? menus?.edges[0].node.menuItems.edges : "";
 
-  // const [newData, setNewData] = useState([]);
-
-  // console.log("data", data);
-  const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
-
-  const dataPost = async () => {
-    const value = await getAllMenus();
-    console.log("value", value);
-    setData(value);
-  };
-  console.log("values", data);
-
-  useEffect(() => {
-    dataPost();
-    // setShow(true);
-  }, []);
-
-  const searchHandler = (e) => {
+  
+   const searchHandler = (e) => {
     setText(e.target.value);
   };
 

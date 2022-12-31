@@ -2,10 +2,10 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
 import Link from "next/link";
+import Header from "./Header";
 
-const Home = ({ posts }) => {
-  console.log("posts", posts);
-
+const Home = ({ posts,menus }) => {
+  
   const postData = posts?.nodes;
   const mainCarousel = postData.slice(0, 5);
   const sideCard = postData.slice(5, 7);
@@ -17,32 +17,7 @@ const Home = ({ posts }) => {
 
   return (
     <>
-      <div className="loading-container">
-        <div className="h-100 d-flex align-items-center justify-content-center">
-          <ul className="list-unstyled">
-            <li>
-              <img
-                src="images/placeholder/loading.png"
-                alt="Alternate Text"
-                height="100"
-              />
-            </li>
-            <li>
-              <div className="spinner">
-                <div className="rect1"></div>
-                <div className="rect2"></div>
-                <div className="rect3"></div>
-                <div className="rect4"></div>
-                <div className="rect5"></div>
-              </div>
-            </li>
-            <li>
-              <p>Loading</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
+    <Header menus={menus}/>
       {/* <!-- Tranding news  carousel-->*/}
       <section className="bg-light">
         <div className="container">
