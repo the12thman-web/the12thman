@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Home from "../components/Home";
-import { getAllPosts } from "../utils/wpGraph";
+import { getAllMenus, getAllPosts } from "../utils/wpGraph";
 
-export default function index({ posts }) {
-  // console.log("posts", posts);
+export default function index({ posts, menus }) {
+  console.log("pos", posts);
   return (
     <>
       <Head>
@@ -15,16 +15,19 @@ export default function index({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Home posts={posts} />
+      <Home posts={posts} menus={menus} />
     </>
   );
 }
 
 export async function getStaticProps({ params }) {
   const posts = await getAllPosts();
+  const menus = await getAllMenus();
+  console.log(posts)
   return {
     props: {
       posts,
+      menus
     },
     revalidate: 10, // In seconds
   };

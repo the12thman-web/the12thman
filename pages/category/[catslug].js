@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts, getAllCategories } from "../../utils/wpGraph";
+import { getAllPosts, getAllCategories } from "../../utils/wpGraph";
 
 const Category = ({ menus }) => {
   const categoryDatafirstCol = menus.nodes.slice(0, 4);
@@ -93,8 +94,14 @@ const Category = ({ menus }) => {
                               <div className="article__category">
                                 {item.categories.nodes[0].name}
                               </div>
+                              <div className="article__category">
+                                {item.categories.nodes[0].name}
+                              </div>
                               <ul className="list-inline">
                                 <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    by {item.author.node.name}
+                                  </span>
                                   <span className="text-primary">
                                     by {item.author.node.name}
                                   </span>
@@ -118,6 +125,7 @@ const Category = ({ menus }) => {
                             </div>
                           </div>
                         </>
+                      );
                       );
                     })}
                   </div>
@@ -331,15 +339,19 @@ export default Category;
 export async function getStaticPaths(params) {
   const allPosts = await getAllPosts();
   console.log(allPosts);
+  const allPosts = await getAllPosts();
+  console.log(allPosts);
   return {
-    paths: allPosts.nodes.map((node) => `/category/${node.catslug}`) || [],
+    paths: [],
     fallback: "blocking",
   };
+};
 }
 
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
+  console.log("slug2", params.catslug);
   console.log("slug2", params.catslug);
   const menus = await getAllPosts(params.catslug);
 

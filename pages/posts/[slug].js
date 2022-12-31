@@ -707,6 +707,10 @@ export default function PostPage({ post, allcatPost }) {
                     className="has-drop-cap-fluid"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                   ></div>
+                  <div
+                    className="has-drop-cap-fluid"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  ></div>
 
                   {/* <!--  Blockquote   --> */}
                   {/* <blockquote className="block-quote">
@@ -1267,10 +1271,13 @@ export async function getStaticPaths(params) {
     fallback: "blocking",
   };
 }
+  };
+}
 
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
+  console.log("slug", params.slug);
   console.log("slug", params.slug);
   const post = await getPost(params.slug);
   const allcatPost = await getAllPosts(params.slug);
