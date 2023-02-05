@@ -16,10 +16,10 @@ const Header = () => {
 
   const dataPost = async () => {
     const value = await getAllMenus();
-    console.log("value", value);
+    // console.log("value", value);
     setData(value);
   };
-  console.log("values", data);
+  // console.log("values", data);
 
   useEffect(() => {
     dataPost();

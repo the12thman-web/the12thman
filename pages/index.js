@@ -3,7 +3,7 @@ import Home from "../components/Home";
 import { getAllPosts } from "../utils/wpGraph";
 
 export default function index({ posts }) {
-  console.log("pos", posts);
+  // console.log("pos", posts);
   return (
     <>
       <Head>
@@ -22,11 +22,11 @@ export default function index({ posts }) {
 
 export async function getStaticProps({ params }) {
   const posts = await getAllPosts();
-  console.log(posts)
+  // console.log(posts)
   return {
     props: {
       posts,
     },
-    revalidate: 10, // In seconds
+    revalidate: 60, // In seconds
   };
 }

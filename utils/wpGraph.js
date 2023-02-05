@@ -1,3 +1,5 @@
+import { readFromCache, writeToCache } from "./cache";
+
 const API_URL = "https://staging.the12thman.in/graphql";
 
 async function fetchAPI(query = "", { variables } = {}) {
@@ -28,76 +30,91 @@ async function fetchAPI(query = "", { variables } = {}) {
 }
 
 export async function getAllPosts(category = "") {
-  const data = await fetchAPI(
-    `
-    query AllPosts {
-        posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: ""},first: 20) {
-            nodes {
-            author {
-                node {
-                name
-                }
-            }
-            categories {
-                nodes {
-                name
-                }
-            }
-            featuredImage {
-                node {
-                altText
-                sourceUrl
-                }
-            }
-            postId
-            slug
-            title
-            tags {
-                nodes {
-                name
-                }
-            }
-            }
-        }
-    }
-  `,
-    {
-      variables: { category },
-    }
-  );
-
-  return data?.posts;
+  console.log('get post called')
+  const cachedData = readFromCache('posts');
+  if(cachedData){
+    return cachedData?.posts;
+  }
+  else{
+    const data = await fetchAPI(
+      `
+      query AllPosts {
+          posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: ""},first: 20) {
+              nodes {
+              author {
+                  node {
+                  name
+                  }
+              }
+              categories {
+                  nodes {
+                  name
+                  }
+              }
+              featuredImage {
+                  node {
+                  altText
+                  sourceUrl
+                  }
+              }
+              postId
+              slug
+              title
+              tags {
+                  nodes {
+                  name
+                  }
+              }
+              }
+          }
+      }
+    `,
+      {
+        variables: { category },
+      }
+    );
+    writeToCache('posts',data)
+    return data?.posts;
+  }
 }
 
 export async function getAllMenus() {
-  const data = await fetchAPI(
-    `
-    query AllMenus {
-        menus(where: {id: 7836}) {
-            edges {
-            node {
-                menuItems(first: 200) {
-                edges {
-                    node {
-                    label
-                    id
-                    parentId
-                    }
-                }
-                }
-            }
-            }
-        }
-    }
-  `,
-    {
-      variables: {},
-    }
-  );
-  console.log("data", data);
-  //   console.log("data1", data);
-
-  return data?.menus;
+  const cacheData = readFromCache('menu');
+  if(cacheData){
+    console.log('cacheData: ', cacheData);
+    return cacheData?.menus;
+  }
+  else{
+    const data = await fetchAPI(
+      `
+      query AllMenus {
+          menus(where: {id: 7836}) {
+              edges {
+              node {
+                  menuItems(first: 200) {
+                  edges {
+                      node {
+                      label
+                      id
+                      parentId
+                      }
+                  }
+                  }
+              }
+              }
+          }
+      }
+    `,
+      {
+        variables: {},
+      }
+    );
+    console.log("data", data);
+    writeToCache('menu',data)
+    //   console.log("data1", data);
+  
+    return data?.menus;
+  }
 }
 
 export async function getPost(
