@@ -5,7 +5,7 @@ import { getAllMenus } from "../utils/wpGraph";
 import Link from "next/link";
 
 const Header = ({menus}) => {
-  console.log(menus)
+  console.log('menus',menus)
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
   // const [show, setShow] = useState(false);
@@ -13,10 +13,10 @@ const Header = ({menus}) => {
   // const [newData, setNewData] = useState([]);
 
   // console.log("data", data);
-  const newValue = data.edges ? data.edges[0].node.menuItems.edges : "";
+  const newValue = menus.edges ? menus.edges[0].node.menuItems.edges : "";
 
   const dataPost = async () => {
-    const value = await getAllMenus();
+    const value = menus;
     // console.log("value", value);
     setData(value);
   };
