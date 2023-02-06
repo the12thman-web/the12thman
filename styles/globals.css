@@ -10378,6 +10378,13 @@ input[type="number"] {
     margin-bottom: 0;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 575px) {
+   .main_carousel{
+    margin-bottom: 0;
+  }
+}
+
 .card__post-carousel .card__post .card__post__body img {
   max-width: 100%;
   width: 100%;
@@ -10386,24 +10393,60 @@ input[type="number"] {
   object-fit: cover;
   position: relative;
 }
+
+.main_carousel .card__post .card__post__body img {
+  max-width: 100%;
+  width: 100%;
+  height: 460px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: relative;
+}
+
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .card__post-carousel .card__post .card__post__body img {
     height: 250px;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 575px) {
+  .main_carousel .card__post .card__post__body img {
+    height: 250px;
+  }
+}
+
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .card__post-carousel .card__post .card__post__body img {
     height: 260px;
   }
 }
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+ .main_carousel .card__post .card__post__body img {
+    height: 260px;
+  }
+}
+
 .card__post-carousel .card__post .card__post__body .card__post__content {
   padding: 40px 20px;
 }
+
+ .main_carousel .card__post .card__post__body .card__post__content {
+  padding: 40px 20px;
+}
+
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .card__post-carousel .card__post .card__post__body .card__post__content {
     padding: 20px;
   }
 }
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .main_carousel .card__post .card__post__body .card__post__content {
+    padding: 20px;
+  }
+}
+
 .card__post-carousel
   .card__post
   .card__post__body
@@ -10420,6 +10463,24 @@ input[type="number"] {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   width: 100%;
 }
+
+ .main_carousel
+  .card__post
+  .card__post__body
+  .card__post__content
+  .card__post__title
+  h2 {
+  color: #fff;
+  margin: 0 0 10px;
+  font-weight: 700;
+  -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  -ms-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  -o-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
 .card__post-carousel
   .card__post
   .card__post__body
@@ -10429,6 +10490,17 @@ input[type="number"] {
   a {
   color: #fff;
 }
+
+.main_carousel
+  .card__post
+  .card__post__body
+  .card__post__content
+  .card__post__title
+  h2
+  a {
+  color: #fff;
+}
+
 .card__post-carousel
   .card__post
   .card__post__body
@@ -10438,6 +10510,17 @@ input[type="number"] {
   a:hover {
   text-decoration: none;
 }
+
+.main_carousel
+  .card__post
+  .card__post__body
+  .card__post__content
+  .card__post__title
+  h2
+  a:hover {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .card__post-carousel
     .card__post
@@ -10448,6 +10531,18 @@ input[type="number"] {
     font-size: 18px;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 575px) {
+   .main_carousel
+    .card__post
+    .card__post__body
+    .card__post__content
+    .card__post__title
+    h2 {
+    font-size: 18px;
+  }
+}
+
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .card__post-carousel
     .card__post
@@ -10458,11 +10553,30 @@ input[type="number"] {
     font-size: 24px;
   }
 }
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+   .main_carousel
+    .card__post
+    .card__post__body
+    .card__post__content
+    .card__post__title
+    h2 {
+    font-size: 24px;
+  }
+}
+
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .card__post-carousel .card__post .card__post__body .card__post__content {
     padding: 15px;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 575px) {
+.main_carousel .card__post .card__post__body .card__post__content {
+    padding: 15px;
+  }
+}
+
 .card__post-carousel .slick-prev,
 .card__post-carousel .slick-next,
 .card__post-carousel-height .slick-prev,
@@ -14785,3 +14899,10 @@ body.offcanvas-active {
 }
 
 /*# sourceMappingURL=styles.css.map*/
+
+@media (max-width:800px) {
+    .carouselContainer {
+        display:none !important;
+    }
+}
+

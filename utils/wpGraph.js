@@ -79,42 +79,65 @@ export async function getAllPosts(category = "") {
 }
 
 export async function getAllMenus() {
-  const cacheData = readFromCache('menu');
-  if(cacheData){
-    console.log('cacheData: ', cacheData);
-    return cacheData?.menus;
-  }
-  else{
-    const data = await fetchAPI(
-      `
+  const data1 = await fetchAPI(
+    `
+    query AllMenus {
+        menus(where: {id: 7836}) {
+            edges {
+            node {
+                menuItems(first: 200) {
+                edges {
+                    node {
+                    label
+                    id
+                    parentId
+                    }
+                }
+                }
+            }
+            }
+        }
+    }
+  `,
+    {
+      variables: {},
+    }
+  );
+
+    const data2 = await fetchAPI(
+    `
       query AllMenus {
-          menus(where: {id: 7836}) {
-              edges {
-              node {
-                  menuItems(first: 200) {
-                  edges {
-                      node {
-                      label
-                      id
-                      parentId
-                      }
+        menus(where: {id: 7836}) {
+          edges {
+            node {
+              menuItems(first: 100, after: "YXJyYXljb25uZWN0aW9uOjIzOTQ4NA==") {
+                edges {
+                  node {
+                    label
+                    id
+                    parentId
                   }
-                  }
+                }
+                pageInfo {
+                  endCursor
+                  hasNextPage
+                  hasPreviousPage
+                  startCursor
+                }
               }
-              }
+            }
           }
-      }
-    `,
-      {
-        variables: {},
-      }
-    );
-    console.log("data", data);
-    writeToCache('menu',data)
-    //   console.log("data1", data);
-  
-    return data?.menus;
+        }
   }
+  `,
+    {
+      variables: {},
+    }
+  );
+    data1.menus.edges[0].node.menuItems.edges.push(...data2.menus.edges[0].node.menuItems.edges)
+    console.log('result',data1);
+    
+  return data1.menus;
 }
 
 export async function getPost(
