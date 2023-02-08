@@ -11,6 +11,8 @@ async function fetchAPI(query = "", { variables } = {}) {
     ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
+  console.log('Query', query);
+  console.log('variables',variables)
   // WPGraphQL Plugin must be enabled
   const res = await fetch(API_URL, {
     headers,
@@ -31,7 +33,7 @@ async function fetchAPI(query = "", { variables } = {}) {
 
 export async function getAllPosts(category = "") {
   console.log('get post called')
-  const cachedData = readFromCache('posts');
+  const cachedData = readFromCache('posts'+category);
   if(cachedData){
     return cachedData?.posts;
   }
@@ -91,6 +93,7 @@ export async function getAllMenus() {
                     label
                     id
                     parentId
+                    uri
                     }
                 }
                 }
@@ -116,6 +119,7 @@ export async function getAllMenus() {
                     label
                     id
                     parentId
+                    uri
                   }
                 }
                 pageInfo {
@@ -135,7 +139,7 @@ export async function getAllMenus() {
     }
   );
     data1.menus.edges[0].node.menuItems.edges.push(...data2.menus.edges[0].node.menuItems.edges)
-    console.log('result',data1);
+    console.log('result',data1.menus.edges[0].node.menuItems.edges);
     
   return data1.menus;
 }
