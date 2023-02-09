@@ -13562,8 +13562,9 @@
   },
   function (e, t) {
     $(document).ready(function () {
-      // $(".top-search").hide();
-        // $(".animationload").delay(400).fadeOut("fast"),
+      $(".top-search").hide();
+      // $(".loading-container").delay(400).fadeOut(),
+        $(".animationload").delay(400).fadeOut("fast"),
         $(window).scroll(function () {
           $(this).scrollTop() > 50
             ? $(".navbar-soft").addClass("fixed-top")

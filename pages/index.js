@@ -29,6 +29,6 @@ export async function getStaticProps({ params }) {
       posts,
       menus
     },
-    revalidate: 10, // In seconds
+    revalidate: 60, // In seconds
   };
 }

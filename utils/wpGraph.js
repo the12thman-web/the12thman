@@ -1,3 +1,5 @@
+import { readFromCache, writeToCache } from "./cache";
+
 const API_URL = "https://staging.the12thman.in/graphql";
 
 async function fetchAPI(query = "", { variables } = {}) {
@@ -9,6 +11,8 @@ async function fetchAPI(query = "", { variables } = {}) {
     ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
+  console.log('Query', query);
+  console.log('variables',variables)
   // WPGraphQL Plugin must be enabled
   const res = await fetch(API_URL, {
     headers,
@@ -28,45 +32,52 @@ async function fetchAPI(query = "", { variables } = {}) {
 }
 
 export async function getAllPosts(category = "") {
-  const data = await fetchAPI(
-    `
-    query AllPosts {
-        posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: ""},first: 20) {
-            nodes {
-            author {
-                node {
-                name
-                }
-            }
-            categories {
-                nodes {
-                name
-                }
-            }
-            featuredImage {
-                node {
-                altText
-                sourceUrl
-                }
-            }
-            postId
-            slug
-            title
-            tags {
-                nodes {
-                name
-                }
-            }
-            }
-        }
-    }
-  `,
-    {
-      variables: { category },
-    }
-  );
-
-  return data?.posts;
+  console.log('get post called')
+  const cachedData = readFromCache('posts'+category);
+  if(cachedData){
+    return cachedData?.posts;
+  }
+  else{
+    const data = await fetchAPI(
+      `
+      query AllPosts {
+          posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: ""},first: 20) {
+              nodes {
+              author {
+                  node {
+                  name
+                  }
+              }
+              categories {
+                  nodes {
+                  name
+                  }
+              }
+              featuredImage {
+                  node {
+                  altText
+                  sourceUrl
+                  }
+              }
+              postId
+              slug
+              title
+              tags {
+                  nodes {
+                  name
+                  }
+              }
+              }
+          }
+      }
+    `,
+      {
+        variables: { category },
+      }
+    );
+    writeToCache('posts',data)
+    return data?.posts;
+  }
 }
 
 export async function getAllMenus() {
@@ -82,6 +93,7 @@ export async function getAllMenus() {
                     label
                     id
                     parentId
+                    uri
                     }
                 }
                 }
@@ -107,6 +119,7 @@ export async function getAllMenus() {
                     label
                     id
                     parentId
+                    uri
                   }
                 }
                 pageInfo {
@@ -126,7 +139,7 @@ export async function getAllMenus() {
     }
   );
     data1.menus.edges[0].node.menuItems.edges.push(...data2.menus.edges[0].node.menuItems.edges)
-    console.log('result',data1);
+    console.log('result',data1.menus.edges[0].node.menuItems.edges);
     
   return data1.menus;
 }
