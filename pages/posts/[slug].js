@@ -2,11 +2,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts, getPost } from "../../utils/wpGraph";
 
-export default function PostPage({ post }) {
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Carousel } from 'react-responsive-carousel'
+import Header from "../../components/Header";
+
+export default function PostPage({ post, posts, menus }) {
   // console.log('post', post)
+
+  const postData = posts?.nodes;
+  // const mainCarousel = postData.slice(0, 5);
+  // console.log('postD', postData)
   return (
     <>
       <section className="pb-80">
+        {/* <Header menus={menus} /> */}
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -18,14 +27,14 @@ export default function PostPage({ post }) {
                     <i className="fa fa-home"></i> Home
                   </a>
                 </li>
-                <li className="breadcrumbs__item">
+                {/* <li className="breadcrumbs__item">
                   <a href="index.html" className="breadcrumbs__url">
                     News
                   </a>
                 </li>
                 <li className="breadcrumbs__item breadcrumbs__item--current">
                   World
-                </li>
+                </li> */}
               </ul>
               {/* <!--  end breadcrumb  --> */}
             </div>
@@ -190,13 +199,7 @@ export default function PostPage({ post }) {
                     width={80}
                     height={80}
                   />
-                  {/* <figure>
-                    <img
-                      src="images/placeholder/80x80.jpg"
-                      alt=""
-                      className="img-fluid rounded-circle"
-                    />
-                  </figure> */}
+
                   <div className="wrap__profile-author-detail">
                     <div className="wrap__profile-author-detail-name">
                       author
@@ -270,11 +273,7 @@ export default function PostPage({ post }) {
                             width={80}
                             height={80}
                           />
-                          {/* <img
-                            src="images/placeholder/80x80.jpg"
-                            className="avatar"
-                            alt="image"
-                          /> */}
+
                           <b className="fn">{post.comments.nodes.name}</b>
                           <span className="says">says:</span>
                         </div>
@@ -313,11 +312,7 @@ export default function PostPage({ post }) {
                                 width={80}
                                 height={80}
                               />
-                              {/* <img
-                                src="images/placeholder/80x80.jpg"
-                                className="avatar"
-                                alt="image"
-                              /> */}
+
                               <b className="fn">Sinmun</b>
                               <span className="says">says:</span>
                             </div>
@@ -404,7 +399,7 @@ export default function PostPage({ post }) {
                         id="comment"
                         cols="45"
                         rows="5"
-                        maxlength="65525"
+                        maxLength="65525"
                         required="required"
                       ></textarea>
                     </p>
@@ -452,7 +447,7 @@ export default function PostPage({ post }) {
                         name="submit"
                         id="submit"
                         className="submit"
-                        // value="Post Comment"
+                      // value="Post Comment"
                       />
                     </p>
                   </form>
@@ -483,167 +478,62 @@ export default function PostPage({ post }) {
               <div className="clearfix"></div>
 
               <div className="related-article">
-                <h4>you may also like</h4>
-
-                <div className="article__entry-carousel-three">
-                  <div className="item">
-                    {/* <!--  Post Article  --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <Image
-                            className="img-fluid"
-                            src={post.featuredImage.node.sourceUrl}
-                            width={500}
-                            height={400}
-                          />
-                          {/* <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          /> */}
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Maecenas accumsan tortor ut velit pharetra mollis.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!--  Post Article  --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Maecenas accumsan tortor ut velit pharetra mollis.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!--  Post Article  --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Maecenas accumsan tortor ut velit pharetra mollis.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!--  Post Article  --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Maecenas accumsan tortor ut velit pharetra mollis.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    {/* <!--  Post Article  --> */}
-                    <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span>descember 09, 2016</span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Maecenas accumsan tortor ut velit pharetra mollis.
-                          </a>
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
+                {/* <h4>you may also like</h4> */}
+                <div className="col-md-8 ">
+                  {/* <div className="main_carousel">
+                    <Carousel autoPlay infiniteLoop showStatus={false} showIndicators={false}>
+                      {mainCarousel.map((items) => {
+                        return (
+                          <div className="item">
+                            <div className="card__post">
+                              <div className="card__post__body">
+                                <Link href={`/posts/${items.slug}`}>
+                                  <Image
+                                    src={items.featuredImage.node.sourceUrl}
+                                    className="img-fluid"
+                                    alt=""
+                                    width={800}
+                                    height={600}
+                                  />
+                                </Link>
+                                <div className="card__post__content bg__post-cover">
+                                  <div className="card__post__category">
+                                    {items.categories.nodes[0].name}
+                                  </div>
+                                  <div className="card__post__title">
+                                    <h2>
+                                      <Link href={`/posts/${items.slug}`}>
+                                        {items.title}
+                                      </Link>
+                                    </h2>
+                                  </div>
+                                  <div className="card__post__author-info">
+                                    <ul className="list-inline">
+                                      <li className="list-inline-item">
+                                        <Link href={`/posts/${items.slug}`}>
+                                          {items.author.node.name}
+                                        </Link>
+                                      </li>
+                                      <li className="list-inline-item">
+                                        <span>{items.date}</span>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </Carousel>
+                  </div> */}
                 </div>
+
               </div>
             </div>
             <div className="col-md-4">
               <div className="sticky-top">
                 <aside className="wrapper__list__article ">
-                  {/* <!--  <h4 className="border_section">Sidebar</h4>  --> */}
                   <div className="mb-4">
                     <div className="widget__form-search-bar  ">
                       <div className="row no-gutters">
@@ -663,52 +553,46 @@ export default function PostPage({ post }) {
                     </div>
                   </div>
                   <div className="wrapper__list__article-small">
-                    <div className="mb-3">
-                      {/* <!--  Post Article  --> */}
-                      <div className="card__post card__post-list">
-                        <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
-                            <img
-                              src="images/placeholder/500x400.jpg"
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </a>
-                        </div>
+                    <div className="mb-3">                     <div className="card__post card__post-list">
+                      <div className="image-sm">
+                        <a href="./card-article-detail-v1.html">
+                          <img
+                            src="images/placeholder/500x400.jpg"
+                            className="img-fluid"
+                            alt=""
+                          />
+                        </a>
+                      </div>
 
-                        <div className="card__post__body ">
-                          <div className="card__post__content">
-                            <div className="card__post__author-info mb-2">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    {post.author.node.name}
-                                  </span>
-                                </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="card__post__title">
-                              <h6>
-                                <a href="./card-article-detail-v1.html">
-                                  6 Best Tips for Building a Good Shipping Boat
-                                </a>
-                              </h6>
-                              {/* <!--  <p className="d-none d-lg-block d-xl-block">
-                        Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                        sollicitudin ut est. In fringilla dui dui.
-                    </p>  --> */}
-                            </div>
+                      <div className="card__post__body ">
+                        <div className="card__post__content">
+                          <div className="card__post__author-info mb-2">
+                            <ul className="list-inline">
+                              <li className="list-inline-item">
+                                <span className="text-primary">
+                                  {post.author.node.name}
+                                </span>
+                              </li>
+                              <li className="list-inline-item">
+                                <span className="text-dark text-capitalize">
+                                  descember 09, 2016
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="card__post__title">
+                            <h6>
+                              <a href="./card-article-detail-v1.html">
+                                6 Best Tips for Building a Good Shipping Boat
+                              </a>
+                            </h6>
+
                           </div>
                         </div>
                       </div>
                     </div>
+                    </div>
                     <div className="mb-3">
-                      {/* <!--  Post Article  --> */}
                       <div className="card__post card__post-list">
                         <div className="image-sm">
                           <a href="./card-article-detail-v1.html">
@@ -968,7 +852,7 @@ export default function PostPage({ post }) {
                   </div>
                 </aside>
 
-                <aside className="wrapper__list__article">
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">Advertise</h4>
                   <a href="#">
                     <figure>
@@ -979,7 +863,7 @@ export default function PostPage({ post }) {
                       />
                     </figure>
                   </a>
-                </aside>
+                </aside> */}
               </div>
             </div>
           </div>

@@ -5,8 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/Logo.png"
 
-const Header = ({menus}) => {
-  console.log('menus',menus)
+const Header = ({ menus }) => {
+  console.log('menus', menus)
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
   const [showSearch, setShowSearch] = useState(false);
@@ -123,7 +123,7 @@ const Header = ({menus}) => {
         <div className="navigation-wrap navigation-shadow bg-white">
           <nav className="navbar navbar-hover navbar-expand-lg navbar-soft">
             <div className="container">
-              <div className="offcanvas-header">
+              {/* <div className="offcanvas-header">
                 <div
                   data-toggle="modal"
                   data-target="#modal_aside_right"
@@ -131,7 +131,7 @@ const Header = ({menus}) => {
                 >
                   <span className="navbar-toggler-icon"></span>
                 </div>
-              </div>
+              </div> */}
               {/* <figure className="mb-0 mx-auto">
                 <a href="/homepage-v1.html">
                   <img
@@ -143,7 +143,7 @@ const Header = ({menus}) => {
               </figure> */}
               <div>
                 <Link href="/">
-                  <Image src={logo} alt="No Image" width={300} height={400}/>
+                  <Image src={logo} alt="No Image" width={300} height={400} />
                 </Link>
               </div>
 
@@ -311,10 +311,10 @@ const Header = ({menus}) => {
               </div>
               <div className="modal-body">
                 <nav className="list-group list-group-flush">
-                  <ul className="navbar-nav"> 
-                 
-                  {filterData().map((items) => {
-                    const dropDown = getListByParentID(items.id);
+                  <ul className="navbar-nav">
+
+                    {filterData().map((items) => {
+                      const dropDown = getListByParentID(items.id);
 
                     return (           
                     <li className="nav-item dropdown">

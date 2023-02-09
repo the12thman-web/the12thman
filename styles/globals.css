@@ -10871,7 +10871,7 @@ input[type="number"] {
 }
 .article__entry .article__image img {
   height: 180px;
-  width: 100%;
+  /* width: 100%; */
   max-width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
@@ -14473,9 +14473,10 @@ body.offcanvas-active {
   display: block;
 }
 .wrap__article-detail-content .total-views {
-  float: left;
+  /* float: left; */
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 .wrap__article-detail-content .total-views .total-views-read {
@@ -14498,7 +14499,8 @@ body.offcanvas-active {
   font-weight: normal;
 }
 .wrap__article-detail-content .total-views .list-inline {
-  padding-top: 15px;
+  padding-top: 5px;
+  text-align: right;
   float: right;
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
