@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./Header";
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Carousel } from 'react-responsive-carousel'
 
 const Home = ({ posts, menus }) => {
   console.log("posts", posts);
@@ -46,11 +48,14 @@ const Home = ({ posts, menus }) => {
       </div>
 
       {/* <!-- Tranding news  carousel-->*/}
-      <section className="bg-light">
+      <section className="bg-light pt-20 carouselContainer">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="wrapp__list__article-responsive wrapp__list__article-responsive-carousel">
+              {/* <div className="wrapp__list__article-responsive wrapp__list__article-responsive-carousel"> */}
+              <div >
+                <Carousel centerMode centerSlidePercentage={33.33} autoPlay interval={5000} transitionTime="5000" infiniteLoop showIndicators={false} showStatus={false} showArrows={false}>
+
                 {postData.map((items, index) => {
                   return (
                     <div className="item" key={`home_${index}`}>
@@ -87,7 +92,7 @@ const Home = ({ posts, menus }) => {
                             <div className="card__post__title">
                               <h6>
                                 <Link href={`/posts/${items.slug}`}>
-                                  {items.title}
+                                  {items.title.slice(0,40)}
                                 </Link>
                               </h6>
                               {/* <!-- <p className="d-none d-lg-block d-xl-block">
@@ -101,6 +106,7 @@ const Home = ({ posts, menus }) => {
                     </div>
                   );
                 })}
+                </Carousel>
               </div>
             </div>
           </div>
@@ -115,7 +121,8 @@ const Home = ({ posts, menus }) => {
           <div className="container">
             <div className="row no-gutters">
               <div className="col-md-8 ">
-                <div className="card__post-carousel">
+                <div className="main_carousel">
+                 <Carousel autoPlay infiniteLoop showStatus={false} showIndicators={false}>
                   {mainCarousel.map((items) => {
                     return (
                       <div className="item">
@@ -160,6 +167,7 @@ const Home = ({ posts, menus }) => {
                       </div>
                     );
                   })}
+                  </Carousel>
                 </div>
               </div>
               <div className="col-md-4">
@@ -272,7 +280,7 @@ const Home = ({ posts, menus }) => {
             <div className="row">
               <div className="col-md-12 col-lg-8">
                 <div className="wrapper__list__article">
-                  <h4 className="border_section">Recent Post</h4>
+                  <h4 className="border_section">IPL</h4>
                 </div>
                 <div className="row ">
                   {recentPost.map((items) => (
@@ -428,7 +436,7 @@ const Home = ({ posts, menus }) => {
 
               <div className="col-md-12 col-lg-4">
                 <aside className="wrapper__list__article">
-                  <h4 className="border_section">popular post</h4>
+                  <h4 className="border_section">MOTO GP</h4>
                   <div className="wrapper__list-number">
                     {/* <!-- List Article -->*/}
                     <div className="card__post__list">
@@ -671,7 +679,9 @@ const Home = ({ posts, menus }) => {
         <div className="mt-4">
           <div className="container">
             <div className="row">
-              <div className="col-md-8">
+
+
+              {/* <div className="col-md-8">
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">Cricket</h4>
 
@@ -732,11 +742,119 @@ const Home = ({ posts, menus }) => {
                         </div>
                       </div>
                     ))}
-                    {/* <!-- Post Article List -->*/}
                   </div>
                 </aside>
-              </div>
+              </div> */}
+              
+               
+               <div className="col-md-8">
+              <aside className="wrapper__list__article ">
+                <h4 className="border_section">Cricket</h4>
 
+                <div className="row">
+                  <div className="col-md-6">
+                    {/* <!-- Post Article --> */}
+
+                    {mainCarousel.map((item) => {
+                      return (
+                        <>
+                          <div className="article__entry">
+                            <div className="article__image">
+                              {/* <a href='.../posts/${node.slug}'> */}
+                              <a href="">
+                                <Image
+                                  className="image-profile"
+                                  src={item.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt={item.featuredImage.node.altText}
+                                />
+                              </a>
+                            </div>
+                            <div className="article__content">
+                              <div className="article__category">
+                                {item.categories.nodes[0].name}
+                              </div>
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    by {item.author.node.name}
+                                  </span>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span className="text-dark text-capitalize">
+                                    descember 09, 2016
+                                  </span>
+                                </li>
+                              </ul>
+                              <h5>
+                                <a href="#">{item.title}</a>
+                              </h5>
+                              <p>{item.slug.slice(0, 30)} ....</p>
+                              <a
+                                href="#"
+                                className="btn btn-outline-primary mb-4 text-capitalize"
+                              >
+                                readmore
+                              </a>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                  <div className="col-md-6">
+                    {/* <!-- Post Article --> */}
+                    {mainCarousel.map((item) => {
+                      return (
+                        <>
+                          <div className="article__entry">
+                            <div className="article__image">
+                              <a href="#">
+                                <Image
+                                  className="image-profile"
+                                  src={item.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt={item.featuredImage.node.altText}
+                                />
+                              </a>
+                            </div>
+                            <div className="article__content">
+                              <div className="article__category">
+                                {item.categories.nodes[0].name}
+                              </div>
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    by {item.author.node.name}
+                                  </span>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span className="text-dark text-capitalize">
+                                    descember 09, 2016
+                                  </span>
+                                </li>
+                              </ul>
+                              <h5>
+                                <a href="#">{item.title}</a>
+                              </h5>
+                              <p>{item.slug.slice(0, 30)} .....</p>
+                              <a
+                                href="#"
+                                className="btn btn-outline-primary mb-4 text-capitalize"
+                              >
+                                readmore
+                              </a>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                </div>
+              </aside>
+            </div>
               <div className="col-md-4">
                 <div className="sticky-top">
                   <aside className="wrapper__list__article">

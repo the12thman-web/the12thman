@@ -1,4 +1,5 @@
 !(function (e) {
+  // $(".loading-container").delay(0).fadeOut()
   var t = {};
   function n(i) {
     if (t[i]) return t[i].exports;
@@ -13562,7 +13563,7 @@
   function (e, t) {
     $(document).ready(function () {
       $(".top-search").hide();
-        $(".loading-container").delay(400).fadeOut(),
+      // $(".loading-container").delay(400).fadeOut(),
         $(".animationload").delay(400).fadeOut("fast"),
         $(window).scroll(function () {
           $(this).scrollTop() > 50

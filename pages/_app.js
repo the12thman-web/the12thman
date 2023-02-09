@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps, menus }) {
       <Head></Head>
 
       <Script type="text/javascript" src="scripts/script.js" />
+      
       <Component {...pageProps} />
       <Footer />
     </>

@@ -14,8 +14,8 @@ export default function index({ posts, menus }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Home posts={posts} menus={menus} />
+      
     </>
   );
 }
@@ -29,6 +29,6 @@ export async function getStaticProps({ params }) {
       posts,
       menus
     },
-    revalidate: 10, // In seconds
+    revalidate: 60, // In seconds
   };
 }

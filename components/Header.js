@@ -1,14 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import DateShow from "./DateShow";
 import { getAllMenus } from "../utils/wpGraph";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../public/Logo.png"
 
 const Header = ({menus}) => {
-  console.log(menus)
+  console.log('menus',menus)
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
-  const newValue = menus?.edges ? menus?.edges[0].node.menuItems.edges : "";
+  // const [show, setShow] = useState(false);
+
+  // const [newData, setNewData] = useState([]);
+
+  // console.log("data", data);
+  const newValue = menus.edges ? menus.edges[0].node.menuItems.edges : "";
+
+  const dataPost = async () => {
+    const value = menus;
+    // console.log("value", value);
+    setData(value);
+  };
+  // console.log("values", data);
 
   
    const searchHandler = (e) => {
@@ -95,56 +108,6 @@ const Header = ({menus}) => {
     <>
       <header className="bg-light">
         {/* <!-- Navbar  Top--> */}
-        <div className="topbar d-none d-sm-block">
-          <div className="container ">
-            <div className="row">
-              <div className="col-sm-12 col-md-5">
-                <div className="topbar-left">
-                  <div className="topbar-text">
-                    <DateShow />
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-12 col-md-7">
-                <div className="list-unstyled topbar-right">
-                  <ul className="topbar-link">
-                    <li>
-                      <Link href="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link href="/contact">Contact Us</Link>
-                    </li>
-                    {/* <li>
-                      <a href="#" title="">
-                        Login / Register
-                      </a>
-                    </li> */}
-                  </ul>
-                  <ul className="topbar-sosmed">
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <!-- End Navbar Top  --> */}
-        {/* <!-- Navbar  --> */}
-        {/* <!-- Navbar menu  --> */}
         <div className="navigation-wrap navigation-shadow bg-white">
           <nav className="navbar navbar-hover navbar-expand-lg navbar-soft">
             <div className="container">
@@ -168,7 +131,7 @@ const Header = ({menus}) => {
               </figure> */}
               <div>
                 <Link href="/">
-                  <h2>TWELFTH MAN TIMES</h2>
+                  <Image src={logo} alt="No Image" width={300} height={400}/>
                 </Link>
               </div>
 
@@ -336,269 +299,78 @@ const Header = ({menus}) => {
               </div>
               <div className="modal-body">
                 <nav className="list-group list-group-flush">
-                  <ul className="navbar-nav ">
+                  <ul className="navbar-nav"> 
+                 
+                  {filterData().map((items) => {
+                    const dropDown = getListByParentID(items.id);
+
+                    return (           
                     <li className="nav-item dropdown">
-                      <a
-                        className="nav-link active dropdown-toggle text-dark"
-                        href="#"
+                      <Link
+                        className={`nav-link active ${
+                            dropDown?.length ? "dropdown-toggle" : ""
+                          } text-dark`}
+                        href={`/category/${items.catslug}`}
                         data-toggle="dropdown"
                       >
-                        {" "}
-                        Home
-                      </a>
+                      {items.menu}                        
+                      </Link>
                       <ul className="dropdown-menu dropdown-menu-left">
+                          {dropDown.map((val) => (
                         <li>
-                          <a
+                          <Link
                             className="dropdown-item text-dark"
-                            href="/homepage-v1.html"
+                            href={`/category/${items.catslug}`}
                           >
-                            {" "}
-                            Home version one{" "}
-                          </a>
-                        </li>
+                            {val.name}
+                          </Link>
+                          <ul className="submenu dropdown-menu  animate fade-up">
+                                {getChildByParentId(val.id).map((child) => (
                         <li>
-                          <a
+                          <Link
                             className="dropdown-item text-dark"
-                            href="homepage-v2.html"
+                            href={`/category/${child.catslug}`}
                           >
-                            {" "}
-                            Home version two{" "}
-                          </a>
-                        </li>
+                                      {child.newLineName}
+                          </Link>
+
+                          <ul className="dropdown-menu dropdown-menu-left">
+                                {getNewChildByParentId(child.id).map(
+                                        (pre_child) => (
                         <li>
-                          <a
+                          <Link
                             className="dropdown-item text-dark"
-                            href="/homepage-v3.html"
+                            href={`/category/${pre_child.catslug}`}
                           >
-                            {" "}
-                            Home version three{" "}
-                          </a>
-                        </li>
+                                              {pre_child.newNextLineName}
+                          </Link>
+                          <ul className="dropdown-menu dropdown-menu-left">
+                               {getNewChildrenByParentId(
+                                                pre_child.id
+                                              ).map((children) => (
                         <li>
-                          <a
+                          <Link
                             className="dropdown-item text-dark"
-                            href="/homepage-v4.html"
+                            href={`/category/${children.catslug}`}
                           >
-                            {" "}
-                            Home version four{" "}
-                          </a>
+                                              {children.newChildrenName}
+                          </Link>
                         </li>
+                          ))}                        
+                      </ul>
+                        </li>
+                          ))}                        
+                      </ul>
+                        </li>
+                          ))}                        
+                      </ul>
+                        </li>
+                          ))}                        
                       </ul>
                     </li>
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle  text-dark"
-                        href="#"
-                        data-toggle="dropdown"
-                      >
-                        {" "}
-                        Pages{" "}
-                      </a>
-                      <ul className="dropdown-menu animate fade-up">
-                        <li>
-                          <a
-                            className="dropdown-item icon-arrow  text-dark"
-                            href="/blogscat"
-                          >
-                            {" "}
-                            Blog{" "}
-                          </a>
-                          <ul className="submenu dropdown-menu  animate fade-up">
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/category-style-v1.html"
-                              >
-                                Style 1
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/category-style-v2.html"
-                              >
-                                Style 2
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/category-style-v3.html"
-                              >
-                                Style 3
-                              </a>
-                            </li>
+                    )
+                    })}
 
-                            <li>
-                              <a
-                                className="dropdown-item icon-arrow  text-dark"
-                                href=""
-                              >
-                                Submenu item 3{" "}
-                              </a>
-                              <ul className="submenu dropdown-menu  animate fade-up">
-                                <li>
-                                  <a className="dropdown-item" href="">
-                                    Multi level 1
-                                  </a>
-                                </li>
-                                <li>
-                                  <a className="dropdown-item" href="">
-                                    Multi level 2
-                                  </a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a className="dropdown-item  text-dark" href="">
-                                Submenu item 4
-                              </a>
-                            </li>
-                            <li>
-                              <a className="dropdown-item" href="">
-                                Submenu item 5
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item icon-arrow  text-dark"
-                            href="/blogscat"
-                          >
-                            {" "}
-                            Blog single detail{" "}
-                          </a>
-                          <ul className="submenu dropdown-menu  animate fade-up">
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/article-detail-v1.html"
-                              >
-                                Style 1
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/article-detail-v2.html"
-                              >
-                                Style 2
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/article-detail-v3.html"
-                              >
-                                Style 3
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-
-                        <li>
-                          <a
-                            className="dropdown-item icon-arrow  text-dark"
-                            href="#"
-                          >
-                            {" "}
-                            Search Result{" "}
-                          </a>
-                          <ul className="submenu dropdown-menu  animate fade-up">
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/search-result.html"
-                              >
-                                Style 1
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                className="dropdown-item"
-                                href="/search-result-v1.html"
-                              >
-                                Style 2
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item  text-dark"
-                            href="/login.html"
-                          >
-                            Login{" "}
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item  text-dark"
-                            href="/register.html"
-                          >
-                            {" "}
-                            Register{" "}
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item  text-dark"
-                            href="/contact"
-                          >
-                            {" "}
-                            Contact{" "}
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item  text-dark"
-                            href="/404.html"
-                          >
-                            {" "}
-                            404 Error{" "}
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link active dropdown-toggle  text-dark"
-                        href="#"
-                        data-toggle="dropdown"
-                      >
-                        {" "}
-                        About
-                      </a>
-                      <ul className="dropdown-menu dropdown-menu-left">
-                        <li>
-                          <a className="dropdown-item" href="/about">
-                            {" "}
-                            Style 1{" "}
-                          </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="/about-us-v1.html">
-                            {" "}
-                            Style 2{" "}
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li className="nav-item">
-                      <a className="nav-link  text-dark" href="/category">
-                        {" "}
-                        Category{" "}
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link  text-dark" href="/contact">
-                        {" "}
-                        contact{" "}
-                      </a>
-                    </li>
                   </ul>
                 </nav>
               </div>
