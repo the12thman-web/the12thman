@@ -1,6 +1,9 @@
 import React from "react";
+import { getAllPosts } from "../../utils/wpGraph";
 
-const search = () => {
+const search = ({posts}) => {
+  console.log('posts: ', posts);
+
   return (
     <>
       <section className="bg-light">
@@ -221,3 +224,30 @@ const search = () => {
 };
 
 export default search;
+
+
+//hey Next, these are the possible slugs
+export async function getStaticPaths(params) {
+  console.log("getStaticPaths")
+  const allPosts = await getAllPosts('',params.slug);
+  console.log(allPosts);
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+//access the router, get the id, and get the data for that post
+
+export async function getStaticProps({ params }) {
+  console.log("getStaticProps", params.slug);
+  const posts = await getAllPosts('',params.slug);
+
+  return {
+    props: {
+      posts,
+    },
+    revalidate: 10, // In seconds
+  };
+}
+

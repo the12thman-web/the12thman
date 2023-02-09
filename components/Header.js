@@ -9,6 +9,8 @@ const Header = ({menus}) => {
   console.log('menus',menus)
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
+  
   // const [show, setShow] = useState(false);
 
   // const [newData, setNewData] = useState([]);
@@ -25,8 +27,13 @@ const Header = ({menus}) => {
 
   
    const searchHandler = (e) => {
+    console.log('e: ', e);
     setText(e.target.value);
   };
+
+  const openSearchBar = ()=>{
+    setShowSearch(!showSearch) 
+  }
 
   const filterData = () => {
     const newData = [];
@@ -36,6 +43,7 @@ const Header = ({menus}) => {
         const dataObj = {};
         dataObj.menu = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
         newData.push(dataObj);
       }
     }
@@ -52,6 +60,7 @@ const Header = ({menus}) => {
         const dataObj = {};
         dataObj.name = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
         newData.push(dataObj);
       }
     }
@@ -70,6 +79,7 @@ const Header = ({menus}) => {
         const dataObj = {};
         dataObj.newLineName = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
         newData.push(dataObj);
       }
     }
@@ -84,6 +94,7 @@ const Header = ({menus}) => {
         const dataObj = {};
         dataObj.newNextLineName = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
         newData.push(dataObj);
       }
     }
@@ -98,6 +109,7 @@ const Header = ({menus}) => {
         const dataObj = {};
         dataObj.newChildrenName = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
         newData.push(dataObj);
       }
     }
@@ -150,7 +162,7 @@ const Header = ({menus}) => {
                           className={`nav-link active ${
                             dropDown?.length ? "dropdown-toggle" : ""
                           }`}
-                          href={`/category/${items.catslug}`}
+                          href={`/category/${items.uri}`}
                           data-toggle="dropdown"
                         >
                           {items.menu}
@@ -160,7 +172,7 @@ const Header = ({menus}) => {
                             <li>
                               <Link
                                 className="dropdown-item"
-                                href={`/category/${items.catslug}`}
+                                href={`/category/${items.uri}`}
                               >
                                 {val.name}
                               </Link>
@@ -169,7 +181,7 @@ const Header = ({menus}) => {
                                   <li>
                                     <Link
                                       className="dropdown-item"
-                                      href={`/category/${child.catslug}`}
+                                      href={`/category/${child.uri}`}
                                     >
                                       {child.newLineName}
                                     </Link>
@@ -179,7 +191,7 @@ const Header = ({menus}) => {
                                           <li>
                                             <Link
                                               className="dropdown-item"
-                                              href={`/category/${pre_child.catslug}`}
+                                              href={`/category/${pre_child.uri}`}
                                             >
                                               {pre_child.newNextLineName}
                                             </Link>
@@ -190,7 +202,7 @@ const Header = ({menus}) => {
                                                 <li>
                                                   <Link
                                                     className="dropdown-item"
-                                                    href={`/category/${children.catslug}`}
+                                                    href={`/category/${children.uri}`}
                                                   >
                                                     {children.newChildrenName}
                                                   </Link>
@@ -214,16 +226,16 @@ const Header = ({menus}) => {
 
                 {/* <!-- Search bar.// --> */}
                 <ul className="navbar-nav ">
-                  <li className="nav-item search hidden-xs hidden-sm ">
+                  <li className="nav-item search hidden-xs hidden-sm " onClick={openSearchBar}>
                     {" "}
-                    <Link className="nav-link" href="/search">
+                    <Link className="nav-link" href="">
                       <i className="fa fa-search"></i>
                     </Link>
                   </li>
                 </ul>
                 {/* <!-- Search content bar.// --> */}
 
-                <div className="top-search navigation-shadow">
+                <div className={"navigation-shadow "+(showSearch ? 'top-search-show': 'top-search-hide')}>
                   <div className="container">
                     <div className="input-group ">
                       <form action="/search">
@@ -236,13 +248,13 @@ const Header = ({menus}) => {
                               placeholder="Search "
                               id="example-search-input4"
                               value={text}
-                              onChange={searchHandler}
+                              onChange={e => setText(e.target.value)}
                             />
                           </div>
                           <div className="col-auto">
                             <Link
                               className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-                              href="/search"
+                              href={'/search/'+text}
                             >
                               <i className="fa fa-search"></i>
                             </Link>
@@ -310,7 +322,7 @@ const Header = ({menus}) => {
                         className={`nav-link active ${
                             dropDown?.length ? "dropdown-toggle" : ""
                           } text-dark`}
-                        href={`/category/${items.catslug}`}
+                        href={`/category/${items.uri}`}
                         data-toggle="dropdown"
                       >
                       {items.menu}                        
@@ -320,7 +332,7 @@ const Header = ({menus}) => {
                         <li>
                           <Link
                             className="dropdown-item text-dark"
-                            href={`/category/${items.catslug}`}
+                            href={`/category/${val.uri}`}
                           >
                             {val.name}
                           </Link>
@@ -329,7 +341,7 @@ const Header = ({menus}) => {
                         <li>
                           <Link
                             className="dropdown-item text-dark"
-                            href={`/category/${child.catslug}`}
+                            href={`/category/${child.uri}`}
                           >
                                       {child.newLineName}
                           </Link>
@@ -340,7 +352,7 @@ const Header = ({menus}) => {
                         <li>
                           <Link
                             className="dropdown-item text-dark"
-                            href={`/category/${pre_child.catslug}`}
+                            href={`/category/${pre_child.uri}`}
                           >
                                               {pre_child.newNextLineName}
                           </Link>
@@ -351,7 +363,7 @@ const Header = ({menus}) => {
                         <li>
                           <Link
                             className="dropdown-item text-dark"
-                            href={`/category/${children.catslug}`}
+                            href={`/category/${children.uri}`}
                           >
                                               {children.newChildrenName}
                           </Link>

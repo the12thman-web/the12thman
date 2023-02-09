@@ -13473,7 +13473,7 @@ input[type="number"] {
 .navbar .search a:hover {
   color: #000;
 }
-.top-search {
+.top-search-hide {
   background-color: #fff;
   top: 85px;
   left: auto;
@@ -13484,6 +13484,20 @@ input[type="number"] {
   width: 100%;
   z-index: 51;
   display: none;
+}
+
+.top-search-show{
+
+  background-color: #fff;
+  top: 85px;
+  left: auto;
+  right: 0;
+  height: 100px;
+  position: absolute;
+  padding: 10px 0;
+  width: 100%;
+  z-index: 51;
+  display: block;
 }
 .top-search .input-group {
   max-width: 100%;

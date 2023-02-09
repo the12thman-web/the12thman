@@ -13562,7 +13562,7 @@
   },
   function (e, t) {
     $(document).ready(function () {
-      $(".top-search").hide();
+      // $(".top-search").hide();
       // $(".loading-container").delay(400).fadeOut(),
         $(".animationload").delay(400).fadeOut("fast"),
         $(window).scroll(function () {
@@ -13715,10 +13715,10 @@
           ],
         }),
         $(document).on("click", function (e) {
-          e.preventDefault(),
+          e.preventDefault()
               //  $(this) = your current element that clicked.
               // additional code
-              $(".top-search").slideToggle("4000");
+              // $(".top-search").slideToggle("4000");
         }),
         $(".trending-news-slider").slick({
           infinite: !0,
@@ -13734,7 +13734,7 @@
         }),
         $("li.search > a", this).on("click", function (e) {
           e.preventDefault(),
-            $(".top-search").slideToggle("4000"),
+            // $(".top-search").slideToggle("4000"),
             $(this).find("i").toggleClass("fa-times");
         }),
         $(".sidebar-sticky").stickySidebar({
