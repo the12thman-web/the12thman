@@ -199,13 +199,7 @@ export default function PostPage({ post, posts, menus }) {
                     width={80}
                     height={80}
                   />
-                  {/* <figure>
-                    <img
-                      src="images/placeholder/80x80.jpg"
-                      alt=""
-                      className="img-fluid rounded-circle"
-                    />
-                  </figure> */}
+
                   <div className="wrap__profile-author-detail">
                     <div className="wrap__profile-author-detail-name">
                       author
@@ -279,11 +273,7 @@ export default function PostPage({ post, posts, menus }) {
                             width={80}
                             height={80}
                           />
-                          {/* <img
-                            src="images/placeholder/80x80.jpg"
-                            className="avatar"
-                            alt="image"
-                          /> */}
+
                           <b className="fn">{post.comments.nodes.name}</b>
                           <span className="says">says:</span>
                         </div>
@@ -322,11 +312,7 @@ export default function PostPage({ post, posts, menus }) {
                                 width={80}
                                 height={80}
                               />
-                              {/* <img
-                                src="images/placeholder/80x80.jpg"
-                                className="avatar"
-                                alt="image"
-                              /> */}
+
                               <b className="fn">Sinmun</b>
                               <span className="says">says:</span>
                             </div>
@@ -413,7 +399,7 @@ export default function PostPage({ post, posts, menus }) {
                         id="comment"
                         cols="45"
                         rows="5"
-                        maxlength="65525"
+                        maxLength="65525"
                         required="required"
                       ></textarea>
                     </p>
@@ -866,7 +852,7 @@ export default function PostPage({ post, posts, menus }) {
                   </div>
                 </aside>
 
-                <aside className="wrapper__list__article">
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">Advertise</h4>
                   <a href="#">
                     <figure>
@@ -877,7 +863,7 @@ export default function PostPage({ post, posts, menus }) {
                       />
                     </figure>
                   </a>
-                </aside>
+                </aside> */}
               </div>
             </div>
           </div>
