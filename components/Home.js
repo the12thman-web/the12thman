@@ -253,7 +253,7 @@ const Home = ({ posts,menus }) => {
             <div className="row">
               <div className="col-md-12 col-lg-8">
                 <div className="wrapper__list__article">
-                  <h4 className="border_section">Recent Post</h4>
+                  <h4 className="border_section">IPL</h4>
                 </div>
                 <div className="row ">
                   {recentPost.map((items) => (
@@ -409,7 +409,7 @@ const Home = ({ posts,menus }) => {
 
               <div className="col-md-12 col-lg-4">
                 <aside className="wrapper__list__article">
-                  <h4 className="border_section">popular post</h4>
+                  <h4 className="border_section">MOTO GP</h4>
                   <div className="wrapper__list-number">
                     {/* <!-- List Article -->*/}
                     <div className="card__post__list">
@@ -652,7 +652,9 @@ const Home = ({ posts,menus }) => {
         <div className="mt-4">
           <div className="container">
             <div className="row">
-              <div className="col-md-8">
+
+
+              {/* <div className="col-md-8">
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">Cricket</h4>
 
@@ -713,11 +715,119 @@ const Home = ({ posts,menus }) => {
                         </div>
                       </div>
                     ))}
-                    {/* <!-- Post Article List -->*/}
                   </div>
                 </aside>
-              </div>
+              </div> */}
+              
+               
+               <div className="col-md-8">
+              <aside className="wrapper__list__article ">
+                <h4 className="border_section">Cricket</h4>
 
+                <div className="row">
+                  <div className="col-md-6">
+                    {/* <!-- Post Article --> */}
+
+                    {mainCarousel.map((item) => {
+                      return (
+                        <>
+                          <div className="article__entry">
+                            <div className="article__image">
+                              {/* <a href='.../posts/${node.slug}'> */}
+                              <a href="">
+                                <Image
+                                  className="image-profile"
+                                  src={item.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt={item.featuredImage.node.altText}
+                                />
+                              </a>
+                            </div>
+                            <div className="article__content">
+                              <div className="article__category">
+                                {item.categories.nodes[0].name}
+                              </div>
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    by {item.author.node.name}
+                                  </span>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span className="text-dark text-capitalize">
+                                    descember 09, 2016
+                                  </span>
+                                </li>
+                              </ul>
+                              <h5>
+                                <a href="#">{item.title}</a>
+                              </h5>
+                              <p>{item.slug.slice(0, 30)} ....</p>
+                              <a
+                                href="#"
+                                className="btn btn-outline-primary mb-4 text-capitalize"
+                              >
+                                readmore
+                              </a>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                  <div className="col-md-6">
+                    {/* <!-- Post Article --> */}
+                    {mainCarousel.map((item) => {
+                      return (
+                        <>
+                          <div className="article__entry">
+                            <div className="article__image">
+                              <a href="#">
+                                <Image
+                                  className="image-profile"
+                                  src={item.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt={item.featuredImage.node.altText}
+                                />
+                              </a>
+                            </div>
+                            <div className="article__content">
+                              <div className="article__category">
+                                {item.categories.nodes[0].name}
+                              </div>
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    by {item.author.node.name}
+                                  </span>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span className="text-dark text-capitalize">
+                                    descember 09, 2016
+                                  </span>
+                                </li>
+                              </ul>
+                              <h5>
+                                <a href="#">{item.title}</a>
+                              </h5>
+                              <p>{item.slug.slice(0, 30)} .....</p>
+                              <a
+                                href="#"
+                                className="btn btn-outline-primary mb-4 text-capitalize"
+                              >
+                                readmore
+                              </a>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                </div>
+              </aside>
+            </div>
               <div className="col-md-4">
                 <div className="sticky-top">
                   <aside className="wrapper__list__article">

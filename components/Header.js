@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import DateShow from "./DateShow";
 import { getAllMenus } from "../utils/wpGraph";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../public/Logo.png"
 
 const Header = ({menus}) => {
   console.log(menus)
@@ -95,56 +96,6 @@ const Header = ({menus}) => {
     <>
       <header className="bg-light">
         {/* <!-- Navbar  Top--> */}
-        <div className="topbar d-none d-sm-block">
-          <div className="container ">
-            <div className="row">
-              <div className="col-sm-12 col-md-5">
-                <div className="topbar-left">
-                  <div className="topbar-text">
-                    <DateShow />
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-12 col-md-7">
-                <div className="list-unstyled topbar-right">
-                  <ul className="topbar-link">
-                    <li>
-                      <Link href="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link href="/contact">Contact Us</Link>
-                    </li>
-                    {/* <li>
-                      <a href="#" title="">
-                        Login / Register
-                      </a>
-                    </li> */}
-                  </ul>
-                  <ul className="topbar-sosmed">
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <!-- End Navbar Top  --> */}
-        {/* <!-- Navbar  --> */}
-        {/* <!-- Navbar menu  --> */}
         <div className="navigation-wrap navigation-shadow bg-white">
           <nav className="navbar navbar-hover navbar-expand-lg navbar-soft">
             <div className="container">
@@ -168,7 +119,7 @@ const Header = ({menus}) => {
               </figure> */}
               <div>
                 <Link href="/">
-                  <h2>TWELFTH MAN TIMES</h2>
+                  <Image src={logo} alt="No Image" width={300} height={400}/>
                 </Link>
               </div>
 
