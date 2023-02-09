@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { getAllPosts, getAllCategories } from "../../utils/wpGraph";
+// import Header from "../../components/Header";
 
 const Category = ({ menus }) => {
   const categoryDatafirstCol = menus.nodes.slice(0, 4);
@@ -9,28 +10,29 @@ const Category = ({ menus }) => {
   const categoryDataSingle = menus.nodes.slice(10, 11);
   const categoryTagsData = menus.nodes;
 
-  console.log("menu", menus);
+  // console.log("menu", menus);
   return (
     <>
       <section>
+        {/* <Header menus={menus}/> */}
+        {/* <!-- Breadcrumb --> */}
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {/* <!-- Breadcrumb --> */}
               <ul className="breadcrumbs bg-light mb-4">
                 <li className="breadcrumbs__item">
                   <a href="/" className="breadcrumbs__url">
                     <i className="fa fa-home"></i> Home
                   </a>
                 </li>
-                <li className="breadcrumbs__item">
+                {/* <li className="breadcrumbs__item">
                   <a href="index.html" className="breadcrumbs__url">
                     News
                   </a>
                 </li>
                 <li className="breadcrumbs__item breadcrumbs__item--current">
                   World
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -71,14 +73,14 @@ const Category = ({ menus }) => {
                                     by {item.author.node.name}
                                   </span>
                                 </li>
-                                <li className="list-inline-item">
+                                {/* <li className="list-inline-item">
                                   <span className="text-dark text-capitalize">
                                     descember 09, 2016
                                   </span>
-                                </li>
+                                </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title}</a>
+                                <a href="#">{item.title.slice(0, 30)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} ....</p>
                               <a
@@ -120,14 +122,14 @@ const Category = ({ menus }) => {
                                     by {item.author.node.name}
                                   </span>
                                 </li>
-                                <li className="list-inline-item">
+                                {/* <li className="list-inline-item">
                                   <span className="text-dark text-capitalize">
                                     descember 09, 2016
                                   </span>
-                                </li>
+                                </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title}</a>
+                                <a href="#">{item.title.slice(0, 30)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} .....</p>
                               <a
@@ -148,7 +150,7 @@ const Category = ({ menus }) => {
             <div className="col-md-4">
               <div className="sidebar-sticky">
                 <aside className="wrapper__list__article ">
-                  <h4 className="border_section">Sidebar</h4>
+                  <h4 className="border_section">Recent Blogs</h4>
                   <div className="wrapper__list__article-small">
                     {categoryDataSlider.map((item) => {
                       return (
@@ -177,17 +179,17 @@ const Category = ({ menus }) => {
                                           by {item.author.node.name}
                                         </span>
                                       </li>
-                                      <li className="list-inline-item">
+                                      {/* <li className="list-inline-item">
                                         <span className="text-dark text-capitalize">
                                           descember 09, 2016
                                         </span>
-                                      </li>
+                                      </li> */}
                                     </ul>
                                   </div>
                                   <div className="card__post__title">
                                     <h6>
                                       <a href="./card-article-detail-v1.html">
-                                        {item.title}
+                                        {item.title.slice(0, 30)}
                                       </a>
                                     </h6>
                                   </div>
@@ -225,14 +227,14 @@ const Category = ({ menus }) => {
                                     by {item.author.node.name}
                                   </span>
                                 </li>
-                                <li className="list-inline-item">
+                                {/* <li className="list-inline-item">
                                   <span className="text-dark text-capitalize">
                                     descember 09, 2016
                                   </span>
-                                </li>
+                                </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title}</a>
+                                <a href="#">{item.title.slice(0, 30)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} .....</p>
                               <a
@@ -312,7 +314,7 @@ const Category = ({ menus }) => {
             <div className="clearfix"></div>
           </div>
           {/* <!-- Pagination --> */}
-          <div className="pagination-area">
+          {/* <div className="pagination-area">
             <div
               className="pagination wow fadeIn animated"
               data-wow-duration="2s"
@@ -335,7 +337,7 @@ const Category = ({ menus }) => {
 
               <a href="#">»</a>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
