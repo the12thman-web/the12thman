@@ -123,7 +123,7 @@ const Header = ({ menus }) => {
         <div className="navigation-wrap navigation-shadow bg-white">
           <nav className="navbar navbar-hover navbar-expand-lg navbar-soft">
             <div className="container">
-              {/* <div className="offcanvas-header">
+              <div className="offcanvas-header">
                 <div
                   data-toggle="modal"
                   data-target="#modal_aside_right"
@@ -131,7 +131,7 @@ const Header = ({ menus }) => {
                 >
                   <span className="navbar-toggler-icon"></span>
                 </div>
-              </div> */}
+              </div>
               {/* <figure className="mb-0 mx-auto">
                 <a href="/homepage-v1.html">
                   <img
@@ -275,6 +275,7 @@ const Header = ({ menus }) => {
         {/* <!-- End Navbar menu  --> */}
 
         {/* <!-- Navbar sidebar menu  --> */}
+
         <div
           id="modal_aside_right"
           className="modal fixed-left fade"
@@ -289,7 +290,7 @@ const Header = ({ menus }) => {
                     <div className="col">
                       <input
                         className="form-control border-secondary border-right-0 rounded-0"
-                        // value=""
+                        
                         placeholder="Search"
                       />
                     </div>
@@ -346,7 +347,7 @@ const Header = ({ menus }) => {
                                       {child.newLineName}
                           </Link>
 
-                          <ul className="dropdown-menu dropdown-menu-left">
+                          <ul className="submenu dropdown-menu  animate fade-up">
                                 {getNewChildByParentId(child.id).map(
                                         (pre_child) => (
                         <li>
@@ -356,7 +357,7 @@ const Header = ({ menus }) => {
                           >
                                               {pre_child.newNextLineName}
                           </Link>
-                          <ul className="dropdown-menu dropdown-menu-left">
+                          <ul className="submenu dropdown-menu  animate fade-up">
                                {getNewChildrenByParentId(
                                                 pre_child.id
                                               ).map((children) => (
@@ -405,8 +406,10 @@ const Header = ({ menus }) => {
               </div>
             </div>
           </div>
-          {/* <!-- modal-bil// --> */}
         </div>
+
+       
+        
         {/* <!-- modal.// --> */}
         {/* <!-- End Navbar sidebar menu  --> */}
         {/* <!-- End Navbar  --> */}

@@ -29,7 +29,7 @@ const Home = ({ posts, menus }) => {
             <div className="col-md-12">
               {/* <div className="wrapp__list__article-responsive wrapp__list__article-responsive-carousel"> */}
               <div >
-                <Carousel centerMode centerSlidePercentage={33.33} autoPlay interval={5000} transitionTime="5000" infiniteLoop showIndicators={false} showStatus={false} showArrows={false}>
+                <Carousel centerMode centerSlidePercentage={33.33} autoPlay interval={5000} transitionTime="5000" infiniteLoop showIndicators={false} showStatus={false} showArrows={false} showThumbs={false}>
 
                 {postData.map((items, index) => {
                   return (
@@ -97,7 +97,7 @@ const Home = ({ posts, menus }) => {
             <div className="row no-gutters">
               <div className="col-md-8 ">
                 <div className="main_carousel">
-                 <Carousel autoPlay infiniteLoop showStatus={false} showIndicators={false}>
+                 <Carousel autoPlay infiniteLoop showStatus={false} showIndicators={false} showThumbs={false}>
                   {mainCarousel.map((items) => {
                     return (
                       <div className="item">
