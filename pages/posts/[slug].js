@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts, getPost } from "../../utils/wpGraph";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"
-import { Carousel } from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 import Header from "../../components/Header";
 
 export default function PostPage({ post, posts, menus }) {
@@ -528,7 +528,6 @@ export default function PostPage({ post, posts, menus }) {
                     </Carousel>
                   </div> */}
                 </div>
-
               </div>
             </div>
             <div className="col-md-4">
@@ -553,44 +552,45 @@ export default function PostPage({ post, posts, menus }) {
                     </div>
                   </div>
                   <div className="wrapper__list__article-small">
-                    <div className="mb-3">                     <div className="card__post card__post-list">
-                      <div className="image-sm">
-                        <a href="./card-article-detail-v1.html">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            className="img-fluid"
-                            alt=""
-                          />
-                        </a>
-                      </div>
+                    <div className="mb-3">
+                      {" "}
+                      <div className="card__post card__post-list">
+                        <div className="image-sm">
+                          <a href="./card-article-detail-v1.html">
+                            <img
+                              src="images/placeholder/500x400.jpg"
+                              className="img-fluid"
+                              alt=""
+                            />
+                          </a>
+                        </div>
 
-                      <div className="card__post__body ">
-                        <div className="card__post__content">
-                          <div className="card__post__author-info mb-2">
-                            <ul className="list-inline">
-                              <li className="list-inline-item">
-                                <span className="text-primary">
-                                  {post.author.node.name}
-                                </span>
-                              </li>
-                              <li className="list-inline-item">
-                                <span className="text-dark text-capitalize">
-                                  descember 09, 2016
-                                </span>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="card__post__title">
-                            <h6>
-                              <a href="./card-article-detail-v1.html">
-                                6 Best Tips for Building a Good Shipping Boat
-                              </a>
-                            </h6>
-
+                        <div className="card__post__body ">
+                          <div className="card__post__content">
+                            <div className="card__post__author-info mb-2">
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    {post.author.node.name}
+                                  </span>
+                                </li>
+                                <li className="list-inline-item">
+                                  <span className="text-dark text-capitalize">
+                                    descember 09, 2016
+                                  </span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="card__post__title">
+                              <h6>
+                                <a href="./card-article-detail-v1.html">
+                                  6 Best Tips for Building a Good Shipping Boat
+                                </a>
+                              </h6>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     </div>
                     <div className="mb-3">
                       <div className="card__post card__post-list">
@@ -780,21 +780,6 @@ export default function PostPage({ post, posts, menus }) {
                         <a href="#">#property</a>
                       </li>
                       <li className="list-inline-item">
-                        <a href="#">#sea</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#programming</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sea</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#property</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#life style</a>
-                      </li>
-                      <li className="list-inline-item">
                         <a href="#">#technology</a>
                       </li>
                       <li className="list-inline-item">
@@ -817,9 +802,6 @@ export default function PostPage({ post, posts, menus }) {
                       </li>
                       <li className="list-inline-item">
                         <a href="#">#wfh</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#framework</a>
                       </li>
                     </ul>
                   </div>
@@ -887,7 +869,7 @@ export default function PostPage({ post, posts, menus }) {
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
   const allPosts = await getAllPosts();
-  console.log(allPosts)
+  console.log(allPosts);
   return {
     paths: allPosts.nodes.map((node) => `/posts/${node.slug}`) || [],
     fallback: "blocking",

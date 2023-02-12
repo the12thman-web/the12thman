@@ -10,7 +10,7 @@ const Header = ({ menus }) => {
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  
+
   // const [show, setShow] = useState(false);
 
   // const [newData, setNewData] = useState([]);
@@ -25,14 +25,14 @@ const Header = ({ menus }) => {
   };
   // console.log("values", data);
 
-  
-   const searchHandler = (e) => {
+
+  const searchHandler = (e) => {
     console.log('e: ', e);
     setText(e.target.value);
   };
 
-  const openSearchBar = ()=>{
-    setShowSearch(!showSearch) 
+  const openSearchBar = () => {
+    setShowSearch(!showSearch)
   }
 
   const filterData = () => {
@@ -123,7 +123,7 @@ const Header = ({ menus }) => {
         <div className="navigation-wrap navigation-shadow bg-white">
           <nav className="navbar navbar-hover navbar-expand-lg navbar-soft">
             <div className="container">
-              {/* <div className="offcanvas-header">
+              <div className="offcanvas-header">
                 <div
                   data-toggle="modal"
                   data-target="#modal_aside_right"
@@ -131,7 +131,7 @@ const Header = ({ menus }) => {
                 >
                   <span className="navbar-toggler-icon"></span>
                 </div>
-              </div> */}
+              </div>
               {/* <figure className="mb-0 mx-auto">
                 <a href="/homepage-v1.html">
                   <img
@@ -159,9 +159,8 @@ const Header = ({ menus }) => {
                     return (
                       <li className="nav-item dropdown">
                         <Link
-                          className={`nav-link active ${
-                            dropDown?.length ? "dropdown-toggle" : ""
-                          }`}
+                          className={`nav-link active ${dropDown?.length ? "dropdown-toggle" : ""
+                            }`}
                           href={`/category/${items.uri}`}
                           data-toggle="dropdown"
                         >
@@ -235,7 +234,7 @@ const Header = ({ menus }) => {
                 </ul>
                 {/* <!-- Search content bar.// --> */}
 
-                <div className={"navigation-shadow "+(showSearch ? 'top-search-show': 'top-search-hide')}>
+                <div className={"navigation-shadow " + (showSearch ? 'top-search-show' : 'top-search-hide')}>
                   <div className="container">
                     <div className="input-group ">
                       <form action="/search">
@@ -254,7 +253,7 @@ const Header = ({ menus }) => {
                           <div className="col-auto">
                             <Link
                               className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-                              href={'/search/'+text}
+                              href={'/search/' + text}
                             >
                               <i className="fa fa-search"></i>
                             </Link>
@@ -316,71 +315,70 @@ const Header = ({ menus }) => {
                     {filterData().map((items) => {
                       const dropDown = getListByParentID(items.id);
 
-                    return (           
-                    <li className="nav-item dropdown">
-                      <Link
-                        className={`nav-link active ${
-                            dropDown?.length ? "dropdown-toggle" : ""
-                          } text-dark`}
-                        href={`/category/${items.uri}`}
-                        data-toggle="dropdown"
-                      >
-                      {items.menu}                        
-                      </Link>
-                      <ul className="dropdown-menu dropdown-menu-left">
-                          {dropDown.map((val) => (
-                        <li>
+                      return (
+                        <li className="nav-item dropdown">
                           <Link
-                            className="dropdown-item text-dark"
-                            href={`/category/${val.uri}`}
+                            className={`nav-link active ${dropDown?.length ? "dropdown-toggle" : ""
+                              } text-dark`}
+                            href={`/category/${items.uri}`}
+                            data-toggle="dropdown"
                           >
-                            {val.name}
+                            {items.menu}
                           </Link>
-                          <ul className="submenu dropdown-menu  animate fade-up">
-                                {getChildByParentId(val.id).map((child) => (
-                        <li>
-                          <Link
-                            className="dropdown-item text-dark"
-                            href={`/category/${child.uri}`}
-                          >
-                                      {child.newLineName}
-                          </Link>
+                          <ul className="dropdown-menu dropdown-menu-left">
+                            {dropDown.map((val) => (
+                              <li>
+                                <Link
+                                  className="dropdown-item text-dark"
+                                  href={`/category/${val.uri}`}
+                                >
+                                  {val.name}
+                                </Link>
+                                <ul className="submenu dropdown-menu  animate fade-up">
+                                  {getChildByParentId(val.id).map((child) => (
+                                    <li>
+                                      <Link
+                                        className="dropdown-item text-dark"
+                                        href={`/category/${child.uri}`}
+                                      >
+                                        {child.newLineName}
+                                      </Link>
 
-                          <ul className="dropdown-menu dropdown-menu-left">
-                                {getNewChildByParentId(child.id).map(
-                                        (pre_child) => (
-                        <li>
-                          <Link
-                            className="dropdown-item text-dark"
-                            href={`/category/${pre_child.uri}`}
-                          >
-                                              {pre_child.newNextLineName}
-                          </Link>
-                          <ul className="dropdown-menu dropdown-menu-left">
-                               {getNewChildrenByParentId(
-                                                pre_child.id
-                                              ).map((children) => (
-                        <li>
-                          <Link
-                            className="dropdown-item text-dark"
-                            href={`/category/${children.uri}`}
-                          >
-                                              {children.newChildrenName}
-                          </Link>
+                                      <ul className="dropdown-menu dropdown-menu-left">
+                                        {getNewChildByParentId(child.id).map(
+                                          (pre_child) => (
+                                            <li>
+                                              <Link
+                                                className="dropdown-item text-dark"
+                                                href={`/category/${pre_child.uri}`}
+                                              >
+                                                {pre_child.newNextLineName}
+                                              </Link>
+                                              <ul className="dropdown-menu dropdown-menu-left">
+                                                {getNewChildrenByParentId(
+                                                  pre_child.id
+                                                ).map((children) => (
+                                                  <li>
+                                                    <Link
+                                                      className="dropdown-item text-dark"
+                                                      href={`/category/${children.uri}`}
+                                                    >
+                                                      {children.newChildrenName}
+                                                    </Link>
+                                                  </li>
+                                                ))}
+                                              </ul>
+                                            </li>
+                                          ))}
+                                      </ul>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </li>
+                            ))}
+                          </ul>
                         </li>
-                          ))}                        
-                      </ul>
-                        </li>
-                          ))}                        
-                      </ul>
-                        </li>
-                          ))}                        
-                      </ul>
-                        </li>
-                          ))}                        
-                      </ul>
-                    </li>
-                    )
+                      )
                     })}
 
                   </ul>
