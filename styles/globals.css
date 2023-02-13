@@ -3751,14 +3751,14 @@ input[type="button"].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.4rem;
 }
 .navbar > .container,
 .navbar > .container-fluid {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: normal; */
 }
 .navbar-brand {
   display: inline-block;
@@ -3818,6 +3818,17 @@ input[type="button"].btn-block {
   background: no-repeat center center;
   background-size: 100% 100%;
 }
+
+.logoImg{
+  width: 19vw;
+}
+
+@media (max-width: 1020px) {
+.logoImg{
+  width: 55vw;
+}
+}
+
 @media (max-width: 575.98px) {
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid {
@@ -3908,6 +3919,7 @@ input[type="button"].btn-block {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
+  
   .navbar-expand-lg > .container,
   .navbar-expand-lg > .container-fluid {
     flex-wrap: nowrap;
@@ -3926,8 +3938,14 @@ input[type="button"].btn-block {
     padding-right: 0;
     padding-left: 0;
   }
+  .navbar-expand-lg .navbar-nav {
+    font-size: 11px;
+  }
 }
 @media (min-width: 1200px) {
+  .navbar-expand-lg .navbar-nav {
+    font-size: 14px;
+  }
   .navbar-expand-xl {
     flex-flow: row nowrap;
     justify-content: flex-start;
@@ -8716,6 +8734,7 @@ a.text-dark:focus {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: auto !important;
 }
 .slick-track:before,
 .slick-track:after {
@@ -8729,10 +8748,11 @@ a.text-dark:focus {
   visibility: hidden;
 }
 .slick-slide {
-  float: left;
+  /* float: left; */
   height: 100%;
   min-height: 1px;
   display: none;
+  width: auto !important;
 }
 [dir="rtl"] .slick-slide {
   float: right;

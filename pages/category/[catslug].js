@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getAllPosts, getAllCategories } from "../../utils/wpGraph";
+import { getAllPosts, getAllCategories, getAllMenus } from "../../utils/wpGraph";
 // import Header from "../../components/Header";
 
 const Category = ({ menus }) => {
@@ -298,15 +298,17 @@ const Category = ({ menus }) => {
 
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">Advertise</h4>
-                  <a href="#">
+                  {/* <Link href="/">
                     <figure>
-                      <img
-                        src="images/placeholder/500x400.jpg"
-                        alt=""
-                        className="img-fluid"
+                      <Image
+                        className="image-profile"
+                        src={item.featuredImage.node.sourceUrl}
+                        width={500}
+                        height={400}
+                        alt={item.featuredImage.node.altText}
                       />
                     </figure>
-                  </a>
+                  </Link> */}
                 </aside>
               </div>
             </div>

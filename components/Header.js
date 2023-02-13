@@ -143,7 +143,7 @@ const Header = ({ menus }) => {
               </figure> */}
               <div>
                 <Link href="/">
-                  <Image src={logo} alt="No Image" width={300} height={400} />
+                  <Image src={logo} alt="No Image" className="logoImg" height={400} />
                 </Link>
               </div>
 

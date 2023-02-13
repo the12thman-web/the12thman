@@ -7,11 +7,12 @@ import { Carousel } from "react-responsive-carousel";
 import Header from "../../components/Header";
 
 export default function PostPage({ post, posts, menus }) {
-  // console.log('post', post)
+  console.log('post1', post)
+  const categoryTagsData = post?.tags?.nodes;
 
-  const postData = posts?.nodes;
+  // const postData = posts?.nodes;
   // const mainCarousel = postData.slice(0, 5);
-  // console.log('postD', postData)
+
   return (
     <>
       <section className="pb-80">
@@ -138,40 +139,34 @@ export default function PostPage({ post, posts, menus }) {
                     className="has-drop-cap-fluid"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                   ></div>
-
-                  {/* <!--  Blockquote   --> */}
-                  {/* <blockquote className="block-quote">
-                    <p>
-                      It is a long established fact that a reader will be
-                      distracted by the readable content of a page when looking
-                      at its layout.
-                    </p>
-                    <cite>Tom Cruise</cite>
-                  </blockquote> */}
-                  {/* <!-- Blockquote  -->  */}
-
-                  {/* <h5>How Tech Startup Survive Without Funding</h5>
-                  <p>
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    texts. Separated they live in Bookmarksgrove right at the
-                    coast of the Semantics, a large language ocean. A small
-                    river named Duden flows by their place and supplies it with
-                    the necessary regelialia.
-                  </p> */}
                 </div>
               </div>
               {/* <!--  end content article detail  --> */}
 
               {/* <!--  tags  --> */}
-              {/* <!--  News Tags  --> */}
-              <div className="blog-tags">
+              {/* {categoryTagsData.map((item) => {
+                return (
+                  <>
+                    <div className="blog-tags p-0">
+                      <ul className="list-inline">
+                        <li className="list-inline-item">
+                          <Link href={`/category/${item.catslug}`}>
+                            {item.tags.nodes.name}
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                );
+              })} */}
+
+              {/* <div className="blog-tags">
                 <ul className="list-inline">
                   <li className="list-inline-item">
                     <i className="fa fa-tags"></i>
                   </li>
                   <li className="list-inline-item">
-                    <a href="#">{post.tags.nodes.name}</a>
+                    <a href="#">{post.tags.nodes[0].name}</a>
                   </li>
                   <li className="list-inline-item">
                     <a href="#">#sea</a>
@@ -186,7 +181,7 @@ export default function PostPage({ post, posts, menus }) {
                     <a href="#">#property</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               {/* <!--  end tags --> */}
 
               {/* <!--  authors --> */}
@@ -533,13 +528,13 @@ export default function PostPage({ post, posts, menus }) {
             <div className="col-md-4">
               <div className="sticky-top">
                 <aside className="wrapper__list__article ">
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <div className="widget__form-search-bar  ">
                       <div className="row no-gutters">
                         <div className="col">
                           <input
                             className="form-control border-secondary border-right-0 rounded-0"
-                            // value=""
+                          
                             placeholder="Search"
                           />
                         </div>
@@ -550,7 +545,7 @@ export default function PostPage({ post, posts, menus }) {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="wrapper__list__article-small">
                     <div className="mb-3">
                       {" "}
@@ -774,37 +769,21 @@ export default function PostPage({ post, posts, menus }) {
 
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">tags</h4>
-                  <div className="blog-tags p-0">
-                    <ul className="list-inline">
-                      <li className="list-inline-item">
-                        <a href="#">#property</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#technology</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#framework</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sport</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#game</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#wfh</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sport</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#game</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#wfh</a>
-                      </li>
-                    </ul>
-                  </div>
+                  {categoryTagsData.map((item) => {
+                    return (
+                      <>
+                        <div className="blog-tags p-0">
+                          <ul className="list-inline">
+                            <li className="list-inline-item">
+                              <Link href={`/category/${item.catslug}`}>
+                                {item.name}
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </>
+                    );
+                  })}
                 </aside>
 
                 <aside className="wrapper__list__article">
