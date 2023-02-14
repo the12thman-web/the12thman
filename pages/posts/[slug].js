@@ -1,41 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPosts, getPost } from "../../utils/wpGraph";
+import { getAllMenus, getAllPosts, getPost } from "../../utils/wpGraph";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import Header from "../../components/Header";
 
-export default function PostPage({ post, posts, menus }) {
+export default function PostPage({ post, menus }) {
   // console.log('post', post)
 
-  const postData = posts?.nodes;
   // const mainCarousel = postData.slice(0, 5);
   // console.log('postD', postData)
   return (
     <>
       <section className="pb-80">
-        {/* <Header menus={menus} /> */}
+        <Header menus={menus} />
         <div className="container">
+              <br/><br/>
           <div className="row">
             <div className="col-md-12">
               {/* <!--  breaddcrumb  --> */}
               {/* <!--  Breadcrumb  --> */}
-              <ul className="breadcrumbs bg-light mb-4">
-                <li className="breadcrumbs__item">
-                  <a href="/" className="breadcrumbs__url">
-                    <i className="fa fa-home"></i> Home
-                  </a>
-                </li>
-                {/* <li className="breadcrumbs__item">
-                  <a href="index.html" className="breadcrumbs__url">
-                    News
-                  </a>
-                </li>
-                <li className="breadcrumbs__item breadcrumbs__item--current">
-                  World
-                </li> */}
-              </ul>
               {/* <!--  end breadcrumb  --> */}
             </div>
             <div className="col-md-8">
@@ -899,10 +884,13 @@ export async function getStaticPaths(params) {
 export async function getStaticProps({ params }) {
   console.log("slug", params.slug);
   const post = await getPost(params.slug);
+  const menus = await getAllMenus();
+ 
 
   return {
     props: {
       post,
+      menus
     },
     revalidate: 10, // In seconds
   };

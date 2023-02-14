@@ -1,47 +1,29 @@
 import React from "react";
 import Image from "next/image";
-import { getAllPosts, getAllCategories } from "../../utils/wpGraph";
+import { getAllPosts, getAllCategories, getAllMenus } from "../../utils/wpGraph";
+import Header from "../../components/Header";
 // import Header from "../../components/Header";
 
-const Category = ({ menus }) => {
-  const categoryDatafirstCol = menus.nodes.slice(0, 4);
-  const categoryDatasecCol = menus.nodes.slice(5, 9);
-  const categoryDataSlider = menus.nodes.slice(10, 14);
-  const categoryDataSingle = menus.nodes.slice(10, 11);
-  const categoryTagsData = menus.nodes;
+const Category = ({ posts, menus, title }) => {
+  const categoryDatafirstCol = posts.nodes.slice(0, 4);
+  const categoryDatasecCol = posts.nodes.slice(5, 9);
+  const categoryDataSlider = posts.nodes.slice(10, 14);
+  const categoryDataSingle = posts.nodes.slice(10, 11);
+  const categoryTagsData = posts.nodes;
 
-  // console.log("menu", menus);
+  // console.log("menu", posts);
   return (
     <>
+    <Header menus={menus}/>
+
       <section>
-        {/* <Header menus={menus}/> */}
         {/* <!-- Breadcrumb --> */}
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <ul className="breadcrumbs bg-light mb-4">
-                <li className="breadcrumbs__item">
-                  <a href="/" className="breadcrumbs__url">
-                    <i className="fa fa-home"></i> Home
-                  </a>
-                </li>
-                {/* <li className="breadcrumbs__item">
-                  <a href="index.html" className="breadcrumbs__url">
-                    News
-                  </a>
-                </li>
-                <li className="breadcrumbs__item breadcrumbs__item--current">
-                  World
-                </li> */}
-              </ul>
-            </div>
-          </div>
-        </div>
+        
         <div className="container">
           <div className="row">
             <div className="col-md-8">
               <aside className="wrapper__list__article ">
-                <h4 className="border_section">Category title</h4>
+                <h4 className="border_section">{title}</h4>
 
                 <div className="row">
                   <div className="col-md-6">
@@ -253,6 +235,19 @@ const Category = ({ menus }) => {
                 </aside>
 
                 <aside className="wrapper__list__article">
+                  <h4 className="border_section">Advertise</h4>
+                  <a href="#">
+                    <figure>
+                      <img
+                        src="images/placeholder/500x400.jpg"
+                        alt=""
+                        className="img-fluid"
+                      />
+                    </figure>
+                  </a>
+                </aside>
+
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">tags</h4>
                   {categoryTagsData.map((item) => {
                     return (
@@ -267,7 +262,7 @@ const Category = ({ menus }) => {
                       </>
                     );
                   })}
-                </aside>
+                </aside> */}
 
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">newsletter</h4>
@@ -296,18 +291,7 @@ const Category = ({ menus }) => {
                   </div>
                 </aside>
 
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">Advertise</h4>
-                  <a href="#">
-                    <figure>
-                      <img
-                        src="images/placeholder/500x400.jpg"
-                        alt=""
-                        className="img-fluid"
-                      />
-                    </figure>
-                  </a>
-                </aside>
+
               </div>
             </div>
 
@@ -361,11 +345,14 @@ export async function getStaticPaths(params) {
 
 export async function getStaticProps({ params }) {
   console.log("getStaticProps", params.catslug);
-  const menus = await getAllPosts(params.catslug);
-
+  const posts = await getAllPosts(params.catslug);
+  const menus = await getAllMenus();
+  
   return {
     props: {
+      posts,
       menus,
+      title: params.catslug
     },
     revalidate: 10, // In seconds
   };
