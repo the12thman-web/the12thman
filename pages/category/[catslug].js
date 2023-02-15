@@ -1,7 +1,12 @@
-import React from "react";
-import Image from "next/image";
-import { getAllPosts, getAllCategories, getAllMenus } from "../../utils/wpGraph";
-import Header from "../../components/Header";
+import React from 'react';
+import Image from 'next/image';
+import {
+  getAllPosts,
+  getAllCategories,
+  getAllMenus,
+} from '../../utils/wpGraph';
+import Header from '../../components/Header';
+import Script from 'next/script';
 // import Header from "../../components/Header";
 
 const Category = ({ posts, menus, title }) => {
@@ -14,11 +19,11 @@ const Category = ({ posts, menus, title }) => {
   // console.log("menu", posts);
   return (
     <>
-    <Header menus={menus}/>
+      <Header menus={menus} />
 
       <section>
         {/* <!-- Breadcrumb --> */}
-        
+
         <div className="container">
           <div className="row">
             <div className="col-md-8">
@@ -29,7 +34,7 @@ const Category = ({ posts, menus, title }) => {
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
 
-                    {categoryDatafirstCol.map((item) => {
+                    {categoryDatafirstCol.map(item => {
                       return (
                         <>
                           <div className="article__entry">
@@ -79,7 +84,7 @@ const Category = ({ posts, menus, title }) => {
                   </div>
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
-                    {categoryDatasecCol.map((item) => {
+                    {categoryDatasecCol.map(item => {
                       return (
                         <>
                           <div className="article__entry">
@@ -134,7 +139,7 @@ const Category = ({ posts, menus, title }) => {
                 <aside className="wrapper__list__article ">
                   <h4 className="border_section">Recent Blogs</h4>
                   <div className="wrapper__list__article-small">
-                    {categoryDataSlider.map((item) => {
+                    {categoryDataSlider.map(item => {
                       return (
                         <>
                           <div className="mb-3">
@@ -185,7 +190,7 @@ const Category = ({ posts, menus, title }) => {
 
                     {/* <!-- Post Article --> */}
                     <div className="article__entry">
-                      {categoryDataSingle.map((item) => {
+                      {categoryDataSingle.map(item => {
                         return (
                           <>
                             <div className="article__image">
@@ -223,7 +228,7 @@ const Category = ({ posts, menus, title }) => {
                                 href="#"
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
-                                {" "}
+                                {' '}
                                 read more
                               </a>
                             </div>
@@ -236,15 +241,18 @@ const Category = ({ posts, menus, title }) => {
 
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">Advertise</h4>
-                  <a href="#">
-                    <figure>
-                      <img
-                        src="images/placeholder/500x400.jpg"
-                        alt=""
-                        className="img-fluid"
-                      />
-                    </figure>
-                  </a>
+
+                  <ins
+                    className="adsbygoogle"
+                    style={{ display: 'block', textAlign: 'center' }}
+                    data-ad-layout="in-article"
+                    data-ad-format="fluid"
+                    data-ad-client="ca-pub-9891586352099803"
+                    data-ad-slot="5294261220"
+                  ></ins>
+                  <Script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </Script>
                 </aside>
 
                 {/* <aside className="wrapper__list__article">
@@ -290,8 +298,6 @@ const Category = ({ posts, menus, title }) => {
                     </div>
                   </div>
                 </aside>
-
-
               </div>
             </div>
 
@@ -332,27 +338,27 @@ export default Category;
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  console.log("getStaticPaths")
+  console.log('getStaticPaths');
   const allPosts = await getAllPosts(params.slug);
   console.log(allPosts);
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
-  console.log("getStaticProps", params.catslug);
+  console.log('getStaticProps', params.catslug);
   const posts = await getAllPosts(params.catslug);
   const menus = await getAllMenus();
-  
+
   return {
     props: {
       posts,
       menus,
-      title: params.catslug
+      title: params.catslug,
     },
     revalidate: 10, // In seconds
   };
