@@ -348,9 +348,9 @@ export default Category;
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  console.log("getStaticPaths")
+  // console.log("getStaticPaths")
   const allPosts = await getAllPosts(params.slug);
-  console.log(allPosts);
+  // console.log(allPosts);
   return {
     paths: [],
     fallback: "blocking",
@@ -360,7 +360,7 @@ export async function getStaticPaths(params) {
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
-  console.log("getStaticProps", params.catslug);
+  // console.log("getStaticProps", params.catslug);
   const menus = await getAllPosts(params.catslug);
 
   return {

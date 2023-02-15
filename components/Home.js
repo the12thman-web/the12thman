@@ -43,7 +43,7 @@ const Home = ({ posts, menus }) => {
                               width={500}
                               height={400}
                               className="img-fluid"
-                              alt=""
+                              alt={items.featuredImage?.node.altText}
                             />
                           </Link>
                         </div>
