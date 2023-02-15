@@ -9,7 +9,7 @@ import Header from "../../components/Header";
 export default function PostPage({ post, posts, menus }) {
   console.log('post1', post)
   const categoryTagsData = post?.tags?.nodes;
-
+  const asideData = posts?.nodes?.slice(12, 16);
   // const postData = posts?.nodes;
   // const mainCarousel = postData.slice(0, 5);
 
@@ -547,133 +547,55 @@ export default function PostPage({ post, posts, menus }) {
                     </div>
                   </div> */}
                   <div className="wrapper__list__article-small">
-                    <div className="mb-3">
-                      {" "}
-                      <div className="card__post card__post-list">
-                        <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
-                            <img
-                              src="images/placeholder/500x400.jpg"
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </a>
-                        </div>
-
-                        <div className="card__post__body ">
-                          <div className="card__post__content">
-                            <div className="card__post__author-info mb-2">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    {post.author.node.name}
-                                  </span>
-                                </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li>
-                              </ul>
+                    {asideData.map((item) => {
+                      return (
+                        <div className="mb-3">
+                          <div className="card__post card__post-list">
+                            <div className="image-sm">
+                              <Link href={`/posts/${item.slug}`}>
+                                <Image
+                                  className="image-profile"
+                                  src={item.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt={item.featuredImage.node.altText}
+                                />
+                              </Link>
                             </div>
-                            <div className="card__post__title">
-                              <h6>
-                                <a href="./card-article-detail-v1.html">
-                                  6 Best Tips for Building a Good Shipping Boat
-                                </a>
-                              </h6>
+
+                            <div className="card__post__body ">
+                              <div className="card__post__content">
+                                <div className="card__post__author-info mb-2">
+                                  <ul className="list-inline">
+                                    <li className="list-inline-item">
+                                      <span className="text-primary">
+                                        {item.author.node.name}
+                                      </span>
+                                    </li>
+                                    {/* <li className="list-inline-item">
+                                      <span className="text-dark text-capitalize">
+                                        descember 09, 2016
+                                      </span>
+                                    </li> */}
+                                  </ul>
+                                </div>
+                                <div className="card__post__title">
+                                  <h6>
+                                    <Link href={`/posts/${item.slug}`}>
+                                      {item.title.slice(0, 30)}
+                                    </Link>
+                                  </h6>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="card__post card__post-list">
-                        <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
-                            <img
-                              src="images/placeholder/500x400.jpg"
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </a>
-                        </div>
+                      )
+                    })
 
-                        <div className="card__post__body ">
-                          <div className="card__post__content">
-                            <div className="card__post__author-info mb-2">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    by david hall
-                                  </span>
-                                </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="card__post__title">
-                              <h6>
-                                <a href="./card-article-detail-v1.html">
-                                  6 Best Tips for Building a Good Shipping Boat
-                                </a>
-                              </h6>
-                              {/* <!--  <p className="d-none d-lg-block d-xl-block">
-                        Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                        sollicitudin ut est. In fringilla dui dui.
-                    </p>  --> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      {/* <!--  Post Article  --> */}
-                      <div className="card__post card__post-list">
-                        <div className="image-sm">
-                          <a href="./card-article-detail-v1.html">
-                            <img
-                              src="images/placeholder/500x400.jpg"
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </a>
-                        </div>
+                    }
 
-                        <div className="card__post__body ">
-                          <div className="card__post__content">
-                            <div className="card__post__author-info mb-2">
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    by david hall
-                                  </span>
-                                </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="card__post__title">
-                              <h6>
-                                <a href="./card-article-detail-v1.html">
-                                  6 Best Tips for Building a Good Shipping Boat
-                                </a>
-                              </h6>
-                              {/* <!--  <p className="d-none d-lg-block d-xl-block">
-                        Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
-                        sollicitudin ut est. In fringilla dui dui.
-                    </p>  --> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
 
                     {/* <!--  Post Article  --> */}
                     <div className="article__entry">
@@ -860,10 +782,12 @@ export async function getStaticPaths(params) {
 export async function getStaticProps({ params }) {
   console.log("slug", params.slug);
   const post = await getPost(params.slug);
+  const posts = await getAllPosts();
 
   return {
     props: {
       post,
+      posts
     },
     revalidate: 10, // In seconds
   };

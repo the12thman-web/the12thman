@@ -386,17 +386,10 @@ const Header = ({ menus }) => {
               </div>
               <div className="modal-footer">
                 <p>
-                  © 2020{" "}
-                  <a
-                    href="http://retenvi.com"
-                    title="Premium WordPress news &amp; magazine theme"
-                  >
-                    Magzrenvi
-                  </a>
-                  - Premium template news, blog & magazine &amp; magazine theme
-                  by{" "}
-                  <a href="http://retenvi.com" title="retenvi">
-                    RETENVI.COM
+                  © 2023
+
+                  <a href="http://the12thmen.com">
+                    THE12THMEN.COM
                   </a>
                   .
                 </p>

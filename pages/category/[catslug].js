@@ -4,14 +4,16 @@ import Link from "next/link";
 import { getAllPosts, getAllCategories, getAllMenus } from "../../utils/wpGraph";
 // import Header from "../../components/Header";
 
-const Category = ({ menus }) => {
+const Category = ({ menus, posts }) => {
   const categoryDatafirstCol = menus.nodes.slice(0, 4);
   const categoryDatasecCol = menus.nodes.slice(5, 9);
   const categoryDataSlider = menus.nodes.slice(10, 14);
   const categoryDataSingle = menus.nodes.slice(10, 11);
-  const categoryTagsData = menus.nodes;
 
-  // console.log("menu", menus);
+  // console.log('posts', posts);
+  // const categoryTagsData = posts?.nodes;
+
+  // console.log("cccmenu", categoryTagsData);
   return (
     <>
       <section>
@@ -81,7 +83,7 @@ const Category = ({ menus }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title.slice(0, 30)}</a>
+                                <a href="#">{item.title.slice(0, 26)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} ....</p>
                               <Link href={`/posts/${item.slug}`}
@@ -129,7 +131,7 @@ const Category = ({ menus }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title.slice(0, 30)}</a>
+                                <a href="#">{item.title.slice(0, 28)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} .....</p>
                               <Link href={`/posts/${item.slug}`}
@@ -226,11 +228,7 @@ const Category = ({ menus }) => {
                                     by {item.author.node.name}
                                   </span>
                                 </li>
-                                {/* <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li> */}
+
                               </ul>
                               <h5>
                                 <a href="#">{item.title.slice(0, 30)}</a>
@@ -250,7 +248,7 @@ const Category = ({ menus }) => {
                   </div>
                 </aside>
 
-                <aside className="wrapper__list__article">
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">tags</h4>
                   {categoryTagsData.map((item) => {
                     return (
@@ -267,7 +265,7 @@ const Category = ({ menus }) => {
                       </>
                     );
                   })}
-                </aside>
+                </aside> */}
 
                 <aside className="wrapper__list__article">
                   <h4 className="border_section">newsletter</h4>
@@ -372,3 +370,4 @@ export async function getStaticProps({ params }) {
     revalidate: 10, // In seconds
   };
 }
+
