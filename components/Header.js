@@ -5,13 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/Logo.png"
 
-const Header = ({ menus }) => {
-  console.log('menus', menus)
+const Header = ({menus}) => {
+  console.log('menus',menus)
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  
-  // const [show, setShow] = useState(false);
 
   // const [newData, setNewData] = useState([]);
 
@@ -27,13 +25,12 @@ const Header = ({ menus }) => {
 
   
    const searchHandler = (e) => {
-    console.log('e: ', e);
     setText(e.target.value);
   };
 
-  const openSearchBar = ()=>{
-    setShowSearch(!showSearch) 
-  }
+    const openSearchBar = () =>{
+      setShowSearch(!showSearch)
+    }
 
   const filterData = () => {
     const newData = [];
@@ -43,7 +40,7 @@ const Header = ({ menus }) => {
         const dataObj = {};
         dataObj.menu = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2,-1)[0];
         newData.push(dataObj);
       }
     }
@@ -60,7 +57,7 @@ const Header = ({ menus }) => {
         const dataObj = {};
         dataObj.name = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2,-1)[0];
         newData.push(dataObj);
       }
     }
@@ -79,7 +76,7 @@ const Header = ({ menus }) => {
         const dataObj = {};
         dataObj.newLineName = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2,-1)[0];
         newData.push(dataObj);
       }
     }
@@ -94,7 +91,7 @@ const Header = ({ menus }) => {
         const dataObj = {};
         dataObj.newNextLineName = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2,-1)[0];
         newData.push(dataObj);
       }
     }
@@ -109,7 +106,7 @@ const Header = ({ menus }) => {
         const dataObj = {};
         dataObj.newChildrenName = newValue[i].node.label;
         dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
+        dataObj.uri = newValue[i].node.uri.split('/').slice(-2,-1)[0];
         newData.push(dataObj);
       }
     }
@@ -143,7 +140,7 @@ const Header = ({ menus }) => {
               </figure> */}
               <div>
                 <Link href="/">
-                  <Image src={logo} alt="No Image" width={300} height={400} />
+                  <Image src={logo} alt="No Image" width={300} height={400}/>
                 </Link>
               </div>
 
@@ -235,7 +232,7 @@ const Header = ({ menus }) => {
                 </ul>
                 {/* <!-- Search content bar.// --> */}
 
-                <div className={"navigation-shadow "+(showSearch ? 'top-search-show': 'top-search-hide')}>
+                <div className={"navigation-shadow "+(showSearch ? "top-search-show": "top-search-hide") }>
                   <div className="container">
                     <div className="input-group ">
                       <form action="/search">
@@ -248,14 +245,18 @@ const Header = ({ menus }) => {
                               placeholder="Search "
                               id="example-search-input4"
                               value={text}
-                              onChange={e => setText(e.target.value)}
+                              onChange={(e)=>setText(e.target.value)}
                             />
                           </div>
                           <div className="col-auto">
                             <Link
                               className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-                              href={'/search/'+text}
-                            >
+                              href={{
+                                pathname : "/search/"+text,
+                                query : {
+                                  search : text
+                                }
+                                }}                            >
                               <i className="fa fa-search"></i>
                             </Link>
                           </div>
@@ -275,7 +276,6 @@ const Header = ({ menus }) => {
         {/* <!-- End Navbar menu  --> */}
 
         {/* <!-- Navbar sidebar menu  --> */}
-
         <div
           id="modal_aside_right"
           className="modal fixed-left fade"
@@ -290,14 +290,25 @@ const Header = ({ menus }) => {
                     <div className="col">
                       <input
                         className="form-control border-secondary border-right-0 rounded-0"
-                        
-                        placeholder="Search"
+                        type="search"
+                        //   value=""
+                        placeholder="Search "
+                        id="example-search-input4"
+                        value={text}
+                        onChange={(e)=>setText(e.target.value)}
                       />
                     </div>
                     <div className="col-auto">
-                      <button className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">
-                        <i className="fa fa-search"></i>
-                      </button>
+                      <Link
+                              className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
+                              href={{
+                                pathname : "/search/"+text,
+                                query : {
+                                  search : text
+                                }
+                                }}                            >
+                              <i className="fa fa-search"></i>
+                            </Link>
                     </div>
                   </div>
                 </div>
@@ -312,10 +323,10 @@ const Header = ({ menus }) => {
               </div>
               <div className="modal-body">
                 <nav className="list-group list-group-flush">
-                  <ul className="navbar-nav">
-
-                    {filterData().map((items) => {
-                      const dropDown = getListByParentID(items.id);
+                  <ul className="navbar-nav"> 
+                 
+                  {filterData().map((items) => {
+                    const dropDown = getListByParentID(items.id);
 
                     return (           
                     <li className="nav-item dropdown">
@@ -332,7 +343,9 @@ const Header = ({ menus }) => {
                           {dropDown.map((val) => (
                         <li>
                           <Link
-                            className="dropdown-item text-dark"
+                            className={`dropdown-item text-dark ${
+                            dropDown?.length ? "dropdown-toggle" : ""
+                          }`}
                             href={`/category/${val.uri}`}
                           >
                             {val.name}
@@ -406,10 +419,8 @@ const Header = ({ menus }) => {
               </div>
             </div>
           </div>
+          {/* <!-- modal-bil// --> */}
         </div>
-
-       
-        
         {/* <!-- modal.// --> */}
         {/* <!-- End Navbar sidebar menu  --> */}
         {/* <!-- End Navbar  --> */}
