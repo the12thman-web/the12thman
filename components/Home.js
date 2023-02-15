@@ -6,17 +6,23 @@ import Header from "./Header";
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 
-const Home = ({ posts, menus }) => {
+const Home = ({ posts, menus, IPLcategory, cricketPosts }) => {
   console.log("posts", posts);
 
   const postData = posts?.nodes;
   const mainCarousel = postData.slice(0, 5);
   const sideCard = postData.slice(5, 7);
   const lowerCarousel = postData.slice(7, 12);
-  const recentPost = postData.slice(12, 14);
-  const recentPostLeft = postData.slice(14, 16);
-  const recentPostRight = postData.slice(16, 18);
   const cricketPost = postData.slice(0, 8);
+
+  const IPLData = IPLcategory?.nodes;
+  const firstTwoData = IPLData.slice(0,2)
+  const firstTwoLeftData = IPLData.slice(2,5)
+  const firstTwoRightData = IPLData.slice(5,8)
+
+  const cricketData = cricketPosts?.nodes;
+  const leftCardData = cricketData.slice(0,5)
+  const rightCardData = cricketData.slice(5,10)
 
   return (
     <>
@@ -258,7 +264,7 @@ const Home = ({ posts, menus }) => {
                   <h4 className="border_section">IPL</h4>
                 </div>
                 <div className="row ">
-                  {recentPost.map((items) => (
+                  {firstTwoData.map((items) => (
                     <div className="col-sm-12 col-md-6 mb-4">
                       {/* <!-- Post Article -->*/}
                       <div className="card__post ">
@@ -274,7 +280,7 @@ const Home = ({ posts, menus }) => {
                           </Link>
                           <div className="card__post__content bg__post-cover">
                             <div className="card__post__category">
-                              {items.categories.nodes[0].name}
+                              IPL
                             </div>
                             <div className="card__post__title">
                               <h5>
@@ -304,7 +310,7 @@ const Home = ({ posts, menus }) => {
                 <div className="row ">
                   <div className="col-sm-12 col-md-6">
                     <div className="wrapp__list__article-responsive">
-                      {recentPostLeft.map((items) => (
+                      {firstTwoLeftData.map((items) => (
                         <div className="mb-3">
                           {/* <!-- Post Article -->*/}
                           <div className="card__post card__post-list">
@@ -329,6 +335,9 @@ const Home = ({ posts, menus }) => {
                                         {items.author.node.name}
                                       </span>
                                     </li>
+                                    <div className="card__post__category">
+                                 IPL
+                            </div>
                                     <li className="list-inline-item">
                                       <span className="text-dark text-capitalize">
                                         {items.date}
@@ -356,7 +365,7 @@ const Home = ({ posts, menus }) => {
                   </div>
                   <div className="col-sm-12 col-md-6 ">
                     <div className="wrapp__list__article-responsive">
-                      {recentPostRight.map((items) => (
+                      {firstTwoRightData.map((items) => (
                         <div className="mb-3">
                           {/* <!-- Post Article -->*/}
                           <div className="card__post card__post-list">
@@ -381,6 +390,9 @@ const Home = ({ posts, menus }) => {
                                         {items.author.node.name}
                                       </span>
                                     </li>
+                                        <div className="card__post__category">
+                                 IPL
+                            </div>
                                     <li className="list-inline-item">
                                       <span className="text-dark text-capitalize">
                                         {items.date}
@@ -730,7 +742,7 @@ const Home = ({ posts, menus }) => {
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
 
-                    {mainCarousel.map((item) => {
+                    {leftCardData.map((item) => {
                       return (
                         <>
                           <div className="article__entry">
@@ -780,7 +792,7 @@ const Home = ({ posts, menus }) => {
                   </div>
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
-                    {mainCarousel.map((item) => {
+                    {rightCardData.map((item) => {
                       return (
                         <>
                           <div className="article__entry">
