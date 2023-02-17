@@ -237,7 +237,7 @@ const Header = ({ menus }) => {
                 <div className={"navigation-shadow " + (showSearch ? 'top-search-show' : 'top-search-hide')}>
                   <div className="container">
                     <div className="input-group ">
-                      <form action="/search">
+                      <form action="/search" className="text-justify w-100">
                         <div className="row no-gutters mt-3">
                           <div className="col">
                             <input

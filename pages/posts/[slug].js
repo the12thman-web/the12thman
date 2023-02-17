@@ -10,6 +10,7 @@ export default function PostPage({ post, posts, menus }) {
   console.log('post1', post)
   const categoryTagsData = post?.tags?.nodes;
   const asideData = posts?.nodes?.slice(12, 16);
+  const categoryDataSingle = posts?.nodes?.slice(10, 11);
   // const postData = posts?.nodes;
   // const mainCarousel = postData.slice(0, 5);
 
@@ -599,46 +600,46 @@ export default function PostPage({ post, posts, menus }) {
 
                     {/* <!--  Post Article  --> */}
                     <div className="article__entry">
-                      <div className="article__image">
-                        <a href="#">
-                          <img
-                            src="images/placeholder/500x400.jpg"
-                            alt=""
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="article__content">
-                        <div className="article__category">travel</div>
-                        <ul className="list-inline">
-                          <li className="list-inline-item">
-                            <span className="text-primary">by david hall</span>
-                          </li>
-                          <li className="list-inline-item">
-                            <span className="text-dark text-capitalize">
-                              descember 09, 2016
-                            </span>
-                          </li>
-                        </ul>
-                        <h5>
-                          <a href="#">
-                            Proin eu nisl et arcu iaculis placerat sollicitudin
-                            ut est
-                          </a>
-                        </h5>
-                        <p>
-                          Maecenas accumsan tortor ut velit pharetra mollis.
-                          Proin eu nisl et arcu iaculis placerat sollicitudin ut
-                          est. In fringilla dui dui.
-                        </p>
-                        <a
-                          href="#"
-                          className="btn btn-outline-primary mb-4 text-capitalize"
-                        >
-                          {" "}
-                          read more
-                        </a>
-                      </div>
+                      {categoryDataSingle.map((item) => {
+                        return (
+                          <>
+                            <div className="article__image">
+                              <Link href={`/posts/${item.slug}`}>
+                                <Image
+                                  className="image-profile"
+                                  src={item.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt={item.featuredImage.node.altText}
+                                />
+                              </Link>
+                            </div>
+                            <div className="article__content">
+                              <div className="article__category">
+                                {item.categories.nodes[0].name}
+                              </div>
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    by {item.author.node.name}
+                                  </span>
+                                </li>
+
+                              </ul>
+                              <h5>
+                                <a href="#">{item.title.slice(0, 30)}</a>
+                              </h5>
+                              <p>{item.slug.slice(0, 30)} .....</p>
+                              <Link href={`/posts/${item.slug}`}
+                                className="btn btn-outline-primary mb-4 text-capitalize"
+                              >
+                                {" "}
+                                read more
+                              </Link>
+                            </div>
+                          </>
+                        );
+                      })}
                     </div>
                   </div>
                 </aside>
