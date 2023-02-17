@@ -83,44 +83,52 @@ export default function PostPage({ post, posts, menus }) {
                 </div>
                 <div className="wrap__article-detail-content">
                   <div className="total-views">
-                    <div className="total-views-read">
+                    {/* <div className="total-views-read">
                       15.k
                       <span>views</span>
-                    </div>
+                    </div> */}
 
-                    <ul className="list-inline">
-                      <span className="share me-1">share on:</span>
+                    <ul id="social_link" className="list-inline">
                       <li className="list-inline-item">
-                        <a className="btn btn-social-o facebook" href="#">
-                          <i className="fa fa-facebook-f"></i>
-                          <span>facebook</span>
+                        <a
+                          href="#"
+                          className="btn btn-social rounded text-white facebook"
+                        >
+                          <i className="fa fa-facebook"></i>
                         </a>
                       </li>
                       <li className="list-inline-item">
-                        <a className="btn btn-social-o twitter" href="#">
+                        <a
+                          href="#"
+                          className="btn btn-social rounded text-white twitter"
+                        >
                           <i className="fa fa-twitter"></i>
-                          <span>twitter</span>
                         </a>
                       </li>
                       <li className="list-inline-item">
-                        <a className="btn btn-social-o whatsapp" href="#">
-                          <i className="fa fa-whatsapp"></i>
-                          <span>whatsapp</span>
+                        <a
+                          href="#"
+                          className="btn btn-social rounded text-white instagram"
+                        >
+                          <i className="fa fa-instagram"></i>
                         </a>
                       </li>
-                      <li className="list-inline-item">
-                        <a className="btn btn-social-o telegram" href="#">
-                          <i className="fa fa-telegram"></i>
-                          <span>telegram</span>
-                        </a>
-                      </li>
-
-                      <li className="list-inline-item">
-                        <a className="btn btn-linkedin-o linkedin" href="#">
-                          <i className="fa fa-linkedin"></i>
-                          <span>linkedin</span>
-                        </a>
-                      </li>
+                      {/* <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="btn btn-social rounded text-white telegram"
+                            >
+                              <i className="fa fa-telegram"></i>
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="btn btn-social rounded text-white linkedin"
+                            >
+                              <i className="fa fa-linkedin"></i>
+                            </a>
+                          </li> */}
                     </ul>
                   </div>
                   <div
@@ -187,13 +195,13 @@ export default function PostPage({ post, posts, menus }) {
                     <div className="wrap__profile-author-detail-name">
                       author
                     </div>
-                    <h4>{post.author.nodename}</h4>
-                    <p>
+                    <h4>{post.author.node.name}</h4>
+                    {/* <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Corporis laboriosam ad beatae itaque ea non placeat
                       officia ipsum praesentium! Ullam?
-                    </p>
-                    <ul className="list-inline">
+                    </p> */}
+                    {/* <ul className="list-inline">
                       <li className="list-inline-item">
                         <a
                           href="#"
@@ -234,7 +242,7 @@ export default function PostPage({ post, posts, menus }) {
                           <i className="fa fa-linkedin"></i>
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
               </div>
@@ -243,10 +251,10 @@ export default function PostPage({ post, posts, menus }) {
               {/* <!--  comment  --> */}
               {/* <!--  Comment   --> */}
               <div id="comments" className="comments-area">
-                <h3 className="comments-title">2 Comments:</h3>
+                {/* <h3 className="comments-title">2 Comments:</h3> */}
 
                 <ol className="comment-list">
-                  <li className="comment">
+                  {/* <li className="comment">
                     <aside className="comment-body">
                       <div className="comment-meta">
                         <div className="comment-author vcard">
@@ -324,7 +332,7 @@ export default function PostPage({ post, posts, menus }) {
                         </aside>
                       </li>
                     </ol>
-                  </li>
+                  </li> */}
 
                   {/* <li className="comment">
                     <aside className="comment-body">
@@ -375,7 +383,7 @@ export default function PostPage({ post, posts, menus }) {
                       Required fields are marked
                       <span className="required">*</span>
                     </p>
-                    <p className="comment-form-comment">
+                    {/* <p className="comment-form-comment">
                       <label htmlFor="comment">Comment</label>
                       <textarea
                         name="comment"
@@ -385,7 +393,7 @@ export default function PostPage({ post, posts, menus }) {
                         maxLength="65525"
                         required="required"
                       ></textarea>
-                    </p>
+                    </p> */}
                     <p className="comment-form-author">
                       <label>
                         Name <span className="required">*</span>
@@ -628,9 +636,8 @@ export default function PostPage({ post, posts, menus }) {
                 </aside>
 
                 {/* <!--  social media  --> */}
-                <aside className="wrapper__list__article">
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">stay conected</h4>
-                  {/* <!--  widget Social media  --> */}
                   <div className="wrap__social__media">
                     <a href="#" target="_blank">
                       <div className="social__media__widget facebook">
@@ -670,10 +677,9 @@ export default function PostPage({ post, posts, menus }) {
                       </div>
                     </a>
                   </div>
-                </aside>
-                {/* <!--  End social media  --> */}
+                </aside> */}
 
-                <aside className="wrapper__list__article">
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">tags</h4>
                   {categoryTagsData.map(item => {
                     return (
@@ -690,11 +696,10 @@ export default function PostPage({ post, posts, menus }) {
                       </>
                     );
                   })}
-                </aside>
+                </aside> */}
 
-                <aside className="wrapper__list__article">
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">newsletter</h4>
-                  {/* <!--  Form Subscribe  --> */}
                   <div className="widget__form-subscribe bg__card-shadow">
                     <h6>
                       The most important world news and events of the day.
@@ -717,7 +722,7 @@ export default function PostPage({ post, posts, menus }) {
                       </div>
                     </div>
                   </div>
-                </aside>
+                </aside> */}
 
                 {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">Advertise</h4>

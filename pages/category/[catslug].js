@@ -190,7 +190,7 @@ const Category = ({ posts, menus, title }) => {
                     })}
 
                     {/* <!-- Post Article --> */}
-                    <div className="article__entry">
+                    {/* <div className="article__entry">
                       {categoryDataSingle.map(item => {
                         return (
                           <>
@@ -231,7 +231,7 @@ const Category = ({ posts, menus, title }) => {
                           </>
                         );
                       })}
-                    </div>
+                    </div> */}
                   </div>
                 </aside>
 
@@ -281,9 +281,9 @@ const Category = ({ posts, menus, title }) => {
                   </div>
                 </aside>
 
-                <aside className="wrapper__list__article">
+                {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">Advertise</h4>
-                  {/* <Link href="/">
+                  <Link href="/">
                     <figure>
                       <Image
                         className="image-profile"
@@ -293,8 +293,8 @@ const Category = ({ posts, menus, title }) => {
                         alt={item.featuredImage.node.altText}
                       />
                     </figure>
-                  </Link> */}
-                </aside>
+                  </Link>
+                </aside> */}
               </div>
             </div>
 

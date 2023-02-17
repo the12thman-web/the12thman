@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
           {/* <!-- Footer --> */}
           <footer>
             <div className="wrapper__footer bg__footer-dark pb-0">
-              <div className="container">
+              {/* <div className="container">
                 <div className="row">
                   <div className="col-md-3">
                     <div className="widget__footer">
@@ -128,15 +128,20 @@ const Footer = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="mt-4">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-8 text-light">
-                      <p>The term “12th Man” in sports is used for the fans, as sports is nothing without its fans.
-                        <br />Twelfth Man Times is a product of JTSC Sportsfan Private Limited. We at TWELFTH MAN TIMES make your experiences as a fan more exciting and make sure you develop an even more passionate connection with the player or team.
+                      <p>
+                        The term “12th Man” in sports is used for the fans, as
+                        sports is nothing without its fans.
+                        <br />
+                        Twelfth Man Times is a product of JTSC Sportsfan Private
+                        Limited. We at TWELFTH MAN TIMES make your experiences
+                        as a fan more exciting and make sure you develop an even
+                        more passionate connection with the player or team.
                       </p>
-
                     </div>
                     <div className="col-md-4 my-auto ">
                       <div className="social__media">
@@ -160,12 +165,12 @@ const Footer = () => {
                           <li className="list-inline-item">
                             <a
                               href="#"
-                              className="btn btn-social rounded text-white whatsapp"
+                              className="btn btn-social rounded text-white instagram"
                             >
-                              <i className="fa fa-whatsapp"></i>
+                              <i className="fa fa-instagram"></i>
                             </a>
                           </li>
-                          <li className="list-inline-item">
+                          {/* <li className="list-inline-item">
                             <a
                               href="#"
                               className="btn btn-social rounded text-white telegram"
@@ -180,7 +185,7 @@ const Footer = () => {
                             >
                               <i className="fa fa-linkedin"></i>
                             </a>
-                          </li>
+                          </li> */}
                         </ul>
                       </div>
                     </div>
@@ -197,18 +202,20 @@ const Footer = () => {
                     <div className="border-top-1 bg__footer-bottom-section">
                       <ul className="list-inline link-column">
                         <li className="list-inline-item">
-                          <a href="/contact">contact us</a>
+                          <a href="/contact">Stories</a>
                         </li>
                         <li className="list-inline-item">
-                          <a href="/privacy"> Privacy & Policy</a>
+                          <a href="/contact">Contact us</a>
                         </li>
                         <li className="list-inline-item">
-                          <a href="/about">about us</a>
+                          <a href="/privacy"> Privacy Policy</a>
                         </li>
-                        {/* <li className="list-inline-item">
-                          <a href="#">newsletters</a>
-                        </li> */}
-
+                        <li className="list-inline-item">
+                          <a href="/about">About us</a>
+                        </li>
+                        <li className="list-inline-item">
+                          <a href="/">Terms & Conditions</a>
+                        </li>
                       </ul>
                       <ul className="list-inline">
                         <li className="list-inline-item">
