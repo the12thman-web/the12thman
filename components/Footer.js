@@ -205,16 +205,15 @@ const Footer = () => {
                         <li className="list-inline-item">
                           <a href="/about">about us</a>
                         </li>
-                        <li className="list-inline-item">
+                        {/* <li className="list-inline-item">
                           <a href="#">newsletters</a>
-                        </li>
+                        </li> */}
 
                       </ul>
                       <ul className="list-inline">
                         <li className="list-inline-item">
                           <span>
-                            Copyright © 2022 News and Magazine template based on
-                            Bootstrap 4 Theme by <a href="#">retenvi</a>
+                            Copyright © 2023 <a href="#">the12thman.in</a>
                           </span>
                         </li>
                       </ul>

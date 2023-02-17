@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   getAllPosts,
   getAllCategories,
@@ -40,7 +41,7 @@ const Category = ({ posts, menus, title }) => {
                           <div className="article__entry">
                             <div className="article__image">
                               {/* <a href='.../posts/${node.slug}'> */}
-                              <a href="">
+                              <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item.featuredImage.node.sourceUrl}
@@ -48,7 +49,7 @@ const Category = ({ posts, menus, title }) => {
                                   height={400}
                                   alt={item.featuredImage.node.altText}
                                 />
-                              </a>
+                              </Link>
                             </div>
                             <div className="article__content">
                               <div className="article__category">
@@ -67,15 +68,15 @@ const Category = ({ posts, menus, title }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title.slice(0, 30)}</a>
+                                <a href="#">{item.title.slice(0, 26)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} ....</p>
-                              <a
-                                href="#"
+                              <Link
+                                href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 readmore
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </>
@@ -89,7 +90,7 @@ const Category = ({ posts, menus, title }) => {
                         <>
                           <div className="article__entry">
                             <div className="article__image">
-                              <a href="#">
+                              <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item.featuredImage.node.sourceUrl}
@@ -97,7 +98,7 @@ const Category = ({ posts, menus, title }) => {
                                   height={400}
                                   alt={item.featuredImage.node.altText}
                                 />
-                              </a>
+                              </Link>
                             </div>
                             <div className="article__content">
                               <div className="article__category">
@@ -116,15 +117,15 @@ const Category = ({ posts, menus, title }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title.slice(0, 30)}</a>
+                                <a href="#">{item.title.slice(0, 28)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} .....</p>
-                              <a
-                                href="#"
+                              <Link
+                                href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 readmore
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </>
@@ -146,7 +147,7 @@ const Category = ({ posts, menus, title }) => {
                             {/* <!-- Post Article --> */}
                             <div className="card__post card__post-list">
                               <div className="image-sm">
-                                <a href="./card-article-detail-v1.html">
+                                <Link href={`/posts/${item.slug}`}>
                                   <Image
                                     className="image-profile"
                                     src={item.featuredImage.node.sourceUrl}
@@ -154,7 +155,7 @@ const Category = ({ posts, menus, title }) => {
                                     height={400}
                                     alt={item.featuredImage.node.altText}
                                   />
-                                </a>
+                                </Link>
                               </div>
 
                               <div className="card__post__body ">
@@ -175,9 +176,9 @@ const Category = ({ posts, menus, title }) => {
                                   </div>
                                   <div className="card__post__title">
                                     <h6>
-                                      <a href="./card-article-detail-v1.html">
+                                      <Link href={`/posts/${item.slug}`}>
                                         {item.title.slice(0, 30)}
-                                      </a>
+                                      </Link>
                                     </h6>
                                   </div>
                                 </div>
@@ -194,7 +195,7 @@ const Category = ({ posts, menus, title }) => {
                         return (
                           <>
                             <div className="article__image">
-                              <a href="#">
+                              <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item.featuredImage.node.sourceUrl}
@@ -202,7 +203,7 @@ const Category = ({ posts, menus, title }) => {
                                   height={400}
                                   alt={item.featuredImage.node.altText}
                                 />
-                              </a>
+                              </Link>
                             </div>
                             <div className="article__content">
                               <div className="article__category">
@@ -214,45 +215,24 @@ const Category = ({ posts, menus, title }) => {
                                     by {item.author.node.name}
                                   </span>
                                 </li>
-                                {/* <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li> */}
                               </ul>
                               <h5>
                                 <a href="#">{item.title.slice(0, 30)}</a>
                               </h5>
                               <p>{item.slug.slice(0, 30)} .....</p>
-                              <a
-                                href="#"
+                              <Link
+                                href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 {' '}
                                 read more
-                              </a>
+                              </Link>
                             </div>
                           </>
                         );
                       })}
                     </div>
                   </div>
-                </aside>
-
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">Advertise</h4>
-
-                  <ins
-                    className="adsbygoogle"
-                    style={{ display: 'block', textAlign: 'center' }}
-                    data-ad-layout="in-article"
-                    data-ad-format="fluid"
-                    data-ad-client="ca-pub-9891586352099803"
-                    data-ad-slot="5294261220"
-                  ></ins>
-                  <Script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                  </Script>
                 </aside>
 
                 {/* <aside className="wrapper__list__article">
@@ -263,7 +243,9 @@ const Category = ({ posts, menus, title }) => {
                         <div className="blog-tags p-0">
                           <ul className="list-inline">
                             <li className="list-inline-item">
-                              <a href="#">{item.tags.nodes.name}</a>
+                              <Link href={`/category/${item.catslug}`}>
+                                {item.tags.nodes.name}
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -297,6 +279,21 @@ const Category = ({ posts, menus, title }) => {
                       </div>
                     </div>
                   </div>
+                </aside>
+
+                <aside className="wrapper__list__article">
+                  <h4 className="border_section">Advertise</h4>
+                  {/* <Link href="/">
+                    <figure>
+                      <Image
+                        className="image-profile"
+                        src={item.featuredImage.node.sourceUrl}
+                        width={500}
+                        height={400}
+                        alt={item.featuredImage.node.altText}
+                      />
+                    </figure>
+                  </Link> */}
                 </aside>
               </div>
             </div>

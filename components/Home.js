@@ -226,44 +226,55 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
             <div className="row">
               <div className="col-lg-12">
                 <div className="top__news__slider">
-                  {lowerCarousel.map(items => {
-                    return (
-                      <div className="item">
-                        {/* <!-- Post Article -->*/}
-                        <div className="article__entry">
-                          <div className="article__image">
-                            <Link href={`/posts/${items.slug}`}>
-                              <Image
-                                src={items.featuredImage.node.sourceUrl}
-                                alt=""
-                                className="img-fluid"
-                                width={500}
-                                height={400}
-                              />
-                            </Link>
-                          </div>
-                          <div className="article__content">
-                            <ul className="list-inline">
-                              <li className="list-inline-item">
-                                <span className="text-primary">
-                                  {items.author.node.name}
-                                </span>
-                              </li>
-
-                              <li className="list-inline-item">
-                                <span>{items.date}</span>
-                              </li>
-                            </ul>
-                            <h5>
+                  <Carousel
+                    centerMode
+                    centerSlidePercentage={33.33}
+                    autoPlay
+                    infiniteLoop
+                    showStatus={false}
+                    showIndicators={false}
+                    set
+                    showThumbs={false}
+                  >
+                    {lowerCarousel.map(items => {
+                      return (
+                        <div className="item m-2">
+                          {/* <!-- Post Article -->*/}
+                          <div className="article__entry">
+                            <div className="article__image">
                               <Link href={`/posts/${items.slug}`}>
-                                {items.title}
+                                <Image
+                                  src={items.featuredImage.node.sourceUrl}
+                                  alt=""
+                                  className="img-fluid"
+                                  width={500}
+                                  height={400}
+                                />
                               </Link>
-                            </h5>
+                            </div>
+                            <div className="article__content">
+                              <ul className="list-inline">
+                                <li className="list-inline-item">
+                                  <span className="text-primary">
+                                    {items.author.node.name}
+                                  </span>
+                                </li>
+
+                                <li className="list-inline-item">
+                                  <span>{items.date}</span>
+                                </li>
+                              </ul>
+                              <h5>
+                                <Link href={`/posts/${items.slug}`}>
+                                  {items.title.slice(0, 40)}
+                                </Link>
+                              </h5>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </Carousel>
                 </div>
               </div>
             </div>
