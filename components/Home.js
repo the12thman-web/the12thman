@@ -144,7 +144,7 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                 </div>
                                 <div className="card__post__title">
                                   <h2>
-                                    <Link href={`/posts/${items.slug}`}>
+                                    <Link href={`/posts/${items.slug}`} className='text-decoration-none'>
                                       {items.title}
                                     </Link>
                                   </h2>
@@ -594,25 +594,25 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                       width={1920}
                       className="d-block w-100"
                       alt="First slide"
-                      // src={items.featuredImage.node.sourceUrl}
+                    // src={items.featuredImage.node.sourceUrl}
                     />
                     <div className="carousel-caption d-md-block text-center text-capitalize">
                       <h1
                         className="text-white animated fadeInUp nopadd"
-                        // style="animation-delay:1s"
+                      // style="animation-delay:1s"
                       >
                         Cricket
                       </h1>
                       <p
                         className="text-white animated fadeInDown text-center"
-                        // style="animation-delay:2s"
+                      // style="animation-delay:2s"
                       >
                         Find your best tour and start the adventure at the
                         lowest budget and best experiences.{' '}
                       </p>
                       <div
                         className="animated fadeInLeft d-none d-sm-block"
-                        // style="animation-delay:2.6s"
+                      // style="animation-delay:2.6s"
                       >
                         <Link
                           href={'/'}
@@ -637,20 +637,20 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                       <div className="carousel-caption d-md-block text-center text-capitalize">
                         <h1
                           className="text-white animated fadeInUp nopadd"
-                          // style="animation-delay:1s"
+                        // style="animation-delay:1s"
                         >
                           {items.title}
                         </h1>
                         <p
                           className="text-white animated fadeInDown text-center"
-                          // style="animation-delay:2s"
+                        // style="animation-delay:2s"
                         >
                           Best solution for your transportation from pickup to
                           destination.{' '}
                         </p>
                         <div
                           className="animated fadeInLeft d-none d-sm-block"
-                          // style="animation-delay:2.6s"
+                        // style="animation-delay:2.6s"
                         >
                           <Link
                             href={`/posts/${items.slug}`}
@@ -1196,20 +1196,20 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                   <div className="carousel-caption d-md-block text-center text-capitalize">
                     <h1
                       className="text-white animated fadeInUp nopadd"
-                      // style="animation-delay:1s"
+                    // style="animation-delay:1s"
                     >
                       Football
                     </h1>
                     <p
                       className="text-white animated fadeInDown text-center"
-                      // style="animation-delay:2s"
+                    // style="animation-delay:2s"
                     >
                       Find your best tour and start the adventure at the lowest
                       budget and best experiences.{' '}
                     </p>
                     <div
                       className="animated fadeInLeft d-none d-sm-block"
-                      // style="animation-delay:2.6s"
+                    // style="animation-delay:2.6s"
                     >
                       <a href="#" className="btn btn-primary text-uppercase">
                         {' '}
@@ -1230,20 +1230,20 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                     <div className="carousel-caption d-md-block text-center text-capitalize">
                       <h1
                         className="text-white animated fadeInUp nopadd"
-                        // style="animation-delay:1s"
+                      // style="animation-delay:1s"
                       >
                         {items.title}
                       </h1>
                       <p
                         className="text-white animated fadeInDown text-center"
-                        // style="animation-delay:2s"
+                      // style="animation-delay:2s"
                       >
                         Best solution for your transportation from pickup to
                         destination.{' '}
                       </p>
                       <div
                         className="animated fadeInLeft d-none d-sm-block"
-                        // style="animation-delay:2.6s"
+                      // style="animation-delay:2.6s"
                       >
                         <Link href={`/posts/${items.slug}`}>read more</Link>
                       </div>
