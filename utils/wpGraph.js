@@ -1,22 +1,22 @@
-import { readFromCache, writeToCache } from "./cache";
+import { readFromCache, writeToCache } from './cache';
 
-const API_URL = "https://staging.the12thman.in/graphql";
+const API_URL = 'https://staging.the12thman.in/graphql';
 
-async function fetchAPI(query = "", { variables } = {}) {
-  const headers = { "Content-Type": "application/json" };
+async function fetchAPI(query = '', { variables } = {}) {
+  const headers = { 'Content-Type': 'application/json' };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
     headers[
-      "Authorization"
+      'Authorization'
     ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
-  console.log('Query', query);
-  console.log('variables',variables)
+  // console.log('Query', query);
+  // console.log('variables',variables)
   // WPGraphQL Plugin must be enabled
   const res = await fetch(API_URL, {
     headers,
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify({
       query,
       variables,
@@ -26,18 +26,18 @@ async function fetchAPI(query = "", { variables } = {}) {
   const json = await res.json();
   if (json.errors) {
     console.error(json.errors);
-    throw new Error("Failed to fetch API");
+    throw new Error('Failed to fetch API');
   }
   return json.data;
 }
 
-export async function getAllPosts(category = "",search="") {
-  console.log('get post called')
-  const cachedData = readFromCache('posts'+category);
-  if(cachedData){
+export async function getAllPosts(category = '', search = '') {
+  console.log('get post called', category, search);
+  // const cachedData = readFromCache('posts' + category);
+  const cachedData = false;
+  if (cachedData) {
     return cachedData?.posts;
-  }
-  else{
+  } else {
     const data = await fetchAPI(
       `
       query AllPosts($category: String!,$search: String!) {
@@ -72,15 +72,16 @@ export async function getAllPosts(category = "",search="") {
       }
     `,
       {
-        variables: { category,search },
+        variables: { category, search },
       }
     );
-    writeToCache('posts',data)
+    writeToCache('posts', data);
     return data?.posts;
   }
 }
 
 export async function getAllMenus() {
+  console.log('getAllMenus: ', getAllMenus);
   const data1 = await fetchAPI(
     `
     query AllMenus {
@@ -107,7 +108,7 @@ export async function getAllMenus() {
     }
   );
 
-    const data2 = await fetchAPI(
+  const data2 = await fetchAPI(
     `
       query AllMenus {
         menus(where: {id: 7836}) {
@@ -138,14 +139,16 @@ export async function getAllMenus() {
       variables: {},
     }
   );
-    data1.menus.edges[0].node.menuItems.edges.push(...data2.menus.edges[0].node.menuItems.edges)
-    console.log('result',data1.menus.edges[0].node.menuItems.edges);
-    
+  data1.menus.edges[0].node.menuItems.edges.push(
+    ...data2.menus.edges[0].node.menuItems.edges
+  );
+  // console.log('result',data1.menus.edges[0].node.menuItems.edges);
+
   return data1.menus;
 }
 
 export async function getPost(
-  slug = "fifa-news-fifa-world-cup-2022-brazil-vs-south-korea-squads-predicted-xi-dream11-prediction-and-winner-prediction"
+  slug = 'fifa-news-fifa-world-cup-2022-brazil-vs-south-korea-squads-predicted-xi-dream11-prediction-and-winner-prediction'
 ) {
   const data = await fetchAPI(
     `query post($slug: ID!) {
@@ -202,7 +205,6 @@ export async function getPost(
     }
   );
   //   console.log("data", data);
-
 
   return data?.post;
 }

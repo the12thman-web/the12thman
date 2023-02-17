@@ -3,16 +3,13 @@ import Image from 'next/image';
 import { getAllMenus, getAllPosts, getPost } from '../../utils/wpGraph';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
 import Header from '../../components/Header';
 
 export default function PostPage({ post, posts, menus }) {
-  console.log('post1', post);
+  // console.log('post1', post);
   const categoryTagsData = post?.tags?.nodes;
   const asideData = posts?.nodes?.slice(12, 16);
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
-  // const postData = posts?.nodes;
-  // const mainCarousel = postData.slice(0, 5);
 
   return (
     <>
@@ -759,9 +756,13 @@ export default function PostPage({ post, posts, menus }) {
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
   const allPosts = await getAllPosts();
-  console.log(allPosts);
+  // console.log(allPosts);
   return {
-    paths: allPosts.nodes.map(node => `/posts/${node.slug}`) || [],
+    paths:
+      allPosts.nodes.map(node => {
+        console.log('static path post', '/posts/' + node.slug);
+        return `/posts/${node.slug}`;
+      }) || [],
     fallback: 'blocking',
   };
 }
@@ -769,7 +770,7 @@ export async function getStaticPaths(params) {
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
-  console.log('slug', params.slug);
+  // console.log('slug', params.slug);
   const post = await getPost(params.slug);
   const menus = await getAllMenus();
 

@@ -7,7 +7,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
 const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
-  console.log('posts', posts);
+  // console.log('posts', posts);
 
   const postData = posts?.nodes;
   const mainCarousel = postData.slice(0, 5);
@@ -71,12 +71,12 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                             <div className="card__post__content">
                               <div className="card__post__author-info mb-2">
                                 <ul className="list-inline">
-                                  <li className="list-inline-item">
+                                  <li key={index} className="list-inline-item">
                                     <span className="text-primary">
                                       {items.author.node.name}
                                     </span>
                                   </li>
-                                  <li className="list-inline-item">
+                                  <li key={index} className="list-inline-item">
                                     <span className="text-dark text-capitalize">
                                       {items.date}
                                     </span>
