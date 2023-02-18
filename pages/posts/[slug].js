@@ -12,9 +12,8 @@ export const config = { amp: 'false' };
 export default function PostPage({ post, posts, menus }) {
   // console.log('post1', post);
   const isAmp = useAmp();
-  const categoryTagsData = post?.tags?.nodes;
-  const asideData = posts?.nodes?.slice(12, 16);
-  const categoryDataSingle = posts?.nodes?.slice(10, 11);
+  const asideData = posts ? posts?.nodes?.slice(12, 16) : [];
+  const categoryDataSingle = posts ? posts?.nodes?.slice(10, 11) : [];
 
   return (
     <>
