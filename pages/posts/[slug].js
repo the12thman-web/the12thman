@@ -793,11 +793,12 @@ export async function getStaticPaths(params) {
   const allPosts = await getAllPosts();
   // console.log(allPosts);
   return {
-    paths:
-      allPosts.nodes.map(node => {
-        console.log('static path post', '/posts/' + node.slug);
-        return `/posts/${node.slug}`;
-      }) || [],
+    paths: allPosts
+      ? allPosts.nodes.map(node => {
+          console.log('static path post', '/posts/' + node.slug);
+          return `/posts/${node.slug}`;
+        }) || []
+      : [],
     fallback: 'blocking',
   };
 }
