@@ -72,9 +72,10 @@ export async function getAllPosts(category = '', search = '') {
         variables: { category, search },
       }
     );
+    console.log('data: ', data);
     return data?.posts;
   } catch (e) {
-    console.log(e);
+    console.log('ERROR', e);
   }
 }
 
@@ -209,8 +210,9 @@ export async function getPost(
     );
     //   console.log("data", data);
 
+    console.log('data: ', data);
     return data?.post;
   } catch (e) {
-    console.log(e);
+    console.log('ERROR', e);
   }
 }
