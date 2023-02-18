@@ -20,6 +20,7 @@ async function fetchAPI(query = '', { variables } = {}) {
     }),
   });
 
+  console.log('res: ', res);
   const json = await res.json();
   if (json.errors) {
     console.error(json.errors);
