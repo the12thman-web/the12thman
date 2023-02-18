@@ -3,7 +3,7 @@ import { readFromCache, writeToCache } from './cache';
 const API_URL = 'https://staging.the12thman.in/graphql';
 
 async function fetchAPI(query = '', { variables } = {}) {
-  const headers = { 'Content-Type': 'application/json' };
+  const headers = { 'Content-Type': 'application/json', 'User-Agent': '*' };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
     headers[
@@ -11,9 +11,6 @@ async function fetchAPI(query = '', { variables } = {}) {
     ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
-  // console.log('Query', query);
-  // console.log('variables',variables)
-  // WPGraphQL Plugin must be enabled
   const res = await fetch(API_URL, {
     headers,
     method: 'POST',
