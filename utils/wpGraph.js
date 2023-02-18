@@ -32,39 +32,70 @@ async function fetchAPI(query = '', { variables } = {}) {
 }
 
 export async function getAllPosts(category = '', search = '') {
-  console.log('get post called', category, search);
-  // const cachedData = readFromCache('posts' + category);
-  const cachedData = false;
-  if (cachedData) {
-    return cachedData?.posts;
-  } else {
+  try {
+    console.log('get post called', category, search);
+    // const cachedData = readFromCache('posts' + category);
     const data = await fetchAPI(
       `
-      query AllPosts($category: String!,$search: String!) {
-          posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: $category, search:$search},first: 20) {
-              nodes {
-              author {
-                  node {
-                  name
+        query AllPosts($category: String!,$search: String!) {
+            posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: $category, search:$search},first: 20) {
+                nodes {
+                author {
+                    node {
+                    name
+                    }
+                }
+                categories {
+                    nodes {
+                    name
+                    }
+                }
+                featuredImage {
+                    node {
+                    altText
+                    sourceUrl
+                    }
+                }
+                postId
+                slug
+                title
+                tags {
+                    nodes {
+                    name
+                    }
+                }
+                }
+            }
+        }
+      `,
+      {
+        variables: { category, search },
+      }
+    );
+    return data?.posts;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function getAllMenus() {
+  console.log('getAllMenus: ', getAllMenus);
+  try {
+    const data1 = await fetchAPI(
+      `
+      query AllMenus {
+          menus(where: {id: 7836}) {
+              edges {
+              node {
+                  menuItems(first: 200) {
+                  edges {
+                      node {
+                      label
+                      id
+                      parentId
+                      uri
+                      }
                   }
-              }
-              categories {
-                  nodes {
-                  name
-                  }
-              }
-              featuredImage {
-                  node {
-                  altText
-                  sourceUrl
-                  }
-              }
-              postId
-              slug
-              title
-              tags {
-                  nodes {
-                  name
                   }
               }
               }
@@ -72,139 +103,114 @@ export async function getAllPosts(category = '', search = '') {
       }
     `,
       {
-        variables: { category, search },
+        variables: {},
       }
     );
-    writeToCache('posts', data);
-    return data?.posts;
-  }
-}
 
-export async function getAllMenus() {
-  console.log('getAllMenus: ', getAllMenus);
-  const data1 = await fetchAPI(
-    `
-    query AllMenus {
-        menus(where: {id: 7836}) {
+    const data2 = await fetchAPI(
+      `
+        query AllMenus {
+          menus(where: {id: 7836}) {
             edges {
-            node {
-                menuItems(first: 200) {
-                edges {
+              node {
+                menuItems(first: 100, after: "YXJyYXljb25uZWN0aW9uOjIzOTQ4NA==") {
+                  edges {
                     node {
-                    label
-                    id
-                    parentId
-                    uri
+                      label
+                      id
+                      parentId
+                      uri
                     }
-                }
-                }
-            }
-            }
-        }
-    }
-  `,
-    {
-      variables: {},
-    }
-  );
-
-  const data2 = await fetchAPI(
-    `
-      query AllMenus {
-        menus(where: {id: 7836}) {
-          edges {
-            node {
-              menuItems(first: 100, after: "YXJyYXljb25uZWN0aW9uOjIzOTQ4NA==") {
-                edges {
-                  node {
-                    label
-                    id
-                    parentId
-                    uri
                   }
-                }
-                pageInfo {
-                  endCursor
-                  hasNextPage
-                  hasPreviousPage
-                  startCursor
+                  pageInfo {
+                    endCursor
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                  }
                 }
               }
             }
           }
-        }
-  }
-  `,
-    {
-      variables: {},
     }
-  );
-  data1.menus.edges[0].node.menuItems.edges.push(
-    ...data2.menus.edges[0].node.menuItems.edges
-  );
-  // console.log('result',data1.menus.edges[0].node.menuItems.edges);
+    `,
+      {
+        variables: {},
+      }
+    );
+    data1.menus.edges[0].node.menuItems.edges.push(
+      ...data2.menus.edges[0].node.menuItems.edges
+    );
+    // console.log('result',data1.menus.edges[0].node.menuItems.edges);
 
-  return data1.menus;
+    return data1.menus;
+  } catch (e) {
+    console.log('ERROR', e);
+  }
 }
 
 export async function getPost(
   slug = 'fifa-news-fifa-world-cup-2022-brazil-vs-south-korea-squads-predicted-xi-dream11-prediction-and-winner-prediction'
 ) {
-  const data = await fetchAPI(
-    `query post($slug: ID!) {
-  post(
-    id: $slug
-    idType: SLUG
-  ) {
-    author {
-      node {
-        name
-      }
-    }
-    categories {
-      nodes {
-        name
-      }
-    }
-    commentCount
-    commentStatus
-    comments {
-      nodes {
-        author {
-          node {
-            name
-            email
-          }
+  try {
+    const data = await fetchAPI(
+      `query post($slug: ID!) {
+    post(
+      id: $slug
+      idType: SLUG
+    ) {
+      author {
+        node {
+          name
         }
-        commentId
-        content(format: RAW)
-        date
-        id
-        parentId
       }
-    }
-    content(format: RENDERED)
-    date
-    featuredImage {
-      node {
-        sourceUrl
+      categories {
+        nodes {
+          name
+        }
       }
-    }
-    id
-    postId
-    tags {
-      nodes {
-        name
+      commentCount
+      commentStatus
+      comments {
+        nodes {
+          author {
+            node {
+              name
+              email
+            }
+          }
+          commentId
+          content(format: RAW)
+          date
+          id
+          parentId
+        }
       }
+      content(format: RENDERED)
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      id
+      postId
+      tags {
+        nodes {
+          name
+        }
+      }
+      title
     }
-    title
-  }
-}`,
-    {
-      variables: { slug },
-    }
-  );
-  //   console.log("data", data);
+  }`,
+      {
+        variables: { slug },
+      }
+    );
+    //   console.log("data", data);
 
-  return data?.post;
+    return data?.post;
+  } catch (e) {
+    console.log(e);
+  }
 }
