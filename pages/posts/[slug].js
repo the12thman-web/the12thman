@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 // import logo from '../../public/Logo.png';
 import { useAmp } from 'next/amp';
 
-export const config = { amp: 'hybrid' };
+export const config = { amp: 'false' };
 
 export default function PostPage({ post, posts, menus }) {
   // console.log('post1', post);

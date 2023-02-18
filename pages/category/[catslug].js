@@ -1,14 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  getAllPosts,
-  getAllCategories,
-  getAllMenus,
-} from '../../utils/wpGraph';
+import { getAllPosts, getAllMenus } from '../../utils/wpGraph';
 import Header from '../../components/Header';
-import Script from 'next/script';
-// import Header from "../../components/Header";
 
 const Category = ({ posts, menus, title }) => {
   const categoryDatafirstCol = posts.nodes.slice(0, 4);
