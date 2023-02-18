@@ -14,11 +14,11 @@ NProgress.configure({ showSpinner: false });
 function MyApp({ Component, pageProps, menus }) {
   return (
     <>
-      <Script
+      {/* <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
         crossOrigin="anonymous"
-      ></Script>
+      ></Script> */}
       <Component {...pageProps} />
       <Footer />
     </>

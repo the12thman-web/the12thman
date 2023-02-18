@@ -755,14 +755,11 @@ export default function PostPage({ post, posts, menus }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  const allPosts = await getAllPosts();
+  // const allPosts = await getAllPosts();
+  const allPosts = [];
   // console.log(allPosts);
   return {
-    paths:
-      allPosts.nodes.map(node => {
-        console.log('static path post', '/posts/' + node.slug);
-        return `/posts/${node.slug}`;
-      }) || [],
+    paths: [],
     fallback: 'blocking',
   };
 }
