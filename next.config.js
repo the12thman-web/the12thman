@@ -7,6 +7,7 @@ const withPWA = require('next-pwa')({
 const nextConfig = withPWA({
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     //enter the domain or subdomain where you have WordPress installed
     domains: ['i0.wp.com', 'https://staging.the12thman.in'],
   },
