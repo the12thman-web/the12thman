@@ -254,33 +254,6 @@ const Category = ({ posts, menus, title }) => {
                   })}
                 </aside> */}
 
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">newsletter</h4>
-                  {/* <!-- Form Subscribe --> */}
-                  <div className="widget__form-subscribe bg__card-shadow">
-                    <h6>
-                      The most important world news and events of the day.
-                    </h6>
-                    <p>
-                      <small>
-                        Get magzrenvi daily newsletter on your inbox.
-                      </small>
-                    </p>
-                    <div className="input-group ">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Your email address"
-                      />
-                      <div className="input-group-append">
-                        <button className="btn btn-primary" type="button">
-                          sign up
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </aside>
-
                 {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">Advertise</h4>
                   <Link href="/">

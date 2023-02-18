@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, menus }) {
         crossOrigin="anonymous"
       ></Script>
 
-      {/* <Script type="text/javascript" src="scripts/script.js" /> */}
+      <Script type="text/javascript" src="scripts/script.js" />
 
       <Component {...pageProps} />
       <Footer />

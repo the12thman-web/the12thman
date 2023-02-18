@@ -10059,6 +10059,10 @@ input[type='number'] {
 }
 .card__post .card__post__body {
   display: block;
+  /* height: 80px; */
+  overflow: hidden;
+  /* margin-top: 8px; */
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .card__post .card__post__body img {
   -o-object-fit: cover;
@@ -10089,13 +10093,13 @@ input[type='number'] {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
-@media screen and (min-width: 320px) and (max-width: 575px) {
+/* @media screen and (min-width: 320px) and (max-width: 575px) {
   .card__post .card__post__body .card__post__content .card__post__category {
     position: absolute;
     top: -20px;
     left: 20px;
   }
-}
+} */
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .card__post .card__post__body .card__post__content .card__post__category {
     margin-bottom: 10px;
@@ -10269,6 +10273,8 @@ input[type='number'] {
 }
 .card__post-list {
   display: flex;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 3%;
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .card__post-list {
@@ -10884,6 +10890,7 @@ input[type='number'] {
   display: inline-block;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 24px;
+  border-radius: 3%;
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .article__entry .article__image {
@@ -10902,6 +10909,7 @@ input[type='number'] {
 .article__entry .article__content {
   float: left;
   padding: 8px;
+  margin-left: 4%;
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .article__entry .article__content {
@@ -10984,7 +10992,7 @@ input[type='number'] {
 }
 .article__entry .article__content h5 a:hover {
   text-decoration: none;
-  color: #c00;
+  color: blue
 }
 .article__entry .article__content p {
   line-height: 24px;
