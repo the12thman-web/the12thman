@@ -1,14 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  getAllPosts,
-  getAllCategories,
-  getAllMenus,
-} from '../../utils/wpGraph';
+import { getAllPosts, getAllMenus } from '../../utils/wpGraph';
 import Header from '../../components/Header';
-import Script from 'next/script';
-// import Header from "../../components/Header";
 
 const Category = ({ posts, menus, title }) => {
   const categoryDatafirstCol = posts.nodes.slice(0, 4);
@@ -310,12 +304,18 @@ const Category = ({ posts, menus, title }) => {
 
 export default Category;
 
-//hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  // console.log("getStaticPaths")
-  const allPosts = await getAllPosts(params.slug);
-  // console.log(allPosts);
+  // const allMenusResp = await getAllMenus(params.slug);
+  // console.log('allMenus: ', allMenus.edges[0].node.menuItems.edges);
+  // const allMenus = allMenusResp.edges[0].node.menuItems.edges;
   return {
+    // paths:
+    //   allMenus.map(node => {
+    //     if (node?.node) {
+    //       console.log('static path category', node.node.label);
+    //       return `/category/${node.node.label}`;
+    //     }
+    //   }) || [],
     paths: [],
     fallback: 'blocking',
   };
@@ -324,7 +324,6 @@ export async function getStaticPaths(params) {
 //access the router, get the id, and get the data for that post
 
 export async function getStaticProps({ params }) {
-  console.log('getStaticProps', params.catslug);
   const posts = await getAllPosts(params.catslug);
   const menus = await getAllMenus();
 
