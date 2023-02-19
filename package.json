@@ -1,10 +1,10 @@
 {
-  "name": "tech-blog",
+  "name": "The12thMan",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "npm run build && next export",
     "start": "next start"
   },
   "dependencies": {
