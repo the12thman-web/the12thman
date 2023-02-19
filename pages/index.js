@@ -1,9 +1,15 @@
-import Head from "next/head";
-import Home from "../components/Home";
-import { getAllMenus, getAllPosts } from "../utils/wpGraph";
-import Category from "./category/[catslug]";
+import Head from 'next/head';
+import Home from '../components/Home';
+import { getAllMenus, getAllPosts } from '../utils/wpGraph';
+import Category from './category/[catslug]';
 
-export default function index({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) {
+export default function index({
+  posts,
+  menus,
+  IPLcategory,
+  cricketPosts,
+  footBallPosts,
+}) {
   // console.log("pos", posts);
   return (
     <>
@@ -15,18 +21,23 @@ export default function index({ posts, menus, IPLcategory, cricketPosts, footBal
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Home posts={posts} menus={menus} IPLcategory={IPLcategory} cricketPosts={cricketPosts} footBallPosts={footBallPosts}/>
-      
+      <Home
+        posts={posts}
+        menus={menus}
+        IPLcategory={IPLcategory}
+        cricketPosts={cricketPosts}
+        footBallPosts={footBallPosts}
+      />
     </>
   );
 }
 
-export async function getStaticProps({ params },category) {
-  const posts = await getAllPosts();
+export async function getStaticProps({ params }, category) {
   const menus = await getAllMenus();
-  const IPLcategory = await getAllPosts(category='IPL')
-  const cricketPosts = await getAllPosts(category="cricket")
-  const footBallPosts = await getAllPosts(category="football")
+  const posts = await getAllPosts();
+  const IPLcategory = await getAllPosts((category = 'IPL'));
+  const cricketPosts = await getAllPosts((category = 'cricket'));
+  const footBallPosts = await getAllPosts((category = 'football'));
   // console.log(posts)
   return {
     props: {
@@ -34,8 +45,8 @@ export async function getStaticProps({ params },category) {
       menus,
       IPLcategory,
       cricketPosts,
-      footBallPosts
+      footBallPosts,
     },
-    revalidate: 60, // In seconds
+    revalidate: 600, // In seconds
   };
 }

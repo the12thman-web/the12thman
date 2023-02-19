@@ -6,7 +6,7 @@ import Image from 'next/image';
 import logo from '../public/Logo.png';
 
 const Header = ({ menus }) => {
-  console.log('menus', menus);
+  // console.log('menus', menus);
   const [data, setData] = useState([]);
   const [text, setText] = useState('');
   const [showSearch, setShowSearch] = useState(false);
@@ -158,7 +158,7 @@ const Header = ({ menus }) => {
 
                     // console.log("id", items.id);
                     return (
-                      <li className="nav-item dropdown">
+                      <li key={items.id} className="nav-item dropdown">
                         <Link
                           className={`nav-link active ${
                             dropDown?.length ? 'dropdown-toggle' : ''
@@ -170,7 +170,7 @@ const Header = ({ menus }) => {
                         </Link>
                         <ul className="dropdown-menu dropdown-menu-left">
                           {dropDown.map(val => (
-                            <li>
+                            <li key={val.id}>
                               <Link
                                 className="dropdown-item"
                                 href={`/category/${items.uri}`}
@@ -179,7 +179,7 @@ const Header = ({ menus }) => {
                               </Link>
                               <ul className="dropdown-menu dropdown-menu-left">
                                 {getChildByParentId(val.id).map(child => (
-                                  <li>
+                                  <li key={child.id}>
                                     <Link
                                       className="dropdown-item"
                                       href={`/category/${child.uri}`}
@@ -189,7 +189,7 @@ const Header = ({ menus }) => {
                                     <ul className="dropdown-menu dropdown-menu-right">
                                       {getNewChildByParentId(child.id).map(
                                         pre_child => (
-                                          <li>
+                                          <li key={pre_child.id}>
                                             <Link
                                               className="dropdown-item"
                                               href={`/category/${pre_child.uri}`}
@@ -200,7 +200,7 @@ const Header = ({ menus }) => {
                                               {getNewChildrenByParentId(
                                                 pre_child.id
                                               ).map(children => (
-                                                <li>
+                                                <li key={pre_child.id}>
                                                   <Link
                                                     className="dropdown-item"
                                                     href={`/category/${children.uri}`}
@@ -342,7 +342,7 @@ const Header = ({ menus }) => {
                       const dropDown = getListByParentID(items.id);
 
                       return (
-                        <li className="nav-item dropdown">
+                        <li key={items.id} className="nav-item dropdown">
                           <Link
                             className={`nav-link active ${
                               dropDown?.length ? 'dropdown-toggle' : ''
@@ -354,7 +354,7 @@ const Header = ({ menus }) => {
                           </Link>
                           <ul className="dropdown-menu dropdown-menu-left">
                             {dropDown.map(val => (
-                              <li>
+                              <li key={val.id}>
                                 <Link
                                   className={`dropdown-item text-dark ${
                                     dropDown?.length ? 'dropdown-toggle' : ''
@@ -365,7 +365,7 @@ const Header = ({ menus }) => {
                                 </Link>
                                 <ul className="submenu dropdown-menu  animate fade-up">
                                   {getChildByParentId(val.id).map(child => (
-                                    <li>
+                                    <li key={child.id}>
                                       <Link
                                         className="dropdown-item text-dark"
                                         href={`/category/${child.uri}`}
@@ -376,7 +376,7 @@ const Header = ({ menus }) => {
                                       <ul className="submenu dropdown-menu  animate fade-up">
                                         {getNewChildByParentId(child.id).map(
                                           pre_child => (
-                                            <li>
+                                            <li key={child.id}>
                                               <Link
                                                 className={`nav-link active ${
                                                   dropDown?.length
@@ -392,7 +392,7 @@ const Header = ({ menus }) => {
                                                 {getNewChildrenByParentId(
                                                   pre_child.id
                                                 ).map(children => (
-                                                  <li>
+                                                  <li key={pre_child.id}>
                                                     <Link
                                                       className="dropdown-item text-dark"
                                                       href={`/category/${children.uri}`}
