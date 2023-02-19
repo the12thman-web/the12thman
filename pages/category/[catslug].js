@@ -17,7 +17,7 @@ const Category = ({ posts, menus, title }) => {
   const categoryDataSingle = posts.nodes.slice(10, 11);
   const categoryTagsData = posts.nodes;
 
-  // console.log("menu", posts);
+  console.log("pp", posts);
   return (
     <>
       <Header menus={menus} />
@@ -35,10 +35,10 @@ const Category = ({ posts, menus, title }) => {
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
 
-                    {categoryDatafirstCol.map(item => {
+                    {categoryDatafirstCol.map((item) => {
                       return (
                         <>
-                          <div className="article__entry">
+                          <div className="article__entry" key={item.postId}>
                             <div className="article__image">
                               {/* <a href='.../posts/${node.slug}'> */}
                               <Link href={`/posts/${item.slug}`}>
@@ -56,7 +56,7 @@ const Category = ({ posts, menus, title }) => {
                                 {item.categories.nodes[0].name}
                               </div>
                               <ul className="list-inline">
-                                <li className="list-inline-item">
+                                <li className="list-inline-item" key={item.postId}>
                                   <span className="text-primary">
                                     by {item.author.node.name}
                                   </span>
@@ -68,9 +68,11 @@ const Category = ({ posts, menus, title }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title.slice(0, 26)}</a>
+                                <Link href={`/posts/${item.slug}`}>
+                                  {item.title.slice(0, 45)}...
+                                </Link>
                               </h5>
-                              <p>{item.slug.slice(0, 30)} ....</p>
+
                               <Link
                                 href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
@@ -85,10 +87,10 @@ const Category = ({ posts, menus, title }) => {
                   </div>
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
-                    {categoryDatasecCol.map(item => {
+                    {categoryDatasecCol.map((item) => {
                       return (
                         <>
-                          <div className="article__entry">
+                          <div className="article__entry" key={item.postId}>
                             <div className="article__image">
                               <Link href={`/posts/${item.slug}`}>
                                 <Image
@@ -105,7 +107,7 @@ const Category = ({ posts, menus, title }) => {
                                 {item.categories.nodes[0].name}
                               </div>
                               <ul className="list-inline">
-                                <li className="list-inline-item">
+                                <li className="list-inline-item" key={1}>
                                   <span className="text-primary">
                                     by {item.author.node.name}
                                   </span>
@@ -117,9 +119,11 @@ const Category = ({ posts, menus, title }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <a href="#">{item.title.slice(0, 28)}</a>
+                                <Link href={`/posts/${item.slug}`}>
+                                  {item.title.slice(0, 45)}...
+                                </Link>
                               </h5>
-                              <p>{item.slug.slice(0, 30)} .....</p>
+
                               <Link
                                 href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
@@ -140,10 +144,10 @@ const Category = ({ posts, menus, title }) => {
                 <aside className="wrapper__list__article ">
                   <h4 className="border_section">Recent Blogs</h4>
                   <div className="wrapper__list__article-small">
-                    {categoryDataSlider.map(item => {
+                    {categoryDataSlider.map((item) => {
                       return (
                         <>
-                          <div className="mb-3">
+                          <div className="mb-3" key={item.postId}>
                             {/* <!-- Post Article --> */}
                             <div className="card__post card__post-list">
                               <div className="image-sm">
@@ -162,7 +166,7 @@ const Category = ({ posts, menus, title }) => {
                                 <div className="card__post__content">
                                   <div className="card__post__author-info mb-2">
                                     <ul className="list-inline">
-                                      <li className="list-inline-item">
+                                      <li className="list-inline-item" key={1}>
                                         <span className="text-primary">
                                           by {item.author.node.name}
                                         </span>

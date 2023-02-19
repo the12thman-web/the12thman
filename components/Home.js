@@ -376,7 +376,7 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                 <div className="card__post__title">
                                   <h6>
                                     <Link href={`/posts/${items.slug}`}>
-                                      {`${items.title.slice(0, 65)}...`}
+                                      {`${items.title.slice(0, 49)}...`}
                                     </Link>
                                   </h6>
                                   {/* <!-- <p className="d-none d-lg-block d-xl-block">
@@ -431,7 +431,7 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                 <div className="card__post__title">
                                   <h6>
                                     <Link href={`/posts/${items.slug}`}>
-                                      {`${items.title.slice(0, 65)}...`}
+                                      {`${items.title.slice(0, 49)}...`}
                                     </Link>
                                   </h6>
                                   {/* <!-- <p className="d-none d-lg-block d-xl-block">
@@ -800,10 +800,10 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                 </ul>
                                 <h5>
                                   <Link href={`/posts/${item.slug}`}>
-                                    {item.title}
+                                    {item.title.slice(0, 45)}...
                                   </Link>
                                 </h5>
-                                <p>{item.slug.slice(0, 30)} ....</p>
+                                <p>{item.slug.slice(0, 30)} ...</p>
                                 <Link
                                   href={`/posts/${item.slug}`}
                                   className="btn btn-outline-primary mb-4 text-capitalize"
@@ -851,10 +851,10 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                 </ul>
                                 <h5>
                                   <Link href={`/posts/${item.slug}`}>
-                                    {item.title}
+                                    {item.title.slice(0, 45)}...
                                   </Link>
                                 </h5>
-                                <p>{item.slug.slice(0, 30)} .....</p>
+                                <p>{item.slug.slice(0, 30)} ...</p>
                                 <Link
                                   href={`/posts/${item.slug}`}
                                   className="btn btn-outline-primary mb-4 text-capitalize"
@@ -1388,7 +1388,7 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
+                                  {item.title.slice(0, 45)}...
                                 </Link>
                               </h5>
                               <p>{item.slug.slice(0, 30)} ....</p>
@@ -1439,7 +1439,7 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
+                                  {item.title.slice(0, 45)}...
                                 </Link>
                               </h5>
                               <p>{item.slug.slice(0, 30)} .....</p>

@@ -9482,7 +9482,7 @@ input[type='color']:focus,
   outline: 0 none;
 }
 .form-control {
-  height: 45px;
+  height: 37.6px;
   padding: 0.75rem;
   font-size: 14px;
 }
@@ -10275,6 +10275,7 @@ input[type='number'] {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 3%;
+  padding: 6px;
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .card__post-list {
@@ -14562,9 +14563,9 @@ body.offcanvas-active {
     display: none;
   }
 }
-.wrap__article-detail-content .total-views .list-inline .list-inline-item {
+/* .wrap__article-detail-content .total-views .list-inline .list-inline-item {
   margin: 0;
-}
+} */
 .wrap__article-detail-content
   .total-views
   .list-inline

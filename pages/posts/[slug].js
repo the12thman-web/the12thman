@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 import Header from '../../components/Header';
 
 export default function PostPage({ post, posts, menus }) {
-  console.log('post1', post);
+  console.log('post1', posts);
   const categoryTagsData = post?.tags?.nodes;
   const asideData = posts?.nodes?.slice(12, 16);
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
@@ -43,6 +43,7 @@ export default function PostPage({ post, posts, menus }) {
                         src={post.featuredImage.node.sourceUrl}
                         width={80}
                         height={50}
+                        alt='articaleImg'
                       />
 
                       {/* <figure className="image-profile">
@@ -73,6 +74,7 @@ export default function PostPage({ post, posts, menus }) {
                     src={post.featuredImage.node.sourceUrl}
                     width={800}
                     height={500}
+                    alt='articaleImg'
                   />
 
                   {/* <img
@@ -189,6 +191,7 @@ export default function PostPage({ post, posts, menus }) {
                     src={post.featuredImage.node.sourceUrl}
                     width={80}
                     height={80}
+                    alt='articaleImg'
                   />
 
                   <div className="wrap__profile-author-detail">
@@ -438,7 +441,7 @@ export default function PostPage({ post, posts, menus }) {
                         name="submit"
                         id="submit"
                         className="submit"
-                        // value="Post Comment"
+                      // value="Post Comment"
                       />
                     </p>
                   </form>
@@ -545,7 +548,7 @@ export default function PostPage({ post, posts, menus }) {
                   <div className="wrapper__list__article-small">
                     {asideData.map(item => {
                       return (
-                        <div className="mb-3">
+                        <div className="mb-3" key={item.postId}>
                           <div className="card__post card__post-list">
                             <div className="image-sm">
                               <Link href={`/posts/${item.slug}`}>
@@ -594,7 +597,7 @@ export default function PostPage({ post, posts, menus }) {
                       {categoryDataSingle.map(item => {
                         return (
                           <>
-                            <div className="article__image">
+                            <div className="article__image" key={item.postId}>
                               <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
