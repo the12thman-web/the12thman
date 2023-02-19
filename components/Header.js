@@ -117,17 +117,36 @@ const Header = ({ menus }) => {
       <header className="bg-light">
         {/* <!-- Navbar  Top--> */}
         <div className="navigation-wrap navigation-shadow bg-white">
-          <nav className="navbar navbar-hover navbar-expand-lg navbar-soft">
-            <div className="container">
-              <div className="offcanvas-header">
-                <div
-                  data-toggle="modal"
-                  data-target="#modal_aside_right"
-                  className="btn-md"
-                >
-                  <span className="navbar-toggler-icon"></span>
-                </div>
+          <nav
+            className="navbar navbar-hover navbar-expand-lg navbar-soft container"
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              // maxWidth: '960px',
+              marginRight: 'auto',
+              marginLeft: 'auto',
+            }}
+          >
+            <div className="offcanvas-header">
+              <div
+                data-toggle="modal"
+                data-target="#modal_aside_right"
+                className="btn-md"
+              >
+                <span className="navbar-toggler-icon"></span>
               </div>
+            </div>
+            <div className="logoContainer">
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="No Image"
+                  className="logoImg"
+                  height={400}
+                />
+              </Link>
+            </div>
+            <div className="container">
               {/* <figure className="mb-0 mx-auto">
                 <a href="/homepage-v1.html">
                   <img
@@ -137,16 +156,6 @@ const Header = ({ menus }) => {
                   />
                 </a>
               </figure> */}
-              <div>
-                <Link href="/">
-                  <Image
-                    src={logo}
-                    alt="No Image"
-                    className="logoImg"
-                    height={400}
-                  />
-                </Link>
-              </div>
 
               <div
                 className="collapse navbar-collapse justify-content-between"
