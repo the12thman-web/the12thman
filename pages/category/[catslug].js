@@ -5,11 +5,11 @@ import { getAllPosts, getAllMenus } from '../../utils/wpGraph';
 import Header from '../../components/Header';
 
 const Category = ({ posts, menus, title }) => {
-  const categoryDatafirstCol = posts.nodes.slice(0, 4);
-  const categoryDatasecCol = posts.nodes.slice(5, 9);
-  const categoryDataSlider = posts.nodes.slice(10, 14);
-  const categoryDataSingle = posts.nodes.slice(10, 11);
-  const categoryTagsData = posts.nodes;
+  const categoryDatafirstCol = posts?.nodes?.slice(0, 4);
+  const categoryDatasecCol = posts?.nodes?.slice(5, 9);
+  const categoryDataSlider = posts?.nodes?.slice(10, 14);
+  const categoryDataSingle = posts?.nodes?.slice(10, 11);
+  const categoryTagsData = posts?.nodes;
 
   console.log("pp", posts);
   return (
