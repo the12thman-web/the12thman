@@ -6,7 +6,14 @@ import Header from './Header';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
-const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
+const Home = ({
+  posts,
+  menus,
+  IPLcategory,
+  cricketPosts,
+  footBallPosts,
+  motoGPPosts,
+}) => {
   // console.log('posts', posts);
 
   const postData = posts?.nodes;
@@ -26,6 +33,13 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
   const footBallData = footBallPosts?.nodes;
   const leftFootBallCardData = footBallData.slice(0, 4);
   const rightFootBallCardData = footBallData.slice(4, 8);
+
+  const motoGPData = motoGPPosts?.nodes;
+  const motoGPCardData = motoGPData.slice(0, 4);
+  const example = IPLData.slice(0, 4);
+
+  console.log('firstTwoData', firstTwoData);
+  console.log('example', example);
 
   return (
     <>
@@ -85,8 +99,11 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                               </div>
                               <div className="card__post__title">
                                 <h6>
-                                  <Link href={`/posts/${items.slug}?amp=1`}>
-                                    {items.title.slice(0, 40)}
+                                  <Link
+                                    href={`/posts/${items.slug}?amp=1`}
+                                    style={{ fontSize: '10px' }}
+                                  >
+                                    {items.title}
                                   </Link>
                                 </h6>
                                 {/* <!-- <p className="d-none d-lg-block d-xl-block">
@@ -268,8 +285,11 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                 </li>
                               </ul>
                               <h5>
-                                <Link href={`/posts/${items.slug}`}>
-                                  {items.title.slice(0, 40)}
+                                <Link
+                                  href={`/posts/${items.slug}`}
+                                  style={{ fontSize: '12px' }}
+                                >
+                                  {items.title}
                                 </Link>
                               </h5>
                             </div>
@@ -366,20 +386,23 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                         {items.author.node.name}
                                       </span>
                                     </li>
-                                    <div className="card__post__category">
-                                      IPL
-                                    </div>
-                                    <li className="list-inline-item">
+                                    <span className="card__post__category">
+                                      IPl
+                                    </span>
+                                    {/* <li className="list-inline-item">
                                       <span className="text-dark text-capitalize">
                                         {items.date}
                                       </span>
-                                    </li>
+                                    </li> */}
                                   </ul>
                                 </div>
                                 <div className="card__post__title">
                                   <h6>
-                                    <Link href={`/posts/${items.slug}`}>
-                                      {`${items.title.slice(0, 49)}...`}
+                                    <Link
+                                      href={`/posts/${items.slug}`}
+                                      style={{ fontSize: '10px' }}
+                                    >
+                                      {items.title}
                                     </Link>
                                   </h6>
                                   {/* <!-- <p className="d-none d-lg-block d-xl-block">
@@ -421,20 +444,23 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                                         {items.author.node.name}
                                       </span>
                                     </li>
-                                    <div className="card__post__category">
+                                    <span className="card__post__category">
                                       IPL
-                                    </div>
-                                    <li className="list-inline-item">
+                                    </span>
+                                    {/* <li className="list-inline-item">
                                       <span className="text-dark text-capitalize">
                                         {items.date}
                                       </span>
-                                    </li>
+                                    </li> */}
                                   </ul>
                                 </div>
                                 <div className="card__post__title">
                                   <h6>
-                                    <Link href={`/posts/${items.slug}`}>
-                                      {`${items.title.slice(0, 49)}...`}
+                                    <Link
+                                      href={`/posts/${items.slug}`}
+                                      style={{ fontSize: '12px' }}
+                                    >
+                                      {items.title}
                                     </Link>
                                   </h6>
                                   {/* <!-- <p className="d-none d-lg-block d-xl-block">
@@ -452,114 +478,65 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                 </div>
               </div>
 
-              <div className="col-md-12 col-lg-4">
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">MOTO GP</h4>
-                  <div className="wrapper__list-number">
-                    {/* <!-- List Article -->*/}
-                    <div className="card__post__list">
-                      <div className="list-number">
-                        <span>1</span>
-                      </div>
-                      <a href="#" className="category">
-                        covid-19
-                      </a>
-                      <ul className="list-inline">
-                        <li className="list-inline-item">
-                          <h5>
-                            <a href="#">
-                              Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T
-                              dalam 3 Bulan - CNBC Indonesia
-                            </a>
-                          </h5>
-                        </li>
-                      </ul>
+              <div className="col-md-4">
+                <div className="sticky-top">
+                  <aside className="wrapper__list__article">
+                    <h4 className="border_section">MotoGP</h4>
+                    <div className="wrapper__list__article-small">
+                      {example.map(motoItem => (
+                        <div className="mb-3">
+                          {/* <!-- Post Article -->*/}
+                          <div className="card__post card__post-list">
+                            <div className="image-sm">
+                              <Link href={`/posts/${motoItem.slug}`}>
+                                <Image
+                                  src={motoItem.featuredImage.node.sourceUrl}
+                                  className="img-fluid"
+                                  alt=""
+                                  width={500}
+                                  height={400}
+                                />
+                              </Link>
+                            </div>
+
+                            <div className="card__post__body ">
+                              <div className="card__post__content">
+                                <div className="card__post__author-info mb-2">
+                                  <ul className="list-inline">
+                                    <li className="list-inline-item">
+                                      <span className="text-primary">
+                                        {motoItem?.author?.node?.name}
+                                      </span>
+                                    </li>
+                                    {/* <li className="list-inline-item">
+                                      <span className="text-dark text-capitalize">
+                                        descember 09, 2016
+                                      </span>
+                                    </li> */}
+                                  </ul>
+                                </div>
+                                <div className="card__post__title">
+                                  <h6>
+                                    <Link
+                                      href={`/posts/${motoItem.slug}`}
+                                      style={{ fontSize: '12px' }}
+                                    >
+                                      {motoItem.title}
+                                    </Link>
+                                  </h6>
+                                  {/* <!-- <p className="d-none d-lg-block d-xl-block">
+                    Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat
+                    sollicitudin ut est. In fringilla dui dui.
+                </p> -->*/}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-
-                    <div className="card__post__list">
-                      <div className="list-number">
-                        <span>2</span>
-                      </div>
-                      <a href="#" className="category">
-                        Startup
-                      </a>
-                      <ul className="list-inline">
-                        {/* <!-- <li className="list-inline-item">
-            <a href="#" className="author-info">
-                by david hall
-            </a>
-
-        </li>
-        <li className="list-inline-item">
-            <span>
-                <i className="fa fa-calendar"></i>
-                march 01, 2020
-            </span>
-
-        </li> -->*/}
-                        <li className="list-inline-item">
-                          <h5>
-                            <a href="#">
-                              Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T
-                              dalam 3 Bulan - CNBC Indonesia
-                            </a>
-                          </h5>
-                        </li>
-                      </ul>
-                    </div>
-                    {/* <!-- List Article -->*/}
-                    <div className="card__post__list">
-                      <div className="list-number">
-                        <span>1</span>
-                      </div>
-                      <a href="#" className="category">
-                        covid-19
-                      </a>
-                      <ul className="list-inline">
-                        <li className="list-inline-item">
-                          <h5>
-                            <a href="#">
-                              Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T
-                              dalam 3 Bulan - CNBC Indonesia
-                            </a>
-                          </h5>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="card__post__list">
-                      <div className="list-number">
-                        <span>2</span>
-                      </div>
-                      <a href="#" className="category">
-                        Startup
-                      </a>
-                      <ul className="list-inline">
-                        {/* <!-- <li className="list-inline-item">
-            <a href="#" className="author-info">
-                by david hall
-            </a>
-
-        </li>
-        <li className="list-inline-item">
-            <span>
-                <i className="fa fa-calendar"></i>
-                march 01, 2020
-            </span>
-
-        </li> -->*/}
-                        <li className="list-inline-item">
-                          <h5>
-                            <a href="#">
-                              Gegera Corona, Kekayaan Bos Zoom Nambah Rp 64 T
-                              dalam 3 Bulan - CNBC Indonesia
-                            </a>
-                          </h5>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </aside>
+                  </aside>
+                </div>
               </div>
             </div>
           </div>
@@ -1015,145 +992,6 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                       </div>
                     </div>
                   </aside>
-
-                  <aside className="wrapper__list__article">
-                    <h4 className="border_section">stay conected</h4>
-                    {/* <!-- widget Social media -->*/}
-                    <div className="wrap__social__media">
-                      <a href="#" target="_blank">
-                        <div className="social__media__widget facebook">
-                          <span className="social__media__widget-icon">
-                            <i className="fa fa-facebook"></i>
-                          </span>
-                          <span className="social__media__widget-counter">
-                            19,243 fans
-                          </span>
-                          <span className="social__media__widget-name">
-                            like
-                          </span>
-                        </div>
-                      </a>
-                      <a href="#" target="_blank">
-                        <div className="social__media__widget twitter">
-                          <span className="social__media__widget-icon">
-                            <i className="fa fa-twitter"></i>
-                          </span>
-                          <span className="social__media__widget-counter">
-                            2.076 followers
-                          </span>
-                          <span className="social__media__widget-name">
-                            follow
-                          </span>
-                        </div>
-                      </a>
-                      <a href="#" target="_blank">
-                        <div className="social__media__widget youtube">
-                          <span className="social__media__widget-icon">
-                            <i className="fa fa-youtube"></i>
-                          </span>
-                          <span className="social__media__widget-counter">
-                            15,200 followers
-                          </span>
-                          <span className="social__media__widget-name">
-                            subscribe
-                          </span>
-                        </div>
-                      </a>
-                    </div>
-                  </aside>
-
-                  <aside className="wrapper__list__article">
-                    <h4 className="border_section">tags</h4>
-                    <div className="blog-tags p-0">
-                      <ul className="list-inline">
-                        <li className="list-inline-item">
-                          <a href="#">#property</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#sea</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#programming</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#sea</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#property</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#life style</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#technology</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#framework</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#sport</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#game</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#wfh</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#sport</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#game</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#wfh</a>
-                        </li>
-                        <li className="list-inline-item">
-                          <a href="#">#framework</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </aside>
-
-                  <aside className="wrapper__list__article">
-                    <h4 className="border_section">Advertise</h4>
-                    <a href="#">
-                      <figure>
-                        <img
-                          src="images/placeholder/600x400.jpg"
-                          alt=""
-                          className="img-fluid"
-                        />
-                      </figure>
-                    </a>
-                  </aside>
-
-                  <aside className="wrapper__list__article">
-                    <h4 className="border_section">newsletter</h4>
-                    {/* <!-- Form Subscribe -->*/}
-                    <div className="widget__form-subscribe bg__card-shadow">
-                      <h6>
-                        The most important world news and events of the day.
-                      </h6>
-                      <p>
-                        <small>
-                          Get magzrenvi daily newsletter on your inbox.
-                        </small>
-                      </p>
-                      <div className="input-group ">
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Your email address"
-                        />
-                        <div className="input-group-append">
-                          <button className="btn btn-primary" type="button">
-                            sign up
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </aside>
                 </div>
               </div>
 
@@ -1595,143 +1433,6 @@ const Home = ({ posts, menus, IPLcategory, cricketPosts, footBallPosts }) => {
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </aside>
-
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">stay conected</h4>
-                  {/* <!-- widget Social media -->*/}
-                  <div className="wrap__social__media">
-                    <a href="#" target="_blank">
-                      <div className="social__media__widget facebook">
-                        <span className="social__media__widget-icon">
-                          <i className="fa fa-facebook"></i>
-                        </span>
-                        <span className="social__media__widget-counter">
-                          19,243 fans
-                        </span>
-                        <span className="social__media__widget-name">like</span>
-                      </div>
-                    </a>
-                    <a href="#" target="_blank">
-                      <div className="social__media__widget twitter">
-                        <span className="social__media__widget-icon">
-                          <i className="fa fa-twitter"></i>
-                        </span>
-                        <span className="social__media__widget-counter">
-                          2.076 followers
-                        </span>
-                        <span className="social__media__widget-name">
-                          follow
-                        </span>
-                      </div>
-                    </a>
-                    <a href="#" target="_blank">
-                      <div className="social__media__widget youtube">
-                        <span className="social__media__widget-icon">
-                          <i className="fa fa-youtube"></i>
-                        </span>
-                        <span className="social__media__widget-counter">
-                          15,200 followers
-                        </span>
-                        <span className="social__media__widget-name">
-                          subscribe
-                        </span>
-                      </div>
-                    </a>
-                  </div>
-                </aside>
-
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">tags</h4>
-                  <div className="blog-tags p-0">
-                    <ul className="list-inline">
-                      <li className="list-inline-item">
-                        <a href="#">#property</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sea</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#programming</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sea</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#property</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#life style</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#technology</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#framework</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sport</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#game</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#wfh</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#sport</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#game</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#wfh</a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a href="#">#framework</a>
-                      </li>
-                    </ul>
-                  </div>
-                </aside>
-
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">Advertise</h4>
-                  <a href="#">
-                    <figure>
-                      <img
-                        src="images/placeholder/600x400.jpg"
-                        alt=""
-                        className="img-fluid"
-                      />
-                    </figure>
-                  </a>
-                </aside>
-
-                <aside className="wrapper__list__article">
-                  <h4 className="border_section">newsletter</h4>
-                  {/* <!-- Form Subscribe -->*/}
-                  <div className="widget__form-subscribe bg__card-shadow">
-                    <h6>
-                      The most important world news and events of the day.
-                    </h6>
-                    <p>
-                      <small>
-                        Get magzrenvi daily newsletter on your inbox.
-                      </small>
-                    </p>
-                    <div className="input-group ">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Your email address"
-                      />
-                      <div className="input-group-append">
-                        <button className="btn btn-primary" type="button">
-                          sign up
-                        </button>
                       </div>
                     </div>
                   </div>

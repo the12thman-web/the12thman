@@ -3751,7 +3751,7 @@ input[type='button'].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 0.7rem !important; 
+  padding: 0.4rem 0.7rem !important;
 }
 .navbar > .container,
 .navbar > .container-fluid {
@@ -11005,7 +11005,7 @@ input[type='number'] {
 }
 .article__entry .article__content h5 a:hover {
   text-decoration: none;
-  color: blue
+  color: blue;
 }
 .article__entry .article__content p {
   line-height: 24px;
@@ -13564,14 +13564,15 @@ input[type='number'] {
     display: block;
     padding: 10px;
     border: 1px solid #eee;
-    font-size: 17px ;
-
+    font-size: 17px;
   }
 }
 @media all and (min-width: 991px) {
   .offcanvas-header {
     display: none !important;
-
+  }
+  .logoContainer {
+    justify-content: left !important;
   }
 }
 
@@ -13858,7 +13859,6 @@ body.offcanvas-active {
   }
 }
 @media all and (max-width: 991px) {
-  
   .mobile-offcanvas {
     visibility: hidden;
     -webkit-transform: translateX(-100%);
@@ -13889,7 +13889,7 @@ body.offcanvas-active {
 }
 .navbar-soft {
   background-color: white;
-  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.1);
+  box-shadow: 0 2px 0px rgba(100, 100, 100, 0.1);
   font-size: 14px;
 }
 .navbar-soft .navbar-toggler {
@@ -14978,7 +14978,12 @@ body.offcanvas-active {
   }
 }
 
+a {
+  text-decoration: none !important;
+}
 
-a{
-text-decoration: none !important;
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  width: 90%;
 }
