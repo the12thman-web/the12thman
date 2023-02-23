@@ -50,7 +50,7 @@ const Category = ({ posts, menus, title }) => {
                                 {item.categories.nodes[0].name}
                               </div>
                               <ul className="list-inline">
-                                <li className="list-inline-item" key={item.postId}>
+                                <li className="list-inline-item">
                                   <span className="text-primary">
                                     by {item.author.node.name}
                                   </span>
@@ -63,7 +63,7 @@ const Category = ({ posts, menus, title }) => {
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title.slice(0, 45)}...
+                                  {item.title}
                                 </Link>
                               </h5>
 
@@ -101,7 +101,7 @@ const Category = ({ posts, menus, title }) => {
                                 {item.categories.nodes[0].name}
                               </div>
                               <ul className="list-inline">
-                                <li className="list-inline-item" key={1}>
+                                <li className="list-inline-item">
                                   <span className="text-primary">
                                     by {item.author.node.name}
                                   </span>
@@ -114,7 +114,7 @@ const Category = ({ posts, menus, title }) => {
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title.slice(0, 45)}...
+                                  {item.title}
                                 </Link>
                               </h5>
 
@@ -160,7 +160,7 @@ const Category = ({ posts, menus, title }) => {
                                 <div className="card__post__content">
                                   <div className="card__post__author-info mb-2">
                                     <ul className="list-inline">
-                                      <li className="list-inline-item" key={1}>
+                                      <li className="list-inline-item">
                                         <span className="text-primary">
                                           by {item.author.node.name}
                                         </span>
@@ -175,7 +175,7 @@ const Category = ({ posts, menus, title }) => {
                                   <div className="card__post__title">
                                     <h6>
                                       <Link href={`/posts/${item.slug}`}>
-                                        {item.title.slice(0, 30)}
+                                        {item.title}
                                       </Link>
                                     </h6>
                                   </div>

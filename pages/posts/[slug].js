@@ -2,19 +2,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllMenus, getAllPosts, getPost } from '../../utils/wpGraph';
 
+import { useSearchParams } from 'next/navigation';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Header from '../../components/Header';
 // import logo from '../../public/Logo.png';
 import { useAmp } from 'next/amp';
+import Category from '../category/[catslug]';
+// import { it } from 'node:test';
 
 export const config = { amp: 'false' };
 
 export default function PostPage({ post, posts, menus }) {
-  // console.log('post1', post);
+  console.log('post1', posts);
+  console.log('post', post);
   const isAmp = useAmp();
   const asideData = posts ? posts?.nodes?.slice(12, 16) : [];
-  const categoryDataSingle = posts ? posts?.nodes?.slice(10, 11) : [];
+  // const categoryDataSingle = posts ? posts?.nodes?.slice(10, 11) : [];
 
+  const searchParams = useSearchParams();
+  const data = searchParams.get('valueForPosts');
+  console.log("asdf", data)
   return (
     <>
       <section className="pb-80">
@@ -35,7 +42,7 @@ export default function PostPage({ post, posts, menus }) {
             <amp-img
               width="100"
               height="100"
-              src={post.featuredImage.node.sourceUrl}
+              src={post?.featuredImage?.node?.sourceUrl}
               alt="a cool image"
               layout="responsive"
             />
@@ -73,6 +80,7 @@ export default function PostPage({ post, posts, menus }) {
                             src={post.featuredImage.node.sourceUrl}
                             width={80}
                             height={50}
+                            alt="{posts?.featuredImage?.node?.altText}"
                           />
 
                           {/* <figure className="image-profile">
@@ -103,6 +111,7 @@ export default function PostPage({ post, posts, menus }) {
                         src={post.featuredImage.node.sourceUrl}
                         width={800}
                         height={500}
+                        alt="{posts?.featuredImage?.node?.altText}"
                       />
 
                       {/* <img
@@ -217,8 +226,9 @@ export default function PostPage({ post, posts, menus }) {
                       <Image
                         className="img-fluid rounded-circle"
                         src={post.featuredImage.node.sourceUrl}
-                        width={80}
-                        height={80}
+                        width={48}
+                        height={48}
+                        alt='{posts?.featuredImage?.node?.altText}'
                       />
 
                       <div className="wrap__profile-author-detail">
@@ -293,6 +303,7 @@ export default function PostPage({ post, posts, menus }) {
                             src={post.featuredImage.node.sourceUrl}
                             width={80}
                             height={80}
+                             alt={post.featuredImage.node.altText}
                           />
 
                           <b className="fn">{post.comments.nodes.name}</b>
@@ -402,7 +413,7 @@ export default function PostPage({ post, posts, menus }) {
                   </li> */}
                     </ol>
 
-                    <div className="comment-respond">
+                    {/* <div className="comment-respond">
                       <h3 className="comment-reply-title">Leave a Reply</h3>
 
                       <form className="comment-form">
@@ -413,7 +424,7 @@ export default function PostPage({ post, posts, menus }) {
                           Required fields are marked
                           <span className="required">*</span>
                         </p>
-                        {/* <p className="comment-form-comment">
+                        <p className="comment-form-comment">
                       <label htmlFor="comment">Comment</label>
                       <textarea
                         name="comment"
@@ -423,7 +434,7 @@ export default function PostPage({ post, posts, menus }) {
                         maxLength="65525"
                         required="required"
                       ></textarea>
-                    </p> */}
+                    </p>
                         <p className="comment-form-author">
                           <label>
                             Name <span className="required">*</span>
@@ -453,7 +464,7 @@ export default function PostPage({ post, posts, menus }) {
                         <p className="comment-form-cookies-consent">
                           <input
                             type="checkbox"
-                            // value="yes"
+                            
                             name="wp-comment-cookies-consent"
                             id="wp-comment-cookies-consent"
                           />
@@ -472,7 +483,7 @@ export default function PostPage({ post, posts, menus }) {
                           />
                         </p>
                       </form>
-                    </div>
+                    </div> */}
                   </div>
                   {/* <!-- Comment  -->  */}
                   {/* <!--  end comment  --> */}
@@ -515,6 +526,7 @@ export default function PostPage({ post, posts, menus }) {
                                     alt=""
                                     width={800}
                                     height={600}
+                                     alt={item.featuredImage.node.altText}
                                   />
                                 </Link>
                                 <div className="card__post__content bg__post-cover">
@@ -573,9 +585,9 @@ export default function PostPage({ post, posts, menus }) {
                     </div>
                   </div> */}
                       <div className="wrapper__list__article-small">
-                        {asideData.map(item => {
+                        {asideData.map((item) => {
                           return (
-                            <div className="mb-3">
+                            <div className="mb-3" key={item.postId}>
                               <div className="card__post card__post-list">
                                 <div className="image-sm">
                                   <Link href={`/posts/${item.slug}`}>
@@ -584,7 +596,7 @@ export default function PostPage({ post, posts, menus }) {
                                       src={item.featuredImage.node.sourceUrl}
                                       width={500}
                                       height={400}
-                                      alt={item.featuredImage.node.altText}
+                                      alt={item?.featuredImage?.node?.altText}
                                     />
                                   </Link>
                                 </div>
@@ -620,11 +632,11 @@ export default function PostPage({ post, posts, menus }) {
                         })}
 
                         {/* <!--  Post Article  --> */}
-                        <div className="article__entry">
-                          {categoryDataSingle.map(item => {
+                        {/* <div className="article__entry">
+                          {categoryDataSingle.map((item) => {
                             return (
                               <>
-                                <div className="article__image">
+                                <div className="article__image" key={item.postId}>
                                   <Link href={`/posts/${item.slug}`}>
                                     <Image
                                       className="image-profile"
@@ -661,7 +673,7 @@ export default function PostPage({ post, posts, menus }) {
                               </>
                             );
                           })}
-                        </div>
+                        </div> */}
                       </div>
                     </aside>
 
@@ -805,12 +817,12 @@ export async function getStaticPaths(params) {
 
 //access the router, get the id, and get the data for that post
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }, category, data) {
   // console.log('slug', params.slug);
   const post = await getPost(params.slug);
   const menus = await getAllMenus();
 
-  const posts = await getAllPosts();
+  const posts = await getAllPosts((category = data));
 
   return {
     props: {
