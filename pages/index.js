@@ -9,6 +9,7 @@ export default function index({
   IPLcategory,
   cricketPosts,
   footBallPosts,
+  motoGPPosts,
 }) {
   // console.log("pos", posts);
   return (
@@ -27,6 +28,7 @@ export default function index({
         IPLcategory={IPLcategory || []}
         cricketPosts={cricketPosts || []}
         footBallPosts={footBallPosts || []}
+        motoGPPosts={motoGPPosts || []}
       />
     </>
   );
@@ -36,8 +38,9 @@ export async function getStaticProps({ params }, category) {
   const menus = await getAllMenus();
   const posts = await getAllPosts();
   const IPLcategory = await getAllPosts((category = 'IPL'));
-  const cricketPosts = await getAllPosts((category = 'cricket'));
-  const footBallPosts = await getAllPosts((category = 'football'));
+  const cricketPosts = await getAllPosts((category = 'Cricket'));
+  const footBallPosts = await getAllPosts((category = 'Football'));
+  const motoGPPosts = await getAllPosts((category = 'MotoGP'));
   // console.log(posts)
   return {
     props: {
@@ -46,6 +49,7 @@ export async function getStaticProps({ params }, category) {
       IPLcategory,
       cricketPosts,
       footBallPosts,
+      motoGPPosts,
     },
     revalidate: 600, // In seconds
   };
