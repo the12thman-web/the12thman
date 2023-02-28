@@ -45,7 +45,7 @@ export default function PostPage({ post, posts, menus }) {
             <br />
             <div
               className="has-drop-cap-fluid"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: post?.content }}
             ></div>
           </>
         ) : (
@@ -60,7 +60,7 @@ export default function PostPage({ post, posts, menus }) {
                   {/* <!--  Article Detail  --> */}
                   <div className="wrap__article-detail">
                     <div className="wrap__article-detail-title">
-                      <h1>{post.title}</h1>
+                      <h1>{post?.title}</h1>
                     </div>
                     <hr />
                     <div className="wrap__article-detail-info">
@@ -68,7 +68,7 @@ export default function PostPage({ post, posts, menus }) {
                         <li className="list-inline-item">
                           <Image
                             className="image-profile"
-                            src={post.featuredImage.node.sourceUrl}
+                            src={post?.featuredImage?.node?.sourceUrl}
                             width={80}
                             height={50}
                             alt="{posts?.featuredImage?.node?.altText}"
@@ -76,11 +76,11 @@ export default function PostPage({ post, posts, menus }) {
                         </li>
                         <li className="list-inline-item">
                           <span className="list-inline-item me-2">by</span>
-                          <a href="#">{post.author.node.name}</a>
+                          <a href="#">{post?.author?.node?.name}</a>
                         </li>
                         <li className="list-inline-item me-2">
                           <span className="text-dark text-capitalize ml-1">
-                            {post.date}
+                            {post?.date}
                           </span>
                         </li>
                       </ul>
@@ -89,7 +89,7 @@ export default function PostPage({ post, posts, menus }) {
                     <div className="wrap__article-detail-image mt-4">
                       <Image
                         className="image-profile"
-                        src={post.featuredImage.node.sourceUrl}
+                        src={post?.featuredImage?.node?.sourceUrl}
                         width={800}
                         height={500}
                         alt="{posts?.featuredImage?.node?.altText}"
@@ -126,7 +126,7 @@ export default function PostPage({ post, posts, menus }) {
                       </div>
                       <div
                         className="has-drop-cap-fluid"
-                        dangerouslySetInnerHTML={{ __html: post.content }}
+                        dangerouslySetInnerHTML={{ __html: post?.content }}
                       ></div>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export default function PostPage({ post, posts, menus }) {
                                   <Link href={`/posts/${item.slug}`}>
                                     <Image
                                       className="image-profile"
-                                      src={item.featuredImage.node.sourceUrl}
+                                      src={item?.featuredImage?.node?.sourceUrl}
                                       width={500}
                                       height={400}
                                       alt={item?.featuredImage?.node?.altText}
@@ -184,7 +184,7 @@ export default function PostPage({ post, posts, menus }) {
                                       <ul className="list-inline">
                                         <li className="list-inline-item">
                                           <span className="text-primary">
-                                            {item.author.node.name}
+                                            {item?.author?.node?.name}
                                           </span>
                                         </li>
                                       </ul>
@@ -192,7 +192,7 @@ export default function PostPage({ post, posts, menus }) {
                                     <div className="card__post__title">
                                       <h6>
                                         <Link href={`/posts/${item.slug}`}>
-                                          {item.title.slice(0, 30)}
+                                          {item?.title.slice(0, 30)}
                                         </Link>
                                       </h6>
                                     </div>
