@@ -10917,8 +10917,24 @@ input[type='number'] {
   .article__entry .article__content {
     float: none;
     padding: 0;
+   
   }
 }
+
+@media screen and (min-width: 900px) and (max-width: 1225px) {
+  .article__entry .article__content {
+    float: none;
+    padding: 0;
+   
+  }
+}
+
+@media screen and (min-width: 370px) and (max-width: 570px) {
+  #lowerCarContent{
+    height: 300px;
+  }
+}
+
 .article__entry .article__content .article__category {
   clear: both;
   color: #fff;
@@ -10984,22 +11000,18 @@ input[type='number'] {
     display: flex;
   }
 }
-@media screen and (min-width: 620px) and (max-width: 912px){
+
+@media screen and (min-width: 780px) and (max-width: 1030px) {
   .article__entry .article__content h5{
     height: 180px;
   }
 }
-@media screen and (min-width: 920px){
-  .article__entry .article__content h5{
-    height: 130px;
-  }
-}
-@media screen and (min-width: 576px) and (max-width: 768px) {
+/* @media screen and (min-width: 576px) and (max-width: 768px) {
   .article__entry .article__content h5 {
     font-size: 16px;
     height: 145px;
   }
-}
+} */
 .article__entry .article__content h5 a {
   color: #000;
 }

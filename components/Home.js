@@ -68,7 +68,7 @@ const Home = ({
                     return (
                       <div className="item" key={`home_${index}`}>
                         {/* <!-- Post Article -->*/}
-                        <div className="card__post card__post-list">
+                        <div className="card__post card__post-list" style={{ height: "100px", marginLeft: "8px", overflow: "hidden" }}>
                           <div className="image-sm">
                             <Link href={`/posts/${items.slug}?amp=1`}>
                               <Image
@@ -280,7 +280,7 @@ const Home = ({
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div className="article__content" id='lowerCarContent'>
                               <ul className="list-inline">
                                 <li className="list-inline-item">
                                   <span className="text-primary">
@@ -585,25 +585,25 @@ const Home = ({
                       width={1920}
                       className="d-block w-100"
                       alt="First slide"
-                      // src={items.featuredImage.node.sourceUrl}
+                    // src={items.featuredImage.node.sourceUrl}
                     />
                     <div className="carousel-caption d-md-block text-center text-capitalize">
                       <h1
                         className="text-white animated fadeInUp nopadd"
-                        // style="animation-delay:1s"
+                      // style="animation-delay:1s"
                       >
                         Cricket
                       </h1>
                       <p
                         className="text-white animated fadeInDown text-center"
-                        // style="animation-delay:2s"
+                      // style="animation-delay:2s"
                       >
                         Find your best tour and start the adventure at the
                         lowest budget and best experiences.{' '}
                       </p>
                       <div
                         className="animated fadeInLeft d-none d-sm-block"
-                        // style="animation-delay:2.6s"
+                      // style="animation-delay:2.6s"
                       >
                         <Link
                           href={'/'}
@@ -628,20 +628,20 @@ const Home = ({
                       <div className="carousel-caption d-md-block text-center text-capitalize">
                         <h1
                           className="text-white animated fadeInUp nopadd"
-                          // style="animation-delay:1s"
+                        // style="animation-delay:1s"
                         >
                           {items.title}
                         </h1>
                         <p
                           className="text-white animated fadeInDown text-center"
-                          // style="animation-delay:2s"
+                        // style="animation-delay:2s"
                         >
                           Best solution for your transportation from pickup to
                           destination.{' '}
                         </p>
                         <div
                           className="animated fadeInLeft d-none d-sm-block"
-                          // style="animation-delay:2.6s"
+                        // style="animation-delay:2.6s"
                         >
                           <Link
                             href={`/posts/${items.slug}`}
@@ -1054,20 +1054,20 @@ const Home = ({
                   <div className="carousel-caption d-md-block text-center text-capitalize">
                     <h1
                       className="text-white animated fadeInUp nopadd"
-                      // style="animation-delay:1s"
+                    // style="animation-delay:1s"
                     >
                       Football
                     </h1>
                     <p
                       className="text-white animated fadeInDown text-center"
-                      // style="animation-delay:2s"
+                    // style="animation-delay:2s"
                     >
                       Find your best tour and start the adventure at the lowest
                       budget and best experiences.{' '}
                     </p>
                     <div
                       className="animated fadeInLeft d-none d-sm-block"
-                      // style="animation-delay:2.6s"
+                    // style="animation-delay:2.6s"
                     >
                       <a href="#" className="btn btn-primary text-uppercase">
                         {' '}
@@ -1088,20 +1088,20 @@ const Home = ({
                     <div className="carousel-caption d-md-block text-center text-capitalize">
                       <h1
                         className="text-white animated fadeInUp nopadd"
-                        // style="animation-delay:1s"
+                      // style="animation-delay:1s"
                       >
                         {items.title}
                       </h1>
                       <p
                         className="text-white animated fadeInDown text-center"
-                        // style="animation-delay:2s"
+                      // style="animation-delay:2s"
                       >
                         Best solution for your transportation from pickup to
                         destination.{' '}
                       </p>
                       <div
                         className="animated fadeInLeft d-none d-sm-block"
-                        // style="animation-delay:2.6s"
+                      // style="animation-delay:2.6s"
                       >
                         <Link href={`/posts/${items.slug}`}>read more</Link>
                       </div>
