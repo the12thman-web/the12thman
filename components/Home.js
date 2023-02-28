@@ -86,22 +86,30 @@ const Home = ({
                               <div className="card__post__author-info mb-2">
                                 <ul className="list-inline">
                                   <li key={index} className="list-inline-item">
-                                    <span className="text-primary">
-                                      {items.author.node.name}
+                                    <span
+                                      className="text-dark"
+                                      style={{
+                                        fontWeight: '800',
+                                      }}
+                                    >
+                                      by {items.author.node.name}
                                     </span>
                                   </li>
-                                  <li key={index} className="list-inline-item">
+                                  {/* <li key={index} className="list-inline-item">
                                     <span className="text-dark text-capitalize">
                                       {items.date}
                                     </span>
-                                  </li>
+                                  </li> */}
                                 </ul>
                               </div>
                               <div className="card__post__title">
                                 <h6>
                                   <Link
                                     href={`/posts/${items.slug}?amp=1`}
-                                    style={{ fontSize: '10px' }}
+                                    style={{
+                                      fontSize: '10px',
+                                      opacity: '0.6',
+                                    }}
                                   >
                                     {items.title}
                                   </Link>
@@ -140,9 +148,9 @@ const Home = ({
                     showIndicators={false}
                     showThumbs={false}
                   >
-                    {mainCarousel.map(items => {
+                    {mainCarousel.map((items, index) => {
                       return (
-                        <div className="item">
+                        <div className="item" key={`home__${index}`}>
                           {/* <!-- Post Article -->*/}
                           <div className="card__post">
                             <div className="card__post__body">
@@ -193,9 +201,9 @@ const Home = ({
               <div className="col-md-4">
                 <div className="popular__news-right">
                   {/* <!-- Post Article -->*/}
-                  {sideCard.map(items => {
+                  {sideCard.map((items, index) => {
                     return (
-                      <div className="card__post ">
+                      <div className="card__post " key={`home___${index}`}>
                         <div className="card__post__body card__post__transition">
                           <Link href={`/posts/${items.slug}`}>
                             <Image
@@ -256,9 +264,9 @@ const Home = ({
                     set
                     showThumbs={false}
                   >
-                    {lowerCarousel.map(items => {
+                    {lowerCarousel.map((items, index) => {
                       return (
-                        <div className="item m-2">
+                        <div className="item m-2" key={`home_${index}`}>
                           {/* <!-- Post Article -->*/}
                           <div className="article__entry">
                             <div className="article__image">
@@ -317,8 +325,11 @@ const Home = ({
                   <h4 className="border_section">IPL</h4>
                 </div>
                 <div className="row ">
-                  {firstTwoData.map(items => (
-                    <div className="col-sm-12 col-md-6 mb-4">
+                  {firstTwoData.map((items, index) => (
+                    <div
+                      className="col-sm-12 col-md-6 mb-4"
+                      key={`home_${index}`}
+                    >
                       {/* <!-- Post Article -->*/}
                       <div className="card__post ">
                         <div className="card__post__body card__post__transition">
@@ -361,8 +372,8 @@ const Home = ({
                 <div className="row ">
                   <div className="col-sm-12 col-md-6">
                     <div className="wrapp__list__article-responsive">
-                      {firstTwoLeftData.map(items => (
-                        <div className="mb-3">
+                      {firstTwoLeftData.map((items, index) => (
+                        <div className="mb-3" key={`home_${index}`}>
                           {/* <!-- Post Article -->*/}
                           <div className="card__post card__post-list">
                             <div className="image-sm">
@@ -419,8 +430,8 @@ const Home = ({
                   </div>
                   <div className="col-sm-12 col-md-6 ">
                     <div className="wrapp__list__article-responsive">
-                      {firstTwoRightData.map(items => (
-                        <div className="mb-3">
+                      {firstTwoRightData.map((items, index) => (
+                        <div className="mb-3" key={`home_${index}`}>
                           {/* <!-- Post Article -->*/}
                           <div className="card__post card__post-list">
                             <div className="image-sm">
@@ -483,8 +494,8 @@ const Home = ({
                   <aside className="wrapper__list__article">
                     <h4 className="border_section">MotoGP</h4>
                     <div className="wrapper__list__article-small">
-                      {example.map(motoItem => (
-                        <div className="mb-3">
+                      {example.map((motoItem, index) => (
+                        <div className="mb-3" key={`home_${index}`}>
                           {/* <!-- Post Article -->*/}
                           <div className="card__post card__post-list">
                             <div className="image-sm">
@@ -605,8 +616,8 @@ const Home = ({
                     </div>
                   </div>
 
-                  {mainCarousel.map(items => (
-                    <div className="carousel-item">
+                  {mainCarousel.map((items, index) => (
+                    <div className="carousel-item" key={`home_${index}`}>
                       <Image
                         className="d-block w-100"
                         src={items.featuredImage.node.sourceUrl}
@@ -747,10 +758,13 @@ const Home = ({
                     <div className="col-md-6">
                       {/* <!-- Post Article --> */}
 
-                      {leftCricketCardData.map(item => {
+                      {leftCricketCardData.map((item, index) => {
                         return (
                           <>
-                            <div className="article__entry">
+                            <div
+                              className="article__entry"
+                              key={`home_${index}`}
+                            >
                               <div className="article__image">
                                 <Link href={`/posts/${item.slug}`}>
                                   <Image
@@ -798,10 +812,13 @@ const Home = ({
                     </div>
                     <div className="col-md-6">
                       {/* <!-- Post Article --> */}
-                      {rightCricketCardData.map(item => {
+                      {rightCricketCardData.map((item, index) => {
                         return (
                           <>
-                            <div className="article__entry">
+                            <div
+                              className="article__entry"
+                              key={`home_${index}`}
+                            >
                               <div className="article__image">
                                 <Link href={`/posts/${item.slug}`}>
                                   <Image
@@ -1195,10 +1212,10 @@ const Home = ({
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
 
-                    {leftFootBallCardData.map(item => {
+                    {leftFootBallCardData.map((item, index) => {
                       return (
                         <>
-                          <div className="article__entry">
+                          <div className="article__entry" key={`home_${index}`}>
                             <div className="article__image">
                               {/* <a href='.../posts/${node.slug}'> */}
                               <Link href={`/posts/${item.slug}`}>
@@ -1247,10 +1264,10 @@ const Home = ({
                   </div>
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
-                    {rightFootBallCardData.map(item => {
+                    {rightFootBallCardData.map((item, index) => {
                       return (
                         <>
-                          <div className="article__entry">
+                          <div className="article__entry" key={`home_${index}`}>
                             <div className="article__image">
                               <Link href={`/posts/${item.slug}`}>
                                 <Image

@@ -162,12 +162,15 @@ const Header = ({ menus }) => {
                 id="main_nav99"
               >
                 <ul className="navbar-nav ml-auto ">
-                  {filterData().map(items => {
+                  {filterData().map((items, index) => {
                     const dropDown = getListByParentID(items.id);
 
                     // console.log("id", items.id);
                     return (
-                      <li key={items.id} className="nav-item dropdown">
+                      <li
+                        key={`items.id_${index}`}
+                        className="nav-item dropdown"
+                      >
                         <Link
                           className={`nav-link active ${
                             dropDown?.length ? 'dropdown-toggle' : ''
@@ -178,8 +181,8 @@ const Header = ({ menus }) => {
                           {items.menu}
                         </Link>
                         <ul className="dropdown-menu dropdown-menu-left">
-                          {dropDown.map(val => (
-                            <li key={val.id}>
+                          {dropDown.map((val, index) => (
+                            <li key={`val.id_${index}`}>
                               <Link
                                 className="dropdown-item"
                                 href={`/category/${items.uri}`}
@@ -187,44 +190,48 @@ const Header = ({ menus }) => {
                                 {val.name}
                               </Link>
                               <ul className="dropdown-menu dropdown-menu-left">
-                                {getChildByParentId(val.id).map(child => (
-                                  <li key={child.id}>
-                                    <Link
-                                      className="dropdown-item"
-                                      href={`/category/${child.uri}`}
-                                    >
-                                      {child.newLineName}
-                                    </Link>
-                                    <ul className="dropdown-menu dropdown-menu-right">
-                                      {getNewChildByParentId(child.id).map(
-                                        pre_child => (
-                                          <li key={pre_child.id}>
-                                            <Link
-                                              className="dropdown-item"
-                                              href={`/category/${pre_child.uri}`}
-                                            >
-                                              {pre_child.newNextLineName}
-                                            </Link>
-                                            <ul className="dropdown-menu dropdown-menu-right">
-                                              {getNewChildrenByParentId(
-                                                pre_child.id
-                                              ).map(children => (
-                                                <li key={pre_child.id}>
-                                                  <Link
-                                                    className="dropdown-item"
-                                                    href={`/category/${children.uri}`}
+                                {getChildByParentId(val.id).map(
+                                  (child, index) => (
+                                    <li key={`child.id_${index}`}>
+                                      <Link
+                                        className="dropdown-item"
+                                        href={`/category/${child.uri}`}
+                                      >
+                                        {child.newLineName}
+                                      </Link>
+                                      <ul className="dropdown-menu dropdown-menu-right">
+                                        {getNewChildByParentId(child.id).map(
+                                          (pre_child, index) => (
+                                            <li key={`pre_child.id_${index}`}>
+                                              <Link
+                                                className="dropdown-item"
+                                                href={`/category/${pre_child.uri}`}
+                                              >
+                                                {pre_child.newNextLineName}
+                                              </Link>
+                                              <ul className="dropdown-menu dropdown-menu-right">
+                                                {getNewChildrenByParentId(
+                                                  pre_child.id
+                                                ).map((children, index) => (
+                                                  <li
+                                                    key={`children.id_${index}`}
                                                   >
-                                                    {children.newChildrenName}
-                                                  </Link>
-                                                </li>
-                                              ))}
-                                            </ul>
-                                          </li>
-                                        )
-                                      )}
-                                    </ul>
-                                  </li>
-                                ))}
+                                                    <Link
+                                                      className="dropdown-item"
+                                                      href={`/category/${children.uri}`}
+                                                    >
+                                                      {children.newChildrenName}
+                                                    </Link>
+                                                  </li>
+                                                ))}
+                                              </ul>
+                                            </li>
+                                          )
+                                        )}
+                                      </ul>
+                                    </li>
+                                  )
+                                )}
                               </ul>
                             </li>
                           ))}
@@ -347,11 +354,14 @@ const Header = ({ menus }) => {
               <div className="modal-body">
                 <nav className="list-group list-group-flush">
                   <ul className="navbar-nav">
-                    {filterData().map(items => {
+                    {filterData().map((items, index) => {
                       const dropDown = getListByParentID(items.id);
 
                       return (
-                        <li key={items.id} className="nav-item dropdown">
+                        <li
+                          key={`items.id_${index}`}
+                          className="nav-item dropdown"
+                        >
                           <Link
                             className={`nav-link active ${
                               dropDown?.length ? 'dropdown-toggle' : ''
@@ -364,11 +374,11 @@ const Header = ({ menus }) => {
                             {items.menu}
                           </Link>
                           <ul className="dropdown-menu dropdown-menu-left">
-                            {dropDown.map(val => {
+                            {dropDown.map((val, index) => {
                               const getChildByParentIdDropDown =
                                 getChildByParentId(val.id);
                               return (
-                                <li key={val.id}>
+                                <li key={`val.id_${index}`}>
                                   <Link
                                     className={`dropdown-item text-dark ${
                                       getChildByParentIdDropDown?.length
@@ -384,78 +394,82 @@ const Header = ({ menus }) => {
                                     {val.name}
                                   </Link>
                                   <ul className="submenu dropdown-menu  animate fade-up">
-                                    {getChildByParentIdDropDown.map(child => {
-                                      const getNewChildByParentIdDropDown =
-                                        getNewChildByParentId(child.id);
-                                      return (
-                                        <li key={child.id}>
-                                          <Link
-                                            className={`dropdown-item text-dark ${
-                                              getNewChildByParentIdDropDown?.length
-                                                ? 'dropdown-toggle'
-                                                : ''
-                                            }`}
-                                            href={
-                                              getNewChildByParentIdDropDown
-                                                ? ''
-                                                : `/category/${child.uri}`
-                                            }
-                                          >
-                                            {child.newLineName}
-                                          </Link>
-
-                                          <ul className="submenu dropdown-menu  animate fade-up">
-                                            {getNewChildByParentIdDropDown.map(
-                                              pre_child => {
-                                                const getNewChildrenByParentIdDropDown =
-                                                  getNewChildrenByParentId(
-                                                    pre_child.id
-                                                  );
-                                                return (
-                                                  <li key={child.id}>
-                                                    <Link
-                                                      className={`dropdown-item text-dark ${
-                                                        getNewChildrenByParentIdDropDown?.length
-                                                          ? 'dropdown-toggle'
-                                                          : ''
-                                                      }`}
-                                                      href={
-                                                        getNewChildrenByParentIdDropDown.length
-                                                          ? ''
-                                                          : `/category/${items.uri}`
-                                                      }
-                                                      data-toggle="dropdown"
-                                                    >
-                                                      {
-                                                        pre_child.newNextLineName
-                                                      }
-                                                    </Link>
-                                                    <ul className="submenu dropdown-menu  animate fade-up">
-                                                      {getNewChildrenByParentIdDropDown.map(
-                                                        children => (
-                                                          <li
-                                                            key={pre_child.id}
-                                                          >
-                                                            <Link
-                                                              className="dropdown-item text-dark"
-                                                              href={`/category/${children.uri}`}
-                                                            >
-                                                              {
-                                                                children.newChildrenName
-                                                              }
-                                                            </Link>
-                                                          </li>
-                                                        )
-                                                      )}
-                                                    </ul>
-                                                  </li>
-                                                );
+                                    {getChildByParentIdDropDown.map(
+                                      (child, index) => {
+                                        const getNewChildByParentIdDropDown =
+                                          getNewChildByParentId(child.id);
+                                        return (
+                                          <li key={`child.id_${index}`}>
+                                            <Link
+                                              className={`dropdown-item text-dark ${
+                                                getNewChildByParentIdDropDown?.length
+                                                  ? 'dropdown-toggle'
+                                                  : ''
+                                              }`}
+                                              href={
+                                                getNewChildByParentIdDropDown
+                                                  ? ''
+                                                  : `/category/${child.uri}`
                                               }
-                                            )}
-                                          </ul>
-                                        </li>
-                                      );
-                                    })}
+                                            >
+                                              {child.newLineName}
+                                            </Link>
+
+                                            <ul className="submenu dropdown-menu  animate fade-up">
+                                              {getNewChildByParentIdDropDown.map(
+                                                (pre_child, index) => {
+                                                  const getNewChildrenByParentIdDropDown =
+                                                    getNewChildrenByParentId(
+                                                      pre_child.id
+                                                    );
+                                                  return (
+                                                    <li
+                                                      key={`child.id_${index}`}
+                                                    >
+                                                      <Link
+                                                        className={`dropdown-item text-dark ${
+                                                          getNewChildrenByParentIdDropDown?.length
+                                                            ? 'dropdown-toggle'
+                                                            : ''
+                                                        }`}
+                                                        href={
+                                                          getNewChildrenByParentIdDropDown.length
+                                                            ? ''
+                                                            : `/category/${items.uri}`
+                                                        }
+                                                        data-toggle="dropdown"
+                                                      >
+                                                        {
+                                                          pre_child.newNextLineName
+                                                        }
+                                                      </Link>
+                                                      <ul className="submenu dropdown-menu  animate fade-up">
+                                                        {getNewChildrenByParentIdDropDown.map(
+                                                          (children, index) => (
+                                                            <li
+                                                              key={`pre_child.id_${index}`}
+                                                            >
+                                                              <Link
+                                                                className="dropdown-item text-dark"
+                                                                href={`/category/${children.uri}`}
+                                                              >
+                                                                {
+                                                                  children.newChildrenName
+                                                                }
+                                                              </Link>
+                                                            </li>
+                                                          )
+                                                        )}
+                                                      </ul>
+                                                    </li>
+                                                  );
+                                                }
+                                              )}
+                                            </ul>
+                                          </li>
+                                        );
+                                      }
+                                    )}
                                   </ul>
                                 </li>
                               );
