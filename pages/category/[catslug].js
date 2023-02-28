@@ -11,7 +11,7 @@ const Category = ({ posts, menus, title }) => {
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
   const categoryTagsData = posts?.nodes;
 
-  console.log("pp", posts);
+  console.log('pp', posts);
   return (
     <>
       <Header menus={menus} />
@@ -29,7 +29,7 @@ const Category = ({ posts, menus, title }) => {
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
 
-                    {categoryDatafirstCol.map((item) => {
+                    {categoryDatafirstCol.map(item => {
                       return (
                         <>
                           <div className="article__entry" key={item.postId}>
@@ -50,7 +50,10 @@ const Category = ({ posts, menus, title }) => {
                                 {item.categories.nodes[0].name}
                               </div>
                               <ul className="list-inline">
-                                <li className="list-inline-item">
+                                <li
+                                  className="list-inline-item"
+                                  key={item.postId}
+                                >
                                   <span className="text-primary">
                                     by {item.author.node.name}
                                   </span>
@@ -81,7 +84,7 @@ const Category = ({ posts, menus, title }) => {
                   </div>
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
-                    {categoryDatasecCol.map((item) => {
+                    {categoryDatasecCol.map(item => {
                       return (
                         <>
                           <div className="article__entry" key={item.postId}>
@@ -138,7 +141,7 @@ const Category = ({ posts, menus, title }) => {
                 <aside className="wrapper__list__article ">
                   <h4 className="border_section">Recent Blogs</h4>
                   <div className="wrapper__list__article-small">
-                    {categoryDataSlider.map((item) => {
+                    {categoryDataSlider.map(item => {
                       return (
                         <>
                           <div className="mb-3" key={item.postId}>
@@ -232,6 +235,14 @@ const Category = ({ posts, menus, title }) => {
                     </div> */}
                   </div>
                 </aside>
+                <ins
+                  class="adsbygoogle"
+                  style="display:block; text-align:center;"
+                  data-ad-layout="in-article"
+                  data-ad-format="fluid"
+                  data-ad-client="ca-pub-9891586352099803"
+                  data-ad-slot="5294261220"
+                ></ins>
 
                 {/* <aside className="wrapper__list__article">
                   <h4 className="border_section">tags</h4>

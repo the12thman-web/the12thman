@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Home from '../components/Home';
 import { getAllMenus, getAllPosts } from '../utils/wpGraph';
-import Category from './category/[catslug]';
 
 export default function index({
   posts,
