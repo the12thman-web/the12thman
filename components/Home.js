@@ -772,18 +772,18 @@ const Home = ({
                                       by {item.author.node.name}
                                     </span>
                                   </li>
-                                  <li className="list-inline-item">
+                                  {/* <li className="list-inline-item">
                                     <span className="text-dark text-capitalize">
                                       descember 09, 2016
                                     </span>
-                                  </li>
+                                  </li> */}
                                 </ul>
                                 <h5>
                                   <Link href={`/posts/${item.slug}`}>
-                                    {item.title.slice(0, 45)}...
+                                    {item.title}
                                   </Link>
                                 </h5>
-                                <p>{item.slug.slice(0, 30)} ...</p>
+                                {/* <p>{item.slug.slice(0, 30)} ...</p> */}
                                 <Link
                                   href={`/posts/${item.slug}`}
                                   className="btn btn-outline-primary mb-4 text-capitalize"
@@ -823,18 +823,18 @@ const Home = ({
                                       by {item.author.node.name}
                                     </span>
                                   </li>
-                                  <li className="list-inline-item">
+                                  {/* <li className="list-inline-item">
                                     <span className="text-dark text-capitalize">
                                       descember 09, 2016
                                     </span>
-                                  </li>
+                                  </li> */}
                                 </ul>
                                 <h5>
                                   <Link href={`/posts/${item.slug}`}>
-                                    {item.title.slice(0, 45)}...
+                                    {item.title}
                                   </Link>
                                 </h5>
-                                <p>{item.slug.slice(0, 30)} ...</p>
+                                {/* <p>{item.slug.slice(0, 30)} ...</p> */}
                                 <Link
                                   href={`/posts/${item.slug}`}
                                   className="btn btn-outline-primary mb-4 text-capitalize"
@@ -1221,18 +1221,18 @@ const Home = ({
                                     by {item.author.node.name}
                                   </span>
                                 </li>
-                                <li className="list-inline-item">
+                                {/* <li className="list-inline-item">
                                   <span className="text-dark text-capitalize">
                                     descember 09, 2016
                                   </span>
-                                </li>
+                                </li> */}
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title.slice(0, 45)}...
+                                  {item.title}
                                 </Link>
                               </h5>
-                              <p>{item.slug.slice(0, 30)} ....</p>
+                              {/* <p>{item.slug.slice(0, 30)} ....</p> */}
                               <Link
                                 href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
@@ -1272,18 +1272,18 @@ const Home = ({
                                     by {item.author.node.name}
                                   </span>
                                 </li>
-                                <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
+                                {/* <li className="list-inline-item"> */}
+                                {/* <span className="text-dark text-capitalize">
                                     descember 09, 2016
                                   </span>
-                                </li>
+                                </li> */}
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title.slice(0, 45)}...
+                                  {item.title}
                                 </Link>
                               </h5>
-                              <p>{item.slug.slice(0, 30)} .....</p>
+                              {/* <p>{item.slug.slice(0, 30)} .....</p> */}
                               <a
                                 href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
