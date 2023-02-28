@@ -68,7 +68,7 @@ const Home = ({
                     return (
                       <div className="item" key={`home_${index}`}>
                         {/* <!-- Post Article -->*/}
-                        <div className="card__post card__post-list" style={{ height: "100px", marginLeft: "8px", overflow: "hidden" }}>
+                        <div className="card__post card__post-list" style={{ border: "2px solid lightgray", height: "100px", marginLeft: "8px", overflow: "hidden" }}>
                           <div className="image-sm">
                             <Link href={`/posts/${items.slug}?amp=1`}>
                               <Image
@@ -776,7 +776,7 @@ const Home = ({
                                   />
                                 </Link>
                               </div>
-                              <div className="article__content">
+                              <div className="article__content" id='cricketHomeStyle'>
                                 <div className="article__category">
                                   {item.categories.nodes[0].name}
                                 </div>
@@ -830,7 +830,7 @@ const Home = ({
                                   />
                                 </Link>
                               </div>
-                              <div className="article__content">
+                              <div className="article__content" id='cricketHomeStyle'>
                                 <div className="article__category">
                                   {item.categories.nodes[0].name}
                                 </div>
@@ -1228,7 +1228,7 @@ const Home = ({
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div className="article__content" id='footballtHomeStyle'>
                               <div className="article__category">
                                 {item.categories.nodes[0].name}
                               </div>
@@ -1279,7 +1279,7 @@ const Home = ({
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div className="article__content" id='footballtHomeStyle'>
                               <div className="article__category">
                                 {item.categories.nodes[0].name}
                               </div>

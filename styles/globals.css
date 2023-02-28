@@ -8505,6 +8505,7 @@ button.bg-dark:focus {
 }
 .text-capitalize {
   text-transform: capitalize !important;
+  margin-top: 14px;
 }
 .font-weight-light {
   font-weight: 300 !important;
@@ -10893,6 +10894,7 @@ input[type='number'] {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 24px;
   border-radius: 3%;
+  overflow: hidden;
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .article__entry .article__image {
@@ -10925,13 +10927,33 @@ input[type='number'] {
   .article__entry .article__content {
     float: none;
     padding: 0;
-   
+   /* height: 200px; */
   }
 }
 
-@media screen and (min-width: 370px) and (max-width: 570px) {
+@media screen and (min-width: 1226px) and (max-width: 2225px) {
+  .article__entry .article__content {
+    float: none;
+    padding: 0;
+   /* height: 200px; */
+  }
+}
+
+@media screen and (min-width: 350px) and (max-width: 576px) {
   #lowerCarContent{
-    height: 300px;
+    height: 245px !important;
+  }
+}
+
+@media screen and (min-width: 580px) and (max-width: 976px) {
+  #lowerCarContent{
+    height: 175px !important;
+  }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1360px) {
+  #lowerCarContent{
+    height: 100px !important;
   }
 }
 
@@ -10993,7 +11015,7 @@ input[type='number'] {
 .article__entry .article__content h5 {
   font-size: 18px;
 }
-@media screen and (min-width: 320px) and (max-width: 575px) {
+@media screen and (min-width: 220px) and (max-width: 575px) {
   .article__entry .article__content h5 {
     font-size: 15px;
     line-height: 1.4;
@@ -11001,17 +11023,42 @@ input[type='number'] {
   }
 }
 
-@media screen and (min-width: 780px) and (max-width: 1030px) {
+@media screen and (min-width: 768px) and (max-width: 997px) {
   .article__entry .article__content h5{
     height: 180px;
   }
 }
-/* @media screen and (min-width: 576px) and (max-width: 768px) {
-  .article__entry .article__content h5 {
+
+@media screen and (min-width: 998px) and (max-width: 1600px) {
+  #cricketHomeStyle {
     font-size: 16px;
-    height: 145px;
+    height: 240px !important;
   }
-} */
+}
+
+@media screen and (min-width: 1226px) and (max-width: 2225px) {
+  #cricketHomeStyle {
+    float: none;
+    padding: 0;
+   height: 240px !important;
+  }
+}
+
+@media screen and (min-width: 997px) and (max-width: 2225px) {
+  #footballtHomeStyle {
+    float: none;
+    padding: 0;
+   height: 200px !important;
+  }
+}
+
+@media screen and (min-width: 888px) and (max-width: 999px) {
+  #footballtHomeStyle {
+    float: none;
+    padding: 0;
+   /* height: 200px !important; */
+  }
+}
 .article__entry .article__content h5 a {
   color: #000;
 }
