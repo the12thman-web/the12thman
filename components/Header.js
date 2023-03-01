@@ -128,7 +128,7 @@ const Header = ({ menus }) => {
               marginLeft: 'auto',
             }}
           >
-            {/* <Adsense></Adsense> */}
+            <Adsense></Adsense>
             <div className="offcanvas-header">
               <div
                 data-toggle="modal"
