@@ -11052,11 +11052,22 @@ input[type='number'] {
    height: 200px !important;
   }
 }
-
-@media screen and (min-width: 820px) and (max-width: 1399px) {
+@media screen and (min-width: 1399px) {
+  #iplHomeCard{
+  height: 135px !important;
+  overflow: hidden;
+  }
+  /* .iplCard{
+    height: 235px;
+  } */
+}
+@media screen and (min-width: 768px) and (max-width: 1398px) {
   #iplHomeCard{
   height: 135px;
   }
+  /* .iplCard{
+    height: 135px !important;
+  } */
 }
 
 @media screen and (max-width: 991.5px) {

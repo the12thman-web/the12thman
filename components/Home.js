@@ -432,7 +432,7 @@ const Home = ({
                       {firstTwoRightData.map((items, index) => (
                         <div className="mb-3" key={`home_${index}`}>
                           {/* <!-- Post Article -->*/}
-                          <div className="card__post card__post-list" id='iplHomeCard'>
+                          <div className="card__post card__post-list iplCard" id='iplHomeCard'>
                             <div className="image-sm">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
