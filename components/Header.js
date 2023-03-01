@@ -4,6 +4,7 @@ import { getAllMenus } from '../utils/wpGraph';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../public/Logo.png';
+import Adsense from './Adsense';
 
 const Header = ({ menus }) => {
   // console.log('menus', menus);
@@ -127,14 +128,7 @@ const Header = ({ menus }) => {
               marginLeft: 'auto',
             }}
           >
-            <ins
-              className="adsbygoogle"
-              style={{ display: 'block', textAlign: 'center' }}
-              data-ad-layout="in-article"
-              data-ad-format="fluid"
-              data-ad-client="ca-pub-9891586352099803"
-              data-ad-slot="5294261220"
-            ></ins>
+            <Adsense></Adsense>
             <div className="offcanvas-header">
               <div
                 data-toggle="modal"
