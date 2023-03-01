@@ -62,7 +62,14 @@ const Home = ({
                     return (
                       <div className="item" key={items.postId}>
                         {/* <!-- Post Article -->*/}
-                        <div className="card__post card__post-list">
+                        <div
+                          className="card__post card__post-list"
+                          style={{
+                            height: '100px',
+                            marginLeft: '8px',
+                            overflow: 'hidden',
+                          }}
+                        >
                           <div className="image-sm">
                             <Link href={`/posts/${items.slug}?amp=1`}>
                               <Image
@@ -267,7 +274,10 @@ const Home = ({
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div
+                              className="article__content"
+                              id="lowerCarContent"
+                            >
                               <ul className="list-inline">
                                 <li
                                   className="list-inline-item"
@@ -357,7 +367,10 @@ const Home = ({
                       {firstTwoLeftData.map(items => (
                         <div className="mb-3" key={items.postId}>
                           {/* <!-- Post Article -->*/}
-                          <div className="card__post card__post-list">
+                          <div
+                            className="card__post card__post-list"
+                            id="iplHomeCard"
+                          >
                             <div className="image-sm">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
@@ -389,10 +402,7 @@ const Home = ({
                                 </div>
                                 <div className="card__post__title">
                                   <h6>
-                                    <Link
-                                      href={`/posts/${items.slug}`}
-                                      style={{ fontSize: '10px' }}
-                                    >
+                                    <Link href={`/posts/${items.slug}`}>
                                       {items.title}
                                     </Link>
                                   </h6>
@@ -409,7 +419,10 @@ const Home = ({
                       {firstTwoRightData.map(items => (
                         <div className="mb-3" key={items.postId}>
                           {/* <!-- Post Article -->*/}
-                          <div className="card__post card__post-list">
+                          <div
+                            className="card__post card__post-list"
+                            id="iplHomeCard"
+                          >
                             <div className="image-sm">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
@@ -441,10 +454,7 @@ const Home = ({
                                 </div>
                                 <div className="card__post__title">
                                   <h6>
-                                    <Link
-                                      href={`/posts/${items.slug}`}
-                                      style={{ fontSize: '12px' }}
-                                    >
+                                    <Link href={`/posts/${items.slug}`}>
                                       {items.title}
                                     </Link>
                                   </h6>
@@ -459,7 +469,7 @@ const Home = ({
                 </div>
               </div>
 
-              <div className="col-md-4">
+              <div className="col-md-4" id="motogpHomeCss">
                 <div className="sticky-top">
                   <aside className="wrapper__list__article">
                     <h4 className="border_section">MotoGP</h4>
@@ -553,7 +563,10 @@ const Home = ({
                                   />
                                 </Link>
                               </div>
-                              <div className="article__content">
+                              <div
+                                className="article__content"
+                                id="cricketHomeStyle"
+                              >
                                 <div className="article__category">
                                   {item.categories.nodes[0].name}
                                 </div>
@@ -601,7 +614,10 @@ const Home = ({
                                   />
                                 </Link>
                               </div>
-                              <div className="article__content">
+                              <div
+                                className="article__content"
+                                id="cricketHomeStyle"
+                              >
                                 <div className="article__category">
                                   {item.categories.nodes[0].name}
                                 </div>
@@ -677,7 +693,10 @@ const Home = ({
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div
+                              className="article__content"
+                              id="footballtHomeStyle"
+                            >
                               <div className="article__category">
                                 {item.categories.nodes[0].name}
                               </div>
@@ -725,7 +744,10 @@ const Home = ({
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div
+                              className="article__content"
+                              id="footballtHomeStyle"
+                            >
                               <div className="article__category">
                                 {item.categories.nodes[0].name}
                               </div>

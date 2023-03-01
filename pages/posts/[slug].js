@@ -5,14 +5,19 @@ import { useSearchParams } from 'next/navigation';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Header from '../../components/Header';
 import { useAmp } from 'next/amp';
+import Category from '../category/[catslug]';
+// import { it } from 'node:test';
 
 export const config = { amp: 'false' };
 
 export default function PostPage({ post, posts, menus }) {
   const isAmp = useAmp();
   const asideData = posts ? posts?.nodes?.slice(12, 16) : [];
-  const categoryDataSingle = posts ? posts?.nodes?.slice(10, 11) : [];
+  // const categoryDataSingle = posts ? posts?.nodes?.slice(10, 11) : [];
 
+  const searchParams = useSearchParams();
+  const data = searchParams.get('valueForPosts');
+  console.log("asdf", data)
   return (
     <>
       <section className="pb-80">
@@ -33,14 +38,14 @@ export default function PostPage({ post, posts, menus }) {
             <amp-img
               width="100"
               height="100"
-              src={post.featuredImage.node.sourceUrl}
+              src={post?.featuredImage?.node?.sourceUrl}
               alt="a cool image"
               layout="responsive"
             />
             <br />
             <div
               className="has-drop-cap-fluid"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: post?.content }}
             ></div>
           </>
         ) : (
@@ -55,7 +60,7 @@ export default function PostPage({ post, posts, menus }) {
                   {/* <!--  Article Detail  --> */}
                   <div className="wrap__article-detail">
                     <div className="wrap__article-detail-title">
-                      <h1>{post.title}</h1>
+                      <h1>{post?.title}</h1>
                     </div>
                     <hr />
                     <div className="wrap__article-detail-info">
@@ -63,18 +68,19 @@ export default function PostPage({ post, posts, menus }) {
                         <li className="list-inline-item">
                           <Image
                             className="image-profile"
-                            src={post.featuredImage.node.sourceUrl}
+                            src={post?.featuredImage?.node?.sourceUrl}
                             width={80}
                             height={50}
+                            alt="{posts?.featuredImage?.node?.altText}"
                           />
                         </li>
                         <li className="list-inline-item">
                           <span className="list-inline-item me-2">by</span>
-                          <a href="#">{post.author.node.name}</a>
+                          <a href="#">{post?.author?.node?.name}</a>
                         </li>
                         <li className="list-inline-item me-2">
                           <span className="text-dark text-capitalize ml-1">
-                            {post.date}
+                            {post?.date}
                           </span>
                         </li>
                       </ul>
@@ -83,9 +89,10 @@ export default function PostPage({ post, posts, menus }) {
                     <div className="wrap__article-detail-image mt-4">
                       <Image
                         className="image-profile"
-                        src={post.featuredImage.node.sourceUrl}
+                        src={post?.featuredImage?.node?.sourceUrl}
                         width={800}
                         height={500}
+                        alt="{posts?.featuredImage?.node?.altText}"
                       />
                     </div>
                     <div className="wrap__article-detail-content">
@@ -119,7 +126,7 @@ export default function PostPage({ post, posts, menus }) {
                       </div>
                       <div
                         className="has-drop-cap-fluid"
-                        dangerouslySetInnerHTML={{ __html: post.content }}
+                        dangerouslySetInnerHTML={{ __html: post?.content }}
                       ></div>
                     </div>
                   </div>
@@ -132,8 +139,9 @@ export default function PostPage({ post, posts, menus }) {
                       <Image
                         className="img-fluid rounded-circle"
                         src={post.featuredImage.node.sourceUrl}
-                        width={80}
-                        height={80}
+                        width={48}
+                        height={48}
+                        alt='{posts?.featuredImage?.node?.altText}'
                       />
 
                       <div className="wrap__profile-author-detail">
@@ -154,18 +162,18 @@ export default function PostPage({ post, posts, menus }) {
                   <div className="sticky-top">
                     <aside className="wrapper__list__article ">
                       <div className="wrapper__list__article-small">
-                        {asideData.map(item => {
+                        {asideData.map((item) => {
                           return (
-                            <div className="mb-3">
+                            <div className="mb-3" key={item.postId}>
                               <div className="card__post card__post-list">
                                 <div className="image-sm">
                                   <Link href={`/posts/${item.slug}`}>
                                     <Image
                                       className="image-profile"
-                                      src={item.featuredImage.node.sourceUrl}
+                                      src={item?.featuredImage?.node?.sourceUrl}
                                       width={500}
                                       height={400}
-                                      alt={item.featuredImage.node.altText}
+                                      alt={item?.featuredImage?.node?.altText}
                                     />
                                   </Link>
                                 </div>
@@ -176,7 +184,7 @@ export default function PostPage({ post, posts, menus }) {
                                       <ul className="list-inline">
                                         <li className="list-inline-item">
                                           <span className="text-primary">
-                                            {item.author.node.name}
+                                            {item?.author?.node?.name}
                                           </span>
                                         </li>
                                       </ul>
@@ -184,7 +192,7 @@ export default function PostPage({ post, posts, menus }) {
                                     <div className="card__post__title">
                                       <h6>
                                         <Link href={`/posts/${item.slug}`}>
-                                          {item.title.slice(0, 30)}
+                                          {item?.title.slice(0, 30)}
                                         </Link>
                                       </h6>
                                     </div>
@@ -196,11 +204,11 @@ export default function PostPage({ post, posts, menus }) {
                         })}
 
                         {/* <!--  Post Article  --> */}
-                        <div className="article__entry">
-                          {categoryDataSingle.map(item => {
+                        {/* <div className="article__entry">
+                          {categoryDataSingle.map((item) => {
                             return (
                               <>
-                                <div className="article__image">
+                                <div className="article__image" key={item.postId}>
                                   <Link href={`/posts/${item.slug}`}>
                                     <Image
                                       className="image-profile"
@@ -236,7 +244,7 @@ export default function PostPage({ post, posts, menus }) {
                               </>
                             );
                           })}
-                        </div>
+                        </div> */}
                       </div>
                     </aside>
                   </div>
@@ -256,9 +264,9 @@ export async function getStaticPaths(params) {
   return {
     paths: allPosts
       ? allPosts.nodes.map(node => {
-          // console.log('static path post', '/posts/' + node.slug);
-          return `/posts/${node.slug}`;
-        }) || []
+        // console.log('static path post', '/posts/' + node.slug);
+        return `/posts/${node.slug}`;
+      }) || []
       : [],
     fallback: 'blocking',
   };

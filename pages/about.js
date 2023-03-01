@@ -1,36 +1,28 @@
 import React from "react";
+import Header from "../components/Header";
+import logo from "../public/Logo.png"
+import Image from 'next/image';
+import Link from 'next/link';
+
+
 // export const config = { amp: true };
 
-const About = () => {
+const About = (menus) => {
   return (
     <>
+      <Header menus={menus} />
       <section className="bg-light">
         <div className="container">
-          {/* <!-- breadcrumb -->
-            <!-- Breadcrumb --> */}
-          <ul className="breadcrumbs mb-4 text-center">
-            <li className="breadcrumbs__item">
-              <a href="index.html" className="breadcrumbs__url">
-                <i className="fa fa-home"></i> Home
-              </a>
-            </li>
-            <li className="breadcrumbs__item">
-              <a href="index.html" className="breadcrumbs__url">
-                News
-              </a>
-            </li>
-            <li className="breadcrumbs__item breadcrumbs__item--current">
-              How to become a professional travel blogger
-            </li>
-          </ul>
-          {/* <!-- breadcrumb --> */}
+
           <div className="row">
             <div className="col-lg-12">
               <figure className="text-center">
-                <img
-                  src="images/placeholder/1920x960.jpg"
-                  alt=""
+                <Image
                   className="img-fluid"
+                  src={logo}
+                  width={1920}
+                  height={960}
+                  alt="{item.featuredImage.node.altText}"
                 />
               </figure>
               <hr />
@@ -51,37 +43,37 @@ const About = () => {
                   </div>
 
                   <ul className="list-inline">
-                    <span className="share">share on:</span>
+                    {/* <span className="share">share on:</span> */}
                     <li className="list-inline-item">
-                      <a className="btn btn-social-o facebook" href="#">
+                      <Link className="btn btn-social-o facebook" href="#">
                         <i className="fa fa-facebook-f"></i>
-                        <span>facebook</span>
-                      </a>
+                        {/* <span>facebook</span> */}
+                      </Link>
                     </li>
                     <li className="list-inline-item">
-                      <a className="btn btn-social-o twitter" href="#">
+                      <Link className="btn btn-social-o twitter" href="#">
                         <i className="fa fa-twitter"></i>
-                        <span>twitter</span>
-                      </a>
+                        {/* <span>twitter</span> */}
+                      </Link>
                     </li>
                     <li className="list-inline-item">
-                      <a className="btn btn-social-o whatsapp" href="#">
+                      <Link className="btn btn-social-o whatsapp" href="#">
                         <i className="fa fa-whatsapp"></i>
-                        <span>whatsapp</span>
-                      </a>
+                        {/* <span>whatsapp</span> */}
+                      </Link>
                     </li>
                     <li className="list-inline-item">
-                      <a className="btn btn-social-o telegram" href="#">
+                      <Link className="btn btn-social-o telegram" href="#">
                         <i className="fa fa-telegram"></i>
-                        <span>telegram</span>
-                      </a>
+                        {/* <span>telegram</span> */}
+                      </Link>
                     </li>
 
                     <li className="list-inline-item">
-                      <a className="btn btn-linkedin-o linkedin" href="#">
+                      <Link className="btn btn-linkedin-o linkedin" href="#">
                         <i className="fa fa-linkedin"></i>
-                        <span>linkedin</span>
-                      </a>
+                        {/* <span>linkedin</span> */}
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -100,9 +92,9 @@ const About = () => {
                   </p>
                   <footer>
                     <cite>
-                      <a title="Author title" href="#temp_url">
+                      <Link title="Author title" href="#temp_url">
                         www.the12thman.in
-                      </a>
+                      </Link>
                     </cite>
                   </footer>
                 </blockquote>

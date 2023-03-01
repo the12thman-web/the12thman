@@ -8505,6 +8505,7 @@ button.bg-dark:focus {
 }
 .text-capitalize {
   text-transform: capitalize !important;
+  /* margin-top: 14px; */
 }
 .font-weight-light {
   font-weight: 300 !important;
@@ -9295,6 +9296,7 @@ blockquote footer {
 }
 .btn-social i {
   margin-right: 0px;
+  margin-top: 8px;
 }
 .btn-social.btn-cicle {
   border-radius: 50%;
@@ -10273,7 +10275,8 @@ input[type='number'] {
 }
 .card__post-list {
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 3%;
   padding: 6px;
 }
@@ -10892,6 +10895,7 @@ input[type='number'] {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 24px;
   border-radius: 3%;
+  overflow: hidden;
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .article__entry .article__image {
@@ -10916,8 +10920,44 @@ input[type='number'] {
   .article__entry .article__content {
     float: none;
     padding: 0;
+   
   }
 }
+
+@media screen and (min-width: 900px) and (max-width: 1225px) {
+  .article__entry .article__content {
+    float: none;
+    padding: 0;
+   /* height: 200px; */
+  }
+}
+
+@media screen and (min-width: 1226px) and (max-width: 2225px) {
+  .article__entry .article__content {
+    float: none;
+    padding: 0;
+   /* height: 200px; */
+  }
+}
+
+@media screen and (min-width: 350px) and (max-width: 576px) {
+  #lowerCarContent{
+    height: 245px !important;
+  }
+}
+
+@media screen and (min-width: 580px) and (max-width: 976px) {
+  #lowerCarContent{
+    height: 175px !important;
+  }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1360px) {
+  #lowerCarContent{
+    height: 100px !important;
+  }
+}
+
 .article__entry .article__content .article__category {
   clear: both;
   color: #fff;
@@ -10976,16 +11016,52 @@ input[type='number'] {
 .article__entry .article__content h5 {
   font-size: 18px;
 }
-@media screen and (min-width: 320px) and (max-width: 575px) {
+@media screen and (min-width: 220px) and (max-width: 575px) {
   .article__entry .article__content h5 {
     font-size: 15px;
     line-height: 1.4;
     display: flex;
   }
 }
-@media screen and (min-width: 576px) and (max-width: 768px) {
-  .article__entry .article__content h5 {
+
+@media screen and (min-width: 768px) and (max-width: 997px) {
+  .article__entry .article__content h5{
+    height: 180px;
+  }
+}
+
+@media screen and (min-width: 998px) and (max-width: 1600px) {
+  #cricketHomeStyle {
     font-size: 16px;
+    height: 240px !important;
+  }
+}
+
+@media screen and (min-width: 1226px) and (max-width: 2225px) {
+  #cricketHomeStyle {
+    float: none;
+    padding: 0;
+   height: 240px !important;
+  }
+}
+
+@media screen and (min-width: 997px) and (max-width: 2225px) {
+  #footballtHomeStyle {
+    float: none;
+    padding: 0;
+   height: 200px !important;
+  }
+}
+
+@media screen and (min-width: 820px) and (max-width: 1399px) {
+  #iplHomeCard{
+  height: 135px;
+  }
+}
+
+@media screen and (max-width: 991.5px) {
+  #motogpHomeCss{
+  width: 100% !important;
   }
 }
 .article__entry .article__content h5 a {
@@ -11625,8 +11701,8 @@ input[type='number'] {
   }
 }
 .wrap__profile {
-  border: 1px solid #ddd;
-  padding: 20px;
+  /* border: 1px solid #ddd; */
+  padding: 20px  20px 20px 0;
   position: relative;
   display: flex;
   margin-bottom: 50px;
@@ -11636,7 +11712,7 @@ input[type='number'] {
 }
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .wrap__profile-author {
-    display: block;
+    /* display: block; */
     text-align: center;
   }
 }
@@ -11664,7 +11740,8 @@ input[type='number'] {
   vertical-align: middle;
 }
 .wrap__profile-author-detail {
-  float: left;
+  /* float: left; */
+  margin-left: 15px;
 }
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .wrap__profile-author-detail {
@@ -14972,5 +15049,12 @@ a {
 .logoContainer {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 33%;
+}
+
+@media (max-width: 990px) {
+  .logoContainer {
+   /* margin-right: 10px; */
+   width: 90%;
+  }
 }
