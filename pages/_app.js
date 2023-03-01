@@ -17,9 +17,9 @@ function MyApp({ Component, pageProps, menus }) {
       <script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
       ></script>
-      <Script type="text/javascript" src="scripts/script.js" />
+      {/* <Script type="text/javascript" src="scripts/script.js" /> */}
       <Component {...pageProps} />
       <Footer />
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
