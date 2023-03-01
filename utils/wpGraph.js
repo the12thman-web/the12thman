@@ -1,4 +1,5 @@
 import { readFromCache, writeToCache } from './cache';
+import { default as fetch, Request } from 'node-fetch';
 
 const API_URL = 'https://12thmanstaging.the12thman.in/graphql';
 
@@ -11,7 +12,7 @@ async function fetchAPI(query = '', { variables } = {}) {
     ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
-  const res = await fetch(API_URL, {
+  const request = new Request(API_URL, {
     headers,
     method: 'POST',
     body: JSON.stringify({
@@ -19,6 +20,8 @@ async function fetchAPI(query = '', { variables } = {}) {
       variables,
     }),
   });
+
+  const res = await fetch(request);
 
   console.log('res: ', res);
   const json = await res.json();
