@@ -8505,7 +8505,7 @@ button.bg-dark:focus {
 }
 .text-capitalize {
   text-transform: capitalize !important;
-  margin-top: 14px;
+  /* margin-top: 14px; */
 }
 .font-weight-light {
   font-weight: 300 !important;
@@ -10275,7 +10275,8 @@ input[type='number'] {
 }
 .card__post-list {
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 3%;
   padding: 6px;
 }
@@ -11052,11 +11053,15 @@ input[type='number'] {
   }
 }
 
-@media screen and (min-width: 888px) and (max-width: 999px) {
-  #footballtHomeStyle {
-    float: none;
-    padding: 0;
-   /* height: 200px !important; */
+@media screen and (min-width: 820px) and (max-width: 1399px) {
+  #iplHomeCard{
+  height: 135px;
+  }
+}
+
+@media screen and (max-width: 991.5px) {
+  #motogpHomeCss{
+  width: 100% !important;
   }
 }
 .article__entry .article__content h5 a {
@@ -15044,5 +15049,12 @@ a {
 .logoContainer {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 33%;
+}
+
+@media (max-width: 990px) {
+  .logoContainer {
+   /* margin-right: 10px; */
+   width: 90%;
+  }
 }

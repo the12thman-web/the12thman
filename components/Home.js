@@ -68,7 +68,7 @@ const Home = ({
                     return (
                       <div className="item" key={`home_${index}`}>
                         {/* <!-- Post Article -->*/}
-                        <div className="card__post card__post-list" style={{ border: "2px solid lightgray", height: "100px", marginLeft: "8px", overflow: "hidden" }}>
+                        <div className="card__post card__post-list" style={{ height: "100px", marginLeft: "8px", overflow: "hidden" }}>
                           <div className="image-sm">
                             <Link href={`/posts/${items.slug}?amp=1`}>
                               <Image
@@ -375,7 +375,7 @@ const Home = ({
                       {firstTwoLeftData.map((items, index) => (
                         <div className="mb-3" key={`home_${index}`}>
                           {/* <!-- Post Article -->*/}
-                          <div className="card__post card__post-list">
+                          <div className="card__post card__post-list" id='iplHomeCard'>
                             <div className="image-sm">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
@@ -411,7 +411,6 @@ const Home = ({
                                   <h6>
                                     <Link
                                       href={`/posts/${items.slug}`}
-                                      style={{ fontSize: '10px' }}
                                     >
                                       {items.title}
                                     </Link>
@@ -433,7 +432,7 @@ const Home = ({
                       {firstTwoRightData.map((items, index) => (
                         <div className="mb-3" key={`home_${index}`}>
                           {/* <!-- Post Article -->*/}
-                          <div className="card__post card__post-list">
+                          <div className="card__post card__post-list" id='iplHomeCard'>
                             <div className="image-sm">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
@@ -469,7 +468,6 @@ const Home = ({
                                   <h6>
                                     <Link
                                       href={`/posts/${items.slug}`}
-                                      style={{ fontSize: '12px' }}
                                     >
                                       {items.title}
                                     </Link>
@@ -489,7 +487,7 @@ const Home = ({
                 </div>
               </div>
 
-              <div className="col-md-4">
+              <div className="col-md-4" id='motogpHomeCss'>
                 <div className="sticky-top">
                   <aside className="wrapper__list__article">
                     <h4 className="border_section">MotoGP</h4>
