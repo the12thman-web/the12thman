@@ -24,25 +24,25 @@ const Footer = () => {
                         <div className="border-top-1 bg__footer-bottom-section">
                           <ul className="list-inline link-column">
                             <li className="list-inline-item">
-                              <a href="/contact">Stories</a>
+                              <Link href="/contact">Stories</Link>
                             </li>
                             <li className="list-inline-item">
-                              <a href="/contact">Contact us</a>
+                              <Link href="/contact">Contact us</Link>
                             </li>
                             <li className="list-inline-item">
-                              <a href="/privacy"> Privacy Policy</a>
+                              <Link href="/privacy"> Privacy Policy</Link>
                             </li>
                             <li className="list-inline-item">
-                              <a href="/about">About us</a>
+                              <Link href="/about">About us</Link>
                             </li>
                             <li className="list-inline-item">
-                              <a href="/">Terms & Conditions</a>
+                              <Link href="/">Terms & Conditions</Link>
                             </li>
                           </ul>
                           <ul className="list-inline">
                             <li className="list-inline-item">
                               <span>
-                                Copyright © 2023 <a href="#">the12thman.in</a>
+                                Copyright © 2023 <Link href="#">the12thman.in</Link>
                               </span>
                             </li>
                           </ul>
@@ -55,9 +55,9 @@ const Footer = () => {
             </div>
           </section>
 
-          <a id="return-to-top">
+          <Link href={'#'} id="return-to-top">
             <i className="fa fa-chevron-up"></i>
-          </a>
+          </Link>
 
           {/* <script
             type="text/javascript"

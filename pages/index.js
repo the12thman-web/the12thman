@@ -15,11 +15,17 @@ export default function index({
     <>
       <Head>
         <title>The 12th man times</title>
+        <meta name="description" content="The 12th man times " />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:title" content="The 12th man times" key="title" />
         <meta
           name="description"
-          content="Keep up to date with the latest trends in tech"
-        />
+          content="Author: A.N. Author,
+          Illustrator: P. Picture, Category: Sport Fun Websites,
+          The 12th man times">
+        </meta>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="alternate" hreflang="en" href="https://example.com" />
       </Head>
       <Home
         posts={posts || []}
