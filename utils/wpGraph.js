@@ -7,7 +7,6 @@ async function fetchAPI(query = '', { variables } = {}) {
   const headers = {
     'Content-Type': 'application/json',
     'User-Agent': '*',
-    credentials: 'include',
   };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
@@ -19,6 +18,7 @@ async function fetchAPI(query = '', { variables } = {}) {
   const request = new Request(API_URL, {
     headers,
     method: 'POST',
+    credentials: 'include',
     body: JSON.stringify({
       query,
       variables,
