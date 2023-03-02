@@ -4,7 +4,11 @@ import { default as fetch, Request } from 'node-fetch';
 const API_URL = 'https://12thmanstaging.the12thman.in/graphql';
 
 async function fetchAPI(query = '', { variables } = {}) {
-  const headers = { 'Content-Type': 'application/json', 'User-Agent': '*' };
+  const headers = {
+    'Content-Type': 'application/json',
+    'User-Agent': '*',
+    credentials: 'include',
+  };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
     headers[
