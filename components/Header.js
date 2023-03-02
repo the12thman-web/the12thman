@@ -4,6 +4,7 @@ import { getAllMenus } from '../utils/wpGraph';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../public/Logo.png';
+import Adsense from './Adsense';
 
 const Header = ({ menus }) => {
   // console.log('menus', menus);
@@ -127,6 +128,7 @@ const Header = ({ menus }) => {
               marginLeft: 'auto',
             }}
           >
+            <Adsense></Adsense>
             <div className="offcanvas-header">
               <div
                 data-toggle="modal"

@@ -4,11 +4,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "npm run build && next export",
     "start": "next start"
   },
   "dependencies": {
     "@apollo/client": "^3.7.3",
+    "node-fetch": "^2.6.9",
     "bootstrap": "^5.2.3",
     "graphql": "^16.6.0",
     "moment": "^2.29.4",
