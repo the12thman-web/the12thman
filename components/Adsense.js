@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 export default function Adsense() {
   const loadAds = () => {
     try {
+      console.log('Addsense');
       if (typeof window !== 'undefined') {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
