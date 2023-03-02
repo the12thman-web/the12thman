@@ -12,11 +12,11 @@ export default function Document() {
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
         />
-        <Script
+        <script
           strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=G-Q6CJDCHK19`}
         />
-        <Script strategy="lazyOnload">
+        <script strategy="lazyOnload">
           {`
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
@@ -25,7 +25,7 @@ export default function Document() {
                     page_path: window.location.pathname,
                     });
                 `}
-        </Script>
+        </script>
       </Head>{' '}
       <body>
         {' '}
