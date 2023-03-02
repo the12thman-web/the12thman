@@ -12,7 +12,7 @@ export default function Document() {
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
         />
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
        	(adsbygoogle = window.adsbygoogle || []).push({
@@ -21,7 +21,7 @@ export default function Document() {
          	});
         	`,
           }}
-        />
+        /> */}
       </Head>{' '}
       <body>
         {' '}
