@@ -10,7 +10,7 @@ export default function Document() {
         <meta name="theme-color" content="#fff" />{' '}
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
         />
         <script
           dangerouslySetInnerHTML={{
