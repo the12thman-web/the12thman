@@ -420,7 +420,7 @@ const Home = ({
                         <div className="mb-3" key={items.postId}>
                           {/* <!-- Post Article -->*/}
                           <div
-                            className="card__post card__post-list"
+                            className="card__post card__post-list iplCard"
                             id="iplHomeCard"
                           >
                             <div className="image-sm">
