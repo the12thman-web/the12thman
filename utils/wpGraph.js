@@ -14,6 +14,7 @@ async function fetchAPI(query = '', { variables } = {}) {
 
   const res = await fetch(API_URL, {
     headers,
+    credentials: 'include',
     method: 'POST',
     body: JSON.stringify({
       query,
