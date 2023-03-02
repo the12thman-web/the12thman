@@ -18,7 +18,7 @@ export default function Adsense() {
   return (
     <ins
       className="adsbygoogle"
-      style={{ display: 'block', textAlign: 'center', width: '100%' }}
+      style={{ display: 'block', textAlign: 'center' }}
       data-ad-client="ca-pub-9891586352099803"
       data-ad-slot="5294261220"
       data-ad-format="fluid"
