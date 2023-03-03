@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 const Category = ({ posts, menus, title }) => {
   const categoryDatafirstCol = posts?.nodes?.slice(0, 4);
   const categoryDatasecCol = posts?.nodes?.slice(5, 9);
-  const categoryDataSlider = posts?.nodes?.slice(10, 14);
+  const categoryDataSlider = posts?.nodes?.slice(10, 15);
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
   const categoryTagsData = posts?.nodes;
 
@@ -45,7 +45,7 @@ const Category = ({ posts, menus, title }) => {
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div className="article__content" id='catSlugCss'>
                               <div className="article__category">
                                 {item.categories.nodes[0].name}
                               </div>
@@ -99,12 +99,12 @@ const Category = ({ posts, menus, title }) => {
                                 />
                               </Link>
                             </div>
-                            <div className="article__content">
+                            <div className="article__content" id='catSlugCss'>
                               <div className="article__category">
                                 {item.categories.nodes[0].name}
                               </div>
                               <ul className="list-inline">
-                                <li className="list-inline-item">
+                                <li className="list-inline-item" key={item.postId}>
                                   <span className="text-primary">
                                     by {item.author.node.name}
                                   </span>
@@ -163,7 +163,7 @@ const Category = ({ posts, menus, title }) => {
                                 <div className="card__post__content">
                                   <div className="card__post__author-info mb-2">
                                     <ul className="list-inline">
-                                      <li className="list-inline-item">
+                                      <li className="list-inline-item" key={item.postId}>
                                         <span className="text-primary">
                                           by {item.author.node.name}
                                         </span>

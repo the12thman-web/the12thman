@@ -11030,6 +11030,14 @@ input[type='number'] {
   }
 }
 
+@media screen and (min-width: 997px) and (max-width: 1800px) {
+  #catSlugCss {
+    /* font-size: 16px; */
+    height: 220px !important;
+  }
+}
+
+
 @media screen and (min-width: 998px) and (max-width: 1600px) {
   #cricketHomeStyle {
     font-size: 16px;
