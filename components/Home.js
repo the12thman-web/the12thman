@@ -12,7 +12,9 @@ const Home = ({
   IPLcategory,
   cricketPosts,
   footBallPosts,
-  motoGPPosts,
+  NBAPosts,
+  MotoGPPosts,
+  UFCPosts,
 }) => {
   const postData = posts?.nodes;
   const mainCarousel = postData.slice(0, 5);
@@ -31,10 +33,15 @@ const Home = ({
   const footBallData = footBallPosts?.nodes;
   const leftFootBallCardData = footBallData.slice(0, 4);
   const rightFootBallCardData = footBallData.slice(4, 8);
-
-  const motoGPData = motoGPPosts?.nodes;
-  const motoGPCardData = motoGPData.slice(0, 4);
+  const NBAData = NBAPosts?.nodes;
+  const NBACardData = NBAData.slice(0, 6);
   const example = IPLData.slice(0, 4);
+
+  const motoGPData = MotoGPPosts?.nodes;
+  const motoGPCardData = motoGPData.slice(0, 5);
+
+  const UFCData = UFCPosts?.nodes;
+  const UFCCardData = UFCData.slice(0, 5);
 
   return (
     <>
@@ -472,20 +479,20 @@ const Home = ({
               <div className="col-md-4" id="motogpHomeCss">
                 <div className="sticky-top">
                   <aside className="wrapper__list__article">
-                    <h4 className="border_section">MotoGP</h4>
+                    <h4 className="border_section">NBA</h4>
                     <div className="wrapper__list__article-small">
-                      {example.map(motoItem => (
-                        <div className="mb-3" key={motoItem.postId}>
+                      {NBACardData.map(NBAItem => (
+                        <div className="mb-3" key={NBAItem.postId}>
                           {/* <!-- Post Article -->*/}
                           <div className="card__post card__post-list">
                             <div className="image-sm">
-                              <Link href={`/posts/${motoItem.slug}`}>
+                              <Link href={`/posts/${NBAItem.slug}`}>
                                 <Image
-                                  src={motoItem.featuredImage.node.sourceUrl}
-                                  className="img-fluid"
-                                  alt=""
+                                  src={NBAItem.featuredImage.node.sourceUrl}
                                   width={500}
                                   height={400}
+                                  className="img-fluid"
+                                  alt=""
                                 />
                               </Link>
                             </div>
@@ -496,10 +503,10 @@ const Home = ({
                                   <ul className="list-inline">
                                     <li
                                       className="list-inline-item"
-                                      key={motoItem.postId}
+                                      key={NBAItem.postId}
                                     >
                                       <span className="text-primary">
-                                        {motoItem?.author?.node?.name}
+                                        {NBAItem?.author?.node?.name}
                                       </span>
                                     </li>
                                   </ul>
@@ -507,10 +514,10 @@ const Home = ({
                                 <div className="card__post__title">
                                   <h6>
                                     <Link
-                                      href={`/posts/${motoItem.slug}`}
+                                      href={`/posts/${NBAItem.slug}`}
                                       style={{ fontSize: '12px' }}
                                     >
-                                      {motoItem.title}
+                                      {NBAItem.title}
                                     </Link>
                                   </h6>
                                 </div>
@@ -651,6 +658,56 @@ const Home = ({
                   </div>
                 </aside>
               </div>
+              <div className="col-md-4">
+                <div className="sidebar-sticky">
+                  <aside className="wrapper__list__article ">
+                    <h4 className="border_section">MotoGP</h4>
+                    <div className="wrapper__list__article-small">
+                      {motoGPCardData.map(motoGPItems => (
+                        <div className="mb-3" key={motoGPItems.postId}>
+                          <div className="card__post card__post-list">
+                            <div className="image-sm">
+                              <Link href={`/posts/${motoGPItems.slug}`}>
+                                <Image
+                                  src={motoGPItems.featuredImage.node.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  className="img-fluid"
+                                  alt=""
+                                />
+                              </Link>
+                            </div>
+
+                            <div className="card__post__body ">
+                              <div className="card__post__content">
+                                <div className="card__post__author-info mb-2">
+                                  <ul className="list-inline">
+                                    <li className="list-inline-item">
+                                      <span className="text-primary">
+                                        {motoGPItems?.author?.node?.name}
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="card__post__title">
+                                  <h6>
+                                    <Link
+                                      href={`/posts/${motoGPItems.slug}`}
+                                      style={{ fontSize: '12px' }}
+                                    >
+                                      {motoGPItems.title}
+                                    </Link>
+                                  </h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </aside>
+                </div>
+              </div>
               <div className="clearfix"></div>
             </div>
           </div>
@@ -766,12 +823,12 @@ const Home = ({
                                   {item.title}
                                 </Link>
                               </h5>
-                              <a
+                              <Link
                                 href={`/posts/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 readmore
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </>
@@ -780,6 +837,56 @@ const Home = ({
                   </div>
                 </div>
               </aside>
+            </div>
+            <div className="col-md-4">
+              <div className="sidebar-sticky">
+                <aside className="wrapper__list__article ">
+                  <h4 className="border_section">UFC</h4>
+                  <div className="wrapper__list__article-small">
+                    {UFCCardData.map(UFCCardItems => (
+                      <div className="mb-3" key={UFCCardItems.postId}>
+                        <div className="card__post card__post-list">
+                          <div className="image-sm">
+                            <Link href={`/posts/${UFCCardItems.slug}`}>
+                              <Image
+                                src={UFCCardItems.featuredImage.node.sourceUrl}
+                                width={500}
+                                height={400}
+                                className="img-fluid"
+                                alt=""
+                              />
+                            </Link>
+                          </div>
+
+                          <div className="card__post__body ">
+                            <div className="card__post__content">
+                              <div className="card__post__author-info mb-2">
+                                <ul className="list-inline">
+                                  <li className="list-inline-item">
+                                    <span className="text-primary">
+                                      {UFCCardItems?.author?.node?.name}
+                                    </span>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div className="card__post__title">
+                                <h6>
+                                  <Link
+                                    href={`/posts/${UFCCardItems.slug}`}
+                                    style={{ fontSize: '12px' }}
+                                  >
+                                    {UFCCardItems.title}
+                                  </Link>
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </aside>
+              </div>
             </div>
             <div className="clearfix"></div>
           </div>
