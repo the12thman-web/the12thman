@@ -10891,7 +10891,7 @@ input[type='number'] {
   }
 }
 .article__entry {
-  display: inline-block;
+  display: block;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-bottom: 24px;
   border-radius: 3%;
@@ -11037,6 +11037,12 @@ input[type='number'] {
   }
 }
 
+@media screen and (min-width: 1801px) {
+  #catSlugCss {
+    font-size: 32px;
+    height: 260px !important;
+  }
+}
 
 @media screen and (min-width: 998px) and (max-width: 1600px) {
   #cricketHomeStyle {

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import logo from "../public/Logo.png"
+import sp2 from "../public/images/sp2.png"
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,13 +19,13 @@ const About = (menus) => {
               <figure className="text-center">
                 <Image
                   className="img-fluid"
-                  src={logo}
+                  src={sp2}
                   width={1920}
                   height={960}
                   alt="{item.featuredImage.node.altText}"
                 />
               </figure>
-              <hr />
+              {/* <hr />
               <div className="text-center">
                 <h5>Hi, I’m Clemira</h5>
                 <p>
@@ -33,7 +33,7 @@ const About = (menus) => {
                   <i className="fa fa-heart text-primary"></i> traveler, blogger
                   and design enthusias
                 </p>
-              </div>
+              </div>*/}
               <hr />
               <div className="wrap__article-detail-content">
                 <div className="total-views">

@@ -1,12 +1,13 @@
 import React from 'react';
+import sp1 from "../../public/images/sp1.jpg"
 import Image from 'next/image';
 import Link from 'next/link';
 import { getAllPosts, getAllMenus } from '../../utils/wpGraph';
 import Header from '../../components/Header';
 
 const Category = ({ posts, menus, title }) => {
-  const categoryDatafirstCol = posts?.nodes?.slice(0, 4);
-  const categoryDatasecCol = posts?.nodes?.slice(5, 9);
+  const categoryDatafirstCol = posts?.nodes?.slice(1, 6);
+  const categoryDatasecCol = posts?.nodes?.slice(6, 11);
   const categoryDataSlider = posts?.nodes?.slice(10, 15);
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
   const categoryTagsData = posts?.nodes;
@@ -31,54 +32,55 @@ const Category = ({ posts, menus, title }) => {
 
                     {categoryDatafirstCol.map(item => {
                       return (
-                        <>
-                          <div className="article__entry" key={item.postId}>
-                            <div className="article__image">
-                              {/* <a href='.../posts/${node.slug}'> */}
-                              <Link href={`/posts/${item.slug}`}>
-                                <Image
-                                  className="image-profile"
-                                  src={item.featuredImage.node.sourceUrl}
-                                  width={500}
-                                  height={400}
-                                  alt={item.featuredImage.node.altText}
-                                />
-                              </Link>
+
+                        <div className="article__entry" key={item.postId}>
+                          <div className="article__image">
+                            {/* <a href='.../posts/${node.slug}'> */}
+                            <Link href={`/posts/${item.slug}`}>
+                              <Image
+                                className="image-profile"
+                                // src={item.featuredImage.node.sourceUrl}
+                                src={item?.featuredImage?.node?.sourceUrl}
+                                width={500}
+                                height={400}
+                                alt="noALt in posts"
+                              />
+                            </Link>
+                          </div>
+                          <div className="article__content" id='catSlugCss'>
+                            <div className="article__category">
+                              {item.categories.nodes[0].name}
                             </div>
-                            <div className="article__content" id='catSlugCss'>
-                              <div className="article__category">
-                                {item.categories.nodes[0].name}
-                              </div>
-                              <ul className="list-inline">
-                                <li
-                                  className="list-inline-item"
-                                  key={item.postId}
-                                >
-                                  <span className="text-primary">
-                                    by {item.author.node.name}
-                                  </span>
-                                </li>
-                                {/* <li className="list-inline-item">
+                            <ul className="list-inline">
+                              <li
+                                className="list-inline-item"
+                                key={item.postId}
+                              >
+                                <span className="text-primary">
+                                  by {item?.author?.node?.name}
+                                </span>
+                              </li>
+                              {/* <li className="list-inline-item">
                                   <span className="text-dark text-capitalize">
                                     descember 09, 2016
                                   </span>
                                 </li> */}
-                              </ul>
-                              <h5>
-                                <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
-                                </Link>
-                              </h5>
-
-                              <Link
-                                href={`/posts/${item.slug}`}
-                                className="btn btn-outline-primary mb-4 text-capitalize"
-                              >
-                                readmore
+                            </ul>
+                            <h5>
+                              <Link href={`/posts/${item.slug}`}>
+                                {item?.title}
                               </Link>
-                            </div>
+                            </h5>
+
+                            <Link
+                              href={`/posts/${item.slug}`}
+                              className="btn btn-outline-primary mb-4 text-capitalize"
+                            >
+                              readmore
+                            </Link>
                           </div>
-                        </>
+                        </div>
+
                       );
                     })}
                   </div>
@@ -86,50 +88,50 @@ const Category = ({ posts, menus, title }) => {
                     {/* <!-- Post Article --> */}
                     {categoryDatasecCol.map(item => {
                       return (
-                        <>
-                          <div className="article__entry" key={item.postId}>
-                            <div className="article__image">
-                              <Link href={`/posts/${item.slug}`}>
-                                <Image
-                                  className="image-profile"
-                                  src={item.featuredImage.node.sourceUrl}
-                                  width={500}
-                                  height={400}
-                                  alt={item.featuredImage.node.altText}
-                                />
-                              </Link>
+
+                        <div className="article__entry" key={item.postId}>
+                          <div className="article__image">
+                            <Link href={`/posts/${item.slug}`}>
+                              <Image
+                                className="image-profile"
+                                src={item?.featuredImage?.node?.sourceUrl}
+                                width={500}
+                                height={400}
+                                alt="noALt in posts"
+                              />
+                            </Link>
+                          </div>
+                          <div className="article__content" id='catSlugCss'>
+                            <div className="article__category">
+                              {item.categories.nodes[0].name}
                             </div>
-                            <div className="article__content" id='catSlugCss'>
-                              <div className="article__category">
-                                {item.categories.nodes[0].name}
-                              </div>
-                              <ul className="list-inline">
-                                <li className="list-inline-item" key={item.postId}>
-                                  <span className="text-primary">
-                                    by {item.author.node.name}
-                                  </span>
-                                </li>
-                                {/* <li className="list-inline-item">
+                            <ul className="list-inline">
+                              <li className="list-inline-item" key={item.postId}>
+                                <span className="text-primary">
+                                  by {item?.author?.node?.name}
+                                </span>
+                              </li>
+                              {/* <li className="list-inline-item">
                                   <span className="text-dark text-capitalize">
                                     descember 09, 2016
                                   </span>
                                 </li> */}
-                              </ul>
-                              <h5>
-                                <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
-                                </Link>
-                              </h5>
-
-                              <Link
-                                href={`/posts/${item.slug}`}
-                                className="btn btn-outline-primary mb-4 text-capitalize"
-                              >
-                                readmore
+                            </ul>
+                            <h5>
+                              <Link href={`/posts/${item.slug}`}>
+                                {item?.title}
                               </Link>
-                            </div>
+                            </h5>
+
+                            <Link
+                              href={`/posts/${item.slug}`}
+                              className="btn btn-outline-primary mb-4 text-capitalize"
+                            >
+                              readmore
+                            </Link>
                           </div>
-                        </>
+                        </div>
+
                       );
                     })}
                   </div>
@@ -143,50 +145,50 @@ const Category = ({ posts, menus, title }) => {
                   <div className="wrapper__list__article-small">
                     {categoryDataSlider.map(item => {
                       return (
-                        <>
-                          <div className="mb-3" key={item.postId}>
-                            {/* <!-- Post Article --> */}
-                            <div className="card__post card__post-list">
-                              <div className="image-sm">
-                                <Link href={`/posts/${item.slug}`}>
-                                  <Image
-                                    className="image-profile"
-                                    src={item.featuredImage.node.sourceUrl}
-                                    width={500}
-                                    height={400}
-                                    alt={item.featuredImage.node.altText}
-                                  />
-                                </Link>
-                              </div>
 
-                              <div className="card__post__body ">
-                                <div className="card__post__content">
-                                  <div className="card__post__author-info mb-2">
-                                    <ul className="list-inline">
-                                      <li className="list-inline-item" key={item.postId}>
-                                        <span className="text-primary">
-                                          by {item.author.node.name}
-                                        </span>
-                                      </li>
-                                      {/* <li className="list-inline-item">
+                        <div className="mb-3" key={item.postId}>
+                          {/* <!-- Post Article --> */}
+                          <div className="card__post card__post-list">
+                            <div className="image-sm">
+                              <Link href={`/posts/${item.slug}`}>
+                                <Image
+                                  className="image-profile"
+                                  src={item?.featuredImage?.node?.sourceUrl}
+                                  width={500}
+                                  height={400}
+                                  alt="noALt in posts"
+                                />
+                              </Link>
+                            </div>
+
+                            <div className="card__post__body ">
+                              <div className="card__post__content">
+                                <div className="card__post__author-info mb-2">
+                                  <ul className="list-inline">
+                                    <li className="list-inline-item" key={item.postId}>
+                                      <span className="text-primary">
+                                        by {item?.author?.node?.name}
+                                      </span>
+                                    </li>
+                                    {/* <li className="list-inline-item">
                                         <span className="text-dark text-capitalize">
                                           descember 09, 2016
                                         </span>
                                       </li> */}
-                                    </ul>
-                                  </div>
-                                  <div className="card__post__title">
-                                    <h6>
-                                      <Link href={`/posts/${item.slug}`}>
-                                        {item.title}
-                                      </Link>
-                                    </h6>
-                                  </div>
+                                  </ul>
+                                </div>
+                                <div className="card__post__title">
+                                  <h6>
+                                    <Link href={`/posts/${item.slug}`}>
+                                      {item?.title}
+                                    </Link>
+                                  </h6>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </>
+                        </div>
+
                       );
                     })}
 
