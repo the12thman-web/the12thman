@@ -38,24 +38,24 @@ const Category = ({ posts, menus, title }) => {
                               <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
-                                  src={item.featuredImage.node.sourceUrl}
+                                  src={item?.featuredImage?.node?.sourceUrl}
                                   width={500}
                                   height={400}
-                                  alt={item.featuredImage.node.altText}
+                                  alt={item?.featuredImage?.node?.altText}
                                 />
                               </Link>
                             </div>
                             <div className="article__content">
                               <div className="article__category">
-                                {item.categories.nodes[0].name}
+                                {item?.categories?.nodes[0]?.name}
                               </div>
                               <ul className="list-inline">
                                 <li
                                   className="list-inline-item"
-                                  key={item.postId}
+                                  key={item?.postId}
                                 >
                                   <span className="text-primary">
-                                    by {item.author.node.name}
+                                    by {item?.author?.node?.name}
                                   </span>
                                 </li>
                                 {/* <li className="list-inline-item">
@@ -66,7 +66,7 @@ const Category = ({ posts, menus, title }) => {
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
+                                  {item?.title}
                                 </Link>
                               </h5>
 
@@ -92,21 +92,21 @@ const Category = ({ posts, menus, title }) => {
                               <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
-                                  src={item.featuredImage.node.sourceUrl}
+                                  src={item?.featuredImage?.node?.sourceUrl}
                                   width={500}
                                   height={400}
-                                  alt={item.featuredImage.node.altText}
+                                  alt={item?.featuredImage?.node?.altText}
                                 />
                               </Link>
                             </div>
                             <div className="article__content">
                               <div className="article__category">
-                                {item.categories.nodes[0].name}
+                                {item?.categories?.nodes[0]?.name}
                               </div>
                               <ul className="list-inline">
                                 <li className="list-inline-item">
                                   <span className="text-primary">
-                                    by {item.author.node.name}
+                                    by {item?.author?.node?.name}
                                   </span>
                                 </li>
                                 {/* <li className="list-inline-item">
@@ -117,7 +117,7 @@ const Category = ({ posts, menus, title }) => {
                               </ul>
                               <h5>
                                 <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
+                                  {item?.title}
                                 </Link>
                               </h5>
 
