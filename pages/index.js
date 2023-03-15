@@ -36,7 +36,6 @@ export default function index({
     </>
   );
 }
-debugger;
 export async function getStaticProps({ params }, category) {
   const menus = await getAllMenus();
   const posts = await getAllPosts();
