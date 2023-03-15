@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Header from './Header';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
+import iplWinImg from '../public/images/iplwin.png';
 
 import dynamic from 'next/dynamic';
 
@@ -68,7 +69,7 @@ const Home = ({
           <Image
             src={laserImage}
             alt="IPLWIN"
-            style={{ top: '50%', left: '32%' }}
+            style={{ margin: 'auto', display: 'flex' }}
           />
         </a>
       </Popup>
@@ -816,6 +817,12 @@ const Home = ({
             <div className="clearfix"></div>
           </div>
         </div>
+      </div>
+      <div className="rswsuper365mobile">
+        {' '}
+        <a id="super365mobile" target="_blank" href="https://iplwin.us/PRblO">
+          <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />
+        </a>{' '}
       </div>
       {/* <!-- End Popular news category -->*/}
     </>

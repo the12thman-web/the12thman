@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import { useAmp } from 'next/amp';
-import iplWinImg from '../public/images/iplwin.png';
 
 export const config = { amp: 'hybrid' };
 
@@ -14,22 +13,8 @@ const Footer = () => {
         <></>
       ) : (
         <>
-          <section className="wrapper__section p-0">
+          <section className="wrapper__section p-0 ">
             <div className="wrapper__section__components">
-              <div className="rswsuper365mobile">
-                {' '}
-                <a
-                  id="super365mobile"
-                  target="_blank"
-                  href="https://iplwin.us/PRblO"
-                >
-                  <Image
-                    src={iplWinImg}
-                    alt="IPLWIN"
-                    style={{ width: '100%' }}
-                  />
-                </a>{' '}
-              </div>
               {/* <!-- Footer --> */}
               <footer>
                 {/* <!-- Footer bottom --> */}
