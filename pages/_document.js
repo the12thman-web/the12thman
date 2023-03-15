@@ -34,6 +34,10 @@ export default function Document() {
           id="clever-core"
           src="../scripts/wanderAdd.js"
         ></script>{' '}
+        <script
+          src="https://jsc.mgid.com/t/h/the12thman.in.1280029.js"
+          async
+        ></script>
         <Main /> <NextScript />{' '}
       </body>{' '}
     </Html>

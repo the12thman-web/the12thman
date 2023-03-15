@@ -144,7 +144,8 @@ export default function PostPage({ post, posts, menus }) {
                         dangerouslySetInnerHTML={{ __html: post?.content }}
                       ></div>
                     </div>
-                    <div id="v-the12thman-in"></div>
+                    <div id="v-the12thman-in" style={{ width: '100%' }}></div>
+                    <div id="M751792ScriptRootC1280029"></div>
                   </div>
                   {/* <!--  end tags --> */}
 
