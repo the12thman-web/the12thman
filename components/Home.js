@@ -65,13 +65,14 @@ const Home = ({
         content={<button>click to close</button>}
         contentStyle={customStyles}
       >
-        <a href="http://lbook.cc/3WEUByR">
-          <Image
-            src={laserImage}
-            alt="IPLWIN"
-            style={{ margin: 'auto', display: 'flex' }}
-          />
-        </a>
+        <div class="container_local">
+          <div href="#" class="like-button" title="Like Button">
+            &times;
+          </div>
+          <a href="http://lbook.cc/3WEUByR">
+            <Image src={laserImage} alt="IPLWIN" className="image" />
+          </a>
+        </div>
       </Popup>
       {/* <!-- Tranding news  carousel-->*/}
       <section className="bg-light pt-20 carouselContainer">
