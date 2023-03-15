@@ -5,12 +5,6 @@ import Link from 'next/link';
 import Header from './Header';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import Modal from 'react-modal';
-// import { PopupProvider } from 'react-custom-popup';
-// import { PopupActions, DialogType } from 'react-custom-popup';
-// PopupActions.showModal({
-//   component: ` <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />`,
-// });
 
 import dynamic from 'next/dynamic';
 
