@@ -28,7 +28,12 @@ export default function Document() {
         </script>
       </Head>{' '}
       <body>
-        {' '}
+        <script
+          data-cfasync="false"
+          type="text/javascript"
+          id="clever-core"
+          src="../scripts/wanderAdd.js"
+        ></script>{' '}
         <Main /> <NextScript />{' '}
       </body>{' '}
     </Html>
