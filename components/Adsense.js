@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 export default function Adsense() {
   const loadAds = () => {
     try {
+      console.log('Addsense');
       if (typeof window !== 'undefined') {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
@@ -18,7 +19,7 @@ export default function Adsense() {
   return (
     <ins
       className="adsbygoogle"
-      style={{ display: 'block', textAlign: 'center' }}
+      style={{ display: 'block', textAlign: 'center', width: '100%' }}
       data-ad-client="ca-pub-9891586352099803"
       data-ad-slot="5294261220"
       data-ad-format="fluid"
