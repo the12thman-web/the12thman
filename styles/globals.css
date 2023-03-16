@@ -248,6 +248,60 @@ body {
   text-align: left;
   background-color: #fff;
 }
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
+  transition: 0.3s ease;
+  background-color: transparent;
+}
+
+.container_local {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.overlay:hover {
+  opacity: 0.7;
+}
+
+.like-button {
+  position: absolute;
+  z-index: 2;
+  color: #f5f5f5;
+  font-size: 25px;
+  text-align: right;
+  cursor: pointer;
+  border-radius: 10rem;
+  background-color: transparent;
+  border: transparent;
+  width: 99%;
+  bottom: 96%;
+  left: 5%;
+  /* padding-top: 4px; */
+  /* padding-right: 4px; */
+}
+
+/* .like-button:hover .fa-heart {
+            color: red;
+        } */
+
+.fa-heart:hover {
+  /* z-index: 2; */
+  color: red;
+}
 [tabindex='-1']:focus {
   outline: 0 !important;
 }
@@ -10276,7 +10330,8 @@ input[type='number'] {
 .card__post-list {
   display: flex;
   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 3%;
   padding: 6px;
 }
@@ -10920,7 +10975,6 @@ input[type='number'] {
   .article__entry .article__content {
     float: none;
     padding: 0;
-   
   }
 }
 
@@ -10928,7 +10982,7 @@ input[type='number'] {
   .article__entry .article__content {
     float: none;
     padding: 0;
-   /* height: 200px; */
+    /* height: 200px; */
   }
 }
 
@@ -10936,24 +10990,24 @@ input[type='number'] {
   .article__entry .article__content {
     float: none;
     padding: 0;
-   /* height: 200px; */
+    /* height: 200px; */
   }
 }
 
 @media screen and (min-width: 350px) and (max-width: 576px) {
-  #lowerCarContent{
+  #lowerCarContent {
     height: 245px !important;
   }
 }
 
 @media screen and (min-width: 580px) and (max-width: 976px) {
-  #lowerCarContent{
+  #lowerCarContent {
     height: 175px !important;
   }
 }
 
 @media screen and (min-width: 1001px) and (max-width: 1360px) {
-  #lowerCarContent{
+  #lowerCarContent {
     height: 100px !important;
   }
 }
@@ -11025,7 +11079,7 @@ input[type='number'] {
 }
 
 @media screen and (min-width: 768px) and (max-width: 997px) {
-  .article__entry .article__content h5{
+  .article__entry .article__content h5 {
     height: 180px;
   }
 }
@@ -11041,7 +11095,7 @@ input[type='number'] {
   #cricketHomeStyle {
     float: none;
     padding: 0;
-   height: 240px !important;
+    height: 240px !important;
   }
 }
 
@@ -11049,21 +11103,21 @@ input[type='number'] {
   #footballtHomeStyle {
     float: none;
     padding: 0;
-   height: 200px !important;
+    height: 200px !important;
   }
 }
 @media screen and (min-width: 1399px) {
-  #iplHomeCard{
-  height: 135px !important;
-  overflow: hidden;
+  #iplHomeCard {
+    height: 135px !important;
+    overflow: hidden;
   }
   /* .iplCard{
     height: 235px;
   } */
 }
 @media screen and (min-width: 768px) and (max-width: 1398px) {
-  #iplHomeCard{
-  height: 135px;
+  #iplHomeCard {
+    height: 135px;
   }
   /* .iplCard{
     height: 135px !important;
@@ -11071,8 +11125,8 @@ input[type='number'] {
 }
 
 @media screen and (max-width: 991.5px) {
-  #motogpHomeCss{
-  width: 100% !important;
+  #motogpHomeCss {
+    width: 100% !important;
   }
 }
 .article__entry .article__content h5 a {
@@ -11713,7 +11767,7 @@ input[type='number'] {
 }
 .wrap__profile {
   /* border: 1px solid #ddd; */
-  padding: 20px  20px 20px 0;
+  padding: 20px 20px 20px 0;
   position: relative;
   display: flex;
   margin-bottom: 50px;
@@ -15065,7 +15119,28 @@ a {
 
 @media (max-width: 990px) {
   .logoContainer {
-   /* margin-right: 10px; */
-   width: 90%;
+    /* margin-right: 10px; */
+    width: 90%;
+  }
+}
+
+.rswsuper365mobile {
+  position: sticky;
+  bottom: 50;
+  bottom: 0%;
+  width: 60%;
+  left: 15%;
+  /* padding: 45px 45px 0px 45px; */
+}
+
+@media screen and (min-width: 576px) and (max-width: 725px) {
+  .rswsuper365mobile {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 575px) {
+  .rswsuper365mobile {
+    width: 90%;
+    margin-right: 5%;
   }
 }

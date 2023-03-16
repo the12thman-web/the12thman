@@ -13,18 +13,31 @@ export default function Document() {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
         />
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-       	(adsbygoogle = window.adsbygoogle || []).push({
-         	google_ad_client: "ca-pub-9891586352099803",
-         	enable_page_level_ads: true
-         	});
-        	`,
-          }}
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-Q6CJDCHK19`}
         />
+        <script strategy="lazyOnload">
+          {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config','G-Q6CJDCHK19', {
+                    page_path: window.location.pathname,
+                    });
+                `}
+        </script>
       </Head>{' '}
       <body>
-        {' '}
+        <script
+          data-cfasync="false"
+          type="text/javascript"
+          id="clever-core"
+          src="../scripts/wanderAdd.js"
+        ></script>{' '}
+        <script
+          src="https://jsc.mgid.com/t/h/the12thman.in.1280029.js"
+          async
+        ></script>
         <Main /> <NextScript />{' '}
       </body>{' '}
     </Html>

@@ -6,6 +6,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Header from '../../components/Header';
 import { useAmp } from 'next/amp';
 import Category from '../category/[catslug]';
+import { useEffect } from 'react';
 // import { it } from 'node:test';
 
 export const config = { amp: 'false' };
@@ -17,7 +18,21 @@ export default function PostPage({ post, posts, menus }) {
 
   const searchParams = useSearchParams();
   const data = searchParams.get('valueForPosts');
-  console.log("asdf", data)
+
+  const loadAdd = () => {
+    (function (v, d, o, ai) {
+      ai = d.createElement('script');
+      ai.defer = true;
+      ai.async = true;
+      ai.src = v.location.protocol + o;
+      d.head.appendChild(ai);
+    })(window, document, '//a.vdo.ai/core/v-the12thman-in/vdo.ai.js');
+  };
+
+  useEffect(() => {
+    loadAdd();
+  }, []);
+
   return (
     <>
       <section className="pb-80">
@@ -129,6 +144,8 @@ export default function PostPage({ post, posts, menus }) {
                         dangerouslySetInnerHTML={{ __html: post?.content }}
                       ></div>
                     </div>
+                    <div id="v-the12thman-in" style={{ width: '100%' }}></div>
+                    <div id="M751792ScriptRootC1280029"></div>
                   </div>
                   {/* <!--  end tags --> */}
 
@@ -162,7 +179,7 @@ export default function PostPage({ post, posts, menus }) {
                   <div className="sticky-top">
                     <aside className="wrapper__list__article ">
                       <div className="wrapper__list__article-small">
-                        {asideData.map((item) => {
+                        {asideData.map(item => {
                           return (
                             <div className="mb-3" key={item.postId}>
                               <div className="card__post card__post-list">
@@ -264,9 +281,9 @@ export async function getStaticPaths(params) {
   return {
     paths: allPosts
       ? allPosts.nodes.map(node => {
-        // console.log('static path post', '/posts/' + node.slug);
-        return `/posts/${node.slug}`;
-      }) || []
+          // console.log('static path post', '/posts/' + node.slug);
+          return `/posts/${node.slug}`;
+        }) || []
       : [],
     fallback: 'blocking',
   };

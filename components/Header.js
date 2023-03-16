@@ -116,6 +116,7 @@ const Header = ({ menus }) => {
   return (
     <>
       <header className="bg-light">
+        <Adsense></Adsense>
         {/* <!-- Navbar  Top--> */}
         <div className="navigation-wrap navigation-shadow bg-white">
           <nav
@@ -128,7 +129,6 @@ const Header = ({ menus }) => {
               marginLeft: 'auto',
             }}
           >
-            <Adsense></Adsense>
             <div className="offcanvas-header">
               <div
                 data-toggle="modal"

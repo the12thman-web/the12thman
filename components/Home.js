@@ -5,7 +5,20 @@ import Link from 'next/link';
 import Header from './Header';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
+import iplWinImg from '../public/images/iplwin.png';
 
+import dynamic from 'next/dynamic';
+
+const Popup = dynamic(
+  () => {
+    return import('reactjs-popup');
+  },
+  { ssr: false }
+);
+
+import 'reactjs-popup/dist/index.css';
+
+import laserImage from '../public/images/laser.png';
 const Home = ({
   posts,
   menus,
@@ -42,11 +55,31 @@ const Home = ({
 
   const UFCData = UFCPosts?.nodes;
   const UFCCardData = UFCData.slice(0, 5);
+  const customStyles = {
+    background: 'none',
+    border: 'none',
+  };
 
   return (
     <>
       <Header menus={menus} />
 
+      <Popup
+        arrow={true}
+        open={true}
+        position="center"
+        content={<button>click to close</button>}
+        contentStyle={customStyles}
+      >
+        <div class="container_local">
+          <div href="#" class="like-button" title="Like Button">
+            &times;
+          </div>
+          <a href="http://lbook.cc/3WEUByR">
+            <Image src={laserImage} alt="IPLWIN" className="image" />
+          </a>
+        </div>
+      </Popup>
       {/* <!-- Tranding news  carousel-->*/}
       <section className="bg-light pt-20 carouselContainer">
         <div className="container">
@@ -891,6 +924,12 @@ const Home = ({
             <div className="clearfix"></div>
           </div>
         </div>
+      </div>
+      <div className="rswsuper365mobile">
+        {' '}
+        <a id="super365mobile" target="_blank" href="https://iplwin.us/PRblO">
+          <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />
+        </a>{' '}
       </div>
       {/* <!-- End Popular news category -->*/}
     </>

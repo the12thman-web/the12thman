@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 import { useAmp } from 'next/amp';
 
@@ -12,7 +13,7 @@ const Footer = () => {
         <></>
       ) : (
         <>
-          <section className="wrapper__section p-0">
+          <section className="wrapper__section p-0 ">
             <div className="wrapper__section__components">
               {/* <!-- Footer --> */}
               <footer>
