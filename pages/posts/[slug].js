@@ -178,6 +178,7 @@ export default function PostPage({ post, posts, menus }) {
                 <div className="col-md-4">
                   <div className="sticky-top">
                     <aside className="wrapper__list__article ">
+                      <h4 className="border_section">Recent Blogs</h4>
                       <div className="wrapper__list__article-small">
                         {asideData.map(item => {
                           return (
@@ -281,9 +282,9 @@ export async function getStaticPaths(params) {
   return {
     paths: allPosts
       ? allPosts.nodes.map(node => {
-          // console.log('static path post', '/posts/' + node.slug);
-          return `/posts/${node.slug}`;
-        }) || []
+        // console.log('static path post', '/posts/' + node.slug);
+        return `/posts/${node.slug}`;
+      }) || []
       : [],
     fallback: 'blocking',
   };

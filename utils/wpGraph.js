@@ -56,6 +56,7 @@ export async function getAllPosts(category = '', search = '') {
                     sourceUrl
                     }
                 }
+                date
                 postId
                 slug
                 title

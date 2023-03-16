@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getAllPosts, getAllMenus } from '../../utils/wpGraph';
 import Header from '../../components/Header';
+import DateShow from '../../components/DateShow';
+import moment from "moment";
 
 const Category = ({ posts, menus, title }) => {
   const categoryDatafirstCol = posts?.nodes?.slice(1, 6);
@@ -12,11 +14,19 @@ const Category = ({ posts, menus, title }) => {
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
   const categoryTagsData = posts?.nodes;
 
+
+  const DateShow = (newDate, id) => {
+    console.log("Time", newDate)
+    let latestTime;
+    return latestTime = moment(newDate).format("LLL");
+    // console.log('LT', latestTime);
+    // return <div>{latestTime}</div>;
+  };
+  // console.log('Lt', DateShow);
   console.log('pp', posts);
   return (
     <>
       <Header menus={menus} />
-
       <section>
         {/* <!-- Breadcrumb --> */}
 
@@ -60,11 +70,11 @@ const Category = ({ posts, menus, title }) => {
                                   by {item?.author?.node?.name}
                                 </span>
                               </li>
-                              {/* <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li> */}
+                              <li className="list-inline-item">
+                                <span className="text-dark text-capitalize">
+                                  {DateShow(item?.date, item?.postId)}
+                                </span>
+                              </li>
                             </ul>
                             <h5>
                               <Link href={`/posts/${item.slug}`}>
@@ -111,11 +121,11 @@ const Category = ({ posts, menus, title }) => {
                                   by {item?.author?.node?.name}
                                 </span>
                               </li>
-                              {/* <li className="list-inline-item">
-                                  <span className="text-dark text-capitalize">
-                                    descember 09, 2016
-                                  </span>
-                                </li> */}
+                              <li className="list-inline-item">
+                                <span className="text-dark text-capitalize">
+                                  {DateShow(item?.date, item?.postId)}
+                                </span>
+                              </li>
                             </ul>
                             <h5>
                               <Link href={`/posts/${item.slug}`}>
