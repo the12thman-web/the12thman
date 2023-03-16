@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -60,19 +60,30 @@ const Home = ({
     border: 'none',
   };
 
+  const [hide, setHide] = useState(true);
+  const [lastPopUpHide, setLastPopUpHide] = useState(true);
+
+  const togglePopUp = () => {
+    setHide(false);
+  };
+
+  const toggleLastPopUp = () => {
+    setLastPopUpHide(false);
+  };
+
   return (
     <>
       <Header menus={menus} />
 
       <Popup
         arrow={true}
-        open={true}
+        open={hide}
         position="center"
         content={<button>click to close</button>}
         contentStyle={customStyles}
       >
         <div class="container_local">
-          <div href="#" class="like-button" title="Like Button">
+          <div class="like-button" title="Like Button" onClick={togglePopUp}>
             &times;
           </div>
           <a href="http://lbook.cc/3WEUByR">
@@ -925,12 +936,20 @@ const Home = ({
           </div>
         </div>
       </div>
-      <div className="rswsuper365mobile">
-        {' '}
-        <a id="super365mobile" target="_blank" href="https://iplwin.us/PRblO">
-          <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />
-        </a>{' '}
-      </div>
+      {lastPopUpHide ? (
+        <div className="rswsuper365mobile">
+          <a id="super365mobile" target="_blank" href="https://iplwin.us/PRblO">
+            <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />
+          </a>
+          <div
+            class="like-button"
+            title="Like Button"
+            onClick={toggleLastPopUp}
+          >
+            &times;
+          </div>
+        </div>
+      ) : null}
       {/* <!-- End Popular news category -->*/}
     </>
   );
