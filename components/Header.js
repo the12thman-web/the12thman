@@ -177,7 +177,11 @@ const Header = ({ menus }) => {
                           className={`nav-link active ${
                             dropDown?.length ? 'dropdown-toggle' : ''
                           }`}
-                          href={`/category/${items.uri}`}
+                          href={
+                            items.menu === 'Home'
+                              ? '/'
+                              : `/category/${items.uri}`
+                          }
                           data-toggle="dropdown"
                         >
                           {items.menu}
