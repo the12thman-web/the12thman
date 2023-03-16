@@ -267,11 +267,20 @@ body {
   background-color: transparent;
 }
 
+@media screen and (min-width: 220px) and (max-width: 575px) {
+  .container_local {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    left: 0% !important;
+  }
+}
+
 .container_local {
   position: relative;
   width: 100%;
   max-width: 400px;
-  left: 0px;
+  left: 20%;
 }
 
 .overlay:hover {
