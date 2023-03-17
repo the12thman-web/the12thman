@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Header from './Header';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import iplWinImg from '../public/images/iplwin.png';
+import iplWinImg from '../public/images/iplwin.jpg';
 
 import dynamic from 'next/dynamic';
 
@@ -18,7 +18,7 @@ const Popup = dynamic(
 
 import 'reactjs-popup/dist/index.css';
 
-import laserImage from '../public/images/laser.png';
+import laserImage from '../public/images/laser.jpg';
 const Home = ({
   posts,
   menus,
