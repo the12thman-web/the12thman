@@ -521,7 +521,7 @@ const Home = ({
               </div>
 
               <div className="col-md-4" id="motogpHomeCss">
-                <div className="sticky-top">
+                <div className="sidebar-top">
                   <aside className="wrapper__list__article">
                     <h4 className="border_section">NBA</h4>
                     <div className="wrapper__list__article-small">
