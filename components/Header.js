@@ -440,7 +440,7 @@ const Header = ({ menus }) => {
                                                         href={
                                                           getNewChildrenByParentIdDropDown.length
                                                             ? ''
-                                                            : `/category/${items.uri}`
+                                                            : `/category/${pre_child.uri}`
                                                         }
                                                         data-toggle="dropdown"
                                                       >
