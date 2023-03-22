@@ -412,7 +412,7 @@ const Header = ({ menus }) => {
                                                   : ''
                                               }`}
                                               href={
-                                                getNewChildByParentIdDropDown
+                                                getNewChildByParentIdDropDown.length
                                                   ? ''
                                                   : `/category/${child.uri}`
                                               }
@@ -429,7 +429,7 @@ const Header = ({ menus }) => {
                                                     );
                                                   return (
                                                     <li
-                                                      key={`child.id_${index}`}
+                                                      key={`pre_child.id_${index}`}
                                                     >
                                                       <Link
                                                         className={`dropdown-item text-dark ${
@@ -452,7 +452,7 @@ const Header = ({ menus }) => {
                                                         {getNewChildrenByParentIdDropDown.map(
                                                           (children, index) => (
                                                             <li
-                                                              key={`pre_child.id_${index}`}
+                                                              key={`children.id_${index}`}
                                                             >
                                                               <Link
                                                                 className="dropdown-item text-dark"
