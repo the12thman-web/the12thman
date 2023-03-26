@@ -48,17 +48,20 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     environment: production
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      
+    - name: Configure AWS credentials from 12thMan Account
+      uses: aws-actions/configure-aws-credentials@v2
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+        role-to-assume: arn:aws:iam::179797359526:role/12thman-github-actions
+        aws-region: us-east-1
 
     - name: Login to Amazon ECR
       id: login-ecr
