@@ -6,7 +6,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Header from '../../components/Header';
 import { useAmp } from 'next/amp';
 import Category from '../category/[catslug]';
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import iplWinImg from '../../public/images/iplwin.jpg';
