@@ -147,7 +147,7 @@ const Home = ({
                                         fontWeight: '800',
                                       }}
                                     >
-                                      by {items.author.node.name}
+                                      by {items.author?.node.name}
                                     </span>
                                   </li>
                                 </ul>
@@ -201,7 +201,7 @@ const Home = ({
                             <div className="card__post__body">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
-                                  src={items.featuredImage.node.sourceUrl}
+                                  src={items.featuredImage?.node.sourceUrl}
                                   className="img-fluid"
                                   alt=""
                                   width={800}
@@ -229,7 +229,7 @@ const Home = ({
                                       key={items.postId}
                                     >
                                       <Link href={`/posts/${items.slug}`}>
-                                        {items.author.node.name}
+                                        {items.author?.node.name}
                                       </Link>
                                     </li>
                                   </ul>
@@ -252,7 +252,7 @@ const Home = ({
                         <div className="card__post__body card__post__transition">
                           <Link href={`/posts/${items.slug}`}>
                             <Image
-                              src={items.featuredImage.node.sourceUrl}
+                              src={items.featuredImage?.node.sourceUrl}
                               className="img-fluid"
                               width={600}
                               height={400}
@@ -277,7 +277,7 @@ const Home = ({
                                   key={items.postId}
                                 >
                                   <Link href={`/posts/${items.slug}`}>
-                                    {items.author.node.name}
+                                    {items.author?.node.name}
                                   </Link>
                                 </li>
                               </ul>
@@ -317,7 +317,7 @@ const Home = ({
                             <div className="article__image">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
-                                  src={items.featuredImage.node.sourceUrl}
+                                  src={items.featuredImage?.node.sourceUrl}
                                   alt=""
                                   className="img-fluid"
                                   width={500}
@@ -335,7 +335,7 @@ const Home = ({
                                   key={items.postId}
                                 >
                                   <span className="text-primary">
-                                    {items.author.node.name}
+                                    {items.author?.node.name}
                                   </span>
                                 </li>
                               </ul>
@@ -378,7 +378,7 @@ const Home = ({
                         <div className="card__post__body card__post__transition">
                           <Link href={`/posts/${items.slug}`}>
                             <Image
-                              src={items.featuredImage.node.sourceUrl}
+                              src={items.featuredImage?.node.sourceUrl}
                               className="img-fluid"
                               alt=""
                               width={600}
@@ -401,7 +401,7 @@ const Home = ({
                                   key={items.postId}
                                 >
                                   <Link href={`/posts/${items.slug}`}>
-                                    {items.author.node.name}
+                                    {items.author?.node.name}
                                   </Link>
                                 </li>
                               </ul>
@@ -425,7 +425,7 @@ const Home = ({
                             <div className="image-sm">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
-                                  src={items.featuredImage.node.sourceUrl}
+                                  src={items.featuredImage?.node.sourceUrl}
                                   className="img-fluid"
                                   alt=""
                                   width={500}
@@ -443,7 +443,7 @@ const Home = ({
                                       key={items.postId}
                                     >
                                       <span className="text-primary">
-                                        {items.author.node.name}
+                                        {items.author?.node.name}
                                       </span>
                                     </li>
                                     <span className="card__post__category">
@@ -477,7 +477,7 @@ const Home = ({
                             <div className="image-sm">
                               <Link href={`/posts/${items.slug}`}>
                                 <Image
-                                  src={items.featuredImage.node.sourceUrl}
+                                  src={items.featuredImage?.node.sourceUrl}
                                   className="img-fluid"
                                   alt=""
                                   width={500}
@@ -495,7 +495,7 @@ const Home = ({
                                       key={items.postId}
                                     >
                                       <span className="text-primary">
-                                        {items.author.node.name}
+                                        {items.author?.node.name}
                                       </span>
                                     </li>
                                     <span className="card__post__category">
@@ -532,7 +532,7 @@ const Home = ({
                             <div className="image-sm">
                               <Link href={`/posts/${NBAItem.slug}`}>
                                 <Image
-                                  src={NBAItem.featuredImage.node.sourceUrl}
+                                  src={NBAItem.featuredImage?.node.sourceUrl}
                                   width={500}
                                   height={400}
                                   className="img-fluid"
@@ -583,7 +583,7 @@ const Home = ({
               height={960}
               width={1920}
               alt="Cricket Image"
-              src={leftCricketCardData[1].featuredImage.node.sourceUrl}
+              src={leftCricketCardData[1].featuredImage?.node.sourceUrl}
             />
           </div>
         </section>
@@ -607,10 +607,10 @@ const Home = ({
                                 <Link href={`/posts/${item.slug}`}>
                                   <Image
                                     className="image-profile"
-                                    src={item.featuredImage.node.sourceUrl}
+                                    src={item.featuredImage?.node.sourceUrl}
                                     width={500}
                                     height={400}
-                                    alt={item.featuredImage.node.altText}
+                                    alt={item.featuredImage?.node.altText}
                                   />
                                 </Link>
                               </div>
@@ -627,7 +627,7 @@ const Home = ({
                                     key={item.postId}
                                   >
                                     <span className="text-primary">
-                                      by {item.author.node.name}
+                                      by {item.author?.node.name}
                                     </span>
                                   </li>
                                 </ul>
@@ -658,10 +658,10 @@ const Home = ({
                                 <Link href={`/posts/${item.slug}`}>
                                   <Image
                                     className="image-profile"
-                                    src={item.featuredImage.node.sourceUrl}
+                                    src={item.featuredImage?.node.sourceUrl}
                                     width={500}
                                     height={400}
-                                    alt={item.featuredImage.node.altText}
+                                    alt={item.featuredImage?.node.altText}
                                   />
                                 </Link>
                               </div>
@@ -678,7 +678,7 @@ const Home = ({
                                     key={item.postId}
                                   >
                                     <span className="text-primary">
-                                      by {item.author.node.name}
+                                      by {item.author?.node.name}
                                     </span>
                                   </li>
                                 </ul>
@@ -713,7 +713,9 @@ const Home = ({
                             <div className="image-sm">
                               <Link href={`/posts/${motoGPItems.slug}`}>
                                 <Image
-                                  src={motoGPItems.featuredImage.node.sourceUrl}
+                                  src={
+                                    motoGPItems.featuredImage?.node.sourceUrl
+                                  }
                                   width={500}
                                   height={400}
                                   className="img-fluid"
@@ -764,7 +766,7 @@ const Home = ({
             height={960}
             width={1920}
             alt="Football Image"
-            src={leftFootBallCardData[1].featuredImage.node.sourceUrl}
+            src={leftFootBallCardData[1].featuredImage?.node.sourceUrl}
           />
         </div>
       </section>
@@ -787,10 +789,10 @@ const Home = ({
                               <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
-                                  src={item.featuredImage.node.sourceUrl}
+                                  src={item.featuredImage?.node.sourceUrl}
                                   width={500}
                                   height={400}
-                                  alt={item.featuredImage.node.altText}
+                                  alt={item.featuredImage?.node.altText}
                                 />
                               </Link>
                             </div>
@@ -807,7 +809,7 @@ const Home = ({
                                   key={item.postId}
                                 >
                                   <span className="text-primary">
-                                    by {item.author.node.name}
+                                    by {item.author?.node.name}
                                   </span>
                                 </li>
                               </ul>
@@ -838,10 +840,10 @@ const Home = ({
                               <Link href={`/posts/${item.slug}`}>
                                 <Image
                                   className="image-profile"
-                                  src={item.featuredImage.node.sourceUrl}
+                                  src={item.featuredImage?.node.sourceUrl}
                                   width={500}
                                   height={400}
-                                  alt={item.featuredImage.node.altText}
+                                  alt={item.featuredImage?.node.altText}
                                 />
                               </Link>
                             </div>
@@ -858,7 +860,7 @@ const Home = ({
                                   key={item.postId}
                                 >
                                   <span className="text-primary">
-                                    by {item.author.node.name}
+                                    by {item.author?.node.name}
                                   </span>
                                 </li>
                               </ul>
@@ -893,7 +895,7 @@ const Home = ({
                           <div className="image-sm">
                             <Link href={`/posts/${UFCCardItems.slug}`}>
                               <Image
-                                src={UFCCardItems.featuredImage.node.sourceUrl}
+                                src={UFCCardItems.featuredImage?.node.sourceUrl}
                                 width={500}
                                 height={400}
                                 className="img-fluid"
