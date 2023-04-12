@@ -9,7 +9,7 @@ import Adsense from './Adsense';
 const Header = ({ menus }) => {
   // console.log('menus', menus);
   const [data, setData] = useState([]);
-  const [text, setText] = useState('');
+  // const [text, setText] = useState('');
   const [showSearch, setShowSearch] = useState(false);
 
   // const [newData, setNewData] = useState([]);
@@ -24,9 +24,9 @@ const Header = ({ menus }) => {
   };
   // console.log("values", data);
 
-  const searchHandler = e => {
-    setText(e.target.value);
-  };
+  // const searchHandler = e => {
+  //   setText(e.target.value);
+  // };
 
   const openSearchBar = () => {
     setShowSearch(!showSearch);
@@ -248,7 +248,7 @@ const Header = ({ menus }) => {
                 </ul>
 
                 {/* <!-- Search bar.// --> */}
-                <ul className="navbar-nav ">
+                {/* <ul className="navbar-nav ">
                   <li
                     className="nav-item search hidden-xs hidden-sm "
                     onClick={openSearchBar}
@@ -258,10 +258,10 @@ const Header = ({ menus }) => {
                       <i className="fa fa-search"></i>
                     </Link>
                   </li>
-                </ul>
+                </ul> */}
                 {/* <!-- Search content bar.// --> */}
 
-                <div
+                {/* <div
                   className={
                     'navigation-shadow ' +
                     (showSearch ? 'top-search-show' : 'top-search-hide')
@@ -275,7 +275,7 @@ const Header = ({ menus }) => {
                             <input
                               className="form-control border-secondary border-right-0 rounded-0"
                               type="search"
-                              //   value=""
+                              value=""
                               placeholder="Search "
                               id="example-search-input4"
                               value={text}
@@ -299,7 +299,7 @@ const Header = ({ menus }) => {
                       </form>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* <!-- Search content bar.// --> */}
               </div>
@@ -320,13 +320,12 @@ const Header = ({ menus }) => {
           <div className="modal-dialog modal-dialog-aside" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <div className="widget__form-search-bar  ">
+                {/* <div className="widget__form-search-bar  ">
                   <div className="row no-gutters">
                     <div className="col">
                       <input
                         className="form-control border-secondary border-right-0 rounded-0"
                         type="search"
-                        //   value=""
                         placeholder="Search "
                         id="example-search-input4"
                         value={text}
@@ -347,7 +346,7 @@ const Header = ({ menus }) => {
                       </Link>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <button
                   type="button"
                   className="close"
@@ -413,7 +412,7 @@ const Header = ({ menus }) => {
                                                   : ''
                                               }`}
                                               href={
-                                                getNewChildByParentIdDropDown
+                                                getNewChildByParentIdDropDown.length
                                                   ? ''
                                                   : `/category/${child.uri}`
                                               }
@@ -430,7 +429,7 @@ const Header = ({ menus }) => {
                                                     );
                                                   return (
                                                     <li
-                                                      key={`child.id_${index}`}
+                                                      key={`pre_child.id_${index}`}
                                                     >
                                                       <Link
                                                         className={`dropdown-item text-dark ${
@@ -441,7 +440,7 @@ const Header = ({ menus }) => {
                                                         href={
                                                           getNewChildrenByParentIdDropDown.length
                                                             ? ''
-                                                            : `/category/${items.uri}`
+                                                            : `/category/${pre_child.uri}`
                                                         }
                                                         data-toggle="dropdown"
                                                       >
@@ -453,7 +452,7 @@ const Header = ({ menus }) => {
                                                         {getNewChildrenByParentIdDropDown.map(
                                                           (children, index) => (
                                                             <li
-                                                              key={`pre_child.id_${index}`}
+                                                              key={`children.id_${index}`}
                                                             >
                                                               <Link
                                                                 className="dropdown-item text-dark"

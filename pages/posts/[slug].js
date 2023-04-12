@@ -8,6 +8,8 @@ import { useAmp } from 'next/amp';
 import Category from '../category/[catslug]';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import iplWinImg from '../../public/images/iplwin.jpg';
 
 // import { it } from 'node:test';
 
@@ -33,7 +35,11 @@ export default function PostPage({ post, posts, menus }) {
 
   const searchParams = useSearchParams();
   const data = searchParams.get('valueForPosts');
+  const [lastPopUpHide, setLastPopUpHide] = useState(true);
 
+  const toggleLastPopUp = () => {
+    setLastPopUpHide(false);
+  };
   const loadAdd = () => {
     (function (v, d, o, ai) {
       ai = d.createElement('script');
@@ -283,6 +289,20 @@ export default function PostPage({ post, posts, menus }) {
           </>
         )}
       </section>
+      {lastPopUpHide ? (
+        <div className="rswsuper365mobile">
+          <a id="super365mobile" target="_blank" href="https://iplwin.us/PRblO">
+            <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />
+          </a>
+          <div
+            class="like-button"
+            title="Like Button"
+            onClick={toggleLastPopUp}
+          >
+            &times;
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }
