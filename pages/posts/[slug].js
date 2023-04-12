@@ -8,7 +8,7 @@ import { useAmp } from 'next/amp';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import iplWinImg from '../../public/images/iplwin.jpg';
-
+const BASE_URL = 'https://staging.the12thman.in/';
 // import { it } from 'node:test';
 
 export const config = { amp: 'false' };
@@ -53,6 +53,7 @@ export default function PostPage({ post, posts, menus }) {
   }, []);
 
   const router = useRouter();
+  console.log('router: ', router);
   return (
     <>
       <section className="pb-80">
@@ -134,22 +135,24 @@ export default function PostPage({ post, posts, menus }) {
                       <div className="total-views">
                         <ul id="social_link" className="list-inline">
                           <li className="list-inline-item">
-                            <FacebookShareButton url={router.pathname}>
+                            <FacebookShareButton url={BASE_URL + router.asPath}>
                               <FacebookIcon size={32} round />
                             </FacebookShareButton>
                           </li>
                           <li className="list-inline-item">
-                            <PinterestShareButton url={router.pathname}>
+                            <PinterestShareButton
+                              url={BASE_URL + router.asPath}
+                            >
                               <PinterestIcon size={32} round />
                             </PinterestShareButton>
                           </li>
                           <li className="list-inline-item">
-                            <WhatsappShareButton url={router.pathname}>
+                            <WhatsappShareButton url={BASE_URL + router.asPath}>
                               <WhatsappIcon size={32} round />
                             </WhatsappShareButton>
                           </li>
                           <li className="list-inline-item">
-                            <LinkedinShareButton url={router.pathname}>
+                            <LinkedinShareButton url={BASE_URL + router.asPath}>
                               <LinkedinIcon size={32} round />
                             </LinkedinShareButton>
                           </li>
