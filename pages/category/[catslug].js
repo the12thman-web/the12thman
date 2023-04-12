@@ -11,7 +11,6 @@ const Category = ({ posts, menus, title }) => {
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
   const categoryTagsData = posts?.nodes;
 
-  console.log('pp', posts);
   return (
     <>
       <Header menus={menus} />

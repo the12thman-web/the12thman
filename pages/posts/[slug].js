@@ -7,9 +7,24 @@ import Header from '../../components/Header';
 import { useAmp } from 'next/amp';
 import Category from '../category/[catslug]';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 // import { it } from 'node:test';
 
 export const config = { amp: 'false' };
+
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  PinterestShareButton,
+  PinterestIcon,
+  RedditShareButton,
+  RedditIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+} from 'next-share';
 
 export default function PostPage({ post, posts, menus }) {
   const isAmp = useAmp();
@@ -33,6 +48,7 @@ export default function PostPage({ post, posts, menus }) {
     loadAdd();
   }, []);
 
+  const router = useRouter();
   return (
     <>
       <section className="pb-80">
@@ -114,28 +130,24 @@ export default function PostPage({ post, posts, menus }) {
                       <div className="total-views">
                         <ul id="social_link" className="list-inline">
                           <li className="list-inline-item">
-                            <a
-                              href="#"
-                              className="btn btn-social rounded text-white facebook"
-                            >
-                              <i className="fa fa-facebook"></i>
-                            </a>
+                            <FacebookShareButton url={router.pathname}>
+                              <FacebookIcon size={32} round />
+                            </FacebookShareButton>
                           </li>
                           <li className="list-inline-item">
-                            <a
-                              href="#"
-                              className="btn btn-social rounded text-white twitter"
-                            >
-                              <i className="fa fa-twitter"></i>
-                            </a>
+                            <PinterestShareButton url={router.pathname}>
+                              <PinterestIcon size={32} round />
+                            </PinterestShareButton>
                           </li>
                           <li className="list-inline-item">
-                            <a
-                              href="#"
-                              className="btn btn-social rounded text-white instagram"
-                            >
-                              <i className="fa fa-instagram"></i>
-                            </a>
+                            <WhatsappShareButton url={router.pathname}>
+                              <WhatsappIcon size={32} round />
+                            </WhatsappShareButton>
+                          </li>
+                          <li className="list-inline-item">
+                            <LinkedinShareButton url={router.pathname}>
+                              <LinkedinIcon size={32} round />
+                            </LinkedinShareButton>
                           </li>
                         </ul>
                       </div>
