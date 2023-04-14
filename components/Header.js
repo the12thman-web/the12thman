@@ -5,12 +5,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../public/Logo.png';
 import Adsense from './Adsense';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+const BASE_URL = 'https://staging.the12thman.in/';
 
 const Header = ({ menus }) => {
   // console.log('menus', menus);
   const [data, setData] = useState([]);
   // const [text, setText] = useState('');
   const [showSearch, setShowSearch] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(true);
 
   // const [newData, setNewData] = useState([]);
 
@@ -113,6 +116,27 @@ const Header = ({ menus }) => {
     return newData;
   };
 
+  const clickedData = [];
+  const openSideBar = () => {
+    console.log('prtk');
+    setShowSideBar(!showSideBar);
+  };
+
+  // const routing = (uri, subMenu) => {
+  //   console.log('uri: ', uri);
+  //   if (subMenu) {
+  //     const index = clickedData.indexOf(uri);
+  //     if (index === -1) {
+  //       console.log('pushed');
+  //       clickedData.push(uri);
+  //     } else {
+  //       //send to route
+  //       console.log('sending');
+  //       clickedData.splice(index, 1);
+  //       router.push(BASE_URL + '/category/' + href);
+  //     }
+  //   }
+  // };
   return (
     <>
       <header className="bg-light">
@@ -132,8 +156,8 @@ const Header = ({ menus }) => {
             <div className="offcanvas-header">
               <div
                 data-toggle="modal"
-                data-target="#modal_aside_right"
                 className="btn-md"
+                onClick={() => openSideBar()}
               >
                 <span className="navbar-toggler-icon"></span>
               </div>
@@ -309,194 +333,252 @@ const Header = ({ menus }) => {
           </nav>
         </div>
         {/* <!-- End Navbar menu  --> */}
-
         {/* <!-- Navbar sidebar menu  --> */}
-        <div
-          id="modal_aside_right"
-          className="modal fixed-left fade"
-          tabIndex="-1"
-          role="dialog"
+        <Sidebar
+          defaultCollapsed={showSideBar}
+          collapsedWidth="0"
+          style={{
+            backgroundColor: 'rgb(249 249 249)',
+            position: showSideBar ? 'absolute' : 'relative',
+          }}
+          backgroundColor="#fffff"
         >
-          <div className="modal-dialog modal-dialog-aside" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                {/* <div className="widget__form-search-bar  ">
-                  <div className="row no-gutters">
-                    <div className="col">
-                      <input
-                        className="form-control border-secondary border-right-0 rounded-0"
-                        type="search"
-                        placeholder="Search "
-                        id="example-search-input4"
-                        value={text}
-                        onChange={e => setText(e.target.value)}
-                      />
-                    </div>
-                    <div className="col-auto">
-                      <Link
-                        className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-                        href={{
-                          pathname: '/search/' + text,
-                          query: {
-                            search: text,
-                          },
-                        }}
-                      >
-                        <i className="fa fa-search"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div> */}
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <nav className="list-group list-group-flush">
-                  <ul className="navbar-nav">
-                    {filterData().map((items, index) => {
-                      const dropDown = getListByParentID(items.id);
-
-                      return (
-                        <li
-                          key={`items.id_${index}`}
-                          className="nav-item dropdown"
-                        >
-                          <Link
-                            className={`nav-link active ${
-                              dropDown?.length ? 'dropdown-toggle' : ''
-                            } text-dark`}
-                            href={
-                              dropDown.length ? '' : `/category/${items.uri}`
-                            }
-                            data-toggle="dropdown"
-                          >
-                            {items.menu}
-                          </Link>
-                          <ul className="dropdown-menu dropdown-menu-left">
-                            {dropDown.map((val, index) => {
-                              const getChildByParentIdDropDown =
-                                getChildByParentId(val.id);
-                              return (
-                                <li key={`val.id_${index}`}>
-                                  <Link
-                                    className={`dropdown-item text-dark ${
-                                      getChildByParentIdDropDown?.length
-                                        ? 'dropdown-toggle'
-                                        : ''
-                                    }`}
-                                    href={
-                                      getChildByParentIdDropDown.length
-                                        ? ''
-                                        : `/category/${val.uri}`
-                                    }
-                                  >
-                                    {val.name}
-                                  </Link>
-                                  <ul className="submenu dropdown-menu  animate fade-up">
-                                    {getChildByParentIdDropDown.map(
-                                      (child, index) => {
-                                        const getNewChildByParentIdDropDown =
-                                          getNewChildByParentId(child.id);
+          <Menu>
+            {filterData().map((items, index) => {
+              const dropDown = getListByParentID(items.id);
+              if (dropDown.length) {
+                return (
+                  <SubMenu label={items.menu}>
+                    {dropDown.map((val, index) => {
+                      const dropDown2 = getListByParentID(val.id);
+                      if (dropDown2.length) {
+                        return (
+                          <SubMenu label={val.name}>
+                            {dropDown2.map((val2, index) => {
+                              const dropDown3 = getListByParentID(val2.id);
+                              if (dropDown3.length) {
+                                return (
+                                  <SubMenu label={val2.name}>
+                                    {dropDown3.map((val3, index) => {
+                                      const dropDown4 = getListByParentID(
+                                        val3.id
+                                      );
+                                      if (dropDown4.length) {
                                         return (
-                                          <li key={`child.id_${index}`}>
-                                            <Link
-                                              className={`dropdown-item text-dark ${
-                                                getNewChildByParentIdDropDown?.length
-                                                  ? 'dropdown-toggle'
-                                                  : ''
-                                              }`}
-                                              href={
-                                                getNewChildByParentIdDropDown.length
-                                                  ? ''
-                                                  : `/category/${child.uri}`
-                                              }
-                                            >
-                                              {child.newLineName}
-                                            </Link>
+                                          <SubMenu label={val3.name}>
+                                            {dropDown4.map((val4, index) => {
+                                              const dropDown5 =
+                                                getListByParentID(val4.id);
+                                              if (dropDown5.length) {
+                                                return (
+                                                  <SubMenu label={val4.name}>
+                                                    {dropDown5.map(
+                                                      (val5, index) => {
+                                                        const dropDown6 =
+                                                          getListByParentID(
+                                                            val5.id
+                                                          );
 
-                                            <ul className="submenu dropdown-menu  animate fade-up">
-                                              {getNewChildByParentIdDropDown.map(
-                                                (pre_child, index) => {
-                                                  const getNewChildrenByParentIdDropDown =
-                                                    getNewChildrenByParentId(
-                                                      pre_child.id
-                                                    );
-                                                  return (
-                                                    <li
-                                                      key={`pre_child.id_${index}`}
-                                                    >
-                                                      <Link
-                                                        className={`dropdown-item text-dark ${
-                                                          getNewChildrenByParentIdDropDown?.length
-                                                            ? 'dropdown-toggle'
-                                                            : ''
-                                                        }`}
-                                                        href={
-                                                          getNewChildrenByParentIdDropDown.length
-                                                            ? ''
-                                                            : `/category/${pre_child.uri}`
-                                                        }
-                                                        data-toggle="dropdown"
-                                                      >
-                                                        {
-                                                          pre_child.newNextLineName
-                                                        }
-                                                      </Link>
-                                                      <ul className="submenu dropdown-menu  animate fade-up">
-                                                        {getNewChildrenByParentIdDropDown.map(
-                                                          (children, index) => (
-                                                            <li
-                                                              key={`children.id_${index}`}
+                                                        if (dropDown6.length) {
+                                                          return (
+                                                            <SubMenu
+                                                              label={val5.name}
                                                             >
-                                                              <Link
-                                                                className="dropdown-item text-dark"
-                                                                href={`/category/${children.uri}`}
-                                                              >
-                                                                {
-                                                                  children.newChildrenName
+                                                              {dropDown6.map(
+                                                                (
+                                                                  val6,
+                                                                  index
+                                                                ) => {
+                                                                  const dropDown7 =
+                                                                    getListByParentID(
+                                                                      val6.id
+                                                                    );
+                                                                  if (
+                                                                    dropDown7.length
+                                                                  ) {
+                                                                    return (
+                                                                      <SubMenu
+                                                                        label={
+                                                                          val6.name
+                                                                        }
+                                                                      >
+                                                                        {dropDown7.map(
+                                                                          (
+                                                                            val7,
+                                                                            index
+                                                                          ) => {
+                                                                            const dropDown8 =
+                                                                              getListByParentID(
+                                                                                val7.id
+                                                                              );
+                                                                            if (
+                                                                              dropDown8.length
+                                                                            ) {
+                                                                              return (
+                                                                                <SubMenu
+                                                                                  label={
+                                                                                    val7.name
+                                                                                  }
+                                                                                >
+                                                                                  {dropDown8.map(
+                                                                                    (
+                                                                                      val8,
+                                                                                      index
+                                                                                    ) => {
+                                                                                      const dropDown9 =
+                                                                                        getListByParentID(
+                                                                                          val8.id
+                                                                                        );
+
+                                                                                      if (
+                                                                                        dropDown9.length
+                                                                                      ) {
+                                                                                        return (
+                                                                                          <SubMenu
+                                                                                            label={
+                                                                                              val8.name
+                                                                                            }
+                                                                                          >
+                                                                                            {dropDown9.map(
+                                                                                              (
+                                                                                                val9,
+                                                                                                index
+                                                                                              ) => {
+                                                                                                <MenuItem
+                                                                                                  href={`/category/${val9.uri}`}
+                                                                                                >
+                                                                                                  {' '}
+                                                                                                  {
+                                                                                                    val9.name
+                                                                                                  }{' '}
+                                                                                                </MenuItem>;
+                                                                                              }
+                                                                                            )}
+                                                                                          </SubMenu>
+                                                                                        );
+                                                                                      } else {
+                                                                                        return (
+                                                                                          <MenuItem
+                                                                                            href={`/category/${val8.uri}`}
+                                                                                          >
+                                                                                            {' '}
+                                                                                            {
+                                                                                              val8.name
+                                                                                            }{' '}
+                                                                                          </MenuItem>
+                                                                                        );
+                                                                                      }
+                                                                                    }
+                                                                                  )}
+                                                                                </SubMenu>
+                                                                              );
+                                                                            } else {
+                                                                              return (
+                                                                                <MenuItem
+                                                                                  href={`/category/${val7.uri}`}
+                                                                                >
+                                                                                  {' '}
+                                                                                  {
+                                                                                    val7.name
+                                                                                  }{' '}
+                                                                                </MenuItem>
+                                                                              );
+                                                                            }
+                                                                          }
+                                                                        )}
+                                                                      </SubMenu>
+                                                                    );
+                                                                  } else {
+                                                                    return (
+                                                                      <MenuItem
+                                                                        href={`/category/${val6.uri}`}
+                                                                      >
+                                                                        {' '}
+                                                                        {
+                                                                          val6.name
+                                                                        }{' '}
+                                                                      </MenuItem>
+                                                                    );
+                                                                  }
                                                                 }
-                                                              </Link>
-                                                            </li>
-                                                          )
-                                                        )}
-                                                      </ul>
-                                                    </li>
-                                                  );
-                                                }
-                                              )}
-                                            </ul>
-                                          </li>
+                                                              )}
+                                                            </SubMenu>
+                                                          );
+                                                        } else {
+                                                          return (
+                                                            <MenuItem
+                                                              href={`/category/${val5.uri}`}
+                                                            >
+                                                              {' '}
+                                                              {val5.name}{' '}
+                                                            </MenuItem>
+                                                          );
+                                                        }
+                                                      }
+                                                    )}
+                                                  </SubMenu>
+                                                );
+                                              } else {
+                                                return (
+                                                  <MenuItem
+                                                    href={`/category/${val4.uri}`}
+                                                  >
+                                                    {' '}
+                                                    {val4.name}{' '}
+                                                  </MenuItem>
+                                                );
+                                              }
+                                            })}
+                                          </SubMenu>
+                                        );
+                                      } else {
+                                        return (
+                                          <MenuItem
+                                            href={`/category/${val3.uri}`}
+                                          >
+                                            {' '}
+                                            {val3.name}{' '}
+                                          </MenuItem>
                                         );
                                       }
-                                    )}
-                                  </ul>
-                                </li>
-                              );
+                                      // <MenuItem> {val3.name} </MenuItem>;
+                                    })}
+                                  </SubMenu>
+                                );
+                              } else {
+                                return (
+                                  <MenuItem href={`/category/${val2.uri}`}>
+                                    {' '}
+                                    {val2.name}{' '}
+                                  </MenuItem>
+                                );
+                              }
                             })}
-                          </ul>
-                        </li>
-                      );
+                          </SubMenu>
+                        );
+                      } else {
+                        return (
+                          <MenuItem href={`/category/${val.uri}`}>
+                            {' '}
+                            {val.name}{' '}
+                          </MenuItem>
+                        );
+                      }
                     })}
-                  </ul>
-                </nav>
-              </div>
-              <div className="modal-footer">
-                <p>
-                  © 2023
-                  <a href="http://the12thmen.com">THE12THMEN.COM</a>.
-                </p>
-              </div>
-            </div>
-          </div>
-          {/* <!-- modal-bil// --> */}
-        </div>
-        {/* <!-- modal.// --> */}
+                  </SubMenu>
+                );
+              } else {
+                return (
+                  <MenuItem href={`/category/${items.uri}`}>
+                    {' '}
+                    {items.menu}{' '}
+                  </MenuItem>
+                );
+              }
+            })}
+          </Menu>
+        </Sidebar>
+        ;{/* <!-- modal.// --> */}
         {/* <!-- End Navbar sidebar menu  --> */}
         {/* <!-- End Navbar  --> */}
       </header>

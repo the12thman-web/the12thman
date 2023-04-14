@@ -8,6 +8,7 @@ export default function Document() {
         <link rel="manifest" href="/manifest.json" />{' '}
         <link rel="apple-touch-icon" href="/icon.png"></link>{' '}
         <meta name="theme-color" content="#fff" />{' '}
+        <script type="text/javascript" src="scripts/script.js" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"

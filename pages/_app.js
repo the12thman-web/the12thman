@@ -11,15 +11,16 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 NProgress.configure({ showSpinner: false });
 import { Analytics } from '@vercel/analytics/react';
+import { ProSidebarProvider } from 'react-pro-sidebar';
 
 function MyApp({ Component, pageProps, menus }) {
   return (
-    <>
-      <Script type="text/javascript" src="scripts/script.js" />
+    <ProSidebarProvider>
       <Component {...pageProps} />
+
       <Analytics />
       <Footer />
-    </>
+    </ProSidebarProvider>
   );
 }
 

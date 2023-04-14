@@ -22,6 +22,15 @@ const nextConfig = withPWA({
     domains: ['i0.wp.com', 'https://12thmanstaging.the12thman.in'],
   },
   staticPageGenerationTimeout: 1000,
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/:path',
+  //       destination: '/post/:path',
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 });
 
 module.exports = nextConfig;
