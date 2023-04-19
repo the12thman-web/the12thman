@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import { useAmp } from 'next/amp';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import iplWinImg from '../../public/images/iplwin.jpg';
+import iplWinImg from '../public/images/iplwin.jpg';
 const BASE_URL = 'https://staging.the12thman.in/';
 // import { it } from 'node:test';
 
@@ -310,7 +310,7 @@ export default function PostPage({ post, posts, menus }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  const allPosts = await getAllPosts();
+  const allPosts = null;
   return {
     paths: allPosts
       ? allPosts.nodes.map(node => {
@@ -336,6 +336,6 @@ export async function getStaticProps({ params }, category) {
       menus,
       posts,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }

@@ -336,6 +336,6 @@ export async function getStaticProps({ params }, category) {
       menus,
       posts,
     },
-    revalidate: 10, // In seconds
+    revalidate: 600, // In seconds
   };
 }
