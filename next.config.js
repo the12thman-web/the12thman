@@ -9,7 +9,7 @@ const withPWA = require('next-pwa')({
 //   output: 'standalone',
 //   images: {
 //     //enter the domain or subdomain where you have WordPress installed
-//     domains: ['i0.wp.com', 'https://12thmanstaging.the12thman.in'],
+//     domains: ['i0.wp.com', 'https://backend.the12thman.in'],
 //   },
 //   staticPageGenerationTimeout: 1000,
 // };
@@ -19,7 +19,7 @@ const nextConfig = withPWA({
   output: 'standalone',
   images: {
     //enter the domain or subdomain where you have WordPress installed
-    domains: ['i0.wp.com', 'https://12thmanstaging.the12thman.in'],
+    domains: ['i0.wp.com', 'https://backend.the12thman.in'],
   },
   staticPageGenerationTimeout: 1000,
   // async redirects() {

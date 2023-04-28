@@ -8,7 +8,7 @@ import { useAmp } from 'next/amp';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import iplWinImg from '../../public/images/iplwin.jpg';
-const BASE_URL = 'https://staging.the12thman.in/';
+const BASE_URL = 'https://the12thman.in/';
 // import { it } from 'node:test';
 
 export const config = { amp: 'false' };

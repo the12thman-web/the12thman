@@ -6,7 +6,7 @@ import Image from 'next/image';
 import logo from '../public/Logo.png';
 import Adsense from './Adsense';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-const BASE_URL = 'https://staging.the12thman.in/';
+const BASE_URL = 'https://the12thman.in/';
 
 const Header = ({ menus }) => {
   // console.log('menus', menus);

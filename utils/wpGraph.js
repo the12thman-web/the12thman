@@ -1,4 +1,4 @@
-const API_URL = 'https://12thmanstaging.the12thman.in/graphql';
+const API_URL = 'https://backend.the12thman.in/graphql';
 
 async function fetchAPI(query = '', { variables } = {}) {
   const headers = {
