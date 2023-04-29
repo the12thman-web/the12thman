@@ -310,7 +310,7 @@ export default function PostPage({ post, posts, menus }) {
 
 //hey Next, these are the possible slugs
 export async function getStaticPaths(params) {
-  const allPosts = null;
+  const allPosts = await getAllPosts();
   return {
     paths: allPosts
       ? allPosts.nodes.map(node => {
