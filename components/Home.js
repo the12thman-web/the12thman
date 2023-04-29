@@ -122,7 +122,7 @@ const Home = ({
                           }}
                         >
                           <div className="image-sm">
-                            <Link href={`/posts/${items.slug}?amp=1`}>
+                            <Link href={`/${items.slug}?amp=1`}>
                               <Image
                                 src={items.featuredImage?.node.sourceUrl}
                                 width={500}
@@ -155,7 +155,7 @@ const Home = ({
                               <div className="card__post__title">
                                 <h6>
                                   <Link
-                                    href={`/posts/${items.slug}?amp=1`}
+                                    href={`/${items.slug}?amp=1`}
                                     style={{
                                       fontSize: '10px',
                                       opacity: '0.6',
@@ -199,7 +199,7 @@ const Home = ({
                           {/* <!-- Post Article -->*/}
                           <div className="card__post">
                             <div className="card__post__body">
-                              <Link href={`/posts/${items.slug}`}>
+                              <Link href={`/${items.slug}`}>
                                 <Image
                                   src={items.featuredImage?.node.sourceUrl}
                                   className="img-fluid"
@@ -215,7 +215,7 @@ const Home = ({
                                 <div className="card__post__title">
                                   <h2>
                                     <Link
-                                      href={`/posts/${items.slug}`}
+                                      href={`/${items.slug}`}
                                       className="text-decoration-none"
                                     >
                                       {items.title}
@@ -228,7 +228,7 @@ const Home = ({
                                       className="list-inline-item"
                                       key={items.postId}
                                     >
-                                      <Link href={`/posts/${items.slug}`}>
+                                      <Link href={`/${items.slug}`}>
                                         {items.author?.node.name}
                                       </Link>
                                     </li>
@@ -250,7 +250,7 @@ const Home = ({
                     return (
                       <div className="card__post " key={items.postId}>
                         <div className="card__post__body card__post__transition">
-                          <Link href={`/posts/${items.slug}`}>
+                          <Link href={`/${items.slug}`}>
                             <Image
                               src={items.featuredImage?.node.sourceUrl}
                               className="img-fluid"
@@ -265,7 +265,7 @@ const Home = ({
                             </div>
                             <div className="card__post__title">
                               <h5>
-                                <Link href={`/posts/${items.slug}`}>
+                                <Link href={`/${items.slug}`}>
                                   {items.title}
                                 </Link>
                               </h5>
@@ -276,7 +276,7 @@ const Home = ({
                                   className="list-inline-item"
                                   key={items.postId}
                                 >
-                                  <Link href={`/posts/${items.slug}`}>
+                                  <Link href={`/${items.slug}`}>
                                     {items.author?.node.name}
                                   </Link>
                                 </li>
@@ -315,7 +315,7 @@ const Home = ({
                           {/* <!-- Post Article -->*/}
                           <div className="article__entry">
                             <div className="article__image">
-                              <Link href={`/posts/${items.slug}`}>
+                              <Link href={`/${items.slug}`}>
                                 <Image
                                   src={items.featuredImage?.node.sourceUrl}
                                   alt=""
@@ -341,7 +341,7 @@ const Home = ({
                               </ul>
                               <h5>
                                 <Link
-                                  href={`/posts/${items.slug}`}
+                                  href={`/${items.slug}`}
                                   style={{ fontSize: '12px' }}
                                 >
                                   {items.title}
@@ -376,7 +376,7 @@ const Home = ({
                       {/* <!-- Post Article -->*/}
                       <div className="card__post ">
                         <div className="card__post__body card__post__transition">
-                          <Link href={`/posts/${items.slug}`}>
+                          <Link href={`/${items.slug}`}>
                             <Image
                               src={items.featuredImage?.node.sourceUrl}
                               className="img-fluid"
@@ -389,7 +389,7 @@ const Home = ({
                             <div className="card__post__category">IPL</div>
                             <div className="card__post__title">
                               <h5>
-                                <Link href={`/posts/${items.slug}`}>
+                                <Link href={`/${items.slug}`}>
                                   {items.title}
                                 </Link>
                               </h5>
@@ -400,7 +400,7 @@ const Home = ({
                                   className="list-inline-item"
                                   key={items.postId}
                                 >
-                                  <Link href={`/posts/${items.slug}`}>
+                                  <Link href={`/${items.slug}`}>
                                     {items.author?.node.name}
                                   </Link>
                                 </li>
@@ -423,7 +423,7 @@ const Home = ({
                             id="iplHomeCard"
                           >
                             <div className="image-sm">
-                              <Link href={`/posts/${items.slug}`}>
+                              <Link href={`/${items.slug}`}>
                                 <Image
                                   src={items.featuredImage?.node.sourceUrl}
                                   className="img-fluid"
@@ -453,7 +453,7 @@ const Home = ({
                                 </div>
                                 <div className="card__post__title">
                                   <h6>
-                                    <Link href={`/posts/${items.slug}`}>
+                                    <Link href={`/${items.slug}`}>
                                       {items.title}
                                     </Link>
                                   </h6>
@@ -475,7 +475,7 @@ const Home = ({
                             id="iplHomeCard"
                           >
                             <div className="image-sm">
-                              <Link href={`/posts/${items.slug}`}>
+                              <Link href={`/${items.slug}`}>
                                 <Image
                                   src={items.featuredImage?.node.sourceUrl}
                                   className="img-fluid"
@@ -505,7 +505,7 @@ const Home = ({
                                 </div>
                                 <div className="card__post__title">
                                   <h6>
-                                    <Link href={`/posts/${items.slug}`}>
+                                    <Link href={`/${items.slug}`}>
                                       {items.title}
                                     </Link>
                                   </h6>
@@ -530,7 +530,7 @@ const Home = ({
                           {/* <!-- Post Article -->*/}
                           <div className="card__post card__post-list">
                             <div className="image-sm">
-                              <Link href={`/posts/${NBAItem.slug}`}>
+                              <Link href={`/${NBAItem.slug}`}>
                                 <Image
                                   src={NBAItem.featuredImage?.node.sourceUrl}
                                   width={500}
@@ -558,7 +558,7 @@ const Home = ({
                                 <div className="card__post__title">
                                   <h6>
                                     <Link
-                                      href={`/posts/${NBAItem.slug}`}
+                                      href={`/${NBAItem.slug}`}
                                       style={{ fontSize: '12px' }}
                                     >
                                       {NBAItem.title}
@@ -604,7 +604,7 @@ const Home = ({
                           <>
                             <div className="article__entry" key={item.postId}>
                               <div className="article__image">
-                                <Link href={`/posts/${item.slug}`}>
+                                <Link href={`/${item.slug}`}>
                                   <Image
                                     className="image-profile"
                                     src={item.featuredImage?.node.sourceUrl}
@@ -632,12 +632,12 @@ const Home = ({
                                   </li>
                                 </ul>
                                 <h5>
-                                  <Link href={`/posts/${item.slug}`}>
+                                  <Link href={`/${item.slug}`}>
                                     {item.title}
                                   </Link>
                                 </h5>
                                 <Link
-                                  href={`/posts/${item.slug}`}
+                                  href={`/${item.slug}`}
                                   className="btn btn-outline-primary mb-4 text-capitalize"
                                 >
                                   readmore
@@ -655,7 +655,7 @@ const Home = ({
                           <>
                             <div className="article__entry" key={item.postId}>
                               <div className="article__image">
-                                <Link href={`/posts/${item.slug}`}>
+                                <Link href={`/${item.slug}`}>
                                   <Image
                                     className="image-profile"
                                     src={item.featuredImage?.node.sourceUrl}
@@ -683,12 +683,12 @@ const Home = ({
                                   </li>
                                 </ul>
                                 <h5>
-                                  <Link href={`/posts/${item.slug}`}>
+                                  <Link href={`/${item.slug}`}>
                                     {item.title}
                                   </Link>
                                 </h5>
                                 <Link
-                                  href={`/posts/${item.slug}`}
+                                  href={`/${item.slug}`}
                                   className="btn btn-outline-primary mb-4 text-capitalize"
                                 >
                                   readmore
@@ -711,7 +711,7 @@ const Home = ({
                         <div className="mb-3" key={motoGPItems.postId}>
                           <div className="card__post card__post-list">
                             <div className="image-sm">
-                              <Link href={`/posts/${motoGPItems.slug}`}>
+                              <Link href={`/${motoGPItems.slug}`}>
                                 <Image
                                   src={
                                     motoGPItems.featuredImage?.node.sourceUrl
@@ -738,7 +738,7 @@ const Home = ({
                                 <div className="card__post__title">
                                   <h6>
                                     <Link
-                                      href={`/posts/${motoGPItems.slug}`}
+                                      href={`/${motoGPItems.slug}`}
                                       style={{ fontSize: '12px' }}
                                     >
                                       {motoGPItems.title}
@@ -786,7 +786,7 @@ const Home = ({
                         <>
                           <div className="article__entry" key={item.postId}>
                             <div className="article__image">
-                              <Link href={`/posts/${item.slug}`}>
+                              <Link href={`/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item.featuredImage?.node.sourceUrl}
@@ -814,12 +814,10 @@ const Home = ({
                                 </li>
                               </ul>
                               <h5>
-                                <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
-                                </Link>
+                                <Link href={`/${item.slug}`}>{item.title}</Link>
                               </h5>
                               <Link
-                                href={`/posts/${item.slug}`}
+                                href={`/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 readmore
@@ -837,7 +835,7 @@ const Home = ({
                         <>
                           <div className="article__entry" key={item.postId}>
                             <div className="article__image">
-                              <Link href={`/posts/${item.slug}`}>
+                              <Link href={`/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item.featuredImage?.node.sourceUrl}
@@ -865,12 +863,10 @@ const Home = ({
                                 </li>
                               </ul>
                               <h5>
-                                <Link href={`/posts/${item.slug}`}>
-                                  {item.title}
-                                </Link>
+                                <Link href={`/${item.slug}`}>{item.title}</Link>
                               </h5>
                               <Link
-                                href={`/posts/${item.slug}`}
+                                href={`/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 readmore
@@ -893,7 +889,7 @@ const Home = ({
                       <div className="mb-3" key={UFCCardItems.postId}>
                         <div className="card__post card__post-list">
                           <div className="image-sm">
-                            <Link href={`/posts/${UFCCardItems.slug}`}>
+                            <Link href={`/${UFCCardItems.slug}`}>
                               <Image
                                 src={UFCCardItems.featuredImage?.node.sourceUrl}
                                 width={500}
@@ -918,7 +914,7 @@ const Home = ({
                               <div className="card__post__title">
                                 <h6>
                                   <Link
-                                    href={`/posts/${UFCCardItems.slug}`}
+                                    href={`/${UFCCardItems.slug}`}
                                     style={{ fontSize: '12px' }}
                                   >
                                     {UFCCardItems.title}

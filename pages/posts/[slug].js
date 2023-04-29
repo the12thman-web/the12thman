@@ -203,7 +203,7 @@ export default function PostPage({ post, posts, menus }) {
                             <div className="mb-3" key={item.postId}>
                               <div className="card__post card__post-list">
                                 <div className="image-sm">
-                                  <Link href={`/posts/${item.slug}`}>
+                                  <Link href={`/${item.slug}`}>
                                     <Image
                                       className="image-profile"
                                       src={item?.featuredImage?.node?.sourceUrl}
@@ -227,7 +227,7 @@ export default function PostPage({ post, posts, menus }) {
                                     </div>
                                     <div className="card__post__title">
                                       <h6>
-                                        <Link href={`/posts/${item.slug}`}>
+                                        <Link href={`/${item.slug}`}>
                                           {item?.title.slice(0, 30)}
                                         </Link>
                                       </h6>
@@ -245,7 +245,7 @@ export default function PostPage({ post, posts, menus }) {
                             return (
                               <>
                                 <div className="article__image" key={item.postId}>
-                                  <Link href={`/posts/${item.slug}`}>
+                                  <Link href={`/${item.slug}`}>
                                     <Image
                                       className="image-profile"
                                       src={item.featuredImage.node.sourceUrl}
@@ -271,7 +271,7 @@ export default function PostPage({ post, posts, menus }) {
                                   </h5>
                                   <p>{item.slug.slice(0, 30)} .....</p>
                                   <Link
-                                    href={`/posts/${item.slug}`}
+                                    href={`/${item.slug}`}
                                     className="btn btn-outline-primary mb-4 text-capitalize"
                                   >
                                     read more
@@ -314,8 +314,8 @@ export async function getStaticPaths(params) {
   return {
     paths: allPosts
       ? allPosts.nodes.map(node => {
-          // console.log('static path post', '/posts/' + node.slug);
-          return `/posts/${node.slug}`;
+          // console.log('static path post', '/' + node.slug);
+          return `/${node.slug}`;
         }) || []
       : [],
     fallback: 'blocking',

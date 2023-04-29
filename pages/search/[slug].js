@@ -33,7 +33,7 @@ const search = ({ posts }) => {
                     <div className="row ">
                       <div className="col-md-5">
                         <div className="card__post__transition">
-                          <Link href={`/posts/${items.slug}`}>
+                          <Link href={`/${items.slug}`}>
                             <Image
                               src={items.featuredImage?.node.sourceUrl}
                               width={500}
@@ -66,7 +66,7 @@ const search = ({ posts }) => {
                             </div>
                             <div className="card__post__title">
                               <h5>
-                                <Link href={`/posts/${items.slug}`}>
+                                <Link href={`/${items.slug}`}>
                                   {items.title.slice(0, 40)}
                                 </Link>
                               </h5>

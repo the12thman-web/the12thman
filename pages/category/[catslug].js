@@ -33,8 +33,8 @@ const Category = ({ posts, menus, title }) => {
                         <>
                           <div className="article__entry" key={item.postId}>
                             <div className="article__image">
-                              {/* <a href='.../posts/${node.slug}'> */}
-                              <Link href={`/posts/${item.slug}`}>
+                              {/* <a href='.../${node.slug}'> */}
+                              <Link href={`/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item?.featuredImage?.node?.sourceUrl}
@@ -64,13 +64,13 @@ const Category = ({ posts, menus, title }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <Link href={`/posts/${item.slug}`}>
+                                <Link href={`/${item.slug}`}>
                                   {item?.title}
                                 </Link>
                               </h5>
 
                               <Link
-                                href={`/posts/${item.slug}`}
+                                href={`/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 readmore
@@ -88,7 +88,7 @@ const Category = ({ posts, menus, title }) => {
                         <>
                           <div className="article__entry" key={item.postId}>
                             <div className="article__image">
-                              <Link href={`/posts/${item.slug}`}>
+                              <Link href={`/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item?.featuredImage?.node?.sourceUrl}
@@ -115,13 +115,13 @@ const Category = ({ posts, menus, title }) => {
                                 </li> */}
                               </ul>
                               <h5>
-                                <Link href={`/posts/${item.slug}`}>
+                                <Link href={`/${item.slug}`}>
                                   {item?.title}
                                 </Link>
                               </h5>
 
                               <Link
-                                href={`/posts/${item.slug}`}
+                                href={`/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 readmore
@@ -147,7 +147,7 @@ const Category = ({ posts, menus, title }) => {
                             {/* <!-- Post Article --> */}
                             <div className="card__post card__post-list">
                               <div className="image-sm">
-                                <Link href={`/posts/${item.slug}`}>
+                                <Link href={`/${item.slug}`}>
                                   <Image
                                     className="image-profile"
                                     src={item.featuredImage.node.sourceUrl}
@@ -176,7 +176,7 @@ const Category = ({ posts, menus, title }) => {
                                   </div>
                                   <div className="card__post__title">
                                     <h6>
-                                      <Link href={`/posts/${item.slug}`}>
+                                      <Link href={`/${item.slug}`}>
                                         {item.title}
                                       </Link>
                                     </h6>
@@ -195,7 +195,7 @@ const Category = ({ posts, menus, title }) => {
                         return (
                           <>
                             <div className="article__image">
-                              <Link href={`/posts/${item.slug}`}>
+                              <Link href={`/${item.slug}`}>
                                 <Image
                                   className="image-profile"
                                   src={item.featuredImage.node.sourceUrl}
@@ -221,7 +221,7 @@ const Category = ({ posts, menus, title }) => {
                               </h5>
                               <p>{item.slug.slice(0, 30)} .....</p>
                               <Link
-                                href={`/posts/${item.slug}`}
+                                href={`/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
                                 {' '}
