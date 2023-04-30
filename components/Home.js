@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Header from './Header';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import iplWinImg from '../public/images/iplwin.jpg';
+// import iplWinImg from '../public/images/iplwin.jpg';
+// import laserImage from '../public/images/laser.jpg';
 
 import dynamic from 'next/dynamic';
 
@@ -18,7 +19,6 @@ const Popup = dynamic(
 
 import 'reactjs-popup/dist/index.css';
 
-import laserImage from '../public/images/laser.jpg';
 const Home = ({
   posts,
   menus,
@@ -75,7 +75,7 @@ const Home = ({
     <>
       <Header menus={menus} />
 
-      <Popup
+      {/* <Popup
         arrow={true}
         open={hide}
         position="center"
@@ -90,7 +90,7 @@ const Home = ({
             <Image src={laserImage} alt="IPLWIN" className="image" />
           </a>
         </div>
-      </Popup>
+      </Popup> */}
       {/* <!-- Tranding news  carousel-->*/}
       <section className="bg-light pt-20 carouselContainer">
         <div className="container">
@@ -934,7 +934,7 @@ const Home = ({
           </div>
         </div>
       </div>
-      {lastPopUpHide ? (
+      {/* {lastPopUpHide ? (
         <div className="rswsuper365mobile">
           <a id="super365mobile" target="_blank" href="https://iplwin.us/PRblO">
             <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />
@@ -947,7 +947,7 @@ const Home = ({
             &times;
           </div>
         </div>
-      ) : null}
+      ) : null} */}
       {/* <!-- End Popular news category -->*/}
     </>
   );

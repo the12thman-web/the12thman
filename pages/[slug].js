@@ -290,7 +290,7 @@ export default function PostPage({ post, posts, menus }) {
           </>
         )}
       </section>
-      {lastPopUpHide ? (
+      {/* {lastPopUpHide ? (
         <div className="rswsuper365mobile">
           <a id="super365mobile" target="_blank" href="https://iplwin.us/PRblO">
             <Image src={iplWinImg} alt="IPLWIN" style={{ width: '100%' }} />
@@ -303,7 +303,7 @@ export default function PostPage({ post, posts, menus }) {
             &times;
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 }
