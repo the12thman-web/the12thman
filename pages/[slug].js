@@ -25,10 +25,14 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from 'next-share';
+import { Carousel } from 'react-responsive-carousel';
 
 export default function PostPage({ post, posts, menus }) {
   const isAmp = useAmp();
   const asideData = posts ? posts?.nodes?.slice(12, 16) : [];
+  console.log('asideData: ', asideData);
+  const lowerCarousel = posts ? posts?.nodes?.slice(6, 10) : [];
+  console.log('lowerCarousel: ', lowerCarousel);
   // const categoryDataSingle = posts ? posts?.nodes?.slice(10, 11) : [];
 
   const searchParams = useSearchParams();
@@ -162,6 +166,79 @@ export default function PostPage({ post, posts, menus }) {
                         className="has-drop-cap-fluid"
                         dangerouslySetInnerHTML={{ __html: post?.content }}
                       ></div>
+                      <br></br>
+                      <h4 className="border_section">
+                        {asideData ? 'People also like' : ''}
+                      </h4>
+                      <div className="popular__news-header-carousel">
+                        <div className="container">
+                          <div className="row">
+                            <div className="col-lg-12">
+                              <div className="top__news__slider">
+                                <Carousel
+                                  centerMode
+                                  centerSlidePercentage={33.33}
+                                  autoPlay
+                                  infiniteLoop
+                                  showIndicators={false}
+                                  set
+                                  showThumbs={false}
+                                >
+                                  {lowerCarousel.map(items => {
+                                    return (
+                                      <div
+                                        className="item m-2"
+                                        key={items.postId}
+                                      >
+                                        {/* <!-- Post Article -->*/}
+                                        <div className="article__entry">
+                                          <div className="article__image">
+                                            <Link href={`/${items.slug}`}>
+                                              <Image
+                                                src={
+                                                  items.featuredImage?.node
+                                                    .sourceUrl
+                                                }
+                                                alt=""
+                                                className="img-fluid"
+                                                width={500}
+                                                height={400}
+                                              />
+                                            </Link>
+                                          </div>
+                                          <div
+                                            className="article__content"
+                                            id="lowerCarContent"
+                                          >
+                                            <ul className="list-inline">
+                                              <li
+                                                className="list-inline-item"
+                                                key={items.postId}
+                                              >
+                                                <span className="text-primary">
+                                                  {items.author?.node.name}
+                                                </span>
+                                              </li>
+                                            </ul>
+                                            <h5>
+                                              <Link
+                                                href={`/${items.slug}`}
+                                                style={{ fontSize: '12px' }}
+                                              >
+                                                {items.title}
+                                              </Link>
+                                            </h5>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    );
+                                  })}
+                                </Carousel>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div id="v-the12thman-in" style={{ width: '100%' }}></div>
                     <div id="M751792ScriptRootC1280029"></div>
@@ -196,6 +273,9 @@ export default function PostPage({ post, posts, menus }) {
                 </div>
                 <div className="col-md-4">
                   <div className="sticky-top">
+                    <h4 className="border_section">
+                      {asideData ? 'Related Articles' : ''}
+                    </h4>
                     <aside className="wrapper__list__article ">
                       <div className="wrapper__list__article-small">
                         {asideData.map(item => {

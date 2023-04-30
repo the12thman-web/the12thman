@@ -8,15 +8,6 @@ import { Carousel } from 'react-responsive-carousel';
 // import iplWinImg from '../public/images/iplwin.jpg';
 // import laserImage from '../public/images/laser.jpg';
 
-import dynamic from 'next/dynamic';
-
-const Popup = dynamic(
-  () => {
-    return import('reactjs-popup');
-  },
-  { ssr: false }
-);
-
 import 'reactjs-popup/dist/index.css';
 
 const Home = ({
