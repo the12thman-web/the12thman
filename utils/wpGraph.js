@@ -31,14 +31,14 @@ async function fetchAPI(query = '', { variables } = {}) {
   return json.data;
 }
 
-export async function getAllPosts(category = '', search = '') {
+export async function getAllPosts(category = '', search = '', limit = 20) {
   try {
     console.log('get post called', category, search);
     // const cachedData = readFromCache('posts' + category);
     const data = await fetchAPI(
       `
-        query AllPosts($category: String!,$search: String!) {
-            posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: $category, search:$search},first: 20) {
+        query AllPosts($category: String!,$search: String!, $limit:Int!) {
+            posts(where: {status: PUBLISH, orderby: {field: DATE, order: DESC},categoryName: $category, search:$search},first: $limit) {
                 nodes {
                 author {
                     node {
@@ -69,7 +69,7 @@ export async function getAllPosts(category = '', search = '') {
         }
       `,
       {
-        variables: { category, search },
+        variables: { category, search, limit },
       }
     );
     console.log('data: ', data);
