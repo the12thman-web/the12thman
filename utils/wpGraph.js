@@ -59,6 +59,7 @@ export async function getAllPosts(category = '', search = '', limit = 20) {
                 postId
                 slug
                 title
+                date
                 tags {
                     nodes {
                     name

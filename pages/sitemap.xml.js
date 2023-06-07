@@ -8,10 +8,11 @@ function generateSiteMap(posts) {
        <loc>https://the12thman.in/</loc>
      </url>
      ${posts
-       .map(({ slug }) => {
+       .map(({ slug, date }) => {
          return `
        <url>
            <loc>${`${EXTERNAL_DATA_URL}/${slug}`}</loc>
+           <lastmod>${date}</lastmod>
        </url>
      `;
        })
