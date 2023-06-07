@@ -25,10 +25,15 @@ const Category = ({ posts, menus, title, catDetails }) => {
               <aside className="wrapper__list__article ">
                 <h4 className="border_section">{title}</h4>
                 <br />
+                <br />
                 <div
                   className="has-drop-cap-fluid"
                   dangerouslySetInnerHTML={{ __html: catDesc }}
                 ></div>
+                <br />
+                <br />
+                <br />
+
                 <div className="row">
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
