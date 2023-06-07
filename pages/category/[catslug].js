@@ -1,15 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAllPosts, getAllMenus } from '../../utils/wpGraph';
+import { getAllPosts, getAllMenus, getCategory } from '../../utils/wpGraph';
 import Header from '../../components/Header';
 
-const Category = ({ posts, menus, title }) => {
+const Category = ({ posts, menus, title, catDetails }) => {
   const categoryDatafirstCol = posts?.nodes?.slice(0, 4);
   const categoryDatasecCol = posts?.nodes?.slice(5, 9);
   const categoryDataSlider = posts?.nodes?.slice(10, 14);
   const categoryDataSingle = posts?.nodes?.slice(10, 11);
   const categoryTagsData = posts?.nodes;
+  const catDesc = catDetails?.nodes[0]?.description || '';
 
   return (
     <>
@@ -23,7 +24,11 @@ const Category = ({ posts, menus, title }) => {
             <div className="col-md-8">
               <aside className="wrapper__list__article ">
                 <h4 className="border_section">{title}</h4>
-
+                <br />
+                <div
+                  className="has-drop-cap-fluid"
+                  dangerouslySetInnerHTML={{ __html: catDesc }}
+                ></div>
                 <div className="row">
                   <div className="col-md-6">
                     {/* <!-- Post Article --> */}
@@ -124,7 +129,7 @@ const Category = ({ posts, menus, title }) => {
                                 href={`/${item.slug}`}
                                 className="btn btn-outline-primary mb-4 text-capitalize"
                               >
-                                readmore
+                                Read more
                               </Link>
                             </div>
                           </div>
@@ -188,50 +193,6 @@ const Category = ({ posts, menus, title }) => {
                         </>
                       );
                     })}
-
-                    {/* <!-- Post Article --> */}
-                    {/* <div className="article__entry">
-                      {categoryDataSingle.map(item => {
-                        return (
-                          <>
-                            <div className="article__image">
-                              <Link href={`/${item.slug}`}>
-                                <Image
-                                  className="image-profile"
-                                  src={item.featuredImage.node.sourceUrl}
-                                  width={500}
-                                  height={400}
-                                  alt={item.featuredImage.node.altText}
-                                />
-                              </Link>
-                            </div>
-                            <div className="article__content">
-                              <div className="article__category">
-                                {item.categories.nodes[0].name}
-                              </div>
-                              <ul className="list-inline">
-                                <li className="list-inline-item">
-                                  <span className="text-primary">
-                                    by {item.author.node.name}
-                                  </span>
-                                </li>
-                              </ul>
-                              <h5>
-                                <a href="#">{item.title.slice(0, 30)}</a>
-                              </h5>
-                              <p>{item.slug.slice(0, 30)} .....</p>
-                              <Link
-                                href={`/${item.slug}`}
-                                className="btn btn-outline-primary mb-4 text-capitalize"
-                              >
-                                {' '}
-                                read more
-                              </Link>
-                            </div>
-                          </>
-                        );
-                      })}
-                    </div> */}
                   </div>
                 </aside>
                 <ins
@@ -242,70 +203,11 @@ const Category = ({ posts, menus, title }) => {
                   data-ad-client="ca-pub-9891586352099803"
                   data-ad-slot="5294261220"
                 ></ins>
-
-                {/* <aside className="wrapper__list__article">
-                  <h4 className="border_section">tags</h4>
-                  {categoryTagsData.map((item) => {
-                    return (
-                      <>
-                        <div className="blog-tags p-0">
-                          <ul className="list-inline">
-                            <li className="list-inline-item">
-                              <Link href={`/category/${item.catslug}`}>
-                                {item.tags.nodes.name}
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
-                      </>
-                    );
-                  })}
-                </aside> */}
-
-                {/* <aside className="wrapper__list__article">
-                  <h4 className="border_section">Advertise</h4>
-                  <Link href="/">
-                    <figure>
-                      <Image
-                        className="image-profile"
-                        src={item.featuredImage.node.sourceUrl}
-                        width={500}
-                        height={400}
-                        alt={item.featuredImage.node.altText}
-                      />
-                    </figure>
-                  </Link>
-                </aside> */}
               </div>
             </div>
 
             <div className="clearfix"></div>
           </div>
-          {/* <!-- Pagination --> */}
-          {/* <div className="pagination-area">
-            <div
-              className="pagination wow fadeIn animated"
-              data-wow-duration="2s"
-              data-wow-delay="0.5s"
-              style={{
-                visibility: "visible",
-                animationDuration: "2s",
-                animationDelay: "0.5s",
-                animationName: "fadeIn",
-              }}
-            >
-              <a href="#">«</a>
-              <a href="#">1</a>
-              <a className="active" href="#">
-                2
-              </a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-
-              <a href="#">»</a>
-            </div>
-          </div> */}
         </div>
       </section>
     </>
@@ -336,12 +238,15 @@ export async function getStaticPaths(params) {
 export async function getStaticProps({ params }) {
   const posts = await getAllPosts(params.catslug);
   const menus = await getAllMenus();
+  const catDetails = await getCategory(params.catslug);
+  // console.log('catDetails: ', catDetails);
 
   return {
     props: {
       posts,
       menus,
       title: params.catslug,
+      catDetails,
     },
     revalidate: 10, // In seconds
   };

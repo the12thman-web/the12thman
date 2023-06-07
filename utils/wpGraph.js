@@ -217,3 +217,29 @@ export async function getPost(
     console.log('ERROR', e);
   }
 }
+
+export async function getCategory(catName = 'chennai-super-kings') {
+  console.log('catName: ', catName);
+  try {
+    const data = await fetchAPI(
+      `query getCategory($catName: String!){
+          categories(where: {nameLike: $catName}) {
+          nodes {
+            categoryId
+            name
+            description
+          }
+        }
+      }`,
+      {
+        variables: { catName },
+      }
+    );
+    //   console.log("data", data);
+
+    console.log('data: ', data);
+    return data?.categories;
+  } catch (e) {
+    console.log('ERROR', e);
+  }
+}
