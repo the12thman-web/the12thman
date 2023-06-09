@@ -44,7 +44,6 @@ function RSSFeed() {
     // We generate the XML RSS with the posts data
     const feed = generateRssFeed(posts?.nodes);
 
-    res.setHeader('Content-Type', 'text/xml');
     // we send the XML to the browser
     res.write(feed);
     res.end();
