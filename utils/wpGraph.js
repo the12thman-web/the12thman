@@ -80,6 +80,7 @@ export async function getAllPosts(category = '', search = '', limit = 20) {
   }
 }
 
+//NOT IN USE FOR NOW
 export async function getAllMenus() {
   console.log('getAllMenus: ', getAllMenus);
   try {

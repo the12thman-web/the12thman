@@ -1,142 +1,23 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { getAllMenus } from '../utils/wpGraph';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../public/Logo.png';
 import Adsense from './Adsense';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-const BASE_URL = 'https://the12thman.in/';
 
-const Header = ({ menus }) => {
-  // console.log('menus', menus);
-  const [data, setData] = useState([]);
-  // const [text, setText] = useState('');
+const Header = ({}) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showSideBar, setShowSideBar] = useState(true);
-
-  // const [newData, setNewData] = useState([]);
-
-  // console.log("data", data);
-  const newValue = menus.edges ? menus.edges[0].node.menuItems.edges : '';
-
-  const dataPost = async () => {
-    const value = menus;
-    // console.log("value", value);
-    setData(value);
-  };
-  // console.log("values", data);
-
-  // const searchHandler = e => {
-  //   setText(e.target.value);
-  // };
 
   const openSearchBar = () => {
     setShowSearch(!showSearch);
   };
 
-  const filterData = () => {
-    const newData = [];
-
-    for (let i = 0; i < newValue.length; i++) {
-      if (newValue[i].node.parentId === null) {
-        const dataObj = {};
-        dataObj.menu = newValue[i].node.label;
-        dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
-        newData.push(dataObj);
-      }
-    }
-    return newData;
-
-    // console.log("d", newData);
-  };
-
-  const getListByParentID = id => {
-    const newData = [];
-
-    for (let i = 0; i < newValue.length; i++) {
-      if (newValue[i].node.parentId === id) {
-        const dataObj = {};
-        dataObj.name = newValue[i].node.label;
-        dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
-        newData.push(dataObj);
-      }
-    }
-    return newData;
-
-    // console.log("d", newData);
-  };
-
-  // filterData(data);
-
-  const getChildByParentId = id => {
-    const newData = [];
-
-    for (let i = 0; i < newValue.length; i++) {
-      if (newValue[i].node.parentId === id) {
-        const dataObj = {};
-        dataObj.newLineName = newValue[i].node.label;
-        dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
-        newData.push(dataObj);
-      }
-    }
-    return newData;
-  };
-
-  const getNewChildByParentId = id => {
-    const newData = [];
-
-    for (let i = 0; i < newValue.length; i++) {
-      if (newValue[i].node.parentId === id) {
-        const dataObj = {};
-        dataObj.newNextLineName = newValue[i].node.label;
-        dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
-        newData.push(dataObj);
-      }
-    }
-    return newData;
-  };
-
-  const getNewChildrenByParentId = id => {
-    const newData = [];
-
-    for (let i = 0; i < newValue.length; i++) {
-      if (newValue[i].node.parentId === id) {
-        const dataObj = {};
-        dataObj.newChildrenName = newValue[i].node.label;
-        dataObj.id = newValue[i].node.id;
-        dataObj.uri = newValue[i].node.uri.split('/').slice(-2, -1)[0];
-        newData.push(dataObj);
-      }
-    }
-    return newData;
-  };
-
-  const clickedData = [];
   const openSideBar = () => {
-    console.log('prtk');
     setShowSideBar(!showSideBar);
   };
 
-  // const routing = (uri, subMenu) => {
-  //   console.log('uri: ', uri);
-  //   if (subMenu) {
-  //     const index = clickedData.indexOf(uri);
-  //     if (index === -1) {
-  //       console.log('pushed');
-  //       clickedData.push(uri);
-  //     } else {
-  //       //send to route
-  //       console.log('sending');
-  //       clickedData.splice(index, 1);
-  //       router.push(BASE_URL + '/category/' + href);
-  //     }
-  //   }
-  // };
   return (
     <>
       <header className="bg-light">
@@ -173,167 +54,1099 @@ const Header = ({ menus }) => {
               </Link>
             </div>
             <div className="container">
-              {/* <figure className="mb-0 mx-auto">
-                <a href="/homepage-v1.html">
-                  <img
-                    src="images/placeholder/logo.jpg"
-                    alt=""
-                    className="img-fluid logo"
-                  />
-                </a>
-              </figure> */}
+              <nav className="list-group list-group-flush">
+                <ul className="navbar-nav " style={{ 'margin-left': '294px' }}>
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle text-dark"
+                      href="/category/nba"
+                      data-toggle="dropdown"
+                    >
+                      {' '}
+                      NBA
+                    </a>
+                    <ul className="dropdown-menu animate fade-up">
+                      <li>
+                        <a
+                          className="dropdown-item icon-arrow  text-dark"
+                          href="#"
+                        >
+                          {' '}
+                          Eastern Conference{' '}
+                        </a>
+                        <ul className="submenu dropdown-menu  animate fade-up">
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="/category/miami heat/"
+                            >
+                              Miami Heat
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="/category/washington wizards/"
+                            >
+                              Washington Wizard
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          className="dropdown-item icon-arrow  text-dark"
+                          href="#"
+                        >
+                          {' '}
+                          Western Conference{' '}
+                        </a>
+                        <ul className="submenu dropdown-menu  animate fade-up">
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/los angeles clippers/`}
+                            >
+                              Los Angeles Clippers
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/utah jazz/`}
+                            >
+                              Utah Jazz
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/phoenix suns/`}
+                            >
+                              Phoenix Suns
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/denver nuggets/`}
+                            >
+                              Denver Nuggets
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/dallas mavericks/`}
+                            >
+                              Dallas Mavericks
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/portland trail blazers/`}
+                            >
+                              Portland Trail Blazers
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/los angeles lakers/`}
+                            >
+                              Los Angeles Lakers
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/memphis grizzlies/`}
+                            >
+                              Memphis Grizzlies
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/golden state warriors/`}
+                            >
+                              Golden State Warriors
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/san antonio spurs/`}
+                            >
+                              San Antonio Spurs
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/new orleans pelicans/`}
+                            >
+                              New Orleans Pelicans
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/sacramento kings/`}
+                            >
+                              Sacramento Kings
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/oklahoma city thunder/`}
+                            >
+                              Oklahoma City Thunder
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/houston rockets/`}
+                            >
+                              Houston Rockets
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle text-dark"
+                      href="/category/nba"
+                      data-toggle="dropdown"
+                    >
+                      {' '}
+                      Motor Sports
+                    </a>
+                    <ul className="dropdown-menu animate fade-up">
+                      <li>
+                        <a
+                          className="dropdown-item"
+                          href={`/category/formula 1`}
+                        >
+                          F1
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href={`/category/moto gp`}>
+                          Moto GP
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li className="nav-item">
+                    <a className="nav-link  text-dark" href="/category/nfl">
+                      {' '}
+                      NFL{' '}
+                    </a>
+                  </li>
+
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle text-dark"
+                      href="/category/football"
+                      data-toggle="dropdown"
+                    >
+                      {' '}
+                      Football
+                    </a>
+                    <ul className="dropdown-menu animate fade-up">
+                      <li>
+                        <a
+                          className="dropdown-item icon-arrow  text-dark"
+                          href="#"
+                        >
+                          {' '}
+                          Domestic Leagues{' '}
+                        </a>
+                        <ul className="submenu dropdown-menu  animate fade-up">
+                          <li>
+                            <a
+                              className="dropdown-item icon-arrow  text-dark"
+                              href="/category/English Premier League/"
+                            >
+                              English Premier League
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/arsenal/`}
+                                >
+                                  Arsenal
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/chelsea/`}
+                                >
+                                  Chelsea
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/everton/`}
+                                >
+                                  Everton
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/leicester city/`}
+                                >
+                                  Leicester City
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/liverpool/`}
+                                >
+                                  Liverpool
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/manchester city/`}
+                                >
+                                  Manchester City
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/manchester united/`}
+                                >
+                                  Manchester United
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/newcastle united/`}
+                                >
+                                  Newcastle United
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/tottenham hotspur/`}
+                                >
+                                  Tottenham Hotspur
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/west ham united/`}
+                                >
+                                  West Ham United
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item icon-arrow  text-dark"
+                              href="/category/La Liga/"
+                            >
+                              La Liga
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/atletic bilbao/`}
+                                >
+                                  Atletic Bilbao
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/atletico madrid/`}
+                                >
+                                  Atletico Madrid
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/barcelona/`}
+                                >
+                                  Barcelona
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/real betis/`}
+                                >
+                                  Real Betis
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/real madrid/`}
+                                >
+                                  Real Madrid
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/real sociedad/`}
+                                >
+                                  Real Sociedad
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/Sevilla`}
+                                >
+                                  Sevilla
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/Valencia`}
+                                >
+                                  Valencia
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/Villarreal`}
+                                >
+                                  Villarreal
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item icon-arrow  text-dark"
+                              href="/category/Bundesliga/"
+                            >
+                              Bundesliga
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/bayer leverkusen/`}
+                                >
+                                  Bayer Leverkusen
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/bayern munich/`}
+                                >
+                                  Bayern Munich
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/borussia dortmund/`}
+                                >
+                                  Borussia Dortmund
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/borussia monchengladbach/`}
+                                >
+                                  Borussia Monchengladbach
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/eintracht frankfurt/`}
+                                >
+                                  Eintracht Frankfurt
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/rb leipzig/`}
+                                >
+                                  RB Leipzig
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item icon-arrow  text-dark"
+                              href="/category/Serie A/"
+                            >
+                              Serie A
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/ac milan/`}
+                                >
+                                  AC Milan
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/inter milan/`}
+                                >
+                                  Inter Milan
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/juventus/`}
+                                >
+                                  Juventus
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/ss lazio/`}
+                                >
+                                  Lazio
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/napoli/`}
+                                >
+                                  Napoli
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/as roma`}
+                                >
+                                  Roma
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item icon-arrow  text-dark"
+                              href="/category/Ligue 1/"
+                            >
+                              Ligue 1
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/lyon`}
+                                >
+                                  Lyon
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/Marseille`}
+                                >
+                                  Marseille
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/Monaco FC`}
+                                >
+                                  Monaco FC
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/paris saint germain/`}
+                                >
+                                  PSG
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a className="dropdown-item" href="/category/MLS/">
+                              MLS
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="/category/Indian Super League/"
+                            >
+                              Indian Super League
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          className="dropdown-item icon-arrow  text-dark"
+                          href="#"
+                        >
+                          {' '}
+                          Domestic League Cups{' '}
+                        </a>
+                        <ul className="submenu dropdown-menu  animate fade-up">
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/league cup/`}
+                            >
+                              EFL Cup
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/fa cup`}
+                            >
+                              FA Cup
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/copa del ray/`}
+                            >
+                              Copa Del Ray
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/uefa champions league/`}
+                            >
+                              UEFA Champions League
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/europa league/`}
+                            >
+                              UEFA Europa League
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/uefa conference league/`}
+                            >
+                              UEFA Conference League
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle text-dark"
+                      href="/category/cricket"
+                      data-toggle="dropdown"
+                    >
+                      {' '}
+                      Cricket
+                    </a>
+                    <ul className="dropdown-menu animate fade-up">
+                      <li>
+                        <a
+                          className="dropdown-item icon-arrow  text-dark"
+                          href="#"
+                        >
+                          {' '}
+                          Cricket Teams{' '}
+                        </a>
+                        <ul className="submenu dropdown-menu  animate fade-up">
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/australia cricket team`}
+                            >
+                              Australia Cricket Team
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/bangladesh cricket team`}
+                            >
+                              Bangladesh Cricket Team
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/england cricket team`}
+                            >
+                              England Cricket Team
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/indian cricket team`}
+                            >
+                              Indian Cricket Team
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/new zealand cricket team`}
+                            >
+                              New Zealand Cricket Team
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/pakistan cricket team/`}
+                            >
+                              Pakistan Cricket Team
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/south africa cricket team/`}
+                            >
+                              South Africa Cricket Team
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          className="dropdown-item icon-arrow  text-dark"
+                          href="#"
+                        >
+                          {' '}
+                          Cricket Series{' '}
+                        </a>
+                        <ul className="submenu dropdown-menu  animate fade-up">
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/india vs bangladesh/`}
+                            >
+                              India vs Bangladesh
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/australia vs south africa/`}
+                            >
+                              South Africa tour of Australia
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/pakistan vs new zealand/`}
+                            >
+                              Pakistan vs New Zealand
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/india vs sri lanka/`}
+                            >
+                              Sri Lanka tour of India
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/india vs new zealand/`}
+                            >
+                              New Zealand Tour of India
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          className="dropdown-item icon-arrow  text-dark"
+                          href="#"
+                        >
+                          {' '}
+                          Cricket Tournaments{' '}
+                        </a>
+                        <ul className="submenu dropdown-menu  animate fade-up">
+                          <li>
+                            <a
+                              className="dropdown-item icon-arrow  text-dark"
+                              href="#"
+                            >
+                              {' '}
+                              Women&#8217;s Premier League{' '}
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/delhi capital woman/`}
+                                >
+                                  Delhi Capital Woman
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/gujarat giants/`}
+                                >
+                                  Gujarat Giants
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/mumbai indians woman/`}
+                                >
+                                  Mumbai Indians Woman
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/up warriorz/`}
+                                >
+                                  UP Warriorz
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item"
+                                  href={`/category/royal challengers bangalore woman/`}
+                                >
+                                  Royal Challengers Bangalore Woman
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a className="dropdown-item icon-arrow " href="#">
+                              {' '}
+                              PSL 2023{' '}
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/karachi kings/`}
+                                >
+                                  Karachi Kings
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/islamabad united/`}
+                                >
+                                  Islamabad United
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/lahore qalandars/`}
+                                >
+                                  Lahore Qalandars
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/multan sultans/`}
+                                >
+                                  Multan Sultans
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/peshawar zalmi/`}
+                                >
+                                  Peshawar Zalmi
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/quetta gladiators/`}
+                                >
+                                  Quetta Gladiators
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a className="dropdown-item icon-arrow " href="#">
+                              {' '}
+                              Big Bash League{' '}
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/adelaide strikers/`}
+                                >
+                                  Adelaide Strikers
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/brisbane heat/`}
+                                >
+                                  Brisbane Heat
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/hobart hurricanes/`}
+                                >
+                                  Hobart Hurricanes
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/sydney thunder/`}
+                                >
+                                  Sydney Thunder
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/sydney sixers/`}
+                                >
+                                  Sydney Sixers
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/melbourne stars/`}
+                                >
+                                  Melbourne Stars
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/melbourne renegades/`}
+                                >
+                                  Melbourne Renegades
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/perth scorchers/`}
+                                >
+                                  Perth Scorchers
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a className="dropdown-item icon-arrow" href="#">
+                              {' '}
+                              BPL 2023{' '}
+                            </a>
+                            <ul className="submenu dropdown-menu  animate fade-up">
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/rajshahi royals/`}
+                                >
+                                  Rajshahi Royals
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/sylhet thunder/`}
+                                >
+                                  Sylhet Thunder
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/chattogram challengers/`}
+                                >
+                                  Chattogram Challengers
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/cumilla warriors/`}
+                                >
+                                  Cumilla Warriors
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/dhaka platoon/`}
+                                >
+                                  Dhaka Platoon
+                                </a>
+                              </li>
+                              <li>
+                                <a
+                                  className="dropdown-item "
+                                  href={`/category/khulna tigers/`}
+                                >
+                                  Khulna Tigers
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/international league t20/`}
+                            >
+                              International League T20 2023
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/t20 blast 2022/`}
+                            >
+                              T20 BLAST 2023
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/abu dhabi t10/`}
+                            >
+                              Abu Dhabi T10 2023
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href={`/category/lanka premier league/`}
+                            >
+                              Lanka Premier League 2022
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li></li>
+                    </ul>
+                  </li>
+
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle text-dark"
+                      href="#"
+                      data-toggle="dropdown"
+                    >
+                      {' '}
+                      Other Sports
+                    </a>
+                    <ul className="dropdown-menu animate fade-up">
+                      <li>
+                        <a className="dropdown-item" href={`/category/wwe`}>
+                          WWE
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href={`/category/anime`}>
+                          Anime
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href={`/category/ufc`}>
+                          UFC
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href={`/category/tennis`}>
+                          Tennis
+                        </a>
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href={`/category/boxing`}>
+                          Boxing
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="nav-item ">
+                    <a
+                      className="nav-link  text-dark"
+                      href="https://www.johnnybet.com/"
+                    >
+                      {' '}
+                      JOHNNYBET
+                    </a>
+                  </li>
+                </ul>
+              </nav>
 
               <div
                 className="collapse navbar-collapse justify-content-between"
                 id="main_nav99"
-              >
-                <ul className="navbar-nav ml-auto ">
-                  {filterData().map((items, index) => {
-                    const dropDown = getListByParentID(items.id);
-
-                    // console.log("id", items.id);
-                    return (
-                      <li
-                        key={`items.id_${index}`}
-                        className="nav-item dropdown"
-                      >
-                        <Link
-                          className={`nav-link active ${
-                            dropDown?.length ? 'dropdown-toggle' : ''
-                          }`}
-                          href={
-                            items.menu === 'Home'
-                              ? '/'
-                              : `/category/${items.uri}`
-                          }
-                          data-toggle="dropdown"
-                        >
-                          {items.menu}
-                        </Link>
-                        <ul className="dropdown-menu dropdown-menu-left">
-                          {dropDown.map((val, index) => (
-                            <li key={`val.id_${index}`}>
-                              <Link
-                                className="dropdown-item"
-                                href={`/category/${items.uri}`}
-                              >
-                                {val.name}
-                              </Link>
-                              <ul className="dropdown-menu dropdown-menu-left">
-                                {getChildByParentId(val.id).map(
-                                  (child, index) => (
-                                    <li key={`child.id_${index}`}>
-                                      <Link
-                                        className="dropdown-item"
-                                        href={`/category/${child.uri}`}
-                                      >
-                                        {child.newLineName}
-                                      </Link>
-                                      <ul className="dropdown-menu dropdown-menu-right">
-                                        {getNewChildByParentId(child.id).map(
-                                          (pre_child, index) => (
-                                            <li key={`pre_child.id_${index}`}>
-                                              <Link
-                                                className="dropdown-item"
-                                                href={`/category/${pre_child.uri}`}
-                                              >
-                                                {pre_child.newNextLineName}
-                                              </Link>
-                                              <ul className="dropdown-menu dropdown-menu-right">
-                                                {getNewChildrenByParentId(
-                                                  pre_child.id
-                                                ).map((children, index) => (
-                                                  <li
-                                                    key={`children.id_${index}`}
-                                                  >
-                                                    <Link
-                                                      className="dropdown-item"
-                                                      href={`/category/${children.uri}`}
-                                                    >
-                                                      {children.newChildrenName}
-                                                    </Link>
-                                                  </li>
-                                                ))}
-                                              </ul>
-                                            </li>
-                                          )
-                                        )}
-                                      </ul>
-                                    </li>
-                                  )
-                                )}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    );
-                  })}
-                </ul>
-
-                {/* <!-- Search bar.// --> */}
-                {/* <ul className="navbar-nav ">
-                  <li
-                    className="nav-item search hidden-xs hidden-sm "
-                    onClick={openSearchBar}
-                  >
-                    
-                    <Link className="nav-link" href="">
-                      <i className="fa fa-search"></i>
-                    </Link>
-                  </li>
-                </ul> */}
-                {/* <!-- Search content bar.// --> */}
-
-                {/* <div
-                  className={
-                    'navigation-shadow ' +
-                    (showSearch ? 'top-search-show' : 'top-search-hide')
-                  }
-                >
-                  <div className="container">
-                    <div className="input-group ">
-                      <form action="/search" className="text-justify w-100">
-                        <div className="row no-gutters mt-3">
-                          <div className="col">
-                            <input
-                              className="form-control border-secondary border-right-0 rounded-0"
-                              type="search"
-                              value=""
-                              placeholder="Search "
-                              id="example-search-input4"
-                              value={text}
-                              onChange={e => setText(e.target.value)}
-                            />
-                          </div>
-                          <div className="col-auto">
-                            <Link
-                              className="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-                              href={{
-                                pathname: '/search/' + text,
-                                query: {
-                                  search: text,
-                                },
-                              }}
-                            >
-                              <i className="fa fa-search"></i>
-                            </Link>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div> */}
-
-                {/* <!-- Search content bar.// --> */}
-              </div>
-
-              {/* <!-- navbar-collapse.// --> */}
+              ></div>
             </div>
           </nav>
         </div>
         {/* <!-- End Navbar menu  --> */}
-        {/* <!-- Navbar sidebar menu  --> */}
+
+        {/* <!-- MOBILE sidebar menu  --> */}
         <Sidebar
           defaultCollapsed={showSideBar}
           collapsedWidth="0"
@@ -719,23 +1532,9 @@ const Header = ({ menus }) => {
             </SubMenu>
           </Menu>
         </Sidebar>
-        {/* <!-- modal.// --> */}
-        {/* <!-- End Navbar sidebar menu  --> */}
-        {/* <!-- End Navbar  --> */}
       </header>
     </>
   );
 };
 
 export default Header;
-
-// export async function getStaticProps({ params }) {
-//   console.log("hi");
-//   const menus = await getAllMenus();
-//   return {
-//     props: {
-//       menus,
-//     },
-//     revalidate: 10, // In seconds
-//   };
-// }

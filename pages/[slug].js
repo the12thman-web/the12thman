@@ -27,7 +27,7 @@ import {
 } from 'next-share';
 import { Carousel } from 'react-responsive-carousel';
 
-export default function PostPage({ post, posts, menus }) {
+export default function PostPage({ post, posts }) {
   const isAmp = useAmp();
   const asideData = posts ? posts?.nodes?.slice(12, 16) : [];
   console.log('asideData: ', asideData);
@@ -90,7 +90,7 @@ export default function PostPage({ post, posts, menus }) {
           </>
         ) : (
           <>
-            <Header menus={menus} />
+            <Header />
             <div className="container">
               <br />
               <br />
@@ -406,14 +406,11 @@ export async function getStaticPaths(params) {
 
 export async function getStaticProps({ params }, category) {
   const post = await getPost(params.slug);
-  const menus = await getAllMenus();
-
   const posts = await getAllPosts((category = post.categories.nodes[0].name));
 
   return {
     props: {
       post,
-      menus,
       posts,
     },
     revalidate: 600, // In seconds

@@ -13,7 +13,7 @@ NProgress.configure({ showSpinner: false });
 import { Analytics } from '@vercel/analytics/react';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 
-function MyApp({ Component, pageProps, menus }) {
+function MyApp({ Component, pageProps }) {
   return (
     <ProSidebarProvider>
       <Component {...pageProps} />

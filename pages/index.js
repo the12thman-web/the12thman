@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import Home from '../components/Home';
-import { getAllMenus, getAllPosts } from '../utils/wpGraph';
+import { getAllPosts } from '../utils/wpGraph';
 
 export default function index({
   posts,
-  menus,
   IPLcategory,
   cricketPosts,
   footBallPosts,
@@ -25,7 +24,6 @@ export default function index({
       </Head>
       <Home
         posts={posts || []}
-        menus={menus || []}
         IPLcategory={IPLcategory || []}
         cricketPosts={cricketPosts || []}
         footBallPosts={footBallPosts || []}
@@ -37,7 +35,6 @@ export default function index({
   );
 }
 export async function getStaticProps({ params }, category) {
-  const menus = await getAllMenus();
   const posts = await getAllPosts();
   const IPLcategory = await getAllPosts((category = 'IPL'));
   const cricketPosts = await getAllPosts((category = 'Cricket'));
@@ -50,7 +47,6 @@ export async function getStaticProps({ params }, category) {
   return {
     props: {
       posts,
-      menus,
       IPLcategory,
       cricketPosts,
       footBallPosts,

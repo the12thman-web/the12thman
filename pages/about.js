@@ -1,19 +1,17 @@
-import React from "react";
-import Header from "../components/Header";
-import logo from "../public/Logo.png"
+import React from 'react';
+import Header from '../components/Header';
+import logo from '../public/Logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 // export const config = { amp: true };
 
-const About = (menus) => {
+const About = () => {
   return (
     <>
-      <Header menus={menus} />
+      <Header />
       <section className="bg-light">
         <div className="container">
-
           <div className="row">
             <div className="col-lg-12">
               <figure className="text-center">
@@ -29,7 +27,7 @@ const About = (menus) => {
               <div className="text-center">
                 <h5>Hi, I’m Clemira</h5>
                 <p>
-                  nice to meet you and welcome to my world <br />I{" "}
+                  nice to meet you and welcome to my world <br />I{' '}
                   <i className="fa fa-heart text-primary"></i> traveler, blogger
                   and design enthusias
                 </p>
@@ -103,7 +101,7 @@ const About = (menus) => {
                   fan’s desire to keep himself updated with the latest news
                   related to sports and discuss his favorite sports with
                   like-minded people on our discussions panel, which will host
-                  online discussions and polls from time to time.{" "}
+                  online discussions and polls from time to time.{' '}
                 </p>
                 <div className="clearfix"></div>
               </div>

@@ -12,7 +12,6 @@ import 'reactjs-popup/dist/index.css';
 
 const Home = ({
   posts,
-  menus,
   IPLcategory,
   cricketPosts,
   footBallPosts,
@@ -64,7 +63,7 @@ const Home = ({
 
   return (
     <>
-      <Header menus={menus} />
+      <Header />
 
       {/* <Popup
         arrow={true}

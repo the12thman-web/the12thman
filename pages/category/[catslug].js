@@ -1,20 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAllPosts, getAllMenus, getCategory } from '../../utils/wpGraph';
+import { getAllPosts, getCategory } from '../../utils/wpGraph';
 import Header from '../../components/Header';
 
-const Category = ({ posts, menus, title, catDetails }) => {
+const Category = ({ posts, title, catDetails }) => {
   const categoryDatafirstCol = posts?.nodes?.slice(0, 4);
   const categoryDatasecCol = posts?.nodes?.slice(5, 9);
   const categoryDataSlider = posts?.nodes?.slice(10, 14);
-  const categoryDataSingle = posts?.nodes?.slice(10, 11);
-  const categoryTagsData = posts?.nodes;
   const catDesc = catDetails?.nodes[0]?.description || '';
 
   return (
     <>
-      <Header menus={menus} />
+      <Header />
 
       <section>
         {/* <!-- Breadcrumb --> */}
@@ -242,14 +240,11 @@ export async function getStaticPaths(params) {
 
 export async function getStaticProps({ params }) {
   const posts = await getAllPosts(params.catslug);
-  const menus = await getAllMenus();
   const catDetails = await getCategory(params.catslug);
-  // console.log('catDetails: ', catDetails);
 
   return {
     props: {
       posts,
-      menus,
       title: params.catslug,
       catDetails,
     },
