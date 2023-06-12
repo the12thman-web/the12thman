@@ -244,3 +244,31 @@ export async function getCategory(catName = 'chennai-super-kings') {
     console.log('ERROR', e);
   }
 }
+
+export async function getTag(tagName) {
+  console.log('tagName: ', tagName);
+  try {
+    const data = await fetchAPI(
+      `query getTag($tagName: [String]!){
+          tags(where:  {slug: ['$tagName']}) {
+          nodes {
+            description
+            link
+            name
+            slug
+            tagId
+            uri
+          }
+        }
+      }`,
+      {
+        variables: { tagName },
+      }
+    );
+
+    console.log('data: ', data);
+    return data?.tags;
+  } catch (e) {
+    console.log('ERROR', e);
+  }
+}

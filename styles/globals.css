@@ -8,6 +8,12 @@
   margin: 0;
 }
 
+@media screen and (min-width: 220px) and (max-width: 994px) {
+  .web-nav-bar {
+    display: none !important;
+  }
+}
+
 table {
   width: 800px;
   height: 200px;

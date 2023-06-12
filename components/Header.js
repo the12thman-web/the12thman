@@ -53,7 +53,7 @@ const Header = ({}) => {
                 />
               </Link>
             </div>
-            <div className="container">
+            <div className="container web-nav-bar">
               <nav className="list-group list-group-flush">
                 <ul className="navbar-nav " style={{ 'margin-left': '294px' }}>
                   <li className="nav-item dropdown">
