@@ -249,8 +249,8 @@ export async function getTag(tagName) {
   console.log('tagName: ', tagName);
   try {
     const data = await fetchAPI(
-      `query getTag($tagName: [String]!){
-          tags(where:  {slug: ['$tagName']}) {
+      `query getTag($tagName: [String]){
+          tags(where:  {slug: $tagName}) {
           nodes {
             description
             link
@@ -262,7 +262,7 @@ export async function getTag(tagName) {
         }
       }`,
       {
-        variables: { tagName },
+        variables: { tagName: [tagName] },
       }
     );
 
