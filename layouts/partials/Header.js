@@ -112,7 +112,7 @@ const Header = () => {
             {/* header social */}
             <Social source={socical} className="socials" />
           </div>
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
           {/* Header search */}
           <div
             className="search-icon"
