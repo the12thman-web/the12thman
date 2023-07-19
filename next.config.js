@@ -1,36 +1,13 @@
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-});
+/**
+ * @type {import('next').NextConfig}
+ */
 
-// const nextConfig = {
-//   reactStrictMode: true,
-//   output: 'standalone',
-//   images: {
-//     //enter the domain or subdomain where you have WordPress installed
-//     domains: ['i0.wp.com', 'https://12thmanstaging.the12thman.in'],
-//   },
-//   staticPageGenerationTimeout: 1000,
-// };
-
-const nextConfig = withPWA({
+const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
   images: {
     //enter the domain or subdomain where you have WordPress installed
-    domains: ['i0.wp.com', 'https://12thmanstaging.the12thman.in'],
+    domains: ['i0.wp.com', 'backendrsw.the12thman.in'],
   },
-  staticPageGenerationTimeout: 1000,
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: '/:path',
-  //       destination: '/post/:path',
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
-});
+};
 
 module.exports = nextConfig;
