@@ -423,13 +423,13 @@ export default Home;
 // for homepage data
 export const getStaticProps = async () => {
 	const posts = await getAllPosts();
-	const allRecentPosts = await getRelatedPosts('','',6);
+	const allRecentPosts = await getRelatedPosts('', '', '', 6);
 	const config = CONFIG.home;
-	const cricketPosts = config.cricket.enable ? await getRelatedPosts('cricket', '', 6) : [];
-	const footballPosts = config.football.enable ? await getRelatedPosts('football', '', 6) : [];
-	const nbaPosts = config.nba.enable ? await getRelatedPosts('nba', '', 6) : [];
-	const ufcPosts = config.ufc.enable ? await getRelatedPosts('ufc', '', 6) : [];
-	const motoGPosts = config.motoGP.enable ? await getRelatedPosts('', 'motoGP', 6) : [];
+	const cricketPosts = config.cricket.enable ? await getRelatedPosts('cricket', '','', 6) : [];
+	const footballPosts = config.football.enable ? await getRelatedPosts('football', '', '', 6) : [];
+	const nbaPosts = config.nba.enable ? await getRelatedPosts('nba', '', '', 6) : [];
+	const ufcPosts = config.ufc.enable ? await getRelatedPosts('ufc', '', '', 6) : [];
+	const motoGPosts = config.motoGP.enable ? await getRelatedPosts('', 'motoGP', '', 6) : [];
 
 	const sidePosts = {
 		nba: {
