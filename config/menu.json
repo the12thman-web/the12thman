@@ -23,13 +23,16 @@
         },
         {
           "name": "Western Conference",
-          "url": "/western",
+          "url": "",
           "hasChildren": true,
           "children": [
             {
               "name": "Los Angeles Clippers",
-              "url": "/category/miami heat/",
-              "hasChildren": false
+              "url": "/category/los angeles clippers/"
+            },
+            {
+              "name": "Utah Jazz",
+              "url": "/category/utah jazz/"
             }
           ]
         }

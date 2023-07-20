@@ -76,44 +76,46 @@ const Header = () => {
                           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                         </svg>
                       </span>
-                      <ul className="navbar-nav nav-dropdown-list relative hidden transition-all duration-300 group-hover:top-[46px] group-hover:block md:invisible md:absolute md:top-[60px] md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
-                        {menu.hasChildren &&
-                          menu.children &&
-                          menu.children.map((child, i) => (
-                            <li
-                              className="nav-dropdown-item"
-                              key={`children-${i}`}
-                            >
-                              <Link
-                                href={child.url}
-                                className={`nav-dropdown-link block ${
-                                  router.asPath === child.url && 'active'
-                                }`}
+                      <ul className="nav-dropdown-list hidden transition-all duration-300 group-hover:top-[46px] group-hover:block md:invisible md:absolute md:top-[60px] md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
+                        <div className="nav-bar-dropdown-list">
+                          {menu.hasChildren &&
+                            menu.children &&
+                            menu.children.map((child, i) => (
+                              <li
+                                className="nav-dropdown-item relative"
+                                key={`children-${i}`}
                               >
-                                {child.name}
-                              </Link>
-                              {child.hasChildren && (
-                                <ul className="navbar-nav nav-dropdown-list relative hidden transition-all duration-300 group-hover:left-[150px] group-hover:block md:invisible md:absolute md:top-[80px] md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
-                                  {child.children.map((childNext, i) => (
-                                    <li
-                                      className="nav-dropdown-item"
-                                      key={`children-${i}`}
-                                    >
-                                      <Link
-                                        href={childNext.url}
-                                        className={`nav-dropdown-link block ${
-                                          router.asPath === childNext.url &&
-                                          'active'
-                                        }`}
+                                <Link
+                                  href={child.url}
+                                  className={`nav-dropdown-link block ${
+                                    router.asPath === child.url && 'active'
+                                  }`}
+                                >
+                                  {child.name}
+                                </Link>
+                                {child.hasChildren && (
+                                  <ul className="nav-dropdown-list relative hidden transition-all duration-300 group-hover:left-[150px] group-hover:block md:invisible md:absolute md:top-[40px] md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
+                                    {child.children.map((childNext, i) => (
+                                      <li
+                                        className="nav-dropdown-item"
+                                        key={`children-${i}`}
                                       >
-                                        {childNext.name}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-                            </li>
-                          ))}
+                                        <Link
+                                          href={childNext.url}
+                                          className={`nav-dropdown-link block ${
+                                            router.asPath === childNext.url &&
+                                            'active'
+                                          }`}
+                                        >
+                                          {childNext.name}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </li>
+                            ))}
+                        </div>
                       </ul>
                     </li>
                   ) : (
