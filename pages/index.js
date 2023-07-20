@@ -158,7 +158,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														</Link>
 													</div>
 													<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
-														<span class="text-md">{cricketPosts[random1].tags.nodes[0].name}</span>
+														<span class="text-md">{cricketPosts[random1].tags.nodes[0]?.name}</span>
 													</div>
 												</div>
 											</div>
