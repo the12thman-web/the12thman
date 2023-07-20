@@ -44,3 +44,7 @@ h6,
 .h6 {
   @apply text-h6;
 }
+
+li>ul                 { transform: translatex(100%) scale(0) }
+li:hover>ul           { transform: translatex(0%) scale(1) }
+.group:hover  { transform: scale(1) }

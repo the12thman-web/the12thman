@@ -1,13 +1,13 @@
-import Logo from "@components/Logo";
-import menu from "@config/menu.json";
-import socical from "@config/social.json";
-import Social from "@layouts/components/Social";
-import ThemeSwitcher from "@layouts/components/ThemeSwitcher";
-import SearchModal from "@partials/SearchModal";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { IoSearch } from "react-icons/io5";
+import Logo from '@components/Logo';
+import menu from '@config/menu.json';
+import socical from '@config/social.json';
+import Social from '@layouts/components/Social';
+import ThemeSwitcher from '@layouts/components/ThemeSwitcher';
+import SearchModal from '@partials/SearchModal';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { IoSearch } from 'react-icons/io5';
 
 const Header = () => {
   // distructuring the main menu from menu object
@@ -23,9 +23,9 @@ const Header = () => {
   //stop scrolling when nav is open
   useEffect(() => {
     if (showMenu) {
-      document.body.classList.add("menu-open");
+      document.body.classList.add('menu-open');
     } else {
-      document.body.classList.remove("menu-open");
+      document.body.classList.remove('menu-open');
     }
   }, [showMenu]);
 
@@ -38,7 +38,7 @@ const Header = () => {
         <div className="flex items-center space-x-4 xl:space-x-8">
           <div
             className={`collapse-menu ${
-              !showMenu && "translate-x-full"
+              !showMenu && 'translate-x-full'
             } lg:flex lg:translate-x-0`}
           >
             <button
@@ -55,7 +55,7 @@ const Header = () => {
             </button>
             <ul
               id="nav-menu"
-              className="navbar-nav w-full md:w-auto md:space-x-1 lg:flex xl:space-x-2"
+              className="navbar-nav w-full group-hover:scale-100 md:w-auto md:space-x-1 lg:flex xl:space-x-2"
             >
               {main.map((menu, i) => (
                 <React.Fragment key={`menu-${i}`}>
@@ -64,8 +64,8 @@ const Header = () => {
                       <span
                         className={`nav-link ${
                           menu.children
-                            .map((c) => c.url)
-                            .includes(router.asPath) && "active"
+                            .map(c => c.url)
+                            .includes(router.asPath) && 'active'
                         } inline-flex items-center`}
                       >
                         {menu.name}
@@ -76,22 +76,44 @@ const Header = () => {
                           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                         </svg>
                       </span>
-                      <ul className="nav-dropdown-list hidden transition-all duration-300 group-hover:top-[46px] group-hover:block md:invisible md:absolute md:top-[60px] md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
-                        {menu.children.map((child, i) => (
-                          <li
-                            className="nav-dropdown-item"
-                            key={`children-${i}`}
-                          >
-                            <Link
-                              href={child.url}
-                              className={`nav-dropdown-link block ${
-                                router.asPath === child.url && "active"
-                              }`}
+                      <ul className="navbar-nav nav-dropdown-list relative hidden transition-all duration-300 group-hover:top-[46px] group-hover:block md:invisible md:absolute md:top-[60px] md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
+                        {menu.hasChildren &&
+                          menu.children &&
+                          menu.children.map((child, i) => (
+                            <li
+                              className="nav-dropdown-item"
+                              key={`children-${i}`}
                             >
-                              {child.name}
-                            </Link>
-                          </li>
-                        ))}
+                              <Link
+                                href={child.url}
+                                className={`nav-dropdown-link block ${
+                                  router.asPath === child.url && 'active'
+                                }`}
+                              >
+                                {child.name}
+                              </Link>
+                              {child.hasChildren && (
+                                <ul className="navbar-nav nav-dropdown-list relative hidden transition-all duration-300 group-hover:left-[150px] group-hover:block md:invisible md:absolute md:top-[80px] md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
+                                  {child.children.map((childNext, i) => (
+                                    <li
+                                      className="nav-dropdown-item"
+                                      key={`children-${i}`}
+                                    >
+                                      <Link
+                                        href={childNext.url}
+                                        className={`nav-dropdown-link block ${
+                                          router.asPath === childNext.url &&
+                                          'active'
+                                        }`}
+                                      >
+                                        {childNext.name}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
                       </ul>
                     </li>
                   ) : (
@@ -99,7 +121,7 @@ const Header = () => {
                       <Link
                         href={menu.url}
                         className={`nav-link block ${
-                          router.asPath === menu.url && "active"
+                          router.asPath === menu.url && 'active'
                         }`}
                       >
                         {menu.name}
@@ -149,7 +171,7 @@ const Header = () => {
         />
       </nav>
       {showMenu && (
-        <div className="header-backdrop absolute top-0 left-0 h-[100vh] w-full bg-black/50 lg:hidden"></div>
+        <div className="header-backdrop absolute left-0 top-0 h-[100vh] w-full bg-black/50 lg:hidden"></div>
       )}
     </header>
   );

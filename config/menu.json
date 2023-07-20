@@ -7,12 +7,29 @@
       "children": [
         {
           "name": "Eastern Conference",
-          "url": "/",
           "hasChildren": true,
+          "url": "",
           "children": [
             {
               "name": "Miami Heat",
-              "url": "/category/miami heat/"
+              "url": "/category/miami heat/",
+              "hasChildren": false
+            },
+            {
+              "name": "Washington Wizards",
+              "url": "/category/washington wizards"
+            }
+          ]
+        },
+        {
+          "name": "Western Conference",
+          "url": "/western",
+          "hasChildren": true,
+          "children": [
+            {
+              "name": "Los Angeles Clippers",
+              "url": "/category/miami heat/",
+              "hasChildren": false
             }
           ]
         }
