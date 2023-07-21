@@ -33,34 +33,594 @@
             {
               "name": "Utah Jazz",
               "url": "/category/utah jazz/"
+            },
+            {
+              "url": "/category/phoenix suns/",
+              "name": "Phoenix Suns"
+            },
+            {
+              "url": "/category/denver nuggets/",
+              "name": "Denver Nuggets"
+            },
+            {
+              "url": "/category/dallas mavericks/",
+              "name": "Dallas Mavericks"
+            },
+            {
+              "url": "/category/portland trail blazers/",
+              "name": "Portland Trail Blazers"
+            },
+            {
+              "url": "/category/los angeles lakers/",
+              "name": "Los Angeles Lakers"
+            },
+            {
+              "url": "/category/memphis grizzlies/",
+              "name": "Memphis Grizzlies"
+            },
+            {
+              "url": "/category/golden state warriors/",
+              "name": "Golden State Warriors"
+            },
+            {
+              "url": "/category/san antonio spurs/",
+              "name": "San Antonio Spurs"
+            },
+            {
+              "url": "/category/new orleans pelicans/",
+              "name": "New Orleans Pelicans"
+            },
+            {
+              "url": "/category/sacramento kings/",
+              "name": "Sacramento Kings"
+            },
+            {
+              "url": "/category/oklahoma city thunder/",
+              "name": "Oklahoma City Thunder"
+            },
+            {
+              "url": "/category/houston rockets/",
+              "name": "Houston Rockets"
             }
           ]
         }
       ]
     },
     {
-      "name": "About",
-      "url": "/about"
-    },
-    {
-      "name": "Elements",
-      "url": "/elements"
-    },
-    {
-      "name": "Contact",
-      "url": "/contact"
-    },
-    {
-      "name": "Pages",
+      "name": "Motor Sports",
       "url": "",
       "hasChildren": true,
       "children": [
         {
-          "name": "Categories",
-          "url": "/categories"
+          "url": "/category/formula 1",
+          "name": "F1"
+        },
+        {
+          "url": "/category/moto gp",
+          "name": "Moto GP"
         }
       ]
-    }
+    },
+    {
+      "name": "NFL",
+      "url": "/category/nfl"
+    },
+    {
+      "name": "Football",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Domestic Leagues",
+          "url": "",
+          "hasChildren": true,
+          "children": [
+            {
+              "name": "English Premier League",
+              "hasChildren": true,
+              "url": "",
+              "children": [
+                {
+                  "url": "/category/arsenal/",
+                  "name": "Arsenal"
+                },
+                {
+                  "url": "/category/chelsea/",
+                  "name": "Chelsea"
+                },
+                {
+                  "url": "/category/everton/",
+                  "name": "Everton"
+                },
+                {
+                  "url": "/category/leicester city/",
+                  "name": "Leicester City"
+                },
+                {
+                  "url": "/category/liverpool/",
+                  "name": "Liverpool"
+                },
+                {
+                  "url": "/category/manchester city/",
+                  "name": "Manchester City"
+                },
+                {
+                  "url": "/category/manchester united/",
+                  "name": "Manchester United"
+                },
+                {
+                  "url": "/category/newcastle united/",
+                  "name": "Newcastle United"
+                },
+                {
+                  "url": "/category/tottenham hotspur/",
+                  "name": "Tottenham Hotspur"
+                },
+                {
+                  "url": "/category/west ham united/",
+                  "name": "West Ham United"
+                }
+              ]
+            },
+            {
+              "name": "La Liga",
+              "url": "",
+              "hasChildren": true,
+              "children": [
+                {
+                  "url": "/category/atletic bilbao/",
+                  "name": "Atletic Bilbao"
+                },
+                {
+                  "url": "/category/atletico madrid/",
+                  "name": "Atletico Madrid"
+                },
+                {
+                  "url": "/category/barcelona/",
+                  "name": "Barcelona"
+                },
+                {
+                  "url": "/category/real betis/",
+                  "name": "Real Betis"
+                },
+                {
+                  "url": "/category/real madrid/",
+                  "name": "Real Madrid"
+                },
+                {
+                  "url": "/category/real sociedad/",
+                  "name": "Real Sociedad"
+                },
+                {
+                  "url": "/category/Sevilla",
+                  "name": "Sevilla"
+                },
+                {
+                  "url": "/category/Valencia",
+                  "name": "Valencia"
+                },
+                {
+                  "url": "/category/Villarreal",
+                  "name": "Villarreal"
+                }
+              ]
+            },
+            {
+              "name": "Bundesliga",
+              "url": "",
+              "hasChildren": true,
+              "children": [
+                {
+                  "url": "/category/bayer leverkusen/",
+                  "name": "Bayer Leverkusen"
+                },
+                {
+                  "url": "/category/bayern munich/",
+                  "name": "Bayern Munich"
+                },
+                {
+                  "url": "/category/borussia dortmund/",
+                  "name": "Borussia Dortmund"
+                },
+                {
+                  "url": "/category/borussia monchengladbach/",
+                  "name": "Borussia Monchengladbach"
+                },
+                {
+                  "url": "/category/eintracht frankfurt/",
+                  "name": "Eintracht Frankfurt"
+                },
+                {
+                  "url": "/category/rb leipzig/",
+                  "name": "RB Leipzig"
+                }
+              ]
+            },
+            {
+              "name": "Serie A",
+              "url": "",
+              "hasChildren": true,
+              "children": [
+                {
+                  "url": "/category/ac milan/",
+                  "name": "AC Milan"
+                },
+                {
+                  "url": "/category/inter milan/",
+                  "name": "Inter Milan"
+                },
+                {
+                  "url": "/category/juventus/",
+                  "name": "Juventus"
+                },
+                {
+                  "url": "/category/ss lazio/",
+                  "name": "Lazio"
+                },
+                {
+                  "url": "/category/napoli/",
+                  "name": "Napoli"
+                },
+                {
+                  "url": "/category/as roma",
+                  "name": "Roma"
+                }
+              ]
+            },
+            {
+              "name": "Ligue 1",
+              "url": "",
+              "hasChildren": true,
+              "children": [
+                {
+                  "url": "/category/lyon",
+                  "name": "Lyon"
+                },
+                {
+                  "url": "/category/Marseille",
+                  "name": "Marseille"
+                },
+                {
+                  "url": "/category/Monaco FC",
+                  "name": "Monaco FC"
+                },
+                {
+                  "url": "/category/paris saint germain/",
+                  "name": "PSG"
+                }
+              ]
+            },
+            {
+              "url": "/category/mls",
+              "name": "MLS"
+            },
+            {
+              "url": "/category/Indian Super League",
+              "name": "Indian Super League"
+            }
+          ]
+        },
+        {
+          "name": "Domestic League Cups",
+          "hasChildren": true,
+          "url": "",
+          "children": [
+            {
+              "url": "/category/league cup/",
+              "name": "EFL Cup"
+            },
+            {
+              "url": "/category/fa cup",
+              "name": "FA Cup"
+            },
+            {
+              "url": "/category/copa del ray/",
+              "name": "Copa Del Ray"
+            },
+            {
+              "name": "UEFA",
+              "hasChildren": true,
+              "url": "",
+              "children": [
+                {
+                  "url": "/category/uefa champions league/",
+                  "name": "UEFA Champions League"
+                },
+                {
+                  "url": "/category/europa league/",
+                  "name": "UEFA Europa League"
+                },
+                {
+                  "url": "/category/uefa conference league/",
+                  "name": "UEFA Conference League"
+                }
+              ]
+            }
+          ]
+        }, {
+          "name": "Fantasy Football",
+          "url": "/category/Fantasy Football",
+          "hasChildren": false
+        }
+      ]
+    },
+    {
+      "name": "Cricket",
+      "hasChildren": true,
+      "url": "",
+      "children": [
+        {
+          "name": "Cricket Teams",
+          "hasChildren": true,
+          "url": "",
+          "children": [
+            {
+              "url": "/category/australia cricket team",
+              "name": "Australia Cricket Team"
+            },
+            {
+              "url": "/category/bangladesh cricket team",
+              "name": "Bangladesh Cricket Team"
+            },
+            {
+              "url": "/category/england cricket team",
+              "name": "England Cricket Team"
+            },
+            {
+              "url": "/category/indian cricket team",
+              "name": "Indian Cricket Team"
+            },
+            {
+              "url": "/category/new zealand cricket team",
+              "name": "New Zealand Cricket Team"
+            },
+            {
+              "url": "/category/pakistan cricket team/",
+              "name": "Pakistan Cricket Team"
+            },
+            {
+              "url": "/category/south africa cricket team/",
+              "name": "South Africa Cricket Team"
+            }
+          ]
+        },
+        {
+          "name": "Cricket Series",
+          "hasChildren": true,
+          "url": "",
+          "children": [
+            {
+              "url": "/category/india vs bangladesh/",
+              "name": "India vs Bangladesh"
+            },
+            {
+              "url": "/category/australia vs south africa/",
+              "name": "South Africa tour of Australia"
+            },
+            {
+              "url": "/category/pakistan vs new zealand/",
+              "name": "Pakistan vs New Zealand"
+            },
+            {
+              "url": "/category/india vs sri lanka/",
+              "name": "Sri Lanka tour of India"
+            },
+            {
+              "url": "/category/india vs new zealand/",
+              "name": "New Zealand Tour of India"
+            }
+          ]
+        },
+        {
+          "name": "Cricket Tournaments",
+          "hasChildren": true,
+          "url": "",
+          "children": [
+            {
+              "name": "Women's Premier League",
+              "hasChildren": true,
+              "url": "",
+              "children": [
+                {
+                  "url": "/category/delhi capital woman/",
+                  "name": "Delhi Capital Woman"
+                },
+                {
+                  "url": "/category/gujarat giants/",
+                  "name": "Gujarat Giants"
+                },
+                {
+                  "url": "/category/mumbai indians woman/",
+                  "name": "Mumbai Indians Woman"
+                },
+                {
+                  "url": "/category/up warriorz/",
+                  "name": "UP Warriorz"
+                },
+                {
+                  "url": "/category/royal challengers bangalore woman/",
+                  "name": "Royal Challengers Bangalore Woman"
+                }
+              ]
+            },
+            {
+              "name": "PSL 2023",
+              "hasChildren": true,
+              "url": "",
+              "children": [
+                {
+                  "url": "/category/karachi kings/",
+                  "name": "Karachi Kings"
+                },
+                {
+                  "url": "/category/islamabad united/",
+                  "name": "Islamabad United"
+                },
+                {
+                  "url": "/category/lahore qalandars/",
+                  "name": "Lahore Qalandars"
+                },
+                {
+                  "url": "/category/multan sultans/",
+                  "name": "Multan Sultans"
+                },
+                {
+                  "url": "/category/peshawar zalmi/",
+                  "name": "Peshawar Zalmi"
+                },
+                {
+                  "url": "/category/quetta gladiators/",
+                  "name": "Quetta Gladiators"
+                }
+              ]
+            },
+            {
+              "name": "Big Bash League",
+              "hasChildren": true,
+              "url": "",
+              "children": [
+                {
+                  "url": "/category/adelaide strikers/",
+                  "name": "Adelaide Strikers"
+                },
+                {
+                  "url": "/category/brisbane heat/",
+                  "name": "Brisbane Heat"
+                },
+                {
+                  "url": "/category/hobart hurricanes/",
+                  "name": "Hobart Hurricanes"
+                },
+                {
+                  "url": "/category/sydney thunder/",
+                  "name": "Sydney Thunder"
+                },
+                {
+                  "url": "/category/sydney sixers/",
+                  "name": "Sydney Sixers"
+                },
+                {
+                  "url": "/category/melbourne stars/",
+                  "name": "Melbourne Stars"
+                },
+                {
+                  "url": "/category/melbourne renegades/",
+                  "name": "Melbourne Renegades"
+                },
+                {
+                  "url": "/category/perth scorchers/",
+                  "name": "Perth Scorchers"
+                }
+              ]
+            },
+            {
+              "name": "BPL 2023",
+              "hasChildren": true,
+              "url": "",
+              "children": [
+                {
+                  "url": "/category/rajshahi royals/",
+                  "name": "Rajshahi Royals"
+                },
+                {
+                  "url": "/category/sylhet thunder/",
+                  "name": "Sylhet Thunder"
+                },
+                {
+                  "url": "/category/chattogram challengers/",
+                  "name": "Chattogram Challengers"
+                },
+                {
+                  "url": "/category/cumilla warriors/",
+                  "name": "Cumilla Warriors"
+                },
+                {
+                  "url": "/category/dhaka platoon/",
+                  "name": "Dhaka Platoon"
+                },
+                {
+                  "url": "/category/khulna tigers/",
+                  "name": "Khulna Tigers"
+                }
+              ]
+            },
+            {
+              "url": "/category/international league t20/",
+              "name": "International League T20 2023"
+            },
+            {
+              "url": "/category/t20 blast 2022/",
+              "name": "T20 BLAST 2023"
+            },
+            {
+              "url": "/category/abu dhabi t10/",
+              "name": "Abu Dhabi T10 2023"
+            },
+            {
+              "url": "/category/lanka premier league/",
+              "name": "Lanka Premier League 2022"
+            }
+          ]
+        }
+      ]
+    },    
+    {
+      "name": "Other Sports",
+      "hasChildren": true,
+      "url": "",
+      "children": [
+        {
+          "url": "/category/wwe",
+          "name": "WWE"
+        },
+        {
+          "url": "/category/anime",
+          "name": "Anime"
+        },
+        {
+          "url": "/category/ufc",
+          "name": "UFC"
+        },
+        {
+          "url": "/category/tennis",
+          "name": "Tennis"
+        },
+        {
+          "url": "/category/boxing",
+          "name": "Boxing"
+        },
+        {
+          "name": "E-Sports",
+          "hasChildren": true,
+          "url": "",
+          "children": [
+            {
+              "url": "/category/battle grounds/",
+              "name": "Battle Grounds"
+            },
+            {
+              "url": "/category/cs go/",
+              "name": "CS GO"
+            },
+            {
+              "url": "/category/call of duty/",
+              "name": "Call of Duty"
+            },
+            {
+              "url": "/category/fifa/",
+              "name": "FIFA"
+            },
+            {
+              "url": "/category/gta/",
+              "name": "GTA"
+            }
+          ]
+        }
+      ]
+    }, {
+      "name": "JOHNNYBET",
+      "url": "https://www.johnnybet.com/"
+    } 
   ],
   "footer": [
     {
