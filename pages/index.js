@@ -158,7 +158,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														</Link>
 													</div>
 													<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
-														<span class="text-md">{cricketPosts[random1].tags.nodes[0].name}</span>
+														<span class="text-md">{cricketPosts[random1].tags.nodes[0]?.name}</span>
 													</div>
 												</div>
 											</div>
@@ -423,13 +423,13 @@ export default Home;
 // for homepage data
 export const getStaticProps = async () => {
 	const posts = await getAllPosts();
-	const allRecentPosts = await getRelatedPosts('','',6);
+	const allRecentPosts = await getRelatedPosts('', '', '', 6);
 	const config = CONFIG.home;
-	const cricketPosts = config.cricket.enable ? await getRelatedPosts('cricket', '', 6) : [];
-	const footballPosts = config.football.enable ? await getRelatedPosts('football', '', 6) : [];
-	const nbaPosts = config.nba.enable ? await getRelatedPosts('nba', '', 6) : [];
-	const ufcPosts = config.ufc.enable ? await getRelatedPosts('ufc', '', 6) : [];
-	const motoGPosts = config.motoGP.enable ? await getRelatedPosts('', 'motoGP', 6) : [];
+	const cricketPosts = config.cricket.enable ? await getRelatedPosts('cricket', '','', 6) : [];
+	const footballPosts = config.football.enable ? await getRelatedPosts('football', '', '', 6) : [];
+	const nbaPosts = config.nba.enable ? await getRelatedPosts('nba', '', '', 6) : [];
+	const ufcPosts = config.ufc.enable ? await getRelatedPosts('ufc', '', '', 6) : [];
+	const motoGPosts = config.motoGP.enable ? await getRelatedPosts('', 'motoGP', '', 6) : [];
 
 	const sidePosts = {
 		nba: {
