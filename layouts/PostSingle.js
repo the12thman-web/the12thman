@@ -70,7 +70,7 @@ const PostSingle = ({
                     />
                   )}
                   <ul className="absolute top-3 left-2 flex flex-wrap items-center">
-                    {tags?.nodes.map(({name}, index) => (
+                    {tags?.nodes.slice(0,2).map(({name}, index) => (
                       <li
                         className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
                         key={"tag-" + index}

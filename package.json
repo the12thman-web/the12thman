@@ -16,6 +16,7 @@
     "fs": "^0.0.1-security",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
+    "html-react-parser": "^4.2.0",
     "marked": "^4.2.12",
     "mdb-react-ui-kit": "^6.1.0",
     "next": "13.1.5",

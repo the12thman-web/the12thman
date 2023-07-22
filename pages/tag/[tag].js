@@ -6,10 +6,13 @@ import { getTaxonomy } from "@lib/taxonomyParser";
 import { slugify } from "@lib/utils/textConverter";
 import Post from "@partials/Post";
 const { blog_folder } = config.settings;
+import parse from 'html-react-parser';
 
 // category page
 const Tag = ({ tagDetails, posts, detailPosts }) => {
     const { name, description } = tagDetails;
+    console.log("description:", description)
+    
     return (
         <Base title={name}>
             <div className="section mt-16">
@@ -23,8 +26,9 @@ const Tag = ({ tagDetails, posts, detailPosts }) => {
 
                         <div
                             className="has-drop-cap-fluid"
-                            dangerouslySetInnerHTML={{ __html: description }}
-                        ></div>
+                        >
+                            {description ? parse(description) : ''}
+                        </div>
                     </div>
                     <div className="row">
                         <div className="lg:col-8">
@@ -68,7 +72,7 @@ export const getStaticProps = async ({ params }) => {
 
     return {
         props: {
-            tagDetails: tagDetails.nodes[0],
+            tagDetails: tagDetails?.nodes[0],
             posts: posts?.nodes,
             detailPosts: detailPosts?.nodes
         },
