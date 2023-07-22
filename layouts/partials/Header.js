@@ -143,20 +143,20 @@ const Header = () => {
           </div>
           {/* <ThemeSwitcher /> */}
           {/* Header search */}
-          <div
+          {/* <div
             className="search-icon"
             onClick={() => {
               setSearchModal(true);
             }}
           >
             <IoSearch />
-          </div>
+          </div> */}
         </div>
 
-        <SearchModal
+        {/* <SearchModal
           searchModal={searchModal}
           setSearchModal={setSearchModal}
-        />
+        /> */}
       </nav>
       {/* {showMenu && (
         <div className="header-backdrop absolute left-0 top-0 h-[100vh] w-full bg-black/50 lg:hidden"></div>
