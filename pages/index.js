@@ -55,6 +55,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									<Link
 										href={'/'+post?.slug}
 									>
+									<a>
 									<div className="relative mx-auto flex max-w-xs flex-col space-y-3 rounded-xl border border-white bg-white p-3 shadow-lg md:max-w-3xl md:flex-row md:space-x-5 md:space-y-0">
 										<div className="grid w-full place-items-center bg-white md:w-1/3">
 											<img
@@ -77,6 +78,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 											</div>
 										</div>
 									</div>
+									</a>
 									</Link>
 								</div>
 							))}
@@ -147,7 +149,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 															dangerouslySetInnerHTML={{ __html: cricketPosts[random1].content.slice(0, Number(summary_length)) }}
 														></div>
 														<Link className="btn btn-outline-primary mt-4" href={`/${cricketPosts[random1].slug}`}>
-															Read More
+														<a>Read More</a>
 														</Link>
 													</div>
 													<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
@@ -240,7 +242,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 																href={`/${post.slug}`}
 																className="block hover:text-primary"
 															>
-																{post.title}
+																<a>{post.title}</a>
 															</Link>
 														</h3>
 														<p className="inline-flex items-center font-bold">
@@ -276,7 +278,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 															dangerouslySetInnerHTML={{ __html: footballPosts[random1].content.slice(0, Number(summary_length)) }}
 														></div>
 													<Link className="btn btn-outline-primary mt-4" href={`/${footballPosts[random1].slug}`}>
-														Read More
+														<a>Read More</a>
 													</Link>
 													</div>
 													<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
@@ -369,7 +371,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 																href={`/${post.slug}`}
 																className="block hover:text-primary"
 															>
-																{post.title}
+																<a>{post.title}</a>
 															</Link>
 														</h3>
 														<p className="inline-flex items-center font-bold">
