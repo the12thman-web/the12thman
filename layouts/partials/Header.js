@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
-import { MobileMenuSideBar } from './MobileMenuSideBar';
+import { MobileMenuSideBar } from './MobileMenuSidebar';
 
 const Header = () => {
   // distructuring the main menu from menu object
