@@ -1,6 +1,6 @@
 import config from "@config/config.json";
 import PostSingle from "@layouts/PostSingle";
-import { getAllPosts, getPost, getRelatedPosts } from "@lib/graphql";
+import { getAllPosts, getPost, getAllPostsWithContent } from "@lib/graphql";
 import { NextSeo } from 'next-seo';
 const SITE_URL = config.site.base_url;
 // post single layout
@@ -68,7 +68,7 @@ export const getStaticProps = async ({ params }) => {
 	const { single } = params;
 	const post = await getPost(single);
 	const posts = await getAllPosts(post?.categories.nodes[0].name);
-	const relatedPosts = await getRelatedPosts(post?.categories.nodes[0].name);
+	const relatedPosts = await getAllPostsWithContent(post?.categories.nodes[0].name);
 	return {
 		props: {
 			post: post,

@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { FaRegCalendar, FaUserAlt } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import { getAllPosts, getPost, getRelatedPosts } from '@lib/graphql';
+import { getAllPosts, getPost, getAllPostsWithContent } from '@lib/graphql';
 import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';
 
@@ -425,13 +425,13 @@ export default Home;
 // for homepage data
 export const getStaticProps = async () => {
 	const posts = await getAllPosts();
-	const allRecentPosts = await getRelatedPosts('', '', '', 6);
+	const allRecentPosts = await getAllPostsWithContent('', '', '', 6);
 	const config = CONFIG.home;
-	const cricketPosts = config.cricket.enable ? await getRelatedPosts('cricket', '','', 6) : [];
-	const footballPosts = config.football.enable ? await getRelatedPosts('football', '', '', 6) : [];
-	const nbaPosts = config.nba.enable ? await getRelatedPosts('nba', '', '', 6) : [];
-	const ufcPosts = config.ufc.enable ? await getRelatedPosts('ufc', '', '', 6) : [];
-	const motoGPosts = config.motoGP.enable ? await getRelatedPosts('', 'motoGP', '', 6) : [];
+	const cricketPosts = config.cricket.enable ? await getAllPostsWithContent('cricket', '','', 6) : [];
+	const footballPosts = config.football.enable ? await getAllPostsWithContent('football', '', '', 6) : [];
+	const nbaPosts = config.nba.enable ? await getAllPostsWithContent('nba', '', '', 6) : [];
+	const ufcPosts = config.ufc.enable ? await getAllPostsWithContent('ufc', '', '', 6) : [];
+	const motoGPosts = config.motoGP.enable ? await getAllPostsWithContent('', 'motoGP', '', 6) : [];
 
 	const sidePosts = {
 		nba: {

@@ -1,7 +1,7 @@
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
-import { getAllPosts, getCategory, getRelatedPosts } from "@lib/graphql";
+import { getAllPosts, getCategory, getAllPostsWithContent } from "@lib/graphql";
 import { slugify } from "@lib/utils/textConverter";
 import Post from "@partials/Post";
 const { blog_folder } = config.settings;
@@ -63,7 +63,7 @@ export const getStaticProps = async ({ params }) => {
 	const { category } = params;
 	const catDetail = await getCategory(category)
 	const posts = await getAllPosts(category);
-	const detailPosts = await getRelatedPosts(category, '', '', 20);
+	const detailPosts = await getAllPostsWithContent(category, '', '', 20);
 
 	return {
 		props: {

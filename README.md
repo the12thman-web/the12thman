@@ -1,83 +1,20 @@
-<h1 align=center>Geeky Nextjs</h1>
-<p align=center>Geeky is a free NextJs personal blog template</p>
-<h2 align="center"> <a target="_blank" href="https://geeky-nextjs.vercel.app/" rel="nofollow">Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fgeeky-nextjs.vercel.app%2F&form_factor=desktop">Page Speed (100%)</a>
-</h2>
+# The Twelfth Men Times - Headless WordPress CMS in Next.js
 
-<p align=center>
-  <a href="https://github.com/vercel/next.js/releases/tag/v13.0.6" alt="Contributors">
-    <img src="https://img.shields.io/static/v1?label=NEXTJS&message=13.0&color=000&logo=nextjs" />
-  </a>
+![The Twelfth Men Times](twelfth-men-times.png)
 
-  <a href="https://github.com/statichunt/geeky-nextjs/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/statichunt/geeky-nextjs" alt="license"></a>
+The Twelfth Men Times is a headless Content Management System (CMS) built using Next.js and WordPress. This project combines the flexibility of WordPress as a content management backend with the powerful frontend capabilities of Next.js, resulting in a blazing-fast and SEO-friendly website.
 
-  <img src="https://img.shields.io/github/languages/code-size/statichunt/geeky-nextjs" alt="code size">
+## Getting Started
 
-  <a href="https://github.com/statichunt/geeky-nextjs/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/statichunt/geeky-nextjs" alt="contributors"></a>
-</p>
+### Prerequisites
 
-![geeky](https://statichunt.com/themes/nextjs-geeky.png)
+- Node.js (>=12.0.0)
+- npm (>= 6.0.0)
+- WordPress website with the REST API enabled.
 
-## Key Features
+### Installation
 
-- Google Page Speed score 100! (Desktop)
-- Supports Contact Form
-- Disqus Comment Support
-- Related Posts Suggestion
-- MDX Support with many built-in custom components
-- Semantic HTML Document Structure
-- Custom Logo Support
-- Includes All SCSS Files
-- Taxonomy Page Support
-- Images Optimized With Next/image
+1. Clone the repository:
 
-<!-- installation -->
-## Installation
-
-After downloading the template, you have some prerequisites to install. Then you can run it on your localhost. You can view the package.json file to see which scripts are included.
-
-### Install prerequisites (once for a machine)
-
-- **Node Installation:** [Install node js](https://nodejs.org/en/download/) [Recommended LTS version]
-
-### Local setup
-
-After successfully installing those dependencies, open this template with any IDE [[VS Code](https://code.visualstudio.com/) recommended], and then open the internal terminal of IDM [vs code shortcut <code>ctrl/cmd+\`</code>]
-
-- Install dependencies
-
-```
-npm install
-```
-
-- Run locally
-
-```
-npm run dev
-```
-
-After that, it will open up a preview of the template in your default browser, watch for changes to source files, and live-reload the browser when changes are saved.
-
-## Production Build
-
-After finishing all the customization, you can create a production build by running this command.
-
-```
-npm run build
-```
-
-<!-- reporting issue -->
-## Reporting Issues
-
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/statichunt/geeky-nextjs/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/statichunt/geeky-nextjs/issues).
-
-<!-- licence -->
-## License
-
-Copyright (c) 2019 - Present, Designed & Developed by [statichunt](https://statichunt.com)
-
-**Code License:** Released under the [MIT](https://github.com/statichunt/geeky-nextjs/blob/main/LICENSE) license.
-
-**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
+```bash
+git clone https://github.com/your-username/twelfth-men-times.git

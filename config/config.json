@@ -83,5 +83,12 @@
 			"enable": true,
 			"title": "UFC"
 		}
-	}
+	},
+  "logging":{
+    "getAllPostLog":true,
+    "getAllPostContentLog":true,
+    "getPostLog": true,
+    "getCategoryLog": true,
+    "getTagLog":true
+  }
 }
