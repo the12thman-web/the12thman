@@ -5,23 +5,12 @@ import Logo from "@layouts/components/Logo";
 import CustomForm from "@layouts/components/NewsLetterForm";
 import Social from "@layouts/components/Social";
 import dateFormat from "@lib/utils/dateFormat";
-import { sortByDate } from "@lib/utils/sortFunctions";
-import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
-import { useState } from "react";
 import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
-const { blog_folder } = config.settings;
 const { about, featured_posts, newsletter,categoriesConfig } = config.widgets;
 
 const Sidebar = ({ posts, categories, className }) => {
-  const sortPostByDate = sortByDate(posts);
-  const featuredPosts = sortPostByDate.filter(
-    (post) => post
-  );
-
-  const [showRecent, setShowRecent] = useState(true);
-
   return (
     <aside className={`${className} px-0 lg:px-6 lg:col-4`}>
      

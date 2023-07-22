@@ -8,7 +8,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
+import { FaRegCalendar, FaUserAlt, FaReadme } from "react-icons/fa";
 import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
 import shortcodes from "./shortcodes/all";
@@ -27,6 +27,7 @@ import {
   LinkedinIcon,
 } from 'next-share';
 import { useRouter } from 'next/router';
+import readingTime from "@lib/utils/readingTime";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -105,6 +106,10 @@ const PostSingle = ({
                     <FaRegCalendar className="mr-1.5" />
                     {dateFormat(date)}
                   </li>
+                    <li className="inline-flex items-center font-secondary text-xs leading-3">
+                      <FaReadme className="mr-1.5" />
+                      {readingTime(content)}
+                    </li>
                 </ul>
                   <ul id="social_link" className="list-inline">
                           <li className="list-inline-item">
