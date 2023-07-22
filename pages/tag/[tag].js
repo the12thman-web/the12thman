@@ -1,16 +1,12 @@
-import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
-import { getAllPosts, getCategory, getAllPostsWithContent, getTag } from "@lib/graphql";
-import { slugify } from "@lib/utils/textConverter";
+import { getAllPosts, getAllPostsWithContent, getTag } from "@lib/graphql";
 import Post from "@partials/Post";
-const { blog_folder } = config.settings;
 import parse from 'html-react-parser';
 
 // category page
 const Tag = ({ tagDetails, posts, detailPosts }) => {
     const { name, description } = tagDetails;
-    console.log("description:", description)
     
     return (
         <Base title={name}>

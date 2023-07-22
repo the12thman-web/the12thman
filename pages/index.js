@@ -1,12 +1,8 @@
 import CONFIG from '@config/config.json';
 import Base from '@layouts/Baseof';
 import ImageFallback from '@layouts/components/ImageFallback';
-import Pagination from '@layouts/components/Pagination';
 import Post from '@layouts/partials/Post';
-import SlidePost from '@layouts/partials/SlidePost';
-import Sidebar from '@layouts/partials/Sidebar';
 import dateFormat from '@lib/utils/dateFormat';
-import { markdownify } from '@lib/utils/textConverter';
 import Link from 'next/link';
 import { FaRegCalendar, FaUserAlt } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';

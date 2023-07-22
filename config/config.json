@@ -90,5 +90,9 @@
     "getPostLog": true,
     "getCategoryLog": true,
     "getTagLog":true
+  },
+  "sitemap":{
+    "postPerPage": 100,
+    "totalPosts": 1000
   }
 }

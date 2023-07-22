@@ -1,10 +1,7 @@
-import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
 import { getAllPosts, getCategory, getAllPostsWithContent } from "@lib/graphql";
-import { slugify } from "@lib/utils/textConverter";
 import Post from "@partials/Post";
-const { blog_folder } = config.settings;
 
 // category page
 const Category = ({ catDetail, posts, detailPosts }) => {
