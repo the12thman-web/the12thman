@@ -52,6 +52,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 							{/* <div className="container px-1"> */}
 							{posts.map((post, index) => (
 								<div className="flex h-24 flex-col justify-center">
+									<Link
+										href={'/'+post?.slug}
+									>
 									<div className="relative mx-auto flex max-w-xs flex-col space-y-3 rounded-xl border border-white bg-white p-3 shadow-lg md:max-w-3xl md:flex-row md:space-x-5 md:space-y-0">
 										<div className="grid w-full place-items-center bg-white md:w-1/3">
 											<img
@@ -65,15 +68,16 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 												{post.title.slice(0, 60)}
 											</h3>
 
-											<Link
+											<div
 												className="inline-flex  font-secondary text-xs leading-3"
-												href="/about"
+												
 											>
 												<FaUserAlt className="mr-1.5" />
 												{post.author.node.name}
-											</Link>
+											</div>
 										</div>
 									</div>
+									</Link>
 								</div>
 							))}
 
@@ -111,21 +115,10 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 				{/* Section: Design Block */}
 				<section class="mb-8">
 					<div
-						class="relative overflow-hidden bg-cover bg-no-repeat bg-[50%] bg-[url('https://mdbcdn.b-cdn.net/img/new/slides/006.webp')] h-[500px]">
+						class="relative overflow-hidden bg-cover bg-no-repeat bg-[50%] bg-[url('/images/india-vs-westindies.webp')] h-[500px]">
 						<div
-							class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
-							<div class="flex h-full items-center justify-center">
-								<div class="px-6 text-center text-white md:px-12">
-									<h2 class="mb-12 text-5xl font-bold leading-tight tracking-tight">
-										Are you ready <br /><span>for an adventure</span>
-									</h2>
-									<button type="button"
-										class="rounded border-2 border-neutral-50 px-[46px] pt-[14px] pb-[12px] text-sm font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-100 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200"
-										data-te-ripple-init data-te-ripple-color="light">
-										Get started
-									</button>
-								</div>
-							</div>
+							class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden  bg-fixed">
+							
 						</div>
 					</div>
 				</section>
@@ -183,9 +176,12 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 
 																<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
+																
 																<div class="mt-5 inline-flex">
-																	<FaUserAlt className="mr-3.5" />
-																	{post.author.node.name}
+																	<FaUserAlt className="mr-1.5" />
+																	{post.author?.node?.name}
+																	<FaRegCalendar className="mr-1.5 ml-3" />
+																	{dateFormat(post.date)}
 																</div>
 															</div>
 														</div>
@@ -248,7 +244,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 															</Link>
 														</h3>
 														<p className="inline-flex items-center font-bold">
-															<FaRegCalendar className="mr-1.5" />
+															<FaUserAlt className="mr-1.5" />
+															{post.author?.node?.name}
+															<FaRegCalendar className="mr-1.5 ml-3" />
 															{dateFormat(post.date)}
 														</p>
 													</div>
@@ -308,8 +306,10 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 																<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
 																<div class="mt-5 inline-flex">
-																	<FaUserAlt className="mr-3.5" />
-																	{post.author.node.name}
+																	<FaUserAlt className="mr-1.5" />
+																	{post.author?.node?.name}
+																	<FaRegCalendar className="mr-1.5 ml-3" />
+																	{dateFormat(post.date)}
 																</div>
 															</div>
 														</div>
@@ -373,7 +373,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 															</Link>
 														</h3>
 														<p className="inline-flex items-center font-bold">
-															<FaRegCalendar className="mr-1.5" />
+															<FaUserAlt className="mr-1.5" />
+															{post.author?.node?.name}
+															<FaRegCalendar className="mr-1.5 ml-3" />
 															{dateFormat(post.date)}
 														</p>
 													</div>

@@ -9,7 +9,7 @@ import { sortByDate } from "@lib/utils/sortFunctions";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { useState } from "react";
-import { FaRegCalendar } from "react-icons/fa";
+import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 const { blog_folder } = config.settings;
 const { about, featured_posts, newsletter, categoriesConfig } = config.widgets;
@@ -50,10 +50,12 @@ const HomeSidebar = ({ postData, className }) => {
 										{post.title}
 									</Link>
 								</h3>
-								<p className="inline-flex items-center font-secondary text-xs">
-									<FaRegCalendar className="mr-1.5" />
-									{dateFormat(post.date)}
-								</p>
+									<p className="inline-flex items-center font-secondary text-xs">
+										<FaUserAlt className="mr-1.5" />
+										{post.author?.node?.name}
+										<FaRegCalendar className="mr-1.5 ml-3" />
+										{dateFormat(post.date)}
+									</p>
 							</div>
 						</div>
 					))}
@@ -86,10 +88,12 @@ const HomeSidebar = ({ postData, className }) => {
 										{post.title}
 									</Link>
 								</h3>
-								<p className="inline-flex items-center font-secondary text-xs">
-									<FaRegCalendar className="mr-1.5" />
-									{dateFormat(post.date)}
-								</p>
+									<p className="inline-flex items-center font-secondary text-xs">
+										<FaUserAlt className="mr-1.5" />
+										{post.author?.node?.name}
+										<FaRegCalendar className="mr-1.5 ml-3" />
+										{dateFormat(post.date)}
+									</p>
 							</div>
 						</div>
 					))}
@@ -121,7 +125,9 @@ const HomeSidebar = ({ postData, className }) => {
 									</Link>
 								</h3>
 								<p className="inline-flex items-center font-secondary text-xs">
-									<FaRegCalendar className="mr-1.5" />
+									<FaUserAlt className="mr-1.5" />
+									{post.author?.node?.name}
+									<FaRegCalendar className="mr-1.5 ml-3" />
 									{dateFormat(post.date)}
 								</p>
 							</div>
