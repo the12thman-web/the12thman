@@ -28,13 +28,13 @@ const Article = ({ post, slug, relatedPosts, posts }) => {
 // get post single slug
 export const getStaticPaths = () => {
 	// const allSlug = getSinglePage(`content/${blog_folder}`);
-	const allSlug = [];
-	console.log("hi");
-	const paths = allSlug.map((item) => ({
-		params: {
-			single: item.slug,
-		},
-	}));
+	// const allSlug = [];
+	// console.log("hi");
+	// const paths = allSlug.map((item) => ({
+	// 	params: {
+	// 		single: item.slug,
+	// 	},
+	// }));
 
 	return {
 		paths: [],
