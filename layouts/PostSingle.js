@@ -40,7 +40,7 @@ const PostSingle = ({
   posts
 }) => {
   let { tags, description, title, date, featuredImage, categories } = frontmatter;
-  description = description ? description : content.slice(0, 120);
+  description = description ? description : content?.slice(0, 120);
 
   const { theme } = useTheme();
   const author = frontmatter.author?.node?.name ? frontmatter.author?.node?.name : meta_author;

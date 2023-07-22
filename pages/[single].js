@@ -5,7 +5,7 @@ import { NextSeo } from 'next-seo';
 const SITE_URL = config.site.base_url;
 // post single layout
 const Article = ({ post, slug, relatedPosts, posts, yoastSEO }) => {
-	const { content, tags, title, categories, author, date, featuredImage } = post;
+	const { content, tags, title, categories, author, date, featuredImage } = post || {};
 
 	const frontmatter = {
 		tags,
@@ -18,7 +18,7 @@ const Article = ({ post, slug, relatedPosts, posts, yoastSEO }) => {
 	return (
 		<>
 		<NextSeo
-		title={post.title}
+		title={post?.title}
 		description={yoastSEO?.opengraphDescription}
 		canonical={yoastSEO?.canonical} // Replace with the canonical URL for this page
         openGraph={{

@@ -85,11 +85,11 @@
 		}
 	},
   "logging":{
-    "getAllPostLog":true,
-    "getAllPostContentLog":true,
-    "getPostLog": true,
-    "getCategoryLog": true,
-    "getTagLog":true
+    "getAllPostLog":false,
+    "getAllPostContentLog":false,
+    "getPostLog": false,
+    "getCategoryLog": false,
+    "getTagLog":false
   },
   "sitemap":{
     "postPerPage": 100,
