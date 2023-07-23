@@ -1,3 +1,4 @@
+import NotFound from "@layouts/404";
 import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
 import { getAllPosts, getAllPostsWithContent, getTag } from "@lib/graphql";
@@ -6,9 +7,10 @@ import parse from 'html-react-parser';
 
 // category page
 const Tag = ({ tagDetails, posts, detailPosts }) => {
-    const { name, description } = tagDetails;
+    const { name, description } = tagDetails || {};
     
     return (
+        name ?
         <Base title={name}>
             <div className="section mt-16">
                 <div className="container">
@@ -40,6 +42,7 @@ const Tag = ({ tagDetails, posts, detailPosts }) => {
                 </div>
             </div>
         </Base>
+            : <NotFound title='Sorry 404! Tag Not Found' />
     );
 };
 
@@ -62,14 +65,14 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
     const { tag } = params;
     const tagDetails = await getTag(tag)
-    const posts = await getAllPosts('','',tag);
-    const detailPosts = await getAllPostsWithContent('', '', tag, 20);
+    const posts = tagDetails && await getAllPosts('','',tag);
+    const detailPosts = tagDetails && await getAllPostsWithContent('', '', tag, 20);
 
     return {
         props: {
-            tagDetails: tagDetails?.nodes[0],
-            posts: posts?.nodes,
-            detailPosts: detailPosts?.nodes
+            tagDetails: tagDetails?.nodes[0] || null,
+            posts: posts?.nodes || null,
+            detailPosts: detailPosts?.nodes || null
         },
     };
 };

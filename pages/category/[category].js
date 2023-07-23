@@ -1,3 +1,4 @@
+import NotFound from "@layouts/404";
 import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
 import { getAllPosts, getCategory, getAllPostsWithContent } from "@lib/graphql";
@@ -5,8 +6,9 @@ import Post from "@partials/Post";
 
 // category page
 const Category = ({ catDetail, posts, detailPosts }) => {
-	const {name, description} = catDetail;
+	const {name, description} = catDetail || {};
 	return (
+		name?
 		<Base title={name}>
 			<div className="section mt-16">
 				<div className="container">
@@ -36,7 +38,7 @@ const Category = ({ catDetail, posts, detailPosts }) => {
 					</div>
 				</div>
 			</div>
-		</Base>
+		</Base>:<NotFound title={'Sorry 404! Category not found'}/>
 	);
 };
 
@@ -59,13 +61,14 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
 	const { category } = params;
 	const catDetail = await getCategory(category)
-	const posts = await getAllPosts(category);
-	const detailPosts = await getAllPostsWithContent(category, '', '', 20);
+	const posts = catDetail && await getAllPosts(category);
+	const detailPosts = catDetail && await getAllPostsWithContent(category, '', '', 20);
 
 	return {
 		props: {
-			catDetail: catDetail.nodes[0],
-			posts: posts?.nodes,
-			detailPosts: detailPosts?.nodes},
+			catDetail: catDetail.nodes[0] || null,
+			posts: posts?.nodes || null,
+			detailPosts: detailPosts?.nodes || null
+},
 	};
 };
