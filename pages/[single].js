@@ -76,7 +76,7 @@ export const getStaticProps = async ({ params }) => {
 			post: post,
 			slug: single,
 			relatedPosts: relatedPosts?.nodes,
-			trendingPosts: trendingPosts?.nodes,
+			trendingPosts: trendingPosts?.nodes || [],
 			yoastSEO: post?.seo || null
 		},
 	};

@@ -7,7 +7,7 @@ import { NextSeo } from 'next-seo';
 
 
 // category page
-const Category = ({ catDetail, posts, detailPosts, yoastSEO }) => {
+const Category = ({ catDetail, trendingPosts, detailPosts, yoastSEO }) => {
 	const { name, description } = catDetail || {};
 	return (
 		name ?
@@ -55,7 +55,7 @@ const Category = ({ catDetail, posts, detailPosts, yoastSEO }) => {
 										))}
 									</div>
 								</div>
-								<Sidebar posts={posts} categories={[]} />
+								<Sidebar trendingPosts={trendingPosts} categories={[]} />
 							</div>
 						</div>
 					</div>
@@ -84,13 +84,13 @@ export const getStaticProps = async ({ params }) => {
 	const { category } = params;
 	const catSlug = category[category.length - 1]
 	const catDetail = await getCategory(catSlug)
-	const posts = catDetail && await getAllPosts(catSlug);
+	const trendingPosts = catDetail && await getAllPosts();
 	const detailPosts = catDetail && await getAllPostsWithContent(catSlug, '', '', 20);
 
 	return {
 		props: {
 			catDetail: catDetail?.nodes[0] || null,
-			posts: posts?.nodes || null,
+			trendingPosts: trendingPosts?.nodes || null,
 			detailPosts: detailPosts?.nodes || null,
 			yoastSEO: catDetail?.nodes[0]?.seo || null
 		},

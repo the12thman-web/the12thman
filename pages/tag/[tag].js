@@ -6,7 +6,7 @@ import Post from "@partials/Post";
 import parse from 'html-react-parser';
 
 // category page
-const Tag = ({ tagDetails, posts, detailPosts }) => {
+const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
     const { name, description } = tagDetails || {};
     
     return (
@@ -37,7 +37,7 @@ const Tag = ({ tagDetails, posts, detailPosts }) => {
                                 ))}
                             </div>
                         </div>
-                        <Sidebar posts={posts} categories={[]} />
+                        <Sidebar trendingPosts={trendingPosts} categories={[]} />
                     </div>
                 </div>
             </div>
@@ -65,13 +65,13 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
     const { tag } = params;
     const tagDetails = await getTag(tag)
-    const posts = tagDetails && await getAllPosts('','',tag);
+    const trendingPosts = tagDetails && await getAllPosts();
     const detailPosts = tagDetails && await getAllPostsWithContent('', '', tag, 20);
 
     return {
         props: {
             tagDetails: tagDetails?.nodes[0] || null,
-            posts: posts?.nodes || null,
+            trendingPosts: trendingPosts?.nodes || null,
             detailPosts: detailPosts?.nodes || null
         },
     };

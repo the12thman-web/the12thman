@@ -19,7 +19,7 @@ const HomeSidebar = ({ postData, className }) => {
 	const { nba, ufc, motoGP, limit} = postData;
 	
 	return (
-		<aside className={`${className} px-0 lg:col-4 lg:px-6`}>
+		<aside className={`${className} px-0 lg:col-4 lg:px-2`}>
 	
 		
 			{/* featured widget */}
@@ -51,9 +51,9 @@ const HomeSidebar = ({ postData, className }) => {
 									</Link>
 								</h3>
 									<p className="inline-flex items-center font-secondary text-xs">
-										<FaUserAlt className="mr-1.5 mt-1" />
+										<FaUserAlt className="mr-1.5" />
 										{post.author?.node?.name}
-										<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
+										<FaRegCalendar className="mr-1.5 ml-3" />
 										{dateFormat(post.date)}
 									</p>
 							</div>

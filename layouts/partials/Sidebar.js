@@ -5,11 +5,12 @@ import Logo from "@layouts/components/Logo";
 import CustomForm from "@layouts/components/NewsLetterForm";
 import Social from "@layouts/components/Social";
 import dateFormat from "@lib/utils/dateFormat";
+import { getTimeAgo } from "@lib/utils/getTimeAgo";
 import { sortByDate } from "@lib/utils/sortFunctions";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { useState } from "react";
-import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
+import { FaRegCalendar, FaRegClock, FaUserAlt } from "react-icons/fa";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 const { blog_folder } = config.settings;
 const { about, featured_posts, newsletter,categoriesConfig } = config.widgets;
@@ -56,8 +57,8 @@ const Sidebar = ({ trendingPosts, categories, className }) => {
                       <p className="inline-flex items-center font-secondary text-xs">
                             <FaUserAlt className="mr-1.5 mt-1" />
                             {post.author?.node?.name} 
-                          <FaRegCalendar className="mr-1.5 ml-3 mt-1" />
-                          {dateFormat(post.date)}
+                        <FaRegClock className="mr-1 ml-3" />
+                        {getTimeAgo(new Date(post.date))}
                         </p>
                     </div>
                   </div>

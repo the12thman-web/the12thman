@@ -70,8 +70,10 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 												className="inline-flex  font-secondary text-xs leading-3"
 												
 											>
-												<FaUserAlt className="mr-1.5 mt-1" />
+												<FaUserAlt className="mr-1.5" />
 												{post.author.node.name}
+													<FaRegClock className="mr-1 ml-3" />
+													{getTimeAgo(new Date(post.date))}
 											</div>
 										</div>
 									</div>
@@ -270,9 +272,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 															</Link>
 														</h3>
 														<p className="inline-flex items-center font-bold">
-															<FaUserAlt className="mr-1.5 mt-1" />
+															<FaUserAlt className="mr-1.5" />
 															{post.author?.node?.name}
-															<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
+															<FaRegCalendar className="mr-1.5 ml-3" />
 															{dateFormat(post.date)}
 														</p>
 													</div>
@@ -331,10 +333,10 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 
 																<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
-																<div class="mt-5 inline-flex">
-																	<FaUserAlt className="mr-1.5 mt-1" />
+																<div class="mt-5 justify-around">
+																	<FaUserAlt className="mr-1.5 " />
 																	{post.author?.node?.name}
-																	<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
+																	<FaRegCalendar className="mr-1.5 ml-3 " />
 																	{dateFormat(post.date)}
 																</div>
 															</div>
@@ -435,7 +437,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 					</div>
 					{/* Home Sidebar */}
 					<HomeSidebar
-						className={'lg:mt-[8rem]'}
+						className={'lg:mt-[4.5rem]'}
 						postData={sidePosts}
 					/>
 				</div>
