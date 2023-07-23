@@ -4,13 +4,14 @@ import ImageFallback from '@layouts/components/ImageFallback';
 import Post from '@layouts/partials/Post';
 import dateFormat from '@lib/utils/dateFormat';
 import Link from 'next/link';
-import { FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
+import { FaReadme, FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { getAllPosts, getPost, getAllPostsWithContent } from '@lib/graphql';
 import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';
 import { getTimeAgo } from '@lib/utils/getTimeAgo';
+import readingTime from '@lib/utils/readingTime';
 
 const { pagination, summary_length } = CONFIG.settings;
 const settings = {
@@ -116,7 +117,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 			{/* [Mobile View] Trending caraousel Start */}
 			<div className='block md:hidden xl:hidden lg:hidden'>
 				<Slider {...settings}>
-					{posts.map((post, index) => (
+					{allRecentPosts.map((post, index) => (
 						<div class="wrapper bg-gray-400 antialiased text-gray-900">
 							<div>
 
@@ -132,11 +133,13 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 
 										<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
-										<div class="mt-5 inline-flex">
-											<FaUserAlt className="mr-1.5 mt-1" />
-											{post.author?.node?.name}
-											<FaRegClock className="mr-1.5 ml-3 mt-1" />
+										<div class="mt-5 flex justify-around">
+											{/* <FaUserAlt className="mr-1.5 mt-1" />
+											{post.author?.node?.name} */}
+											<FaRegClock className=" ml-3 mt-1" />
 											{getTimeAgo(new Date(post.date))}
+												<FaReadme className=" ml-3 mt-1" />
+												{readingTime(post.content)}
 										</div>
 									</div>
 								</div>
@@ -155,7 +158,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 					<div className="mb-12 lg:col-8 lg:mb-0">
 						{/* Cricket posts start*/}
 						{config.cricket.enable && (
-							<div className="section">
+							<div className="section pt-2">
 								<h2 className="section-title">{config.cricket.title}</h2>
 								{/*[Mobile View] Cricket head content start */}
 								<div class=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">
@@ -447,7 +450,7 @@ export default Home;
 // for homepage data
 export const getStaticProps = async () => {
 	const posts = await getAllPosts();
-	const allRecentPosts = await getAllPostsWithContent('', '', '', 6);
+	const allRecentPosts = await getAllPostsWithContent('', '', '', 10);
 	const config = CONFIG.home;
 	const cricketPosts = config.cricket.enable ? await getAllPostsWithContent('cricket', '','', 6) : [];
 	const footballPosts = config.football.enable ? await getAllPostsWithContent('football', '', '', 6) : [];
