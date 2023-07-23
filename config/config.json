@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "The 12th man times",
-    "base_url": "https://staging.the12thman.in/",
+    "base_url": "https://staging.the12thman.in",
     "favicon": "/images/favicon.ico",
     "logo": "/images/logo 2.png",
     "logo_white": "/images/logo-light.png",
@@ -93,6 +93,10 @@
   },
   "sitemap":{
     "postPerPage": 100,
-    "totalPosts": 1000
+    "totalPosts": 1000,
+    "catPostPerPage": 10,
+    "catTotalPosts": 200,
+    "tagPostPerPage": 100,
+    "tagTotalPosts": 1000
   }
 }

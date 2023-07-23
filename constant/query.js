@@ -182,3 +182,26 @@ export const GET_POST_SITEMAP_QUERY = `
       }
     }
       `;
+
+export const GET_CATEGORY_SITEMAP_QUERY = `query GetAllCat($perPage: Int!, $after: String) {
+  categories(first: $perPage, after: $after) {
+   edges {
+      cursor
+      node {
+        uri
+      }
+    }
+  }
+}`
+
+
+export const GET_TAG_SITEMAP_QUERY = `query GetAllTag($perPage: Int!, $after: String) {
+  tags(first: $perPage, after: $after) {
+   edges {
+      cursor
+      node {
+        uri
+      }
+    }
+  }
+}`
