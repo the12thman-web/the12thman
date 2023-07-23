@@ -35,13 +35,15 @@ const Article = ({ post, slug, relatedPosts, posts, yoastSEO }) => {
           ],
         }}
       />
+	  {post? 
 		<PostSingle
-			frontmatter={frontmatter}
-			content={content}
-			slug={slug}
-			relatedPosts={relatedPosts}
-			posts={posts}
-		/>
+		frontmatter={frontmatter}
+		content={content}
+		slug={slug}
+		relatedPosts={relatedPosts}
+		posts={posts}
+		/>: <></>
+	}
 		 </>
 	);
 };

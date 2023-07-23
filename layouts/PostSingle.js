@@ -2,16 +2,13 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import InnerPagination from "@layouts/components/InnerPagination";
 import dateFormat from "@lib/utils/dateFormat";
-import { markdownify } from "@lib/utils/textConverter";
 import { DiscussionEmbed } from "disqus-react";
-import { MDXRemote } from "next-mdx-remote";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCalendar, FaUserAlt, FaReadme } from "react-icons/fa";
 import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
-import shortcodes from "./shortcodes/all";
 const BASE_URL = 'https://the12thman.in/';
 
 import {
@@ -28,6 +25,7 @@ import {
 } from 'next-share';
 import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
+import Tag from "./components/Tag";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -104,11 +102,11 @@ const PostSingle = ({
                   </li>
                   <li className="inline-flex items-center font-secondary text-xs leading-3">
                     <FaRegCalendar className="mr-1.5" />
-                    {dateFormat(date)}
+                    {date ? dateFormat(date): ''}
                   </li>
                     <li className="inline-flex items-center font-secondary text-xs leading-3">
                       <FaReadme className="mr-1.5" />
-                      {readingTime(content)}
+                      {content ? readingTime(content) : 'o'}
                     </li>
                 </ul>
                   <div className=" hidden sm:block">
@@ -142,7 +140,9 @@ const PostSingle = ({
                         </div>
                   <div className="content mb-16">
                   <h1>{title}</h1>
-                  
+                  {/* {tags?.nodes.slice(0, 2).map(({ name }, index) => (
+                    <Tag name={name}/>
+                  ))} */}
                   <div
                     className="has-drop-cap-fluid"
                     dangerouslySetInnerHTML={{ __html: content }}

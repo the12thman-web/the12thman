@@ -150,6 +150,15 @@ export const GET_CATEGORY_QUERY = `query getCategory($catName: [String]!){
             categoryId
             name
             description
+            seo {
+                opengraphUrl
+                opengraphTitle
+                opengraphDescription
+                canonical
+                opengraphImage {
+                  uri
+                  }
+                }
           }
         }
       }`;
