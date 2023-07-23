@@ -86,7 +86,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 			{/*Top caraousel End */}
 
 			{/* [Mobile View] Top caraousel Start */}
-			<div className='block xl:hidden lg:hidden'>
+			{/* <div className='block xl:hidden lg:hidden'>
 				<Slider {...settings}>
 					{posts.slice(0,10).map((post, index) => (
 						<figure class="relative  cursor-pointer filter transition-all duration-300 ">
@@ -109,14 +109,14 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 						</figure>
 					))}
 				</Slider>
-			</div>
+			</div> */}
 			{/*Top caraousel End */}
 
 
 			{/* [Mobile View] Trending caraousel Start */}
 			<div className='block md:hidden xl:hidden lg:hidden'>
 				<Slider {...settings}>
-					{posts.slice(10, 20).map((post, index) => (
+					{posts.map((post, index) => (
 						<div class="wrapper bg-gray-400 antialiased text-gray-900">
 							<div>
 
