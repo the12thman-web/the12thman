@@ -89,7 +89,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 			<div className='block xl:hidden lg:hidden'>
 				<Slider {...settings}>
 					{posts.slice(0,10).map((post, index) => (
-						<figure class="relative max-w-sm cursor-pointer filter transition-all duration-300 ">
+						<figure class="relative  cursor-pointer filter transition-all duration-300 ">
 							<a href="#">
 								<img
 									class="rounded-lg"
