@@ -9,7 +9,9 @@ import Link from "next/link";
 import { FaRegCalendar, FaUserAlt, FaReadme } from "react-icons/fa";
 import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
-const BASE_URL = 'https://the12thman.in/';
+import CONFIG from '@config/config.json';
+
+const BASE_URL = CONFIG.site.base_url;
 
 import {
   FacebookShareButton,
