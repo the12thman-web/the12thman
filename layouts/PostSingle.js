@@ -111,33 +111,38 @@ const PostSingle = ({
                       {readingTime(content)}
                     </li>
                 </ul>
+                  <div className=" hidden sm:block">
+
                   <ul id="social_link" className="list-inline">
-                          <li className="list-inline-item">
-                            <FacebookShareButton url={BASE_URL + router.asPath}>
-                              <FacebookIcon size={32} round />
-                            </FacebookShareButton>
-                          </li>
-                          <li className="list-inline-item">
-                            <PinterestShareButton
-                              url={BASE_URL + router.asPath}
-                            >
-                              <PinterestIcon size={32} round />
-                            </PinterestShareButton>
-                          </li>
-                          <li className="list-inline-item">
-                            <WhatsappShareButton url={BASE_URL + router.asPath}>
-                              <WhatsappIcon size={32} round />
-                            </WhatsappShareButton>
-                          </li>
-                          <li className="list-inline-item">
-                            <LinkedinShareButton url={BASE_URL + router.asPath}>
-                              <LinkedinIcon size={32} round />
-                            </LinkedinShareButton>
-                          </li>
-                        </ul>
+                    <li className="list-inline-item">
+                      <FacebookShareButton url={BASE_URL + router.asPath}>
+                        <FacebookIcon size={32} round />
+                      </FacebookShareButton>
+                    </li>
+                    <li className="list-inline-item">
+                      <PinterestShareButton
+                        url={BASE_URL + router.asPath}
+                        >
+                        <PinterestIcon size={32} round />
+                      </PinterestShareButton>
+                    </li>
+                    <li className="list-inline-item">
+                      <WhatsappShareButton url={BASE_URL + router.asPath}>
+                        <WhatsappIcon size={32} round />
+                      </WhatsappShareButton>
+                    </li>
+                    <li className="list-inline-item">
+                      <LinkedinShareButton url={BASE_URL + router.asPath}>
+                        <LinkedinIcon size={32} round />
+                      </LinkedinShareButton>
+                    </li>
+                  </ul>
+                 
+                        </div>
                         </div>
                   <div className="content mb-16">
                   <h1>{title}</h1>
+                  
                   <div
                     className="has-drop-cap-fluid"
                     dangerouslySetInnerHTML={{ __html: content }}
@@ -176,6 +181,39 @@ const PostSingle = ({
           </div>
         </div>
       </section>
+      {/* Mobile Share button links */}
+      <footer
+        class="bg-neutral-100
+             fixed
+             inset-x-0
+             bottom-0
+             p-4
+             block xl:hidden lg:hidden md:hidden">
+        <ul id="social_link" className="justify-around">
+          <li className="list-inline-item">
+            <FacebookShareButton url={BASE_URL + router.asPath}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+          </li>
+          <li className="list-inline-item">
+            <PinterestShareButton
+              url={BASE_URL + router.asPath}
+            >
+              <PinterestIcon size={32} round />
+            </PinterestShareButton>
+          </li>
+          <li className="list-inline-item">
+            <WhatsappShareButton url={BASE_URL + router.asPath}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </li>
+          <li className="list-inline-item">
+            <LinkedinShareButton url={BASE_URL + router.asPath}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+          </li>
+        </ul>
+      </footer>
       </Base>
   );
 };

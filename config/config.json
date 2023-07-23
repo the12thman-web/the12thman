@@ -15,7 +15,7 @@
     "pagination": 6,
     "InnerPaginationOptions": {
       "enableTop": false,
-      "enableBottom": true
+      "enableBottom": false
     },
     "summary_length": 200,
     "blog_folder": "posts",
