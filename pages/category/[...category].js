@@ -60,9 +60,11 @@ export const getStaticPaths = () => {
 // category page data
 export const getStaticProps = async ({ params }) => {
 	const { category } = params;
-	const catDetail = await getCategory(category)
-	const posts = catDetail && await getAllPosts(category);
-	const detailPosts = catDetail && await getAllPostsWithContent(category, '', '', 20);
+	const catSlug = category[category.length-1]
+	console.log("category:", catSlug)
+	const catDetail = await getCategory(catSlug)
+	const posts = catDetail && await getAllPosts(catSlug);
+	const detailPosts = catDetail && await getAllPostsWithContent(catSlug, '', '', 20);
 
 	return {
 		props: {
