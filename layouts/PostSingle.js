@@ -53,7 +53,7 @@ const PostSingle = ({
 
   return (
     <Base title={title} description={description}>
-      <section className="section single-blog mt-6">
+      <section className="section single-blog mt-1 pt-1">
         <div className="container">
           <div className="row">
             <div className="lg:col-8">

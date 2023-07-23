@@ -133,12 +133,12 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 
 										<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
-										<div class="mt-5 flex justify-around">
+										<div class="mt-5 flex flex-right">
 											{/* <FaUserAlt className="mr-1.5 mt-1" />
 											{post.author?.node?.name} */}
-											<FaRegClock className=" ml-3 mt-1" />
+											<FaRegClock className="mr-1 ml-3 mt-1.5" />
 											{getTimeAgo(new Date(post.date))}
-												<FaReadme className=" ml-3 mt-1" />
+											<FaReadme className="mr-1 ml-3 mt-1.5" />
 												{readingTime(post.content)}
 										</div>
 									</div>
