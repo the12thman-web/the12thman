@@ -38,8 +38,8 @@
     },
     "featured_posts": {
       "enable": true,
-      "title": "Featured",
-      "showPost": 4
+      "title": "Trending",
+      "showPost": 10
     },
     "categories": {
       "enable": true,

@@ -62,6 +62,8 @@ const App = ({ Component, pageProps }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
       </Head>
       <ThemeProvider attribute="class" defaultTheme={default_theme}>
         <Component {...pageProps} />

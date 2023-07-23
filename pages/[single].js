@@ -4,7 +4,7 @@ import { getAllPosts, getPost, getAllPostsWithContent } from "@lib/graphql";
 import { NextSeo } from 'next-seo';
 const SITE_URL = config.site.base_url;
 // post single layout
-const Article = ({ post, slug, relatedPosts, posts, yoastSEO }) => {
+const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 	const { content, tags, title, categories, author, date, featuredImage } = post || {};
 
 	const frontmatter = {
@@ -41,7 +41,7 @@ const Article = ({ post, slug, relatedPosts, posts, yoastSEO }) => {
 		content={content}
 		slug={slug}
 		relatedPosts={relatedPosts}
-		posts={posts}
+		trendingPosts={trendingPosts}
 		/>: <></>
 	}
 		 </>
@@ -69,14 +69,14 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
 	const { single } = params;
 	const post = await getPost(single);
-	const posts = await getAllPosts(post?.categories.nodes[0].name);
+	const trendingPosts = await getAllPosts();
 	const relatedPosts = await getAllPostsWithContent(post?.categories.nodes[0].name);
 	return {
 		props: {
 			post: post,
 			slug: single,
 			relatedPosts: relatedPosts?.nodes,
-			posts: posts?.nodes,
+			trendingPosts: trendingPosts?.nodes,
 			yoastSEO: post?.seo || null
 		},
 	};

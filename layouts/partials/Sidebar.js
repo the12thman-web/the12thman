@@ -14,11 +14,7 @@ import MailchimpSubscribe from "react-mailchimp-subscribe";
 const { blog_folder } = config.settings;
 const { about, featured_posts, newsletter,categoriesConfig } = config.widgets;
 
-const Sidebar = ({ posts, categories, className }) => {
-  const sortPostByDate = sortByDate(posts);
-
-  const [showRecent, setShowRecent] = useState(true);
-
+const Sidebar = ({ trendingPosts, categories, className }) => {
   return (
     <aside className={`${className} px-0 lg:px-6 lg:col-4`}>
      
@@ -29,7 +25,7 @@ const Sidebar = ({ posts, categories, className }) => {
       {featured_posts.enable && (
         <div className=" rounded border border-border p-6 dark:border-darkmode-border">
           <h4 className="section-title mb-12 text-center">{featured_posts.title}</h4>
-          {sortPostByDate
+          {trendingPosts
                 .slice(0, featured_posts.showPost)
                 .map((post, i, arr) => (
                   <div

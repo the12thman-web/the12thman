@@ -35,7 +35,7 @@ const PostSingle = ({
   content,
   slug,
   relatedPosts,
-  posts
+  trendingPosts
 }) => {
   let { tags, description, title, date, featuredImage, categories } = frontmatter;
   description = description ? description : content?.slice(0, 120);
@@ -163,7 +163,7 @@ const PostSingle = ({
               </div>
             </div>
             <Sidebar
-              posts={posts.filter((post) => post.slug !== slug)}
+              trendingPosts={trendingPosts.filter((post) => post.slug !== slug)}
               categories={categories}
             />
           </div>
