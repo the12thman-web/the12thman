@@ -4,12 +4,13 @@ import ImageFallback from '@layouts/components/ImageFallback';
 import Post from '@layouts/partials/Post';
 import dateFormat from '@lib/utils/dateFormat';
 import Link from 'next/link';
-import { FaRegCalendar, FaUserAlt } from 'react-icons/fa';
+import { FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import { getAllPosts, getPost, getAllPostsWithContent } from '@lib/graphql';
 import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';
+import { getTimeAgo } from '@lib/utils/getTimeAgo';
 
 const { pagination, summary_length } = CONFIG.settings;
 const settings = {
@@ -68,7 +69,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 												className="inline-flex  font-secondary text-xs leading-3"
 												
 											>
-												<FaUserAlt className="mr-1.5" />
+												<FaUserAlt className="mr-1.5 mt-1" />
 												{post.author.node.name}
 											</div>
 										</div>
@@ -87,7 +88,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 			{/* [Mobile View] Top caraousel Start */}
 			<div className='block xl:hidden lg:hidden'>
 				<Slider {...settings}>
-					{posts.map((post, index) => (
+					{posts.slice(0,10).map((post, index) => (
 						<figure class="relative max-w-sm cursor-pointer filter transition-all duration-300 ">
 							<a href="#">
 								<img
@@ -98,6 +99,12 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 							</a>
 							<figcaption class="absolute absolute bottom-0 bottom-6 left-0 right-0 bg-gray-800 px-4 px-4 py-2 text-lg text-white opacity-70">
 								<p>{post.title}</p>
+								<div class="mt-5 inline-flex justify-around">
+									<FaUserAlt className="mr-1.5 mt-1" />
+									{post.author?.node?.name}
+									<FaRegClock className="mr-1.5 ml-3 mt-1" />
+									{getTimeAgo(new Date(post.date))}
+								</div>
 							</figcaption>
 						</figure>
 					))}
@@ -106,21 +113,41 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 			{/*Top caraousel End */}
 
 
-			{/* Container for demo purpose */}
-			<div class="container px-1 my-1 rounded-lg mx-auto md:px-6 px-1">
-				{/* Section: Design Block */}
-				<section class="mb-8">
-					<div
-						class="relative overflow-hidden bg-cover bg-no-repeat bg-[50%] bg-[url('/images/india-vs-westindies.webp')] h-[500px]">
-						<div
-							class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden  bg-fixed">
-							
+			{/* [Mobile View] Trending caraousel Start */}
+			<div className='block md:hidden xl:hidden lg:hidden'>
+				<Slider {...settings}>
+					{posts.slice(10, 20).map((post, index) => (
+						<div class="wrapper bg-gray-400 antialiased text-gray-900">
+							<div>
+
+								<img src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
+
+								<div class="relative px-4 -mt-16  ">
+									<div class="bg-white p-6 rounded-lg shadow-lg">
+										<div class="flex items-baseline">
+											<span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+												Trending
+											</span>
+										</div>
+
+										<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
+
+										<div class="mt-5 inline-flex">
+											<FaUserAlt className="mr-1.5 mt-1" />
+											{post.author?.node?.name}
+											<FaRegClock className="mr-1.5 ml-3 mt-1" />
+											{getTimeAgo(new Date(post.date))}
+										</div>
+									</div>
+								</div>
+
+							</div>
 						</div>
-					</div>
-				</section>
-				{/* Section: Design Block */}
+					))}
+				</Slider>
 			</div>
-			{/* Container for demo purpose */}
+			{/*Top caraousel End */}
+
 
 			{/* Home page content start */}
 			<div className="container px-1">
@@ -174,9 +201,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 
 																
 																<div class="mt-5 inline-flex">
-																	<FaUserAlt className="mr-1.5" />
+																	<FaUserAlt className="mr-1.5 mt-1" />
 																	{post.author?.node?.name}
-																	<FaRegCalendar className="mr-1.5 ml-3" />
+																	<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
 																	{dateFormat(post.date)}
 																</div>
 															</div>
@@ -190,7 +217,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								</div>
 
 								{/* random images */}
-								<section class="py-12 bg-white flex flex-col justify-center hidden xl:block md:block lg:block">
+								{/* <section class="py-12 bg-white flex flex-col justify-center hidden xl:block md:block lg:block">
 									<div class="grid grid-cols-2 gap-10 max-w-6xl mx-auto">
 										<div class="-mt-20 flex justify-end">
 											<img class="w-2/3 h-2/3 object-cover rounded-lg overflow-hidden" src={cricketPosts[0].featuredImage?.node?.sourceUrl} />
@@ -207,7 +234,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 										</div>
 									
 									</div>
-								</section>
+								</section> */}
 								{/* Cricket head content end */}
 
 								<div className="rounded border border-border p-6 dark:border-darkmode-border">
@@ -240,9 +267,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 															</Link>
 														</h3>
 														<p className="inline-flex items-center font-bold">
-															<FaUserAlt className="mr-1.5" />
+															<FaUserAlt className="mr-1.5 mt-1" />
 															{post.author?.node?.name}
-															<FaRegCalendar className="mr-1.5 ml-3" />
+															<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
 															{dateFormat(post.date)}
 														</p>
 													</div>
@@ -302,9 +329,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 																<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
 																<div class="mt-5 inline-flex">
-																	<FaUserAlt className="mr-1.5" />
+																	<FaUserAlt className="mr-1.5 mt-1" />
 																	{post.author?.node?.name}
-																	<FaRegCalendar className="mr-1.5 ml-3" />
+																	<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
 																	{dateFormat(post.date)}
 																</div>
 															</div>
@@ -314,12 +341,11 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 												</div>
 											))}
 										</Slider>
+								</div>
 									{/*Top caraousel End */}
 
-								</div>
-
 								{/* random images */}
-								<section class="py-12 bg-white flex flex-col justify-center hidden xl:block md:block lg:block">
+								{/* <section class="py-12 bg-white flex flex-col justify-center hidden xl:block md:block lg:block">
 									<div class="grid grid-cols-2 gap-10 max-w-6xl mx-auto">
 										<div class="-mt-20 flex justify-end">
 											<img class="w-2/3 h-2/3 object-cover rounded-lg overflow-hidden" src={footballPosts[0].featuredImage?.node?.sourceUrl} />
@@ -336,7 +362,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 										</div>
 
 									</div>
-								</section>
+								</section> */}
 								{/* Football head content end */}
 
 								<div className="rounded border border-border p-6 dark:border-darkmode-border">
@@ -369,9 +395,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 															</Link>
 														</h3>
 														<p className="inline-flex items-center font-bold">
-															<FaUserAlt className="mr-1.5" />
+															<FaUserAlt className="mr-1.5 mt-1" />
 															{post.author?.node?.name}
-															<FaRegCalendar className="mr-1.5 ml-3" />
+															<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
 															{dateFormat(post.date)}
 														</p>
 													</div>

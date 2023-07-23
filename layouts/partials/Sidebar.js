@@ -58,9 +58,9 @@ const Sidebar = ({ posts, categories, className }) => {
                         </Link>
                       </h3>
                       <p className="inline-flex items-center font-secondary text-xs">
-                            <FaUserAlt className="mr-1.5" />
+                            <FaUserAlt className="mr-1.5 mt-1" />
                             {post.author?.node?.name} 
-                          <FaRegCalendar className="mr-1.5 ml-3" />
+                          <FaRegCalendar className="mr-1.5 ml-3 mt-1" />
                           {dateFormat(post.date)}
                         </p>
                     </div>

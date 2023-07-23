@@ -98,7 +98,7 @@ const PostSingle = ({
                       className="inline-flex items-center font-secondary text-xs leading-3"
                       href="/about"
                     >
-                      <FaUserAlt className="mr-1.5" />
+                      <FaUserAlt className="mr-1.5 mt-1" />
                       {author}
                     </Link>
                   </li>
