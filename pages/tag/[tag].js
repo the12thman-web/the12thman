@@ -2,6 +2,7 @@ import NotFound from "@layouts/404";
 import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
 import { getAllPosts, getAllPostsWithContent, getTag } from "@lib/graphql";
+import { contentParser } from "@lib/utils/contentPasrser";
 import Post from "@partials/Post";
 import parse from 'html-react-parser';
 
@@ -23,8 +24,8 @@ const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
 
                         <div
                             className="has-drop-cap-fluid"
+                            dangerouslySetInnerHTML={{ __html:contentParser(description) }}
                         >
-                            {description ? parse(description) : ''}
                         </div>
                     </div>
                     <div className="row">
