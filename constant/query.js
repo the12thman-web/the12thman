@@ -214,3 +214,13 @@ export const GET_TAG_SITEMAP_QUERY = `query GetAllTag($perPage: Int!, $after: St
     }
   }
 }`
+
+export const GET_WEB_STORIES = `query GetAllWebStories {
+  webStories {
+    nodes {
+      content
+      authorId
+      id
+    }
+  }
+}`
