@@ -215,12 +215,10 @@ export const GET_TAG_SITEMAP_QUERY = `query GetAllTag($perPage: Int!, $after: St
   }
 }`
 
-export const GET_WEB_STORIES = `query GetAllWebStories {
-  webStories {
-    nodes {
+export const GET_WEB_STORIES_BY_SLUG_QUERY = `query GetAllWebStories($slug: String!) {
+  webStoryBy(slug: $slug){
       content
       authorId
       id
-    }
   }
 }`

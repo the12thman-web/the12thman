@@ -1,5 +1,5 @@
 import { useAmp } from 'next/amp'
-import { getWebStories } from "../../lib/graphql";
+import { getWebStoriesBySlug } from "@lib/graphql";
 export const config = { amp: true }
 
 const WebStory = ({ content }) => {
@@ -20,10 +20,9 @@ export const getServerSideProps = async (context) => {
   if (context && context.res) {
     const { res, params } = context;
     const slug = params?.slug;
-
     // fetch your web story here 
-    const data = await getWebStories();
-    if (!data.nodes || !data.nodes.length) {
+    const data = await getWebStoriesBySlug(slug);
+    if (!data || !data.nodes || !data.nodes.length) {
       return {
         notFound: true,
       };
