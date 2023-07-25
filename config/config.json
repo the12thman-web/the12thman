@@ -85,7 +85,7 @@
 		}
 	},
   "logging":{
-    "getAllPostLog":false,
+    "getAllPostLog":true,
     "getAllPostContentLog":false,
     "getPostLog": false,
     "getCategoryLog": false,

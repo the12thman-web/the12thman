@@ -10,6 +10,10 @@ import "styles/slider.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ReactGA from 'react-ga';
+
+
+ReactGA.initialize('YOUR_TRACKING_ID');
 
 const App = ({ Component, pageProps }) => {
   // default theme setup
