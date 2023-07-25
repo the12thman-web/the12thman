@@ -89,7 +89,8 @@
     "getAllPostContentLog":false,
     "getPostLog": false,
     "getCategoryLog": false,
-    "getTagLog":false
+    "getTagLog":false,
+    "getWebStoryLog": false
   },
   "sitemap":{
     "postsPerPage": 100,
