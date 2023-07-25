@@ -2,6 +2,7 @@ import config from "@config/config.json";
 import PostSingle from "@layouts/PostSingle";
 import { getAllPosts, getPost, getAllPostsWithContent } from "@lib/graphql";
 import { NextSeo } from 'next-seo';
+import { useEffect } from "react";
 const SITE_URL = config.site.base_url;
 import ReactGA from 'react-ga';
 
