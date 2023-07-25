@@ -21,7 +21,7 @@ const Post = ({ post }) => {
 					/>
 				)}
 				<ul className="absolute left-2 top-3 flex flex-wrap items-center">
-					{post.tags?.nodes.slice(0, 2).map(({ name }, index) => (
+					{post.featuredImage?.node?.sourceUrl && post.tags?.nodes.slice(0, 2).map(({ name }, index) => (
 						<li
 							className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
 							key={"tag-" + index}
