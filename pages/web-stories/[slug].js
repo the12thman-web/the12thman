@@ -3,6 +3,17 @@ import { getWebStoriesBySlug } from "@lib/graphql";
 import NotFound from '@layouts/404';
 export const config = { amp: true }
 
+const cleanStory = (content) => {
+  let cleanContent = "";
+  // remove all the line breaks
+  cleanContent = content.replace(/\r?\n|\r/gs, "");
+  // remove all the paragraphs wordpress might add
+  cleanContent = cleanContent.replace(/<p>/gs, "");
+  cleanContent = cleanContent.replace(/<\/p>/gs, "");
+
+  return cleanContent
+}
+
 const WebStory = ({ content }) => {
 
   const isAmp = useAmp();
@@ -35,10 +46,11 @@ export const getStaticProps = async ({ params }) => {
   const slug = params?.slug;
   // fetch your web story here 
   const data = await getWebStoriesBySlug(slug);
+  const content = cleanStory(data.content);
   
   return {
     props: {
-      content: data?.content
+      content
     },
   };
 };
