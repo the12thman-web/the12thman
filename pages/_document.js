@@ -1,6 +1,7 @@
 import TwSizeIndicator from "@components/TwSizeIndicator";
 import config from "@config/config.json";
 import { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 const Document = () => {
   // destructuring items from config object
@@ -23,7 +24,7 @@ const Document = () => {
           media="(prefers-color-scheme: dark)"
           content="#000"
         />
-      <script async src="https://platform.twitter.com/widgets.js" />
+        <Script strategy="beforeInteractive" src="https://platform.twitter.com/widgets.js" />
 
       </Head>
       <body>

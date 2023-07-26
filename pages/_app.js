@@ -10,8 +10,14 @@ import "styles/slider.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ReactGA from 'react-ga';
+const GA_TRACKING_ID = config.site.ga_id;
+
+ReactGA.initialize(GA_TRACKING_ID);
+
 
 const App = ({ Component, pageProps }) => {
+  // ReactGA.debugOptions({ debug: true });
   // default theme setup
   const { default_theme } = config.settings;
 

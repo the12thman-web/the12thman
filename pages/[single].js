@@ -2,10 +2,17 @@ import config from "@config/config.json";
 import PostSingle from "@layouts/PostSingle";
 import { getAllPosts, getPost, getAllPostsWithContent } from "@lib/graphql";
 import { NextSeo } from 'next-seo';
+import { useEffect } from "react";
 const SITE_URL = config.site.base_url;
+import ReactGA from 'react-ga';
+
 // post single layout
 const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 	const { content, tags, title, categories, author, date, featuredImage } = post || {};
+
+	useEffect(() => {
+		ReactGA.pageview(window.location.pathname + window.location.search);
+	}, []);
 
 	const frontmatter = {
 		tags,
