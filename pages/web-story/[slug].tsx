@@ -20,9 +20,12 @@ export const getServerSideProps = async (context) => {
   if (context && context.res) {
     const { res, params } = context;
     const slug = params?.slug;
+
     // fetch your web story here 
     const data = await getWebStoriesBySlug(slug);
-    if (!data || !data.nodes || !data.nodes.length) {
+    console.log(data)
+
+    if (!data.content) {
       return {
         notFound: true,
       };
@@ -30,7 +33,7 @@ export const getServerSideProps = async (context) => {
 
     return {
       props: {
-        content: data?.nodes[1].content
+        content: data?.content
       },
     };
   }
