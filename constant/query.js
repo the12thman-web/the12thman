@@ -222,3 +222,11 @@ export const GET_WEB_STORIES_BY_SLUG_QUERY = `query GetAllWebStories($slug: Stri
       id
   }
 }`
+
+export const GET_ALL_WEB_STORIES = `query getAllWebStories ($limit: Int!) {
+  webStories(first: $limit) {
+    nodes {
+      slug
+    }
+  }
+}`
