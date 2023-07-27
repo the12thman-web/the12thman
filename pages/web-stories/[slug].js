@@ -35,11 +35,7 @@ export const getStaticPaths = async () => {
     paths: allWebStories
       ? allWebStories.nodes.map(node => {
         console.log('static post path', '/web-stories/' + node.slug);
-        return {
-          params: {
-            slug: `/web-stories/${node.slug}`
-          }
-        };
+        return `/web-stories/${node.slug}`;
       }) || []
       : [],
     fallback: 'blocking',
