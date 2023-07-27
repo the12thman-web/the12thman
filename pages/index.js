@@ -13,7 +13,7 @@ import Slider from 'react-slick';
 import { getTimeAgo } from '@lib/utils/getTimeAgo';
 import readingTime from '@lib/utils/readingTime';
 
-const { pagination, summary_length } = CONFIG.settings;
+const { pagination, summary_length, refresh_home_page_interval } = CONFIG.settings;
 const settings = {
 	dots: false,
 	infinite: true,
@@ -459,5 +459,6 @@ export const getStaticProps = async () => {
 			sidePosts,
 			allRecentPosts: allRecentPosts.nodes
 		},
+		revalidate: refresh_home_page_interval, // Refresh data every 60 seconds
 	};
 };
