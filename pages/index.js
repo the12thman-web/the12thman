@@ -12,6 +12,7 @@ import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';
 import { getTimeAgo } from '@lib/utils/getTimeAgo';
 import readingTime from '@lib/utils/readingTime';
+import Image from 'next/image';
 
 const { pagination, summary_length, refresh_home_page_interval } = CONFIG.settings;
 const settings = {
@@ -55,7 +56,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									>
 										<div className="relative mx-auto flex max-w-xs flex-col space-y-3 rounded-xl border border-white bg-white p-3 shadow-lg md:max-w-3xl md:flex-row md:space-x-5 md:space-y-0">
 											<div className="grid w-full place-items-center bg-white md:w-1/3">
-												<img
+												<Image
 													src={post.featuredImage?.node?.sourceUrl}
 													alt="tailwind logo"
 													className="rounded-xl"
@@ -98,7 +99,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								<Link
 									href={'/' + post?.slug}
 								>
-									<img src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
+									<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
 
 									<div class="relative px-4 -mt-16  ">
 										<div class="bg-white p-6 rounded-lg shadow-lg">
@@ -142,7 +143,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									<div class="container px-1 flex justify-center">
 										<div class="max-w-sm py-2">
 											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<img class="rounded-t-lg" src={cricketPosts[random1].featuredImage?.node?.sourceUrl} alt="" />
+												<Image class="rounded-t-lg" src={cricketPosts[random1].featuredImage?.node?.sourceUrl} alt="" />
 												<div class="py-6 px-8 rounded-lg bg-white">
 													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{cricketPosts[random1].title}</h1>
 													<div
@@ -167,7 +168,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 											<div class="wrapper bg-gray-400 antialiased text-gray-900">
 												<div>
 
-													<img src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
+													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
 
 													<div class="relative px-4 -mt-16  ">
 														<div class="bg-white p-6 rounded-lg shadow-lg">
@@ -271,7 +272,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									<div class="container px-1 flex justify-center">
 										<div class="max-w-sm py-2">
 											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<img class="rounded-t-lg" src={footballPosts[random1].featuredImage?.node?.sourceUrl} alt="" />
+												<Image class="rounded-t-lg" src={footballPosts[random1].featuredImage?.node?.sourceUrl} alt="" />
 												<div class="py-6 px-8 rounded-lg bg-white">
 													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{footballPosts[random1].title}</h1>
 													<div

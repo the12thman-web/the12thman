@@ -1,6 +1,7 @@
 import config from "@config/config.json";
 import ImageFallback from "@layouts/components/ImageFallback";
 import dateFormat from "@lib/utils/dateFormat";
+import Image from "next/image";
 import Link from "next/link";
 import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
 
@@ -11,7 +12,7 @@ const SlidePost = ({ post }) => {
 	return (
         <>
         <div class="max-w-sm rounded overflow-hidden shadow-lg">
-  <img class="w-full" src={post.featuredImage?.node?.sourceUrl} alt="Sunset in the mountains"/>
+  <Image class="w-full" src={post.featuredImage?.node?.sourceUrl} alt="Sunset in the mountains"/>
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
     <p class="text-gray-700 text-base">

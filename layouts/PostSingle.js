@@ -18,8 +18,6 @@ import {
   FacebookIcon,
   PinterestShareButton,
   PinterestIcon,
-  RedditShareButton,
-  RedditIcon,
   WhatsappShareButton,
   WhatsappIcon,
   LinkedinShareButton,
