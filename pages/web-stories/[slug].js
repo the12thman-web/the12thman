@@ -1,5 +1,6 @@
 import { useAmp } from 'next/amp'
-import { getWebStoriesBySlug, getAllWebStories } from "@lib/graphql";
+import { getWebStoriesBySlug } from "@lib/graphql";
+import CONFIG from '@config/config.json';
 import NotFound from '@layouts/404';
 export const config = { amp: true }
 const { refresh_stories_page_interval } = CONFIG.settings;
