@@ -21,7 +21,8 @@
     "summary_length": 200,
     "blog_folder": "posts",
     "slide_title_length": 20,
-    "refresh_home_page_interval" : 60
+    "refresh_home_page_interval" : 60,
+    "refresh_stories_page_interval": 60000
   },
   "params": {
     "tag_manager_id": "",

@@ -2,6 +2,7 @@ import { useAmp } from 'next/amp'
 import { getWebStoriesBySlug, getAllWebStories } from "@lib/graphql";
 import NotFound from '@layouts/404';
 export const config = { amp: true }
+const { refresh_stories_page_interval } = CONFIG.settings;
 
 const cleanStory = (content) => {
   let cleanContent = "";
@@ -30,7 +31,8 @@ export default WebStory
 
 // category page routes
 export const getStaticPaths = async () => {
-  const allWebStories = await getAllWebStories(20);
+  // const allWebStories = await getAllWebStories(20);
+  const allWebStories = null;
   return {
     paths: allWebStories
       ? allWebStories.nodes.map(node => {
@@ -52,6 +54,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       content
     },
+    revalidate: refresh_stories_page_interval, // Refresh data every 60 seconds
   };
 };
 
