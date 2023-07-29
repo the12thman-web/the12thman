@@ -1,5 +1,4 @@
 import { getCategoryForSiteMap } from "@lib/graphql";
-import { format } from 'date-fns-tz';
 import config from "@config/config.json";
 const { catPostPerPage, catTotalPosts } = config.sitemap;
 const {base_url} = config.site;

@@ -7,14 +7,14 @@ import Link from 'next/link';
 import { FaReadme, FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-import { getAllPosts, getPost, getAllPostsWithContent } from '@lib/graphql';
+import { getAllPosts, getAllPostsWithContent } from '@lib/graphql';
 import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';
 import { getTimeAgo } from '@lib/utils/getTimeAgo';
 import readingTime from '@lib/utils/readingTime';
 import Image from 'next/image';
 
-const { pagination, summary_length, refresh_home_page_interval } = CONFIG.settings;
+const {  summary_length, refresh_home_page_interval } = CONFIG.settings;
 const settings = {
 	dots: false,
 	infinite: true,
@@ -27,9 +27,7 @@ const settings = {
 
 const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
 	const random1 = 0;
-	const random2 = 1;
-
-	const showPosts = pagination;
+	
 	return (
 		<Base>
 			{/* [Web View] Top caraousel Start */}
