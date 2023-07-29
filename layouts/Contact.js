@@ -1,4 +1,3 @@
-import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
 import { FaEnvelope, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
@@ -20,11 +19,11 @@ const Contact = ({ data }) => {
             priority={true}
           />
           <div className="lg:col-6">
-            {markdownify(
+            {/* {markdownify(
               title,
               "h1",
               "h1 my-10 lg:my-11 lg:pt-11 text-center lg:text-left lg:text-[64px]"
-            )}
+            )} */}
           </div>
           <div className="contact-form-wrapper rounded border border-border p-6 dark:border-darkmode-border lg:col-6">
             <h2>

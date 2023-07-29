@@ -1,4 +1,3 @@
-import { markdownify } from "@lib/utils/textConverter";
 import shortcodes from "@shortcodes/all";
 import Image from "next/image";
 
@@ -21,7 +20,6 @@ const About = ({ data }) => {
             />
           </div>
         )}
-        {markdownify(title, "h1", "h1 text-left lg:text-[55px] mt-12")}
 
         <div className="content text-left">
         </div>

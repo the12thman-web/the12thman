@@ -1,18 +1,9 @@
 import config from "@config/config.json";
-import social from "@config/social.json";
 import ImageFallback from "@layouts/components/ImageFallback";
-import Logo from "@layouts/components/Logo";
-import CustomForm from "@layouts/components/NewsLetterForm";
-import Social from "@layouts/components/Social";
-import dateFormat from "@lib/utils/dateFormat";
 import { getTimeAgo } from "@lib/utils/getTimeAgo";
-import { sortByDate } from "@lib/utils/sortFunctions";
-import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
-import { useState } from "react";
-import { FaRegCalendar, FaRegClock, FaUserAlt } from "react-icons/fa";
-const { blog_folder } = config.settings;
-const { about, featured_posts, newsletter,categoriesConfig } = config.widgets;
+import { FaRegClock, FaUserAlt } from "react-icons/fa";
+const { featured_posts, newsletter } = config.widgets;
 
 const Sidebar = ({ trendingPosts, categories, className }) => {
   return (

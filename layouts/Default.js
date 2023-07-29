@@ -1,4 +1,3 @@
-import { markdownify } from "@lib/utils/textConverter";
 import shortcodes from "@shortcodes/all";
 
 const Default = ({ data }) => {
@@ -7,7 +6,6 @@ const Default = ({ data }) => {
   return (
     <section className="section">
       <div className="container">
-        {markdownify(title, "h1", "h2 mb-8 text-center")}
         <div className="content">
         </div>
       </div>

@@ -1,5 +1,4 @@
 import Base from "@layouts/Baseof";
-import { slugify } from "@lib/utils/textConverter";
 import Post from "@partials/Post";
 import { useSearchContext } from "context/state";
 import { useRouter } from "next/router";
@@ -7,22 +6,22 @@ import { useRouter } from "next/router";
 const SearchPage = () => {
   const router = useRouter();
   const { query } = router;
-  const keyword = slugify(query.key);
+  const keyword = query.key;
   const { posts } = useSearchContext();
 
   const searchResults = posts.filter((product) => {
     if (product.frontmatter.draft) {
       return !product.frontmatter.draft;
     }
-    if (slugify(product.frontmatter.title).includes(keyword)) {
+    if (product.frontmatter.title.includes(keyword)) {
       return product;
     } else if (
       product.frontmatter.categories.find((category) =>
-        slugify(category).includes(keyword)
+        category.includes(keyword)
       )
     ) {
       return product;
-    } else if (slugify(product.content).includes(keyword)) {
+    } else if (product.content.includes(keyword)) {
       return product;
     }
   });
