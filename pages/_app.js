@@ -61,14 +61,13 @@ const App = ({ Component, pageProps }) => {
           }}
           
         />
-        {/* <link rel="stylesheet" href="https://12thmanstaging.the12thman.in/wp-includes/css/dist/block-library/style.min.css" /> */}
+
 
         {/* responsive meta */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
       </Head>
       <ThemeProvider attribute="class" defaultTheme={default_theme}>

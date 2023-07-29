@@ -11,7 +11,6 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { useState } from "react";
 import { FaRegCalendar, FaRegClock, FaUserAlt } from "react-icons/fa";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
 const { blog_folder } = config.settings;
 const { about, featured_posts, newsletter,categoriesConfig } = config.widgets;
 
@@ -72,16 +71,7 @@ const Sidebar = ({ trendingPosts, categories, className }) => {
         <div className="mt-6  rounded border border-border p-6 text-center dark:border-darkmode-border">
           <h4 className="section-title">{newsletter.title}</h4>
           <p className="mt-10 text-xs">{newsletter.content}</p>
-          <MailchimpSubscribe
-            url={newsletter.malichip_url}
-            render={({ subscribe, status, message }) => (
-              <CustomForm
-                onValidated={(formData) => subscribe(formData)}
-                status={status}
-                message={message}
-              />
-            )}
-          />
+         
           <p className="text-xs">
             By Singing Up, You Agree To
             <Link

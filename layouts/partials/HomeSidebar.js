@@ -10,7 +10,6 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { useState } from "react";
 import { FaRegCalendar, FaUserAlt } from "react-icons/fa";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
 const { blog_folder } = config.settings;
 const { about, featured_posts, newsletter, categoriesConfig } = config.widgets;
 

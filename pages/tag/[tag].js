@@ -3,7 +3,6 @@ import Base from "@layouts/Baseof";
 import Sidebar from "@layouts/partials/Sidebar";
 import { getAllPosts, getAllPostsWithContent, getTag } from "@lib/graphql";
 import Post from "@partials/Post";
-import parse from 'html-react-parser';
 
 // category page
 const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
@@ -24,7 +23,7 @@ const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
                         <div
                             className="has-drop-cap-fluid"
                         >
-                            {description ? parse(description) : ''}
+                            {description ? description : ''}
                         </div>
                     </div>
                     <div className="row">

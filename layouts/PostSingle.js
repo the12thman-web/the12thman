@@ -2,7 +2,7 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import InnerPagination from "@layouts/components/InnerPagination";
 import dateFormat from "@lib/utils/dateFormat";
-import { DiscussionEmbed } from "disqus-react";
+// import { DiscussionEmbed } from "disqus-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -152,7 +152,7 @@ const PostSingle = ({
                   <InnerPagination posts={posts} date={date} />
                 )}
               </article>
-              <div className="mt-16">
+              {/* <div className="mt-16">
                 {disqus.enable && (
                   <DiscussionEmbed
                     key={theme}
@@ -160,7 +160,7 @@ const PostSingle = ({
                     config={disqusConfig}
                   />
                 )}
-              </div>
+              </div> */}
             </div>
             <Sidebar
               trendingPosts={trendingPosts.filter((post) => post.slug !== slug)}

@@ -297,7 +297,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 											<div class="wrapper bg-gray-400 antialiased text-gray-900">
 												<div>
 
-													<img src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
+													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
 
 													<div class="relative px-4 -mt-16  ">
 														<div class="bg-white p-6 rounded-lg shadow-lg">

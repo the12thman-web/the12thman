@@ -1,6 +1,5 @@
 import { markdownify } from "@lib/utils/textConverter";
 import shortcodes from "@shortcodes/all";
-import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 
 const About = ({ data }) => {
@@ -25,7 +24,6 @@ const About = ({ data }) => {
         {markdownify(title, "h1", "h1 text-left lg:text-[55px] mt-12")}
 
         <div className="content text-left">
-          <MDXRemote {...mdxContent} components={shortcodes} />
         </div>
 
         <div className="row mt-24 text-left lg:flex-nowrap">
