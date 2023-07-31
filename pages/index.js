@@ -58,6 +58,8 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													src={post.featuredImage?.node?.sourceUrl}
 													alt="tailwind logo"
 													className="rounded-xl"
+													width={123}
+													height={82}
 												/>
 											</div>
 											<div className="flex w-full flex-col  items-center space-y-2 bg-white p-3 md:w-2/3">
@@ -97,7 +99,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								<Link
 									href={'/' + post?.slug}
 								>
-									<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
+									<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" width={405} height={228} />
 
 									<div class="relative px-4 -mt-16  ">
 										<div class="bg-white p-6 rounded-lg shadow-lg">
@@ -141,7 +143,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									<div class="container px-1 flex justify-center">
 										<div class="max-w-sm py-2">
 											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image class="rounded-t-lg" src={cricketPosts[random1].featuredImage?.node?.sourceUrl} alt="" />
+												<Image class="rounded-t-lg" src={cricketPosts[random1].featuredImage?.node?.sourceUrl} alt="cricket" fill />
 												<div class="py-6 px-8 rounded-lg bg-white">
 													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{cricketPosts[random1].title}</h1>
 													<div
@@ -166,7 +168,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 											<div class="wrapper bg-gray-400 antialiased text-gray-900">
 												<div>
 
-													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
+													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" width={403} height={227} />
 
 													<div class="relative px-4 -mt-16  ">
 														<div class="bg-white p-6 rounded-lg shadow-lg">
@@ -270,7 +272,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									<div class="container px-1 flex justify-center">
 										<div class="max-w-sm py-2">
 											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image class="rounded-t-lg" src={footballPosts[random1].featuredImage?.node?.sourceUrl} alt="" />
+												<Image class="rounded-t-lg" src={footballPosts[random1].featuredImage?.node?.sourceUrl} alt="football" fill/>
 												<div class="py-6 px-8 rounded-lg bg-white">
 													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{footballPosts[random1].title}</h1>
 													<div
@@ -295,7 +297,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 											<div class="wrapper bg-gray-400 antialiased text-gray-900">
 												<div>
 
-													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" />
+													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" width={373} height={210} />
 
 													<div class="relative px-4 -mt-16  ">
 														<div class="bg-white p-6 rounded-lg shadow-lg">
