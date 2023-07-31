@@ -66,7 +66,6 @@ const PostSingle = ({
                       width="1000"
                       alt={title}
                       className="rounded-lg"
-                      loading="lazy"
                     />
                   )}
                   <ul className="absolute top-3 left-2 flex flex-wrap items-center">
