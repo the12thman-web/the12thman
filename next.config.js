@@ -4,7 +4,7 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  staticPageGenerationTimeout: 200,
+  staticPageGenerationTimeout: 2000,
   images: {
     //enter the domain or subdomain where you have WordPress installed
     domains: ['i0.wp.com', 'backendrsw.the12thman.in'],
