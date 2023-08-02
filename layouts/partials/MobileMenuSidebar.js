@@ -18,13 +18,13 @@ export const MobileMenuSideBar = ({showMenu}) => {
       <Menu>
         <SubMenu label="IPL 2023">
           <SubMenu label="IPL Teams">
-            <MenuItem href={`/category/${('chennai-super-kings').replace(" ", "-")}/`}>
+            <MenuItem href={`/category/${('chennai super kings').replace(" ", "-")}/`}>
               Chennai Super Kings &#8211; CSK
             </MenuItem>
-            <MenuItem href={`/category/${('delhi-capitals').replace(" ", "-")}/`}>
+            <MenuItem href={`/category/${('delhi capitals').replace(" ", "-")}/`}>
               Delhi Capitals &#8211; DC
             </MenuItem>
-            <MenuItem href={`/category/${('gujarat-titans').replace(" ", "-")}/`}>
+            <MenuItem href={`/category/${('gujarat titans').replace(" ", "-")}/`}>
               Gujarat Titans &#8211; GT
             </MenuItem>
             <MenuItem href={`/category/kolkata-knight-riders/`}>
