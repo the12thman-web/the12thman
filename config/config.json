@@ -97,7 +97,7 @@
   },
   "sitemap":{
     "postsPerPage": 100,
-    "totalPosts": 100000,
+    "totalPosts": 10000,
     "catPostPerPage": 10,
     "catTotalPosts": 200,
     "tagPostPerPage": 100,
