@@ -25,7 +25,7 @@ import {
 } from 'next-share';
 import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
-import Tag from "./components/Tag";
+import Tag from "./components/Tags";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -76,7 +76,7 @@ const PostSingle = ({
                       >
                         <Link
                           className="capitalize"
-                          href={`/tag/${name.replace(" ", "-")}`}
+                          href={`/tags/${name.replace(" ", "-")}`}
                         >
                           {name}
                         </Link>
