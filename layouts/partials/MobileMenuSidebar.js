@@ -16,7 +16,7 @@ export const MobileMenuSideBar = ({showMenu}) => {
       collapsed={!showMenu}
     >
       <Menu>
-        <SubMenu label="IPL 2023">
+        {/* <SubMenu label="IPL 2023">
           <SubMenu label="IPL Teams">
             <MenuItem href={`/category/${('chennai super kings').replace(" ", "-")}/`}>
               Chennai Super Kings &#8211; CSK
@@ -49,7 +49,7 @@ export const MobileMenuSideBar = ({showMenu}) => {
               Sunrisers Hyderabad -SRH
             </MenuItem>
           </SubMenu>
-        </SubMenu>
+        </SubMenu> */}
         <SubMenu label="NBA">
           <SubMenu label="Eastern Conference">
             <MenuItem href={`/category/miami-heat/`}>Miami Heat</MenuItem>
