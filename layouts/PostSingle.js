@@ -25,7 +25,6 @@ import {
 } from 'next-share';
 import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
-import Tag from "./components/Tags";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
