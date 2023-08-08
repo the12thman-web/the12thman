@@ -111,20 +111,18 @@ export async function getServerSideProps({ res }) {
             console.error('Error reading directory:', err);
             return;
         }
-
         const fileNames = files.map(fileName => path.join('sitemaps', fileName)).reverse();
-
         // We generate the XML sitemap with the posts data
         const sitemap = generateSiteMapIndex(fileNames);
         res.setHeader('Content-Type', 'text/xml');
         // we send the XML to the browser
         res.write(sitemap);
         res.end();
-    })
 
-    return {
-        props: {},
-    };
+        return {
+            props: {},
+        };
+    })
 }
 
 export default SiteMap;
