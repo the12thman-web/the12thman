@@ -177,8 +177,8 @@ export const GET_TAG_QUERY = `query getTag($tagName: [String]){
       }`
 
 export const GET_POST_SITEMAP_QUERY = `
-        query GetPosts($perPage: Int!, $after: String) {
-      posts(first: $perPage, after: $after, where: { status: PUBLISH }) {
+        query GetPosts($perPage: Int!, $after: String, $month: Int, $year: Int) {
+      posts(first: $perPage, after: $after, where: { status: PUBLISH, dateQuery: {month: $month, year: $year} }) {
         edges {
           node {
             id

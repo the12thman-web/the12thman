@@ -19,7 +19,6 @@ const cleanStory = (content) => {
 const WebStory = ({ content }) => {
 
   const isAmp = useAmp();
-  console.log('isAmp', isAmp)
   return <div>{isAmp && content ? <div
     className="has-drop-cap-fluid"
     dangerouslySetInnerHTML={{ __html: content }}
