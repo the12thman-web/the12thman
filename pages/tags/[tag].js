@@ -22,8 +22,8 @@ const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
 
                         <div
                             className="has-drop-cap-fluid"
+                            dangerouslySetInnerHTML={{ __html: description ? description : <></> }}
                         >
-                            {description ? description : ''}
                         </div>
                     </div>
                     <div className="row">

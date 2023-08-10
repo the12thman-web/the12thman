@@ -38,6 +38,12 @@ function generateSiteMapIndex(paths) {
      <url>
        <loc>https://the12thman.com/</loc>
      </url>
+     <url>
+     <loc>${`${base_url}/category-sitemap.xml`}</loc>
+     </url>
+     <url>
+     <loc>${`${base_url}/tag-sitemap.xml`}</loc>
+     </url>
      ${paths
             .map(path => {
                 return `
@@ -106,23 +112,18 @@ export async function getServerSideProps({ res }) {
 
     const folderPath = process.cwd() + '/public/sitemaps';
 
-    fs.readdir(folderPath, (err, files) => {
-        if (err) {
-            console.error('Error reading directory:', err);
-            return;
-        }
-        const fileNames = files.map(fileName => path.join('sitemaps', fileName)).reverse();
-        // We generate the XML sitemap with the posts data
-        const sitemap = generateSiteMapIndex(fileNames);
-        res.setHeader('Content-Type', 'text/xml');
-        // we send the XML to the browser
-        res.write(sitemap);
-        res.end();
+    let files = fs.readdirSync(folderPath);
+    const fileNames = files.map(fileName => path.join('sitemaps', fileName)).reverse();
+    // We generate the XML sitemap with the posts data
+    const sitemap = generateSiteMapIndex(fileNames);
+    res.setHeader('Content-Type', 'text/xml');
+    // we send the XML to the browser
+    res.write(sitemap);
+    res.end();
 
-        return {
-            props: {},
-        };
-    })
+    return {
+        props: {},
+    };
 }
 
 export default SiteMap;
