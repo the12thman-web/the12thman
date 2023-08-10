@@ -21,7 +21,7 @@
     "summary_length": 200,
     "blog_folder": "posts",
     "slide_title_length": 20,
-    "refresh_home_page_interval" : 60,
+    "refresh_home_page_interval": 60,
     "refresh_stories_page_interval": 60000
   },
   "params": {
@@ -65,37 +65,37 @@
     "shortname": "themefisher-template",
     "settings": {}
   },
-  "home":{
-		"cricket": {
-			"enable": true,
-			"title": "Cricket"
-		},
-		"football": {
-			"enable": true,
-			"title": "Football"
-		},
-		"nba": {
-			"enable": true,
-			"title": "NBA"
-		},
-		"motoGP": {
-			"enable": true,
-			"title": "Moto GP"
-		},
-		"ufc": {
-			"enable": true,
-			"title": "UFC"
-		}
-	},
-  "logging":{
-    "getAllPostLog":false,
-    "getAllPostContentLog":false,
-    "getPostLog": false,
-    "getCategoryLog": false,
-    "getTagLog":false,
-    "getWebStoryLog": false
+  "home": {
+    "cricket": {
+      "enable": true,
+      "title": "Cricket"
+    },
+    "football": {
+      "enable": true,
+      "title": "Football"
+    },
+    "nba": {
+      "enable": true,
+      "title": "NBA"
+    },
+    "motoGP": {
+      "enable": true,
+      "title": "Moto GP"
+    },
+    "ufc": {
+      "enable": true,
+      "title": "UFC"
+    }
   },
-  "sitemap":{
+  "logging": {
+    "getAllPostLog": true,
+    "getAllPostContentLog": true,
+    "getPostLog": true,
+    "getCategoryLog": true,
+    "getTagLog": true,
+    "getWebStoryLog": true
+  },
+  "sitemap": {
     "postsPerPage": 100,
     "totalPosts": 10000,
     "catPostPerPage": 10,
