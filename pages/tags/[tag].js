@@ -15,7 +15,7 @@ const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
                 <div className="container">
                     <h1 className="h2 mb-12">
                         <span className="section-title ml-1 inline-block capitalize">
-                            {name.replace("-", " ")}
+                            {name.replaceAll("-", " ")}
                         </span>
                     </h1>
                     <div className="content mb-16">

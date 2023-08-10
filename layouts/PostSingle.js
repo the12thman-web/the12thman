@@ -75,7 +75,7 @@ const PostSingle = ({
                       >
                         <Link
                           className="capitalize"
-                          href={`/tags/${name.replace(" ", "-")}`}
+                          href={`/tags/${name.toLowerCase().replaceAll(" ", "-")}`}
                         >
                           {name}
                         </Link>
