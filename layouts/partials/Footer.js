@@ -100,27 +100,26 @@ const Footer = () => {
               Top Categories
             </h6>
             <p class="mb-4">
-              <a href="/category/paris-saint-germain/" class="text-neutral-600 dark:text-neutral-200"
-              >Paris Saint-Germain</a
-              >
+              <a href="/category/football/ligue-1/paris-saint-germain/" class="text-neutral-600 dark:text-neutral-200"
+              >Paris Saint-Germain</a>
             </p>
             <p class="mb-4">
-              <a href="/category/ipl" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/category/cricket/cricket-tournaments/ipl/" class="text-neutral-600 dark:text-neutral-200"
               >IPL</a
               >
             </p>
             <p class="mb-4">
-              <a href="/category/big-bash-league" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/category/cricket/cricket-tournaments/big-bash-league/" class="text-neutral-600 dark:text-neutral-200"
               >Big Bash League</a
               >
             </p>
             <p>
-              <a href="/category/cricket-teams" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/category/cricket/cricket-teams" class="text-neutral-600 dark:text-neutral-200"
               >Cricket Teams</a
               >
             </p>
             <p>
-              <a href="/category-tournaments" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/category/cricket/cricket-tournaments" class="text-neutral-600 dark:text-neutral-200"
               >Cricket Tournaments</a
               >
             </p>
