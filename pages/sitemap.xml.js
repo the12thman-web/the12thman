@@ -18,11 +18,7 @@ function generateSiteMap(posts) {
                 return `
        <url>
            <loc>${`${base_url}/${post.node.slug}`}</loc>
-           <lastmod>${format(
-                    new Date(post.node.date),
-                    'yyyy-MM-dd HH:mm:ss XXX',
-                    { timeZone: 'IST' }
-                )}</lastmod>
+           <lastmod>${new Date(post.node.date).toISOString()}</lastmod>
        </url>
      `;
             })
@@ -49,9 +45,7 @@ function generateSiteMapIndex(paths) {
                 return `
        <url>
            <loc>${`${base_url}/${path}`}</loc>
-           <lastmod>${format(new Date(), 'yyyy-MM-dd HH:mm:ss XXX', {
-                    timeZone: 'IST',
-                })}</lastmod>
+           <lastmod>${new Date().toISOString()}</lastmod>
        </url>
      `;
             })
