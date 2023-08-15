@@ -128,7 +128,7 @@ const Header = () => {
                       <Link
                         href={menu.url}
                         className={`nav-link block ${
-                          router.asPath === menu.url && 'active'
+                          router.asPath.includes(menu.url) && 'active'
                         }`}
                       >
                         {menu.name}
