@@ -134,27 +134,27 @@ const Footer = () => {
               Top Tags
             </h6>
             <p class="mb-4">
-              <a href="/tags/bbl-top-scorer" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/tag/bbl-top-scorer" class="text-neutral-600 dark:text-neutral-200"
               >BBL Top Scorers</a
               >
             </p>
             <p class="mb-4">
-              <a href="/tags/ipl" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/tag/ipl" class="text-neutral-600 dark:text-neutral-200"
               >IPL</a
               >
             </p>
             <p class="mb-4">
-              <a href="/tags/arjun-tendulkar" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/tag/arjun-tendulkar" class="text-neutral-600 dark:text-neutral-200"
               >Arjun Tendulkar</a
               >
             </p>
             <p>
-              <a href="/tags/kfc-big-bash-leauge-format" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/tag/kfc-big-bash-leauge-format" class="text-neutral-600 dark:text-neutral-200"
               >KFC Big Bash League Format</a
               >
             </p>
             <p>
-              <a href="/tags/bbl-captains" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/tag/bbl-captains" class="text-neutral-600 dark:text-neutral-200"
               >BBL Captains</a
               >
             </p>
