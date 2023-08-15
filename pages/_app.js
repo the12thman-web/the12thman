@@ -1,20 +1,20 @@
-import config from "@config/config.json";
-import theme from "@config/theme.json";
-import { JsonContext } from "context/state";
-import { ThemeProvider } from "next-themes";
-import Head from "next/head";
-import { useEffect, useState } from "react";
-import TagManager from "react-gtm-module";
-import "styles/style.scss";
-import "styles/slider.scss";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import config from '@config/config.json';
+import theme from '@config/theme.json';
+import { JsonContext } from 'context/state';
+import { ThemeProvider } from 'next-themes';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import TagManager from 'react-gtm-module';
+import 'styles/style.scss';
+import 'styles/slider.scss';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import ReactGA from 'react-ga';
+import Script from 'next/script';
 const GA_TRACKING_ID = config.site.ga_id;
 
 ReactGA.initialize(GA_TRACKING_ID);
-
 
 const App = ({ Component, pageProps }) => {
   // ReactGA.debugOptions({ debug: true });
@@ -28,9 +28,9 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => {
     fetch(
       `https://fonts.googleapis.com/css2?family=${pf}${
-        sf ? "&family=" + sf : ""
+        sf ? '&family=' + sf : ''
       }&display=swap`
-    ).then((res) => res.text().then((css) => setFontcss(css)));
+    ).then(res => res.text().then(css => setFontcss(css)));
   }, [pf, sf]);
 
   // google tag manager (gtm)
@@ -39,7 +39,7 @@ const App = ({ Component, pageProps }) => {
   };
   useEffect(() => {
     setTimeout(() => {
-      process.env.NODE_ENV === "production" &&
+      process.env.NODE_ENV === 'production' &&
         config.params.tag_manager_id &&
         TagManager.initialize(tagManagerArgs);
     }, 5000);
@@ -59,16 +59,30 @@ const App = ({ Component, pageProps }) => {
           dangerouslySetInnerHTML={{
             __html: `${fontcss}`,
           }}
-          
         />
+        {process.env.NODE_ENV === 'production' && (
+          <div className="ga-container">
+            <Script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-Q6CJDCHK19"
+            ></Script>
 
+            <Script id="google-analytics">
+              {` window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q6CJDCHK19')`}
+              ;
+            </Script>
+          </div>
+        )}
 
         {/* responsive meta */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
-
       </Head>
       <ThemeProvider attribute="class" defaultTheme={default_theme}>
         <Component {...pageProps} />
