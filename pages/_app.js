@@ -4,17 +4,17 @@ import { JsonContext } from 'context/state';
 import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-// import TagManager from 'react-gtm-module';
+import TagManager from 'react-gtm-module';
 import 'styles/style.scss';
 import 'styles/slider.scss';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 import Script from 'next/script';
-// const GA_TRACKING_ID = config.site.ga_id;
+const GA_TRACKING_ID = config.site.ga_id;
 
-// ReactGA.initialize(GA_TRACKING_ID);
+ReactGA.initialize(GA_TRACKING_ID);
 
 const App = ({ Component, pageProps }) => {
   // ReactGA.debugOptions({ debug: true });
@@ -33,18 +33,18 @@ const App = ({ Component, pageProps }) => {
     ).then(res => res.text().then(css => setFontcss(css)));
   }, [pf, sf]);
 
-  // // google tag manager (gtm)
-  // const tagManagerArgs = {
-  //   gtmId: config.params.tag_manager_id,
-  // };
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     process.env.NODE_ENV === 'production' &&
-  //       config.params.tag_manager_id &&
-  //       TagManager.initialize(tagManagerArgs);
-  //   }, 5000);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  // google tag manager (gtm)
+  const tagManagerArgs = {
+    gtmId: config.params.tag_manager_id,
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      process.env.NODE_ENV === 'production' &&
+        config.params.tag_manager_id &&
+        TagManager.initialize(tagManagerArgs);
+    }, 5000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <JsonContext>
@@ -60,7 +60,7 @@ const App = ({ Component, pageProps }) => {
             __html: `${fontcss}`,
           }}
         />
-        {process.env.NODE_ENV === 'production' && (
+        {/* {process.env.NODE_ENV === 'production' && (
           <div className="ga-container">
             <Script
               async
@@ -76,7 +76,7 @@ const App = ({ Component, pageProps }) => {
               ;
             </Script>
           </div>
-        )}
+        )} */}
 
         {/* responsive meta */}
         <meta
