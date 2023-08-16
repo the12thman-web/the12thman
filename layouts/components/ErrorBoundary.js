@@ -1,29 +1,19 @@
-class ErrorBoundary extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { hasError: false };
+import React, { useState } from 'react';
+
+function withErrorBoundary(WrappedComponent) {
+  return function ErrorBoundary(props) {
+    const [error, setError] = useState(null);
+  
+    if (error) {
+      return <div>An error occurred: {error.toString()}</div>;
     }
   
-    static getDerivedStateFromError(error) {
-      // Update state so the next render will show the fallback UI.
-      return { hasError: true };
-    }
-  
-    componentDidCatch(error, info) {
-      // Example "componentStack":
-      //   in ComponentThatThrows (created by App)
-      //   in ErrorBoundary (created by App)
-      //   in div (created by App)
-      //   in App
-      logErrorToMyService(error, info.componentStack);
-    }
-  
-    render() {
-      if (this.state.hasError) {
-        // You can render any custom fallback UI
-        return this.props.fallback;
-      }
-  
-      return this.props.children;
+    try {
+      return <WrappedComponent {...props} />;
+    } catch (err) {
+      setError(err);
     }
   }
+}
+
+export default withErrorBoundary;
