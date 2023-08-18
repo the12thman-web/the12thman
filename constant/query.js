@@ -230,3 +230,14 @@ export const GET_ALL_WEB_STORIES = `query getAllWebStories ($limit: Int!) {
     }
   }
 }`
+
+export const GET_WEB_STORY_SITEMAP_QUERY = `query GetAllWebStories($perPage: Int!, $after: String) {
+  webStories(first: $perPage, after: $after) {
+   edges {
+      cursor
+      node {
+        uri
+      }
+    }
+  }
+}`

@@ -40,6 +40,9 @@ function generateSiteMapIndex(paths) {
      <url>
      <loc>${`${base_url}/tag-sitemap.xml`}</loc>
      </url>
+     <url>
+     <loc>${`${base_url}/web-stories-sitemap.xml`}</loc>
+     </url>
      ${paths
             .map(path => {
                 return `
