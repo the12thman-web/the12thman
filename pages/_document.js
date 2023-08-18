@@ -24,8 +24,24 @@ const Document = () => {
           media="(prefers-color-scheme: dark)"
           content="#000"
         />
-        <Script strategy="beforeInteractive" src="https://platform.twitter.com/widgets.js" />
-
+        <Script
+          strategy="beforeInteractive"
+          src="https://platform.twitter.com/widgets.js"
+        />
+        <script
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-314259173`}
+        />
+        <script strategy="lazyOnload">
+          {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config','G-314259173', {
+                    page_path: window.location.pathname,
+                    });
+                `}
+        </script>
       </Head>
       <body>
         <Main />
