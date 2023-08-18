@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "The 12th man times",
+    "title": "One Stop For All Sports",
     "base_url": "https://the12thman.in",
     "favicon": "/images/favicon.ico",
     "logo": "/images/logo 2.png",
@@ -32,7 +32,7 @@
   "metadata": {
     "meta_author": "the12thman",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Thwelth man time sports blog"
+    "meta_description": "One Stop For All Sports News and Update on all the sports including live cricket scores, football updates, latest hockey news, tennis, badminton, NBA and more."
   },
   "widgets": {
     "about": {
