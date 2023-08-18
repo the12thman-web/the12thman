@@ -79,6 +79,7 @@ export const GET_ALL_POST_WITH_CONTENT_QUERY = `
                       uri
                       altText
                     }
+                    metaKeywords
                   }
                 }
             }

@@ -36,7 +36,7 @@ const PostSingle = ({
   relatedPosts,
   trendingPosts
 }) => {
-  let { tags, description, title, date, featuredImage, categories } = frontmatter;
+  let { tags, description, title, date, featuredImage, categories, metaKeywords } = frontmatter;
   description = description ? description : content?.slice(0, 120);
 
   const { theme } = useTheme();
@@ -51,7 +51,7 @@ const PostSingle = ({
 
 
   return (
-    <Base title={title} description={description}>
+    <Base title={title} description={description} metaKeywords={metaKeywords}>
       <section className="section single-blog mt-1 pt-1">
         <div className="container">
           <div className="row">

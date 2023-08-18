@@ -8,7 +8,7 @@ import ReactGA from 'react-ga';
 
 // post single layout
 const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
-	const { content, tags, title, categories, author, date, featuredImage } = post || {};
+	const { content, tags, title, categories, author, date, featuredImage, metaKeywords } = post || {};
 
 	useEffect(() => {
 		ReactGA.pageview(window.location.pathname + window.location.search);
@@ -21,6 +21,7 @@ const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 		author,
 		date,
 		featuredImage: featuredImage?.node?.sourceUrl,
+		metaKeywords
 	};
 	return (
 		<>

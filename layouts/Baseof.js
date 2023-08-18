@@ -10,10 +10,11 @@ const Base = ({
   description,
   image,
   noindex,
+  metaKeywords,
   canonical = true,
   children,
 }) => {
-  const { meta_image, meta_author, meta_description } = config.metadata;
+  const { meta_image, meta_author, meta_description, meta_keywords } = config.metadata;
   const { base_url } = config.site;
   const router = useRouter();
   const currentPath = router.asPath;
@@ -39,6 +40,8 @@ const Base = ({
           name="description"
           content={description ? description : meta_description}
         />
+
+        <meta name="keywords" content={metaKeywords ? metaKeywords : meta_keywords}></meta>
 
         {/* author from config.json */}
         <meta name="author" content={meta_author} />

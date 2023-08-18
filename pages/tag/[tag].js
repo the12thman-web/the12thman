@@ -10,7 +10,7 @@ const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
     
     return (
         name ?
-        <Base title={name}>
+        <Base title={name} description={description}>
             <div className="section mt-16">
                 <div className="container">
                     <h1 className="h2 mb-12">
