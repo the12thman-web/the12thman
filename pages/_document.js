@@ -29,19 +29,20 @@ const Document = () => {
           src="https://platform.twitter.com/widgets.js"
         />
         <script
-          strategy="lazyOnload"
+          async
           src={`https://www.googletagmanager.com/gtag/js?id=G-314259173`}
         />
-        <script strategy="lazyOnload">
-          {`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config','G-314259173', {
-                    page_path: window.location.pathname,
-                    });
-                `}
-        </script>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-314259173', { 'send_page_view': true });
+              `,
+          }}
+        />
       </Head>
       <body>
         <Main />
