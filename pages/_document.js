@@ -30,7 +30,7 @@ const Document = () => {
         />
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-314259173`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-Q6CJDCHK19`}
         />
 
         <script
@@ -39,7 +39,7 @@ const Document = () => {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-314259173', { 'send_page_view': true });
+              gtag('config', 'G-Q6CJDCHK19', { 'send_page_view': true });
               `,
           }}
         />
