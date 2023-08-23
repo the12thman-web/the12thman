@@ -13,6 +13,7 @@ function generateRssFeed(posts) {
   feed_url: `${site_url}/rss.xml`,
   pubDate: new Date(),
   copyright: `Copyright © ${new Date().getFullYear()} The12thman.In`,
+  image_url: `${site_url}/images/logo 2.png`
  };
 
  const feed = new RSS(feedOptions);
