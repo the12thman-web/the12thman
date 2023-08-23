@@ -32,7 +32,7 @@ function generateRssFeed(posts) {
         date: value.date || new Date(),
         enclosure: {url:value.featuredImage?.node.sourceUrl}, // optional enclosure
         custom_elements: [
-          {'content:encoded': value.title},
+          {'content:encoded': `<![CDATA[ ${value.title}]]>`},
         ]
     });
  })
