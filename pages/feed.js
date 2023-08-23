@@ -1,5 +1,4 @@
-// import RSS from 'rss';
-import { Feed } from "feed";
+import RSS from 'rss';
 import { getAllPosts } from "@lib/graphql";
 
 const EXTERNAL_DATA_URL = 'https://the12thman.in';
@@ -11,27 +10,33 @@ function generateRssFeed(posts) {
   title: 'The 12th man times',
   description: 'Keep up to date with the latest trends in sports',
   site_url: site_url,
-  link: site_url,
   feed_url: `${site_url}/feed`,
   pubDate: new Date(),
   copyright: `Copyright © ${new Date().getFullYear()} The12thman.In`,
-  image_url: `${site_url}/images/logo 2.png`
+  image_url: `${site_url}/images/logo 2.png`,
+  custom_elements: [
+    {'content:encoded': site_url},
+  ]
  };
 
- const feed = new Feed(feedOptions);
+ const feed = new RSS(feedOptions);
  posts.map(value => {
-  const categories = value.categories?.nodes.forEach(val => feed.addCategory(val.name))
+    const categories = value.categories?.nodes.map(val => {return val.name})
 
-    feed.addItem({
+    feed.item({
         title:  value.title,
         url: `${site_url}/${value.slug}`, // link to the item
         guid: value.postId,
         categories: categories || [], // optional - array of item categories
         author: value.author?.node.name, // optional - defaults to feed author property
-        date: new Date(value.date) || new Date(),
+        date: value.date || new Date(),
+        enclosure: {url:value.featuredImage?.node.sourceUrl}, // optional enclosure
+        custom_elements: [
+          {'content:encoded': value.title},
+        ]
     });
  })
- return feed.rss2();
+ return feed.xml();
 }
 
 function RSSFeed() {
