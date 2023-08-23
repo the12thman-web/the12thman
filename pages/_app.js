@@ -12,6 +12,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ReactGA from 'react-ga';
 import Script from 'next/script';
+import Hydration from '../layouts/components/Hydration';
 const GA_TRACKING_ID = config.site.ga_id;
 
 ReactGA.initialize(GA_TRACKING_ID);
@@ -47,20 +48,21 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <JsonContext>
-      <Head>
-        {/* google font css */}
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `${fontcss}`,
-          }}
-        />
-        {/* {process.env.NODE_ENV === 'production' && (
+    <Hydration>
+      <JsonContext>
+        <Head>
+          {/* google font css */}
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="true"
+          />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `${fontcss}`,
+            }}
+          />
+          {/* {process.env.NODE_ENV === 'production' && (
           <div className="ga-container">
             <Script
               async
@@ -78,16 +80,17 @@ const App = ({ Component, pageProps }) => {
           </div>
         )} */}
 
-        {/* responsive meta */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
-        />
-      </Head>
-      <ThemeProvider attribute="class" defaultTheme={default_theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </JsonContext>
+          {/* responsive meta */}
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=5"
+          />
+        </Head>
+        <ThemeProvider attribute="class" defaultTheme={default_theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </JsonContext>
+    </Hydration>
   );
 };
 
