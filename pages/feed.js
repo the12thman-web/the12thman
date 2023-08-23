@@ -1,4 +1,4 @@
-import RSS from 'rss';
+// import RSS from 'rss';
 import { Feed } from "feed";
 import { getAllPosts } from "@lib/graphql";
 
