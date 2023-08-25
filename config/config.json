@@ -100,7 +100,7 @@
     "postsPerPage": 100,
     "totalPosts": 10000,
     "catPostPerPage": 10,
-    "catTotalPosts": 1000,
+    "catTotalPosts": 600,
     "tagPostPerPage": 100,
     "tagTotalPosts": 1000
   }
