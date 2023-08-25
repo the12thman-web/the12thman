@@ -1,5 +1,5 @@
 import RSS from 'rss';
-import { getAllPosts } from "@lib/graphql";
+import { getAllPostsWithContent } from '@lib/graphql';
 
 const EXTERNAL_DATA_URL = 'https://the12thman.in';
 
@@ -13,16 +13,17 @@ function generateRssFeed(posts) {
   feed_url: `${site_url}/feed`,
   pubDate: new Date(),
   copyright: `Copyright © ${new Date().getFullYear()} The12thman.In`,
-  image_url: `${site_url}/images/logo 2.png`,
+  // image_url: `${site_url}/images/logo 2.png`,
+  description: 'The 12th man times',
   custom_elements: [
-    {'content:encoded': site_url},
+    {'content:encoded': 'The 12th man times'},
+    {'snf': {'logo': { link: `${site_url}/images/logo 2.png`}}}
   ]
  };
 
  const feed = new RSS(feedOptions);
  posts.map(value => {
     const categories = value.categories?.nodes.map(val => {return val.name})
-
     feed.item({
         title:  value.title,
         url: `${site_url}/${value.slug}`, // link to the item
@@ -32,7 +33,8 @@ function generateRssFeed(posts) {
         date: value.date || new Date(),
         enclosure: {url:value.featuredImage?.node.sourceUrl}, // optional enclosure
         custom_elements: [
-          {'content:encoded': `<![CDATA[ ${value.title}]]>`},
+          {'content:encoded': {_cdata: value.content}},
+          {'thumbnail': value.featuredImage?.node.sourceUrl}
         ]
     });
  })
@@ -45,7 +47,7 @@ function RSSFeed() {
 
 
   export async function getServerSideProps({ res }) {
-    const newPosts = await getAllPosts('', '', '', 20);
+    const newPosts = await getAllPostsWithContent('', '', '', 20);
 
     // We generate the XML RSS with the posts data
     const feed = generateRssFeed(newPosts?.nodes);
