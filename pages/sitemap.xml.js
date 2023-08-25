@@ -36,12 +36,15 @@ function generateSiteMapIndex(paths) {
      </url>
      <url>
      <loc>${`${base_url}/category-sitemap.xml`}</loc>
+     <lastmod>${new Date().toISOString()}</lastmod>
      </url>
      <url>
      <loc>${`${base_url}/tag-sitemap.xml`}</loc>
+     <lastmod>${new Date().toISOString()}</lastmod>
      </url>
      <url>
      <loc>${`${base_url}/web-stories-sitemap.xml`}</loc>
+     <lastmod>${new Date().toISOString()}</lastmod>
      </url>
      ${paths
             .map(path => {
