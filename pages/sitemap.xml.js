@@ -104,7 +104,7 @@ export async function getServerSideProps({ res }) {
 
         const fileName = `sitemap_${year}_${month}.xml`;
         const filePath = path.join(process.cwd(), 'public', 'sitemaps', fileName);
-        fs.writeFileSync(filePath, sitemap);
+        fs.writeFileSync(filePath, sitemap, { flag: 'w' });
 
         // Move to the next month
         currentDate.setMonth(currentDate.getMonth() + 1);
