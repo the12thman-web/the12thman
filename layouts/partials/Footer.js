@@ -21,8 +21,8 @@ const Footer = () => {
           data-full-width-responsive="true"
         />
         <script dangerouslySetInnerHTML={{ __html: '(adsbygoogle = window.adsbygoogle || []).push({});' }} />
-        <ins class="adsbygoogle"
-          style="display:block"
+        <ins className="adsbygoogle"
+          style={{display:"block"}}
           data-ad-client="ca-pub-9891586352099803"
           data-ad-slot="7701465544"
           data-ad-format="auto"
