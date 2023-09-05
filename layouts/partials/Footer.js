@@ -1,6 +1,7 @@
 import config from "@config/config.json";
 import Logo from "@layouts/components/Logo";
 import useWindow from "../../hooks/useWindow";
+import { MyAdComponent } from "./AdComponent";
 
 const Footer = () => {
   const { copyright, footer_content } = config.params;
@@ -15,20 +16,8 @@ const Footer = () => {
         <div class="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
         </div>
-        {isMobile && <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-9891586352099803"
-          data-ad-slot="9944485503"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />}
-        {!isMobile && <ins className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-9891586352099803"
-          data-ad-slot="7701465544"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>}
+        {isMobile && <MyAdComponent client="ca-pub-9891586352099803" slot="9944485503"></MyAdComponent> }
+        {!isMobile && <MyAdComponent client="ca-pub-9891586352099803" slot="7701465544"></MyAdComponent>}
 
         {/* <!-- Social network icons container --> */}
         <div class="flex justify-center">
