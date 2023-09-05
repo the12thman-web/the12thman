@@ -43,6 +43,14 @@ const Document = () => {
               `,
           }}
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
+          crossorigin="anonymous"
+        />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
+          crossorigin="anonymous"></script>
+
       </Head>
       <body>
         <Main />
