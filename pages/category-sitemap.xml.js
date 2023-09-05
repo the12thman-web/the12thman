@@ -8,7 +8,7 @@ function generateSiteMap(categories) {
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
      <url>
-       <loc>https://the12thman.in/category</loc>
+       <loc>https://the12thman.in/category/</loc>
      </url>
      ${categories
             .map((category) => {

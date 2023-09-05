@@ -252,3 +252,10 @@ footer .socials {
 iframe{
   width: auto !important;
 }
+
+@media screen and (max-width: 767px) {
+  .content :is(:where(table):not(:where([class~="not-prose"] *))) {
+    overflow: auto !important;
+    display: block !important;
+  }
+} 

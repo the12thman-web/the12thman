@@ -36,12 +36,15 @@ function generateSiteMapIndex(paths) {
      </url>
      <url>
      <loc>${`${base_url}/category-sitemap.xml`}</loc>
+     <lastmod>${new Date().toISOString()}</lastmod>
      </url>
      <url>
      <loc>${`${base_url}/tag-sitemap.xml`}</loc>
+     <lastmod>${new Date().toISOString()}</lastmod>
      </url>
      <url>
      <loc>${`${base_url}/web-stories-sitemap.xml`}</loc>
+     <lastmod>${new Date().toISOString()}</lastmod>
      </url>
      ${paths
             .map(path => {
@@ -101,7 +104,7 @@ export async function getServerSideProps({ res }) {
 
         const fileName = `sitemap_${year}_${month}.xml`;
         const filePath = path.join(process.cwd(), 'public', 'sitemaps', fileName);
-        fs.writeFileSync(filePath, sitemap);
+        fs.writeFileSync(filePath, sitemap, { flag: 'w' });
 
         // Move to the next month
         currentDate.setMonth(currentDate.getMonth() + 1);
