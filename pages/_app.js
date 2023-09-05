@@ -79,6 +79,12 @@ const App = ({ Component, pageProps }) => {
             </Script>
           </div>
         )} */}
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
+            crossOrigin="anonymous"
+          />
+          <script dangerouslySetInnerHTML={{ __html: '(adsbygoogle = window.adsbygoogle || []).push({});' }} />
 
           {/* responsive meta */}
           <meta
