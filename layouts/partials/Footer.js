@@ -163,14 +163,6 @@ const Footer = () => {
             </p>
 
           </div>
-          <div>
-            {isMobile && <MyAdComponent  slot="9944485503" isResponsive></MyAdComponent>}
-            {!isMobile && <MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
-            {isMobile && <MyAdComponent  slot="3700818465" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
-            {!isMobile && <MyAdComponent slot="1840941881" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
-            {isMobile && <MyAdComponent  slot="7485270366" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
-            {!isMobile && <MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
-          </div>
           {/* <!-- Contact section --> */}
           {/* <div>
             <h6
@@ -231,6 +223,14 @@ const Footer = () => {
             </p>
           </div> */}
         </div>
+        <div className="ads-block" style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: isMobile ? 'column' : 'row'}}>
+            {isMobile && <MyAdComponent  slot="9944485503" isResponsive></MyAdComponent>}
+            {!isMobile && <MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
+            {isMobile && <MyAdComponent  slot="3700818465" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
+            {!isMobile && <MyAdComponent slot="1840941881" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
+            {isMobile && <MyAdComponent  slot="7485270366" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
+            {!isMobile && <MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
+          </div>
       </div>
 
       {/* <!--Copyright section--> */}
