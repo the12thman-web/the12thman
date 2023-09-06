@@ -16,9 +16,6 @@ const Footer = () => {
         <div class="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
         </div>
-        {isMobile && <MyAdComponent client="ca-pub-9891586352099803" slot="9944485503"></MyAdComponent> }
-        {!isMobile && <MyAdComponent client="ca-pub-9891586352099803" slot="7701465544"></MyAdComponent>}
-
         {/* <!-- Social network icons container --> */}
         <div class="flex justify-center">
           <a href="#!" class="mr-6 text-neutral-600 dark:text-neutral-200">
@@ -165,6 +162,14 @@ const Footer = () => {
               >
             </p>
 
+          </div>
+          <div>
+            {isMobile && <MyAdComponent  slot="9944485503" isResponsive></MyAdComponent>}
+            {!isMobile && <MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
+            {isMobile && <MyAdComponent  slot="3700818465" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
+            {!isMobile && <MyAdComponent slot="1840941881" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
+            {isMobile && <MyAdComponent  slot="7485270366" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
+            {!isMobile && <MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
           </div>
           {/* <!-- Contact section --> */}
           {/* <div>
