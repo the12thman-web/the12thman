@@ -223,7 +223,7 @@ const Footer = () => {
             </p>
           </div> */}
         </div>
-        <div className="ads-block" style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: isMobile ? 'column' : 'row'}}>
+        <div className="ads-block" style={{width: '100%', display: 'flex', justifyContent: 'space-evenly', flexDirection: isMobile ? 'column' : 'row'}}>
             {isMobile && <MyAdComponent  slot="9944485503" isResponsive></MyAdComponent>}
             {!isMobile && <MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
             {isMobile && <MyAdComponent  slot="3700818465" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
