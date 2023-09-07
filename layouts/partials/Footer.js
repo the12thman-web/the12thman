@@ -9,7 +9,6 @@ const Footer = () => {
   const isMobile = useWindow(767) < 768
   const router = useRouter();
 
-  console.log(router)
   return (
     //  < !--Footer container-- >
     <footer
@@ -234,8 +233,8 @@ const Footer = () => {
              p-4
              block xl:hidden lg:hidden md:hidden" style={{ width: '100%' }}>
           <ul id="social_link" className="justify-around" >
-            <li className="list-inline-item" style={{ maxHeight: '80px!important', width: '100%' }}>
-              {<MyAdComponent isMobile={isMobile} slot="9944485503" isResponsive adWidth="300px" adHeight="10px"></MyAdComponent>}
+            <li className="list-inline-item">
+              {<MyAdComponent slot="9944485503" isResponsive></MyAdComponent>}
             </li>
             {/* <li className="list-inline-item" style={{ maxHeight: '80px!important', width: '100%' }}>
               {<MyAdComponent isMobile={isMobile} slot="3700818465" isResponsive={false} adWidth="300px" adHeight="10px"></MyAdComponent>}
