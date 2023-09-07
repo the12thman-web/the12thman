@@ -225,29 +225,9 @@ const Footer = () => {
             </p>
           </div> */}
         </div>
-        {isMobile && router.asPath === '/' && <div
-          class="bg-neutral-100
-             fixed
-             inset-x-0
-             bottom-0
-             p-4
-             block xl:hidden lg:hidden md:hidden" style={{ width: '100%' }}>
-          <ul id="social_link" className="justify-around" >
-            <li className="list-inline-item">
-              {<MyAdComponent slot="9944485503" isResponsive></MyAdComponent>}
-            </li>
-            {/* <li className="list-inline-item" style={{ maxHeight: '80px!important', width: '100%' }}>
-              {<MyAdComponent isMobile={isMobile} slot="3700818465" isResponsive={false} adWidth="300px" adHeight="10px"></MyAdComponent>}
-            </li>
-            <li className="list-inline-item" style={{ maxHeight: '80px!important', width: '100%' }}>
-              {<MyAdComponent isMobile={isMobile} slot="7485270366" isResponsive={false} adWidth="300px" adHeight="10px"></MyAdComponent>}
-            </li> */}
-          </ul>
-        </div>}
-        {!isMobile && <div className="ads-block" style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
-          {<MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
-          {/* {<MyAdComponent slot="1840941881" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>} */}
-          {/* {<MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>} */}
+        {<div className="ads-block" style={{ width: '100%' }}>
+          {!isMobile && <MyAdComponent slot="7701465544"></MyAdComponent>}
+          {isMobile && <MyAdComponent slot="9944485503"></MyAdComponent>}
         </div>}
       </div>
 
