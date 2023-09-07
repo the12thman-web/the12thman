@@ -1,12 +1,15 @@
 import config from "@config/config.json";
 import Logo from "@layouts/components/Logo";
+import { useRouter } from "next/router";
 import useWindow from "../../hooks/useWindow";
 import { MyAdComponent } from "./AdComponent";
 
 const Footer = () => {
   const { copyright, footer_content } = config.params;
   const isMobile = useWindow(767) < 768
+  const router = useRouter();
 
+  console.log(router)
   return (
     //  < !--Footer container-- >
     <footer
@@ -223,22 +226,22 @@ const Footer = () => {
             </p>
           </div> */}
         </div>
-        {isMobile && <div
+        {isMobile && router.asPath === '/' && <div
           class="bg-neutral-100
              fixed
              inset-x-0
              bottom-0
              p-4
              block xl:hidden lg:hidden md:hidden" style={{ width: '100%' }}>
-          <ul id="social_link" className="justify-around">
+          <ul id="social_link" className="justify-around" style={{height: '10px !important'}}>
             <li className="list-inline-item">
-              {<MyAdComponent slot="9944485503" isResponsive={false} adWidth="300px" adHeight="50px"></MyAdComponent>}
+              {<MyAdComponent isMobile slot="9944485503" isResponsive={false} adWidth="300px" adHeight="10px"></MyAdComponent>}
             </li>
             <li className="list-inline-item">
-              {<MyAdComponent slot="3700818465" isResponsive={false} adWidth="300px" adHeight="50px"></MyAdComponent>}
+              {<MyAdComponent isMobile slot="3700818465" isResponsive={false} adWidth="300px" adHeight="10px"></MyAdComponent>}
             </li>
             <li className="list-inline-item">
-              {<MyAdComponent slot="7485270366" isResponsive={false} adWidth="300px" adHeight="50px"></MyAdComponent>}
+              {<MyAdComponent isMobile slot="7485270366" isResponsive={false} adWidth="300px" adHeight="10px"></MyAdComponent>}
             </li>
           </ul>
         </div>}
