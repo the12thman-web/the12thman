@@ -223,14 +223,40 @@ const Footer = () => {
             </p>
           </div> */}
         </div>
-        <div className="ads-block" style={{width: '100%', display: 'flex', justifyContent: 'space-evenly', flexDirection: isMobile ? 'column' : 'row'}}>
-            {isMobile && <MyAdComponent  slot="9944485503" isResponsive></MyAdComponent>}
-            {!isMobile && <MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
-            {isMobile && <MyAdComponent  slot="3700818465" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
-            {!isMobile && <MyAdComponent slot="1840941881" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
-            {isMobile && <MyAdComponent  slot="7485270366" isResponsive={false} adWidth="300px" adHeight="250px"></MyAdComponent>}
-            {!isMobile && <MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
-          </div>
+        <div
+          class="bg-neutral-100
+             fixed
+             inset-x-0
+             bottom-0
+             p-4
+             block xl:hidden lg:hidden md:hidden">
+          <ul id="social_link" className="justify-around">
+            <li className="list-inline-item">
+              {isMobile && <MyAdComponent slot="9944485503" isResponsive={false} adWidth="300px" adHeight="100px"></MyAdComponent>}
+            </li>
+            <li className="list-inline-item">
+              {isMobile && <MyAdComponent slot="3700818465" isResponsive={false} adWidth="300px" adHeight="100px"></MyAdComponent>}
+            </li>
+            <li className="list-inline-item">
+              {isMobile && <MyAdComponent slot="7485270366" isResponsive={false} adWidth="300px" adHeight="100px"></MyAdComponent>}
+            </li>
+          </ul>
+        </div>
+        <div className="ads-block" style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly', flexDirection: isMobile ? 'column' : 'row' }}>
+
+          <ul id="social_link" className="justify-around">
+            <li className="list-inline-item">
+              {!isMobile && <MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
+            </li>
+            <li className="list-inline-item">
+              {!isMobile && <MyAdComponent slot="1840941881" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
+            </li>
+            <li className="list-inline-item">
+              {!isMobile && <MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
+            </li>
+          </ul>
+
+        </div>
       </div>
 
       {/* <!--Copyright section--> */}
