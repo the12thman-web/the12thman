@@ -12,7 +12,7 @@ export const MyAdComponent = ({ slot, isResponsive, adWidth, adHeight, isMobile=
       style={{ display: isResponsive ? 'block' : 'inline-block', width: isResponsive ? '100%' : adWidth, height: isResponsive ? '100%' : adHeight }}
       data-ad-client="ca-pub-9891586352099803"
       data-ad-slot={slot}
-      data-ad-format={isMobile ? "auto" : "fluid"}
+      data-ad-format={isMobile ? "auto" : "rectangle"}
       data-full-width-responsive={isResponsive ? "true" : "false"}>
     </ins>
   );
