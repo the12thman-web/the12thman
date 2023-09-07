@@ -83,6 +83,7 @@ const App = ({ Component, pageProps }) => {
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
             crossOrigin="anonymous"
+            strategy="lazyOnload"
           />
           {/* responsive meta */}
           <meta
