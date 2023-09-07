@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const MyAdComponent = ({ slot, isResponsive, adWidth, adHeight, isMobile }) => {
+export const MyAdComponent = ({ slot, isResponsive, adWidth, adHeight, isMobile=false }) => {
   useEffect(() => {
     if (window) {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
