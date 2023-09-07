@@ -229,7 +229,7 @@ const Footer = () => {
              inset-x-0
              bottom-0
              p-4
-             block xl:hidden lg:hidden md:hidden" style={{ width: '100%', height: '100px' }}>
+             block xl:hidden lg:hidden md:hidden" style={{ width: '100%', height: '100px !important' }}>
           <ul id="social_link" className="justify-around">
             <li className="list-inline-item">
               {<MyAdComponent slot="9944485503" isResponsive={false} adWidth="300px" adHeight="100px"></MyAdComponent>}
@@ -244,13 +244,13 @@ const Footer = () => {
         </div>}
         {!isMobile && <div className="ads-block" style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly' }}>
           <ul id="social_link" className="justify-around">
-            <li className="list-inline-item">
+            <li className="list-inline-item" style={{width: '100%'}}>
               {<MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
             </li>
-            <li className="list-inline-item">
+            <li className="list-inline-item" style={{width: '100%'}}>
               {<MyAdComponent slot="1840941881" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
             </li>
-            <li className="list-inline-item">
+            <li className="list-inline-item" style={{width: '100%'}}>
               {<MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
             </li>
           </ul>
