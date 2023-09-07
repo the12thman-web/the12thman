@@ -229,20 +229,20 @@ const Footer = () => {
              inset-x-0
              bottom-0
              p-4
-             block xl:hidden lg:hidden md:hidden" style={{ width: '100%', height: '100px !important' }}>
+             block xl:hidden lg:hidden md:hidden" style={{ width: '100%' }}>
           <ul id="social_link" className="justify-around">
             <li className="list-inline-item">
-              {<MyAdComponent slot="9944485503" isResponsive={false} adWidth="300px" adHeight="100px"></MyAdComponent>}
+              {<MyAdComponent slot="9944485503" isResponsive={false} adWidth="300px" adHeight="50px"></MyAdComponent>}
             </li>
             <li className="list-inline-item">
-              {<MyAdComponent slot="3700818465" isResponsive={false} adWidth="300px" adHeight="100px"></MyAdComponent>}
+              {<MyAdComponent slot="3700818465" isResponsive={false} adWidth="300px" adHeight="50px"></MyAdComponent>}
             </li>
             <li className="list-inline-item">
-              {<MyAdComponent slot="7485270366" isResponsive={false} adWidth="300px" adHeight="100px"></MyAdComponent>}
+              {<MyAdComponent slot="7485270366" isResponsive={false} adWidth="300px" adHeight="50px"></MyAdComponent>}
             </li>
           </ul>
         </div>}
-        {!isMobile && <div className="ads-block" style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly' }}>
+        {/* {!isMobile && <div className="ads-block" style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly' }}>
           <ul id="social_link" className="justify-around">
             <li className="list-inline-item" style={{width: '100%'}}>
               {<MyAdComponent slot="7701465544" isResponsive></MyAdComponent>}
@@ -254,7 +254,7 @@ const Footer = () => {
               {<MyAdComponent slot="1494577089" isResponsive={false} adWidth="728px" adHeight="90px"></MyAdComponent>}
             </li>
           </ul>
-        </div>}
+        </div>} */}
       </div>
 
       {/* <!--Copyright section--> */}

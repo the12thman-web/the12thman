@@ -9,7 +9,7 @@ export const MyAdComponent = ({ slot, isResponsive, adWidth, adHeight }) => {
 
   return (
     <ins className="adsbygoogle"
-      style={{ display: isResponsive ? 'block' : 'inline-block', width: isResponsive ? '100%' : adWidth, height: isResponsive ? '100%' : adHeight }}
+      style={{ display: isResponsive ? 'block' : 'inline-block', width: isResponsive ? '100%' : adWidth, height: isResponsive ? '100%' : adHeight + '!important' }}
       data-ad-client="ca-pub-9891586352099803"
       data-ad-slot={slot}
       data-ad-format="auto"
