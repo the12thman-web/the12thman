@@ -226,8 +226,8 @@ const Footer = () => {
           </div> */}
         </div>
         {<div className="ads-block" style={{ width: '100%' }}>
-          {!isMobile && <MyAdComponent slot="7701465544"></MyAdComponent>}
-          {isMobile && <MyAdComponent slot="9944485503"></MyAdComponent>}
+          {isMobile && <MyAdComponent slot="3700818465" adHeight="30px" adWidth="300px"></MyAdComponent>}
+          {!isMobile && <MyAdComponent slot="1840941881" adHeight="90px" adWidth="728px"></MyAdComponent>}
         </div>}
       </div>
 

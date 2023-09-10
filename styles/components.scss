@@ -258,4 +258,12 @@ iframe{
     overflow: auto !important;
     display: block !important;
   }
+  .ads-block {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(229 229 229 / var(--tw-bg-opacity));
+    left: 0;
+    right: 0;
+  }
 } 

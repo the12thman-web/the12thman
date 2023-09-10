@@ -187,7 +187,7 @@ const PostSingle = ({
              inset-x-0
              bottom-0
              p-4
-             block xl:hidden lg:hidden md:hidden">
+             block xl:hidden lg:hidden md:hidden" style={{zIndex: '500'}}>
         <ul id="social_link" className="justify-around">
           <li className="list-inline-item">
             <FacebookShareButton url={BASE_URL + router.asPath}>
