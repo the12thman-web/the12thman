@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCalendar, FaUserAlt, FaReadme } from "react-icons/fa";
-import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
 import CONFIG from '@config/config.json';
 
@@ -33,7 +32,6 @@ const PostSingle = ({
   frontmatter,
   content,
   slug,
-  relatedPosts,
   trendingPosts
 }) => {
   let { tags, description, title, date, featuredImage, categories, metaKeywords } = frontmatter;
@@ -169,7 +167,7 @@ const PostSingle = ({
         </div>
 
         {/* Related posts */}
-        <div className="container mt-20">
+        {/* <div className="container mt-20">
           <h2 className="section-title">Related Posts</h2>
           <div className="row mt-16">
             {relatedPosts.map((post, index) => (
@@ -178,7 +176,7 @@ const PostSingle = ({
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
       {/* Mobile Share button links */}
       <footer
