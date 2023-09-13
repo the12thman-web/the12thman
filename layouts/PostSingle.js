@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCalendar, FaUserAlt, FaReadme } from "react-icons/fa";
-import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
 import CONFIG from '@config/config.json';
 
@@ -33,9 +32,9 @@ const PostSingle = ({
   frontmatter,
   content,
   slug,
-  relatedPosts,
   trendingPosts
 }) => {
+  
   let { tags, description, title, date, featuredImage, categories, metaKeywords } = frontmatter;
   description = description ? description : content?.slice(0, 120);
 
@@ -49,7 +48,8 @@ const PostSingle = ({
 
       const router = useRouter();
 
-
+  // content = content.replaceAll('img', 'Image');
+  console.log(content)
   return (
     <Base title={title} description={description} metaKeywords={metaKeywords}>
       <section className="section single-blog mt-1 pt-1">
@@ -68,7 +68,7 @@ const PostSingle = ({
                     />
                   )}
                   <ul className="absolute top-3 left-2 flex flex-wrap items-center">
-                    {featuredImage && tags?.nodes.slice(0,2).map(({name}, index) => (
+                    {/* {featuredImage && tags?.nodes.slice(0,2).map(({name}, index) => (
                       <li
                         className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
                         key={"tag-" + index}
@@ -80,7 +80,7 @@ const PostSingle = ({
                           {name}
                         </Link>
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </div>
                 {config.settings.InnerPaginationOptions.enableTop && (
@@ -144,7 +144,7 @@ const PostSingle = ({
                   ))} */}
                   <div
                     className="has-drop-cap-fluid"
-                    dangerouslySetInnerHTML={{ __html: content }}
+                    dangerouslySetInnerHTML={{ __html: content.replaceAll('img', 'Image') }}
                   ></div>
                 </div>
                 {config.settings.InnerPaginationOptions.enableBottom && (
@@ -169,7 +169,7 @@ const PostSingle = ({
         </div>
 
         {/* Related posts */}
-        <div className="container mt-20">
+        {/* <div className="container mt-20">
           <h2 className="section-title">Related Posts</h2>
           <div className="row mt-16">
             {relatedPosts.map((post, index) => (
@@ -178,7 +178,7 @@ const PostSingle = ({
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
       {/* Mobile Share button links */}
       <footer

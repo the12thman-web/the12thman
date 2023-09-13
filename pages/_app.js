@@ -35,17 +35,17 @@ const App = ({ Component, pageProps }) => {
   }, [pf, sf]);
 
   // google tag manager (gtm)
-  const tagManagerArgs = {
-    gtmId: config.params.tag_manager_id,
-  };
-  useEffect(() => {
-    setTimeout(() => {
-      process.env.NODE_ENV === 'production' &&
-        config.params.tag_manager_id &&
-        TagManager.initialize(tagManagerArgs);
-    }, 5000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // const tagManagerArgs = {
+  //   gtmId: config.params.tag_manager_id,
+  // };
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     process.env.NODE_ENV === 'production' &&
+  //       config.params.tag_manager_id &&
+  //       TagManager.initialize(tagManagerArgs);
+  //   }, 5000);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <Hydration>

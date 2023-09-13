@@ -25,12 +25,10 @@ const Document = () => {
           content="#000"
         />
         <Script
-          strategy="beforeInteractive"
-          src="https://platform.twitter.com/widgets.js"
+          src="scripts/twitter-widgets.js"
         />
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-Q6CJDCHK19`}
+        <Script
+          src="scripts/googleatmanager.js"
         />
 
         <script
