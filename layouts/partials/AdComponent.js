@@ -13,8 +13,7 @@ export const MyAdComponent = ({ slot, adHeight, adWidth, isMobile }) => {
       data-ad-client="ca-pub-9891586352099803"
       data-ad-slot={slot}
       data-ad-format={isMobile ? "horizontal" : "fluid"}
-      data-full-width-responsive="false"
-      data-ad-layout="in-article">
+      data-full-width-responsive="false">
     </ins>
   );
 };

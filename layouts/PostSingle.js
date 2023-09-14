@@ -187,7 +187,7 @@ const PostSingle = ({
       </section>
       {/* Mobile Share button links */}
       {<div className="ads-block" style={{ width: '100%', bottom: '65px' }}>
-          {isMobile && <MyAdComponent slot="3700818465" adHeight="100px" adWidth="300px" isMobile={true}></MyAdComponent>}
+          {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
       </div>}
       <footer
         class="bg-neutral-100
