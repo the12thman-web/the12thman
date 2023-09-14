@@ -24,6 +24,8 @@ import {
 } from 'next-share';
 import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
+import useWindow from "../hooks/useWindow";
+import { MyAdComponent } from "./partials/AdComponent";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -34,6 +36,8 @@ const PostSingle = ({
   slug,
   trendingPosts
 }) => {
+
+  const isMobile = useWindow(767) < 768
   
   let { tags, description, title, date, featuredImage, categories, metaKeywords } = frontmatter;
   description = description ? description : content?.slice(0, 120);
@@ -181,6 +185,10 @@ const PostSingle = ({
         </div> */}
       </section>
       {/* Mobile Share button links */}
+      {<div className="ads-block" style={{ width: '100%' }}>
+          {isMobile && <MyAdComponent slot="3700818465" adHeight="100px" adWidth="300px" isMobile={true}></MyAdComponent>}
+          {!isMobile && <MyAdComponent slot="1840941881" adHeight="90px" adWidth="728px" isMobile={false}></MyAdComponent>}
+      </div>}
       <footer
         class="bg-neutral-100
              fixed
