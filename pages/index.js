@@ -61,6 +61,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-xl"
 													width={123}
 													height={82}
+													loading="lazy" // Add this line for lazy loading
 												/>
 											</div>
 											<div className="flex w-full flex-col  items-center space-y-2 bg-white p-3 md:w-2/3">
