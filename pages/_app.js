@@ -85,6 +85,12 @@ const App = ({ Component, pageProps }) => {
             crossOrigin="anonymous"
             strategy="lazyOnload"
           />
+          <script
+            async
+            src="https://cdn.unibotscdn.com/ubplayer/player.js"
+            strategy="lazyOnload"
+          ></script>
+
           {/* responsive meta */}
           <meta
             name="viewport"

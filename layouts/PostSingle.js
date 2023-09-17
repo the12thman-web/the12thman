@@ -26,6 +26,7 @@ import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
 import useWindow from "../hooks/useWindow";
 import { MyAdComponent } from "./partials/AdComponent";
+import { UniBotsPlayerComponent } from "./partials/UniBotsPlayer";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -189,6 +190,8 @@ const PostSingle = ({
       {<div className="ads-block" style={{ width: '100%', bottom: '65px' }}>
           {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
       </div>}
+      {/** UniBots Player */}
+			<div id="div-ub-the12thman"><UniBotsPlayerComponent></UniBotsPlayerComponent></div>
       <footer
         class="bg-neutral-100
              fixed
