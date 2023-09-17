@@ -39,7 +39,7 @@ const PostSingle = ({
 }) => {
 
   const isMobile = useWindow(767) < 768
-  
+
   let { tags, description, title, date, featuredImage, categories, metaKeywords } = frontmatter;
   description = description ? description : content?.slice(0, 120);
 
@@ -51,7 +51,7 @@ const PostSingle = ({
     ? frontmatter.disqusId
     : config.settings.blog_folder + "/" + slug;
 
-      const router = useRouter();
+  const router = useRouter();
 
   // content = content.replaceAll('img', 'Image');
   console.log(content)
@@ -94,56 +94,56 @@ const PostSingle = ({
                     <InnerPagination posts={posts} date={date} />
                   </div>
                 )}
-                    <div className='totalViews'>
-                <ul className="flex items-center space-x-4">
-                  <li>
-                    <Link
-                      className="inline-flex items-center font-secondary text-xs leading-3"
-                      href="/about"
-                    >
-                      <FaUserAlt className="mr-1.5 mt-1" />
-                      {author}
-                    </Link>
-                  </li>
-                  <li className="inline-flex items-center font-secondary text-xs leading-3">
-                    <FaRegCalendar className="mr-1.5" />
-                    {date ? dateFormat(date): ''}
-                  </li>
+                <div className='totalViews'>
+                  <ul className="flex items-center space-x-4">
+                    <li>
+                      <Link
+                        className="inline-flex items-center font-secondary text-xs leading-3"
+                        href="/about"
+                      >
+                        <FaUserAlt className="mr-1.5 mt-1" />
+                        {author}
+                      </Link>
+                    </li>
+                    <li className="inline-flex items-center font-secondary text-xs leading-3">
+                      <FaRegCalendar className="mr-1.5" />
+                      {date ? dateFormat(date) : ''}
+                    </li>
                     <li className="inline-flex items-center font-secondary text-xs leading-3">
                       <FaReadme className="mr-1.5" />
                       {content ? readingTime(content) : 'o'}
                     </li>
-                </ul>
+                  </ul>
                   <div className=" hidden sm:block">
 
-                  <ul id="social_link" className="list-inline">
-                    <li className="list-inline-item">
-                      <FacebookShareButton url={BASE_URL + router.asPath}>
-                        <FacebookIcon size={32} round />
-                      </FacebookShareButton>
-                    </li>
-                    <li className="list-inline-item">
-                      <PinterestShareButton
-                        url={BASE_URL + router.asPath}
+                    <ul id="social_link" className="list-inline">
+                      <li className="list-inline-item">
+                        <FacebookShareButton url={BASE_URL + router.asPath}>
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                      </li>
+                      <li className="list-inline-item">
+                        <PinterestShareButton
+                          url={BASE_URL + router.asPath}
                         >
-                        <PinterestIcon size={32} round />
-                      </PinterestShareButton>
-                    </li>
-                    <li className="list-inline-item">
-                      <WhatsappShareButton url={BASE_URL + router.asPath}>
-                        <WhatsappIcon size={32} round />
-                      </WhatsappShareButton>
-                    </li>
-                    <li className="list-inline-item">
-                      <LinkedinShareButton url={BASE_URL + router.asPath}>
-                        <LinkedinIcon size={32} round />
-                      </LinkedinShareButton>
-                    </li>
-                  </ul>
-                 
-                        </div>
-                        </div>
-                  <div className="content mb-16">
+                          <PinterestIcon size={32} round />
+                        </PinterestShareButton>
+                      </li>
+                      <li className="list-inline-item">
+                        <WhatsappShareButton url={BASE_URL + router.asPath}>
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+                      </li>
+                      <li className="list-inline-item">
+                        <LinkedinShareButton url={BASE_URL + router.asPath}>
+                          <LinkedinIcon size={32} round />
+                        </LinkedinShareButton>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+                <div className="content mb-16">
                   <h1>{title}</h1>
                   {/* {tags?.nodes.slice(0, 2).map(({ name }, index) => (
                     <Tag name={name}/>
@@ -171,6 +171,8 @@ const PostSingle = ({
               trendingPosts={trendingPosts.filter((post) => post.slug !== slug)}
               categories={categories}
             />
+            {/** UniBots Player */}
+            <div id="div-ub-the12thman"><UniBotsPlayerComponent></UniBotsPlayerComponent></div>
           </div>
         </div>
 
@@ -188,17 +190,15 @@ const PostSingle = ({
       </section>
       {/* Mobile Share button links */}
       {<div className="ads-block" style={{ width: '100%', bottom: '65px' }}>
-          {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
+        {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
       </div>}
-      {/** UniBots Player */}
-			<div id="div-ub-the12thman"><UniBotsPlayerComponent></UniBotsPlayerComponent></div>
       <footer
         class="bg-neutral-100
              fixed
              inset-x-0
              bottom-0
              p-4
-             block xl:hidden lg:hidden md:hidden" style={{zIndex: '500'}}>
+             block xl:hidden lg:hidden md:hidden" style={{ zIndex: '500' }}>
         <ul id="social_link" className="justify-around">
           <li className="list-inline-item">
             <FacebookShareButton url={BASE_URL + router.asPath}>
@@ -224,7 +224,7 @@ const PostSingle = ({
           </li>
         </ul>
       </footer>
-      </Base>
+    </Base>
   );
 };
 
