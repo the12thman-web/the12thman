@@ -9,6 +9,8 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import { MobileMenuSideBar } from './MobileMenuSidebar';
+import styles from './Header.module.css'; // Replace with the correct path to your module CSS file
+
 
 const Header = () => {
   // distructuring the main menu from menu object
@@ -31,7 +33,7 @@ const Header = () => {
   }, [showMenu]);
 
   return (
-    <header className="header">
+    <header className="header" id={styles.header}>
       <nav className="navbar container px-1 sm:px-7">
         <button
           onClick={() => setShowMenu(!showMenu)}

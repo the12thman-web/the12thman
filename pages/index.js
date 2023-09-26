@@ -406,12 +406,12 @@ export const getStaticProps = async () => {
 	// Fetch all types of posts concurrently using Promise.all
 	const [postsData, allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
 		getAllPosts(),
-		getAllPostsWithContent('', '', '', 6),
-		config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 5) : [],
-		config.football.enable ? getAllPostsWithContent('football', '', '', 5) : [],
-		config.nba.enable ? getAllPostsWithContent('nba', '', '', 5) : [],
-		config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 5) : [],
-		config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 5) : [],
+		getAllPostsWithContent('', '', '', 4),
+		config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 4) : [],
+		config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
+		config.nba.enable ? getAllPostsWithContent('nba', '', '', 4) : [],
+		config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 4) : [],
+		config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 4) : [],
 	]);
 
 	// Extract the nodes from the fetched data
