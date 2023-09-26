@@ -53,7 +53,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 						>
 							{/* <div className="container px-1"> */}
 							{posts.map((post, index) => (
-								<div className="flex h-24 flex-col justify-center">
+								<div className="flex h-24 flex-col justify-center" key={index}>
 									<Link
 										href={'/' + post?.slug}
 									>
@@ -65,7 +65,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-xl"
 													width={123}
 													height={82}
-													loading="lazy" 
+													loading="lazy"
 												/>
 											</div>
 											<div className="flex w-full flex-col  items-center space-y-2 bg-white p-3 md:w-2/3">
@@ -100,26 +100,25 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 			<div className='block md:hidden xl:hidden lg:hidden'>
 				<Slider {...settings}>
 					{allRecentPosts.map((post, index) => (
-						<div class="wrapper bg-gray-400 antialiased text-gray-900">
+						<div className="wrapper bg-gray-400 antialiased text-gray-900" key={index}>
 							<div>
 								<Link
 									href={'/' + post?.slug}
 								>
 									<Image loading="lazy" src={post.featuredImage?.node?.sourceUrl} alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md" width={405} height={228} />
 
-									<div class="relative px-4 -mt-16  ">
-										<div class="bg-white p-6 rounded-lg shadow-lg">
-											<div class="flex items-baseline">
-												<span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+									<div className="relative px-4 -mt-16  ">
+										<div className="bg-white p-6 rounded-lg shadow-lg">
+											<div className="flex items-baseline">
+												<span className="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
 													Trending
 												</span>
 											</div>
 
-											<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
+											<h4 className="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
-											<div class="mt-5 flex flex-right">
-												{/* <FaUserAlt className="mr-1.5 mt-1" />
-											{post.author?.node?.name} */}
+											<div className="mt-5 flex flex-right">
+
 												<FaRegClock className="mr-1 ml-3 mt-1.5" />
 												{getTimeAgo(new Date(post.date))}
 												<FaReadme className="mr-1 ml-3 mt-1.5" />
@@ -144,65 +143,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 						{config.cricket.enable && (
 							<div className="section pt-2">
 								<h2 className="section-title">{config.cricket.title}</h2>
-								{/*[Mobile View] Cricket head content start */}
-								<div class=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">
-									<div class="container px-1 flex justify-center">
-										<div class="max-w-sm py-2">
-											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image loading="lazy" class="rounded-t-lg" src={cricketPosts[random1].featuredImage?.node?.sourceUrl} alt="cricket" fill />
-												<div class="py-6 px-8 rounded-lg bg-white">
-													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{cricketPosts[random1].title}</h1>
-													<div
-														className="has-drop-cap-fluid"
-														dangerouslySetInnerHTML={{ __html: cricketPosts[random1].content.slice(0, Number(summary_length)) }}
-													></div>
-													<Link className="btn btn-outline-primary mt-4" href={`/${cricketPosts[random1].slug}`}>
-														Read More
-													</Link>
-												</div>
-												<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
-													<span class="text-md">{cricketPosts[random1].tags.nodes[0]?.name}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								{/* [Mobile View] Top caraousel Start */}
-								<div className='block xl:hidden md:hidden lg:hidden'>
-									<Slider {...settings}>
-										{cricketPosts.map((post, index) => (
-											<div class="wrapper bg-gray-400 antialiased text-gray-900">
-												<div>
-
-													<Image loading="lazy" src={post.featuredImage?.node?.sourceUrl} alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md" width={403} height={227} />
-
-													<div class="relative px-4 -mt-16  ">
-														<div class="bg-white p-6 rounded-lg shadow-lg">
-															<div class="flex items-baseline">
-																<span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-																	New
-																</span>
-															</div>
-
-															<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
-
-
-															<div class="mt-5 inline-flex">
-																<FaUserAlt className="mr-1.5 mt-1" />
-																{post.author?.node?.name}
-																<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
-																{dateFormat(post.date)}
-															</div>
-														</div>
-													</div>
-
-												</div>
-											</div>
-										))}
-									</Slider>
-									{/*Top caraousel End */}
-								</div>
-
+								
 								{/* random images */}
 
 								{/* Cricket head content end */}
@@ -256,68 +197,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 						{config.football.enable && (
 							<div className="section">
 								<h2 className="section-title">{config.football.title}</h2>
-								{/* [Mobile View] Football head content start */}
-								<div class=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">
-									<div class="container px-1 flex justify-center">
-										<div class="max-w-sm py-2">
-											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image loading="lazy" class="rounded-t-lg" src={footballPosts[random1].featuredImage?.node?.sourceUrl} alt="football" fill />
-												<div class="py-6 px-8 rounded-lg bg-white">
-													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{footballPosts[random1].title}</h1>
-													<div
-														className="has-drop-cap-fluid"
-														dangerouslySetInnerHTML={{ __html: footballPosts[random1].content.slice(0, Number(summary_length)) }}
-													></div>
-													<Link className="btn btn-outline-primary mt-4" href={`/${footballPosts[random1].slug}`}>
-														Read More
-													</Link>
-												</div>
-												<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
-													<span class="text-md">{footballPosts[random1].tags.nodes[0].name}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								{/* [Mobile View] Top caraousel Start */}
-								<div className='block md:hidden xl:hidden lg:hidden'>
-									<Slider {...settings}>
-										{footballPosts.map((post, index) => (
-											<div class="wrapper bg-gray-400 antialiased text-gray-900">
-												<div>
-
-													<Image loading="lazy" src={post.featuredImage?.node?.sourceUrl} alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md" width={373} height={210} />
-
-													<div class="relative px-4 -mt-16  ">
-														<div class="bg-white p-6 rounded-lg shadow-lg">
-															<div class="flex items-baseline">
-																<span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
-																	New
-																</span>
-															</div>
-
-															<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
-
-															<div class="mt-5 justify-around">
-																<FaUserAlt className="mr-1.5 " />
-																{post.author?.node?.name}
-																<FaRegCalendar className="mr-1.5 ml-3 " />
-																{dateFormat(post.date)}
-															</div>
-														</div>
-													</div>
-
-												</div>
-											</div>
-										))}
-									</Slider>
-								</div>
-								{/*Top caraousel End */}
-
-								{/* random images */}
-
-								{/* Football head content end */}
-
+								
 								<div className="rounded border border-border p-6 dark:border-darkmode-border">
 									<div className="row">
 										<div className="md:col-6">
