@@ -33,7 +33,7 @@ const HomeSidebar = ({ postData, className }) => {
 										alt={post.title}
 										width={105}
 										height={85}
-										loading="eager"
+									
 									/>
 								)}
 								<div>
@@ -71,7 +71,7 @@ const HomeSidebar = ({ postData, className }) => {
 									alt={post.title}
 									width={105}
 									height={85}
-									loading="eager"
+									
 								/>
 							)}
 							<div>
@@ -108,7 +108,7 @@ const HomeSidebar = ({ postData, className }) => {
 									alt={post.title}
 									width={105}
 									height={85}
-									loading="eager"
+									
 								/>
 							)}
 							<div>
