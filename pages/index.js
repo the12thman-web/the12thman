@@ -65,6 +65,8 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-xl"
 													width={123}
 													height={82}
+													placeholder='blur'
+													blurDataURL={post.featuredImage?.node?.sourceUrl}
 													loading="lazy"
 												/>
 											</div>
@@ -105,7 +107,17 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								<Link
 									href={'/' + post?.slug}
 								>
-									<Image loading="lazy" src={post.featuredImage?.node?.sourceUrl} alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md" width={405} height={228} />
+									<Image
+										src={post.featuredImage?.node?.sourceUrl}
+										placeholder='blur'
+										blurDataURL={post.featuredImage?.node?.sourceUrl}
+										loading="lazy"
+										alt=" random Imageee"
+										class="w-full object-cover object-center rounded-lg shadow-md"
+										width={405}
+										height={228}
+										
+									/>
 
 									<div className="relative px-4 -mt-16  ">
 										<div className="bg-white p-6 rounded-lg shadow-lg">
@@ -148,7 +160,15 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									<div className="container px-1 flex justify-center">
 										<div className="max-w-sm py-2">
 											<div className="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image loading="lazy" className="rounded-t-lg" src={cricketPosts[random1].featuredImage?.node?.sourceUrl} alt="cricket" fill />
+												<Image
+													className="rounded-t-lg"
+													src={cricketPosts[random1].featuredImage?.node?.sourceUrl}
+													alt="cricket" fill
+													placeholder='blur'
+													blurDataURL={cricketPosts[random1].featuredImage?.node?.sourceUrl}
+													loading="lazy"
+
+												/>
 												<div className="py-6 px-8 rounded-lg bg-white">
 													<h1 className="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{cricketPosts[random1].title}</h1>
 													<div
@@ -173,7 +193,16 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 											<div className="wrapper bg-gray-400 antialiased text-gray-900" key={index}>
 												<div>
 
-													<Image loading="lazy" src={post.featuredImage?.node?.sourceUrl} alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md" width={403} height={227} />
+													<Image
+														src={post.featuredImage?.node?.sourceUrl}
+														alt=" random Imageee"
+														class="w-full object-cover object-center rounded-lg shadow-md"
+														width={403}
+														height={227}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
+													/>
 
 													<div className="relative px-4 -mt-16  ">
 														<div className="bg-white p-6 rounded-lg shadow-lg">
@@ -225,6 +254,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														alt={post.title}
 														width={105}
 														height={85}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
 													/>
 													<div>
 														<h3 className="h5 mb-2">
@@ -260,7 +292,14 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 									<div className="container px-1 flex justify-center">
 										<div className="max-w-sm py-2">
 											<div className="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image loading="lazy" className="rounded-t-lg" src={footballPosts[random1].featuredImage?.node?.sourceUrl} alt="football" fill />
+												<Image
+													className="rounded-t-lg"
+													src={footballPosts[random1].featuredImage?.node?.sourceUrl}
+													alt="football" fill
+													placeholder='blur'
+													blurDataURL={footballPosts[random1].featuredImage?.node?.sourceUrl}
+													loading="lazy"
+												/>
 												<div className="py-6 px-8 rounded-lg bg-white">
 													<h1 className="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{footballPosts[random1].title}</h1>
 													<div
@@ -285,7 +324,16 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 											<div className="wrapper bg-gray-400 antialiased text-gray-900" key={index}>
 												<div>
 
-													<Image loading="lazy" src={post.featuredImage?.node?.sourceUrl} alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md" width={373} height={210} />
+													<Image
+														src={post.featuredImage?.node?.sourceUrl}
+														alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md"
+														width={373}
+														height={210}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
+
+													/>
 
 													<div className="relative px-4 -mt-16  ">
 														<div className="bg-white p-6 rounded-lg shadow-lg">
@@ -336,6 +384,10 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														alt={post.title}
 														width={105}
 														height={85}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
+
 													/>
 													<div>
 														<h3 className="h5 mb-2">
@@ -404,13 +456,13 @@ export const getStaticProps = async () => {
 
 	// Fetch all types of posts concurrently using Promise.all
 	const [postsData, allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
-		getAllPosts(),
-		getAllPostsWithContent('', '', '', 5),
-		config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 4) : [],
+		getAllPosts('', '', '', 5),
+		getAllPostsWithContent('', '', '', 4),
+		config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
 		config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
-		config.nba.enable ? getAllPostsWithContent('nba', '', '', 4) : [],
-		config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 4) : [],
-		config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 4) : [],
+		config.nba.enable ? getAllPostsWithContent('nba', '', '', 3) : [],
+		config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 3) : [],
+		config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 3) : [],
 	]);
 
 	// Extract the nodes from the fetched data
