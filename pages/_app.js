@@ -70,7 +70,7 @@ const App = ({ Component, pageProps }) => {
   });
 
   return (
-    <ApolloProvider client={apolloClient}> 
+    <ApolloProvider client={apolloClient}>
       <Hydration>
         <JsonContext>
           <Head>
@@ -82,7 +82,19 @@ const App = ({ Component, pageProps }) => {
             />
             <style dangerouslySetInnerHTML={{ __html: fontcss }} />
 
-            {/* Responsive meta */}
+            <script
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
+              crossOrigin="anonymous"
+              strategy="lazyOnload"
+            />
+            <script
+              async
+              src="https://cdn.unibotscdn.com/ubplayer/player.js"
+              strategy="lazyOnload"
+            ></script>
+
+            {/* responsive meta */}
             <meta
               name="viewport"
               content="width=device-width, initial-scale=1, maximum-scale=5"
@@ -93,7 +105,7 @@ const App = ({ Component, pageProps }) => {
           </ThemeProvider>
         </JsonContext>
       </Hydration>
-    </ApolloProvider> 
+    </ApolloProvider>
   );
 };
 

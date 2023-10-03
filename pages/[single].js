@@ -48,7 +48,6 @@ const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 		frontmatter={frontmatter}
 		content={content}
 		slug={slug}
-		relatedPosts={relatedPosts}
 		trendingPosts={trendingPosts}
 		/>: <></>
 	}
@@ -78,12 +77,12 @@ export const getStaticProps = async ({ params }) => {
 	const { single } = params;
 	const post = await getPost(single);
 	const trendingPosts = await getAllPosts();
-	const relatedPosts = await getAllPostsWithContent(post?.categories.nodes[0].name);
+	// const relatedPosts = await getAllPostsWithContent(post?.categories.nodes[0].name);
 	return {
 		props: {
 			post: post,
 			slug: single,
-			relatedPosts: relatedPosts?.nodes,
+			relatedPosts: [],
 			trendingPosts: trendingPosts?.nodes || [],
 			yoastSEO: post?.seo || null
 		},

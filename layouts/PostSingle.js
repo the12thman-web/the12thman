@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegCalendar, FaUserAlt, FaReadme } from "react-icons/fa";
-import Post from "./partials/Post";
 import Sidebar from "./partials/Sidebar";
 import CONFIG from '@config/config.json';
 
@@ -25,6 +24,9 @@ import {
 } from 'next-share';
 import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
+import useWindow from "../hooks/useWindow";
+import { MyAdComponent } from "./partials/AdComponent";
+import { UniBotsPlayerComponent } from "./partials/UniBotsPlayer";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -33,9 +35,11 @@ const PostSingle = ({
   frontmatter,
   content,
   slug,
-  relatedPosts,
   trendingPosts
 }) => {
+
+  const isMobile = useWindow(767) < 768
+
   let { tags, description, title, date, featuredImage, categories, metaKeywords } = frontmatter;
   description = description ? description : content?.slice(0, 120);
 
@@ -47,9 +51,10 @@ const PostSingle = ({
     ? frontmatter.disqusId
     : config.settings.blog_folder + "/" + slug;
 
-      const router = useRouter();
+  const router = useRouter();
 
-
+  // content = content.replaceAll('img', 'Image');
+  console.log(content)
   return (
     <Base title={title} description={description} metaKeywords={metaKeywords}>
       <section className="section single-blog mt-1 pt-1">
@@ -65,10 +70,11 @@ const PostSingle = ({
                       width="1000"
                       alt={title}
                       className="rounded-lg"
+                      priority={true}
                     />
                   )}
                   <ul className="absolute top-3 left-2 flex flex-wrap items-center">
-                    {featuredImage && tags?.nodes.slice(0,2).map(({name}, index) => (
+                    {/* {featuredImage && tags?.nodes.slice(0,2).map(({name}, index) => (
                       <li
                         className="mx-2 inline-flex h-7 rounded-[35px] bg-primary px-3 text-white"
                         key={"tag-" + index}
@@ -80,7 +86,7 @@ const PostSingle = ({
                           {name}
                         </Link>
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </div>
                 {config.settings.InnerPaginationOptions.enableTop && (
@@ -88,63 +94,63 @@ const PostSingle = ({
                     <InnerPagination posts={posts} date={date} />
                   </div>
                 )}
-                    <div className='totalViews'>
-                <ul className="flex items-center space-x-4">
-                  <li>
-                    <Link
-                      className="inline-flex items-center font-secondary text-xs leading-3"
-                      href="/about"
-                    >
-                      <FaUserAlt className="mr-1.5 mt-1" />
-                      {author}
-                    </Link>
-                  </li>
-                  <li className="inline-flex items-center font-secondary text-xs leading-3">
-                    <FaRegCalendar className="mr-1.5" />
-                    {date ? dateFormat(date): ''}
-                  </li>
+                <div className='totalViews'>
+                  <ul className="flex items-center space-x-4">
+                    <li>
+                      <Link
+                        className="inline-flex items-center font-secondary text-xs leading-3"
+                        href="/about"
+                      >
+                        <FaUserAlt className="mr-1.5 mt-1" />
+                        {author}
+                      </Link>
+                    </li>
+                    <li className="inline-flex items-center font-secondary text-xs leading-3">
+                      <FaRegCalendar className="mr-1.5" />
+                      {date ? dateFormat(date) : ''}
+                    </li>
                     <li className="inline-flex items-center font-secondary text-xs leading-3">
                       <FaReadme className="mr-1.5" />
                       {content ? readingTime(content) : 'o'}
                     </li>
-                </ul>
+                  </ul>
                   <div className=" hidden sm:block">
 
-                  <ul id="social_link" className="list-inline">
-                    <li className="list-inline-item">
-                      <FacebookShareButton url={BASE_URL + router.asPath}>
-                        <FacebookIcon size={32} round />
-                      </FacebookShareButton>
-                    </li>
-                    <li className="list-inline-item">
-                      <PinterestShareButton
-                        url={BASE_URL + router.asPath}
+                    <ul id="social_link" className="list-inline">
+                      <li className="list-inline-item">
+                        <FacebookShareButton url={BASE_URL + router.asPath}>
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                      </li>
+                      <li className="list-inline-item">
+                        <PinterestShareButton
+                          url={BASE_URL + router.asPath}
                         >
-                        <PinterestIcon size={32} round />
-                      </PinterestShareButton>
-                    </li>
-                    <li className="list-inline-item">
-                      <WhatsappShareButton url={BASE_URL + router.asPath}>
-                        <WhatsappIcon size={32} round />
-                      </WhatsappShareButton>
-                    </li>
-                    <li className="list-inline-item">
-                      <LinkedinShareButton url={BASE_URL + router.asPath}>
-                        <LinkedinIcon size={32} round />
-                      </LinkedinShareButton>
-                    </li>
-                  </ul>
-                 
-                        </div>
-                        </div>
-                  <div className="content mb-16">
+                          <PinterestIcon size={32} round />
+                        </PinterestShareButton>
+                      </li>
+                      <li className="list-inline-item">
+                        <WhatsappShareButton url={BASE_URL + router.asPath}>
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+                      </li>
+                      <li className="list-inline-item">
+                        <LinkedinShareButton url={BASE_URL + router.asPath}>
+                          <LinkedinIcon size={32} round />
+                        </LinkedinShareButton>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+                <div className="content mb-16">
                   <h1>{title}</h1>
                   {/* {tags?.nodes.slice(0, 2).map(({ name }, index) => (
                     <Tag name={name}/>
                   ))} */}
                   <div
                     className="has-drop-cap-fluid"
-                    dangerouslySetInnerHTML={{ __html: content }}
+                    dangerouslySetInnerHTML={{ __html: content.replaceAll('img', 'Image') }}
                   ></div>
                 </div>
                 {config.settings.InnerPaginationOptions.enableBottom && (
@@ -165,11 +171,13 @@ const PostSingle = ({
               trendingPosts={trendingPosts.filter((post) => post.slug !== slug)}
               categories={categories}
             />
+            {/** UniBots Player */}
+            <div id="div-ub-the12thman"><UniBotsPlayerComponent></UniBotsPlayerComponent></div>
           </div>
         </div>
 
         {/* Related posts */}
-        <div className="container mt-20">
+        {/* <div className="container mt-20">
           <h2 className="section-title">Related Posts</h2>
           <div className="row mt-16">
             {relatedPosts.map((post, index) => (
@@ -178,16 +186,19 @@ const PostSingle = ({
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
       {/* Mobile Share button links */}
+      {<div className="ads-block" style={{ width: '100%', bottom: '65px' }}>
+        {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
+      </div>}
       <footer
         class="bg-neutral-100
              fixed
              inset-x-0
              bottom-0
              p-4
-             block xl:hidden lg:hidden md:hidden">
+             block xl:hidden lg:hidden md:hidden" style={{ zIndex: '500' }}>
         <ul id="social_link" className="justify-around">
           <li className="list-inline-item">
             <FacebookShareButton url={BASE_URL + router.asPath}>
@@ -213,7 +224,7 @@ const PostSingle = ({
           </li>
         </ul>
       </footer>
-      </Base>
+    </Base>
   );
 };
 

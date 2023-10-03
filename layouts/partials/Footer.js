@@ -1,8 +1,14 @@
 import config from "@config/config.json";
 import Logo from "@layouts/components/Logo";
+import { useRouter } from "next/router";
+import useWindow from "../../hooks/useWindow";
+import { MyAdComponent } from "./AdComponent";
 
 const Footer = () => {
   const { copyright, footer_content } = config.params;
+  const isMobile = useWindow(767) < 768
+  const router = useRouter();
+
   return (
     //  < !--Footer container-- >
     <footer
@@ -12,23 +18,6 @@ const Footer = () => {
         <div class="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
         </div>
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-9891586352099803"
-          data-ad-slot="9944485503"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
-        <script dangerouslySetInnerHTML={{ __html: '(adsbygoogle = window.adsbygoogle || []).push({});' }} />
-        <ins className="adsbygoogle"
-          style={{display:"block"}}
-          data-ad-client="ca-pub-9891586352099803"
-          data-ad-slot="7701465544"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-        <script dangerouslySetInnerHTML={{ __html: `(adsbygoogle = window.adsbygoogle || []).push({});` }} />
-
         {/* <!-- Social network icons container --> */}
         <div class="flex justify-center">
           <a href="#!" class="mr-6 text-neutral-600 dark:text-neutral-200">
@@ -236,6 +225,10 @@ const Footer = () => {
             </p>
           </div> */}
         </div>
+        {<div className="ads-block" style={{ width: '100%' }}>
+          {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
+          {!isMobile && <MyAdComponent slot="1840941881" adHeight="90px" adWidth="728px" isMobile={false}></MyAdComponent>}
+        </div>}
       </div>
 
       {/* <!--Copyright section--> */}
