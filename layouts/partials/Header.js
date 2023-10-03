@@ -2,20 +2,20 @@ import Logo from '@components/Logo';
 import menu from '@config/menu.json';
 import socical from '@config/social.json';
 import Social from '@layouts/components/Social';
-import ThemeSwitcher from '@layouts/components/ThemeSwitcher';
-import SearchModal from '@partials/SearchModal';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { IoSearch } from 'react-icons/io5';
 import { MobileMenuSideBar } from './MobileMenuSidebar';
+import styles from './Header.module.css'; // Replace with the correct path to your module CSS file
+
 
 const Header = () => {
   // distructuring the main menu from menu object
   const { main } = menu;
 
   // states declaration
-  const [searchModal, setSearchModal] = useState(false);
+
   const [showMenu, setShowMenu] = useState(false);
 
   // Router
@@ -31,7 +31,7 @@ const Header = () => {
   }, [showMenu]);
 
   return (
-    <header className="header">
+    <header className="header" id={styles.header}>
       <nav className="navbar container px-1 sm:px-7">
         <button
           onClick={() => setShowMenu(!showMenu)}
@@ -141,27 +141,12 @@ const Header = () => {
             {/* header social */}
             <Social source={socical} className="socials" />
           </div>
-          {/* <ThemeSwitcher /> */}
-          {/* Header search */}
-          {/* <div
-            className="search-icon"
-            onClick={() => {
-              setSearchModal(true);
-            }}
-          >
-            <IoSearch />
-          </div> */}
+        
         </div>
 
-        {/* <SearchModal
-          searchModal={searchModal}
-          setSearchModal={setSearchModal}
-        /> */}
+    
       </nav>
-      {/* {showMenu && (
-        <div className="header-backdrop absolute left-0 top-0 h-[100vh] w-full bg-black/50 lg:hidden"></div>
-      )} */}
-
+    
       {/* <!-- MOBILE sidebar menu  --> */}
       <div className="lg:hidden">
         <MobileMenuSideBar showMenu={showMenu}></MobileMenuSideBar>
@@ -196,3 +181,4 @@ const InnerLevelMenu = ({ parentArray, router }) => {
 };
 
 export default Header;
+
