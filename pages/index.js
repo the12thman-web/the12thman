@@ -1,3 +1,4 @@
+// Import necessary dependencies and components
 import CONFIG from '@config/config.json';
 import Base from '@layouts/Baseof';
 import ImageFallback from '@layouts/components/ImageFallback';
@@ -15,7 +16,10 @@ import readingTime from '@lib/utils/readingTime';
 import Image from 'next/image';
 import withErrorBoundary from '../layouts/components/ErrorBoundary';
 
+// Get configuration settings from CONFIG
 const { summary_length, refresh_home_page_interval } = CONFIG.settings;
+
+// Configuration for the carousel
 const settings = {
 	dots: false,
 	infinite: true,
@@ -25,7 +29,7 @@ const settings = {
 	slidesToShow: 1,
 };
 
-
+// Define the Home component
 const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
 	const random1 = 0;
 
@@ -49,7 +53,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 						>
 							{/* <div className="container px-1"> */}
 							{posts.map((post, index) => (
-								<div className="flex h-24 flex-col justify-center">
+								<div className="flex h-24 flex-col justify-center" key={index}>
 									<Link
 										href={'/' + post?.slug}
 									>
@@ -61,6 +65,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-xl"
 													width={123}
 													height={82}
+													placeholder='blur'
+													blurDataURL={post.featuredImage?.node?.sourceUrl}
+													loading="lazy"
 												/>
 											</div>
 											<div className="flex w-full flex-col  items-center space-y-2 bg-white p-3 md:w-2/3">
@@ -95,26 +102,35 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 			<div className='block md:hidden xl:hidden lg:hidden'>
 				<Slider {...settings}>
 					{allRecentPosts.map((post, index) => (
-						<div class="wrapper bg-gray-400 antialiased text-gray-900">
+						<div className="wrapper bg-gray-400 antialiased text-gray-900" key={index}>
 							<div>
 								<Link
 									href={'/' + post?.slug}
 								>
-									<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" width={405} height={228} />
+									<Image
+										src={post.featuredImage?.node?.sourceUrl}
+										placeholder='blur'
+										blurDataURL={post.featuredImage?.node?.sourceUrl}
+										loading="lazy"
+										alt=" random Imageee"
+										class="w-full object-cover object-center rounded-lg shadow-md"
+										width={405}
+										height={228}
+										
+									/>
 
-									<div class="relative px-4 -mt-16  ">
-										<div class="bg-white p-6 rounded-lg shadow-lg">
-											<div class="flex items-baseline">
-												<span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+									<div className="relative px-4 -mt-16  ">
+										<div className="bg-white p-6 rounded-lg shadow-lg">
+											<div className="flex items-baseline">
+												<span className="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
 													Trending
 												</span>
 											</div>
 
-											<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
+											<h4 className="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
-											<div class="mt-5 flex flex-right">
-												{/* <FaUserAlt className="mr-1.5 mt-1" />
-											{post.author?.node?.name} */}
+											<div className="mt-5 flex flex-right">
+
 												<FaRegClock className="mr-1 ml-3 mt-1.5" />
 												{getTimeAgo(new Date(post.date))}
 												<FaReadme className="mr-1 ml-3 mt-1.5" />
@@ -140,13 +156,21 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 							<div className="section pt-2">
 								<h2 className="section-title">{config.cricket.title}</h2>
 								{/*[Mobile View] Cricket head content start */}
-								<div class=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">
-									<div class="container px-1 flex justify-center">
-										<div class="max-w-sm py-2">
-											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image class="rounded-t-lg" src={cricketPosts[random1].featuredImage?.node?.sourceUrl} alt="cricket" fill />
-												<div class="py-6 px-8 rounded-lg bg-white">
-													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{cricketPosts[random1].title}</h1>
+								<div className=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">
+									<div className="container px-1 flex justify-center">
+										<div className="max-w-sm py-2">
+											<div className="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
+												<Image
+													className="rounded-t-lg"
+													src={cricketPosts[random1].featuredImage?.node?.sourceUrl}
+													alt="cricket" fill
+													placeholder='blur'
+													blurDataURL={cricketPosts[random1].featuredImage?.node?.sourceUrl}
+													loading="lazy"
+
+												/>
+												<div className="py-6 px-8 rounded-lg bg-white">
+													<h1 className="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{cricketPosts[random1].title}</h1>
 													<div
 														className="has-drop-cap-fluid"
 														dangerouslySetInnerHTML={{ __html: cricketPosts[random1].content.slice(0, Number(summary_length)) }}
@@ -155,8 +179,8 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														Read More
 													</Link>
 												</div>
-												<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
-													<span class="text-md">{cricketPosts[random1].tags.nodes[0]?.name}</span>
+												<div className="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
+													<span className="text-md">{cricketPosts[random1].tags.nodes[0]?.name}</span>
 												</div>
 											</div>
 										</div>
@@ -166,23 +190,32 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								<div className='block xl:hidden md:hidden lg:hidden'>
 									<Slider {...settings}>
 										{cricketPosts.map((post, index) => (
-											<div class="wrapper bg-gray-400 antialiased text-gray-900">
+											<div className="wrapper bg-gray-400 antialiased text-gray-900" key={index}>
 												<div>
 
-													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" width={403} height={227} />
+													<Image
+														src={post.featuredImage?.node?.sourceUrl}
+														alt=" random Imageee"
+														class="w-full object-cover object-center rounded-lg shadow-md"
+														width={403}
+														height={227}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
+													/>
 
-													<div class="relative px-4 -mt-16  ">
-														<div class="bg-white p-6 rounded-lg shadow-lg">
-															<div class="flex items-baseline">
-																<span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+													<div className="relative px-4 -mt-16  ">
+														<div className="bg-white p-6 rounded-lg shadow-lg">
+															<div className="flex items-baseline">
+																<span className="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
 																	New
 																</span>
 															</div>
 
-															<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
+															<h4 className="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
 
-															<div class="mt-5 inline-flex">
+															<div className="mt-5 inline-flex">
 																<FaUserAlt className="mr-1.5 mt-1" />
 																{post.author?.node?.name}
 																<FaRegCalendar className="mr-1.5 ml-3 mt-1" />
@@ -199,24 +232,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								</div>
 
 								{/* random images */}
-								{/* <section class="py-12 bg-white flex flex-col justify-center hidden xl:block md:block lg:block">
-									<div class="grid grid-cols-2 gap-10 max-w-6xl mx-auto">
-										<div class="-mt-20 flex justify-end">
-											<img class="w-2/3 h-2/3 object-cover rounded-lg overflow-hidden" src={cricketPosts[0].featuredImage?.node?.sourceUrl} />
-										</div>
-										<div class="flex justify-start">
-											<img class="rounded-lg object-cover overflow-hidden" src={cricketPosts[1].featuredImage?.node?.sourceUrl} />
-										</div>
-										<div class="-mt-64 flex justify-start">
-											<img class="rounded-lg object-cover overflow-hidden" src={cricketPosts[2].featuredImage?.node?.sourceUrl} />
-										</div>
-										<div class="flex justify-start -mr-28 ml-28">
-											<img class="w-2/3 h-2/3 object-cover rounded-lg overflow-hidden" src={cricketPosts[3].featuredImage?.node?.sourceUrl} />
-										
-										</div>
-									
-									</div>
-								</section> */}
+
 								{/* Cricket head content end */}
 
 								<div className="rounded border border-border p-6 dark:border-darkmode-border">
@@ -238,6 +254,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														alt={post.title}
 														width={105}
 														height={85}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
 													/>
 													<div>
 														<h3 className="h5 mb-2">
@@ -269,13 +288,20 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 							<div className="section">
 								<h2 className="section-title">{config.football.title}</h2>
 								{/* [Mobile View] Football head content start */}
-								<div class=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">
-									<div class="container px-1 flex justify-center">
-										<div class="max-w-sm py-2">
-											<div class="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
-												<Image class="rounded-t-lg" src={footballPosts[random1].featuredImage?.node?.sourceUrl} alt="football" fill />
-												<div class="py-6 px-8 rounded-lg bg-white">
-													<h1 class="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{footballPosts[random1].title}</h1>
+								<div className=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">
+									<div className="container px-1 flex justify-center">
+										<div className="max-w-sm py-2">
+											<div className="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
+												<Image
+													className="rounded-t-lg"
+													src={footballPosts[random1].featuredImage?.node?.sourceUrl}
+													alt="football" fill
+													placeholder='blur'
+													blurDataURL={footballPosts[random1].featuredImage?.node?.sourceUrl}
+													loading="lazy"
+												/>
+												<div className="py-6 px-8 rounded-lg bg-white">
+													<h1 className="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{footballPosts[random1].title}</h1>
 													<div
 														className="has-drop-cap-fluid"
 														dangerouslySetInnerHTML={{ __html: footballPosts[random1].content.slice(0, Number(summary_length)) }}
@@ -284,8 +310,8 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														Read More
 													</Link>
 												</div>
-												<div class="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
-													<span class="text-md">{footballPosts[random1].tags.nodes[0].name}</span>
+												<div className="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
+													<span className="text-md">{footballPosts[random1].tags.nodes[0].name}</span>
 												</div>
 											</div>
 										</div>
@@ -295,22 +321,31 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								<div className='block md:hidden xl:hidden lg:hidden'>
 									<Slider {...settings}>
 										{footballPosts.map((post, index) => (
-											<div class="wrapper bg-gray-400 antialiased text-gray-900">
+											<div className="wrapper bg-gray-400 antialiased text-gray-900" key={index}>
 												<div>
 
-													<Image src={post.featuredImage?.node?.sourceUrl} alt=" random imgee" class="w-full object-cover object-center rounded-lg shadow-md" width={373} height={210} />
+													<Image
+														src={post.featuredImage?.node?.sourceUrl}
+														alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md"
+														width={373}
+														height={210}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
 
-													<div class="relative px-4 -mt-16  ">
-														<div class="bg-white p-6 rounded-lg shadow-lg">
-															<div class="flex items-baseline">
-																<span class="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+													/>
+
+													<div className="relative px-4 -mt-16  ">
+														<div className="bg-white p-6 rounded-lg shadow-lg">
+															<div className="flex items-baseline">
+																<span className="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
 																	New
 																</span>
 															</div>
 
-															<h4 class="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
+															<h4 className="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
 
-															<div class="mt-5 justify-around">
+															<div className="mt-5 justify-around">
 																<FaUserAlt className="mr-1.5 " />
 																{post.author?.node?.name}
 																<FaRegCalendar className="mr-1.5 ml-3 " />
@@ -327,24 +362,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								{/*Top caraousel End */}
 
 								{/* random images */}
-								{/* <section class="py-12 bg-white flex flex-col justify-center hidden xl:block md:block lg:block">
-									<div class="grid grid-cols-2 gap-10 max-w-6xl mx-auto">
-										<div class="-mt-20 flex justify-end">
-											<img class="w-2/3 h-2/3 object-cover rounded-lg overflow-hidden" src={footballPosts[0].featuredImage?.node?.sourceUrl} />
-										</div>
-										<div class="flex justify-start">
-											<img class="rounded-lg object-cover overflow-hidden" src={footballPosts[1].featuredImage?.node?.sourceUrl} />
-										</div>
-										<div class="-mt-64 flex justify-start">
-											<img class="rounded-lg object-cover overflow-hidden" src={footballPosts[2].featuredImage?.node?.sourceUrl} />
-										</div>
-										<div class="flex justify-start -mr-28 ml-28">
-											<img class="w-2/3 h-2/3 object-cover rounded-lg overflow-hidden" src={footballPosts[3].featuredImage?.node?.sourceUrl} />
 
-										</div>
-
-									</div>
-								</section> */}
 								{/* Football head content end */}
 
 								<div className="rounded border border-border p-6 dark:border-darkmode-border">
@@ -366,6 +384,10 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														alt={post.title}
 														width={105}
 														height={85}
+														placeholder='blur'
+														blurDataURL={post.featuredImage?.node?.sourceUrl}
+														loading="lazy"
+
 													/>
 													<div>
 														<h3 className="h5 mb-2">
@@ -424,43 +446,60 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 	);
 };
 
+// Export the Home component wrapped with an error boundary
 export default withErrorBoundary(Home);
 
-// for homepage data
+// Fetch data for the homepage
 export const getStaticProps = async () => {
-	const posts = await getAllPosts();
-	const allRecentPosts = await getAllPostsWithContent('', '', '', 10);
 	const config = CONFIG.home;
-	const cricketPosts = config.cricket.enable ? await getAllPostsWithContent('cricket', '', '', 6) : [];
-	const footballPosts = config.football.enable ? await getAllPostsWithContent('football', '', '', 6) : [];
-	const nbaPosts = config.nba.enable ? await getAllPostsWithContent('nba', '', '', 6) : [];
-	const ufcPosts = config.ufc.enable ? await getAllPostsWithContent('ufc', '', '', 6) : [];
-	const motoGPosts = config.motoGP.enable ? await getAllPostsWithContent('', 'motoGP', '', 6) : [];
+	const refresh_home_page_interval = 60;
+
+	// Fetch all types of posts concurrently using Promise.all
+	const [postsData, allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
+		getAllPosts('', '', '', 5),
+		getAllPostsWithContent('', '', '', 4),
+		config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
+		config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
+		config.nba.enable ? getAllPostsWithContent('nba', '', '', 3) : [],
+		config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 3) : [],
+		config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 3) : [],
+	]);
+
+	// Extract the nodes from the fetched data
+	const posts = postsData.nodes;
+	const allRecentPosts = allRecentPostsData.nodes;
+	const cricketPosts = cricketPostsData.nodes;
+	const footballPosts = footballPostsData.nodes;
+	const nbaPosts = nbaPostsData.nodes;
+	const ufcPosts = ufcPostsData.nodes;
+	const motoGPosts = motoGPostsData.nodes;
 
 	const sidePosts = {
 		nba: {
 			title: config.nba.title,
-			posts: nbaPosts.nodes,
+			posts: nbaPosts,
 		},
 		ufc: {
 			title: config.ufc.title,
-			posts: ufcPosts.nodes,
+			posts: ufcPosts,
 		},
 		motoGP: {
 			title: config.motoGP.title,
-			posts: motoGPosts.nodes,
+			posts: motoGPosts,
 		},
 		limit: 4,
 	};
+
 	return {
 		props: {
 			config,
-			posts: posts.nodes,
-			cricketPosts: cricketPosts.nodes,
-			footballPosts: footballPosts.nodes,
+			posts,
+			cricketPosts,
+			footballPosts,
 			sidePosts,
-			allRecentPosts: allRecentPosts.nodes
+			allRecentPosts,
 		},
-		revalidate: refresh_home_page_interval, // Refresh data every 60 seconds
+		revalidate: refresh_home_page_interval,
 	};
 };
+
