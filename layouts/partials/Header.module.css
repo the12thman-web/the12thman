@@ -1,0 +1,12 @@
+@media (max-width:992px) {
+    #header {
+        top: 0;
+        z-index: 50;
+        border-bottom-width: 1px;
+        --tw-bg-opacity: 1;
+        background-color: rgb(255 255 255/var(--tw-bg-opacity));
+        padding-top: 23px !important;
+        padding-bottom: 12px !important;
+    }
+
+}
