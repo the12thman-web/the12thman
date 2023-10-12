@@ -54,7 +54,7 @@ const Cricket = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRec
 													className="rounded-t-lg"
 													src={cricketPosts[random1].featuredImage?.node?.sourceUrl}
 													alt="cricket" fill
-													placeholder='blur'
+													//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 													blurDataURL={cricketPosts[random1].featuredImage?.node?.sourceUrl}
 													loading="lazy"
 
@@ -89,7 +89,7 @@ const Cricket = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRec
 														class="w-full object-cover object-center rounded-lg shadow-md"
 														width={403}
 														height={227}
-														placeholder='blur'
+														//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 														blurDataURL={post.featuredImage?.node?.sourceUrl}
 														loading="lazy"
 													/>
@@ -144,7 +144,7 @@ const Cricket = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRec
 														alt={post.title}
 														width={105}
 														height={85}
-														placeholder='blur'
+														//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 														blurDataURL={post.featuredImage?.node?.sourceUrl}
 														loading="lazy"
 													/>

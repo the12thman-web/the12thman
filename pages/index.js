@@ -65,7 +65,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-xl"
 													width={123}
 													height={82}
-													placeholder='blur'
+													//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 													blurDataURL={post.featuredImage?.node?.sourceUrl}
 													loading="lazy"
 												/>
@@ -109,7 +109,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 								>
 									<Image
 										src={post.featuredImage?.node?.sourceUrl}
-										placeholder='blur'
+										//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 										blurDataURL={post.featuredImage?.node?.sourceUrl}
 										loading="lazy"
 										alt=" random Imageee"
@@ -164,7 +164,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-t-lg"
 													src={cricketPosts[random1].featuredImage?.node?.sourceUrl}
 													alt="cricket" fill
-													placeholder='blur'
+													placeholder={cricketPosts[random1].featuredImage?.node?.sourceUrl ? 'blur' : ''}
 													blurDataURL={cricketPosts[random1].featuredImage?.node?.sourceUrl}
 													loading="lazy"
 
@@ -199,7 +199,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														class="w-full object-cover object-center rounded-lg shadow-md"
 														width={403}
 														height={227}
-														placeholder='blur'
+														//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 														blurDataURL={post.featuredImage?.node?.sourceUrl}
 														loading="lazy"
 													/>
@@ -254,7 +254,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														alt={post.title}
 														width={105}
 														height={85}
-														placeholder='blur'
+														//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 														blurDataURL={post.featuredImage?.node?.sourceUrl}
 														loading="lazy"
 													/>
@@ -296,7 +296,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-t-lg"
 													src={footballPosts[random1].featuredImage?.node?.sourceUrl}
 													alt="football" fill
-													placeholder='blur'
+													placeholder={footballPosts[random1].featuredImage?.node?.sourceUrl ? 'blur' : ''}
 													blurDataURL={footballPosts[random1].featuredImage?.node?.sourceUrl}
 													loading="lazy"
 												/>
@@ -311,7 +311,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													</Link>
 												</div>
 												<div className="absolute top-2 right-2 py-2 px-4 bg-white rounded-lg">
-													<span className="text-md">{footballPosts[random1].tags.nodes[0].name}</span>
+													<span className="text-md">{footballPosts[random1]?.tags?.nodes[0]?.name}</span>
 												</div>
 											</div>
 										</div>
@@ -329,7 +329,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														alt=" random Imageee" class="w-full object-cover object-center rounded-lg shadow-md"
 														width={373}
 														height={210}
-														placeholder='blur'
+														//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 														blurDataURL={post.featuredImage?.node?.sourceUrl}
 														loading="lazy"
 
@@ -384,7 +384,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 														alt={post.title}
 														width={105}
 														height={85}
-														placeholder='blur'
+														//placeholder={post.featuredImage?.node?.sourceUrl ? 'blur' : null}
 														blurDataURL={post.featuredImage?.node?.sourceUrl}
 														loading="lazy"
 
