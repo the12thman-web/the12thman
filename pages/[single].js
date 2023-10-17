@@ -57,13 +57,13 @@ const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 
 // get post single slug
 export const getStaticPaths = async () => {
-	const posts = await getAllPosts();
-	const paths = posts.nodes.map((post) => ({
-		params: { single: post.slug },
-	}));
+	// const posts = await getAllPosts();
+	// const paths = posts.nodes.map((post) => ({
+	// 	params: { single: post.slug },
+	// }));
 	return {
-		paths,
-		fallback: false,
+		paths: [],
+		fallback: "blocking",
 	};
 };
 
