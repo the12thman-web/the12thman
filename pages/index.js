@@ -164,7 +164,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-t-lg"
 													src={cricketPosts[random1].featuredImage?.node?.sourceUrl}
 													alt="cricket" fill
-													placeholder={cricketPosts[random1].featuredImage?.node?.sourceUrl ? 'blur' : ''}
+													// placeholder={cricketPosts[random1].featuredImage?.node?.sourceUrl ? 'blur' : ''}
 													blurDataURL={cricketPosts[random1].featuredImage?.node?.sourceUrl}
 													loading="lazy"
 
@@ -296,7 +296,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 													className="rounded-t-lg"
 													src={footballPosts[random1].featuredImage?.node?.sourceUrl}
 													alt="football" fill
-													placeholder={footballPosts[random1].featuredImage?.node?.sourceUrl ? 'blur' : ''}
+													// placeholder={footballPosts[random1].featuredImage?.node?.sourceUrl ? 'blur' : ''}
 													blurDataURL={footballPosts[random1].featuredImage?.node?.sourceUrl}
 													loading="lazy"
 												/>

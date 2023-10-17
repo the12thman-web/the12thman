@@ -26,15 +26,6 @@ export const GET_ALL_POST_QUERY = ` query AllPosts($category: String!,$search: S
                     name
                     }
                 }
-                seo {
-                    opengraphUrl
-                    opengraphTitle
-                    opengraphDescription
-                    canonical
-                    opengraphImage {
-                      uri
-                    }
-                  }
                 }
             }
         }`
@@ -70,18 +61,7 @@ export const GET_ALL_POST_WITH_CONTENT_QUERY = `
                     name
                     }
                 }
-                seo {
-                    opengraphUrl
-                    opengraphTitle
-                    opengraphDescription
-                    canonical
-                    opengraphImage {
-                      uri
-                      altText
-                    }
-                    metaKeywords
-                  }
-                }
+              }
             }
         }
       `;
@@ -132,15 +112,6 @@ export const GET_SINGLE_POST_QUERY = `query post($slug: ID!) {
           name
         }
       }
-      seo {
-          opengraphUrl
-          opengraphTitle
-          opengraphDescription
-          canonical
-          opengraphImage {
-          uri
-          }
-        }
       title
     }
   }`
@@ -151,15 +122,6 @@ export const GET_CATEGORY_QUERY = `query getCategory($catName: [String]!){
             categoryId
             name
             description
-            seo {
-                opengraphUrl
-                opengraphTitle
-                opengraphDescription
-                canonical
-                opengraphImage {
-                  uri
-                  }
-                }
           }
         }
       }`;
