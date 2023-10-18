@@ -56,16 +56,11 @@ const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 };
 
 // get post single slug
-export const getStaticPaths = () => {
-	// const allSlug = getSinglePage(`content/${blog_folder}`);
-	// const allSlug = [];
-	// //consoel.log("hi");
-	// const paths = allSlug.map((item) => ({
-	// 	params: {
-	// 		single: item.slug,
-	// 	},
+export const getStaticPaths = async () => {
+	// const posts = await getAllPosts();
+	// const paths = posts.nodes.map((post) => ({
+	// 	params: { single: post.slug },
 	// }));
-
 	return {
 		paths: [],
 		fallback: "blocking",
