@@ -94,7 +94,7 @@ const Footer = () => {
               >
             </p>
             <p>
-              <a href="/privacy-policy" class="text-neutral-600 dark:text-neutral-200"
+              <a href="/policy" class="text-neutral-600 dark:text-neutral-200"
               >Privacy Policy</a
               >
             </p>
