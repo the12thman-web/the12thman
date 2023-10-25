@@ -91,7 +91,7 @@ const App = ({ Component, pageProps }) => {
             <script
               async
               src="https://cdn.unibotscdn.com/ubplayer/player.js"
-              strategy="lazyOnload"
+              strategy="defer"
             ></script>
 
             {/* responsive meta */}
