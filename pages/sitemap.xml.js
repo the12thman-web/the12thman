@@ -13,6 +13,9 @@ function generateSiteMap(posts) {
      <url>
        <loc>https://the12thman.in/</loc>
      </url>
+     <url>
+       <loc>https://the12thman.in/newsitemap.xml/</loc>
+     </url>
      ${posts
             .map(post => {
                 return `
