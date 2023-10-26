@@ -204,3 +204,14 @@ export const GET_WEB_STORY_SITEMAP_QUERY = `query GetAllWebStories($perPage: Int
     }
   }
 }`
+
+export const GET_NEW_DATA_SITEMAP_QUERY = `query GetNewsSitemapQuery($after: String, $before: String ) {
+  posts(after: $after, before: $before) {
+    nodes {
+      date
+      id
+      title
+      slug
+    }
+  }
+}`
