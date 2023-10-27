@@ -13,9 +13,6 @@ function generateSiteMap(posts) {
      <url>
        <loc>https://the12thman.in/</loc>
      </url>
-     <url>
-       <loc>https://the12thman.in/newsitemap.xml/</loc>
-     </url>
      ${posts
             .map(post => {
                 return `
@@ -36,6 +33,9 @@ function generateSiteMapIndex(paths) {
      <!--We manually set the two URLs we know already-->
      <url>
        <loc>https://the12thman.in/</loc>
+     </url>
+     <url>
+       <loc>https://the12thman.in/newsitemap.xml/</loc>
      </url>
      <url>
      <loc>${`${base_url}/category-sitemap.xml`}</loc>
