@@ -30,7 +30,7 @@ const Base = ({
         </title>
 
         {/* canonical url */}
-        {canonical && <link rel="canonical" href={base_url+currentPath} id='canonical-link' itemProp="url" />}
+        {canonical && <link rel="canonical" href={base_url+currentPath+"/"} id='canonical-link' itemProp="url" />}
 
         {/* noindex robots */}
         {noindex && <meta name="robots" content="noindex,nofollow" />}
