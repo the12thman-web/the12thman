@@ -81,8 +81,9 @@ export const getStaticPaths = () => {
 
 // category page data
 export const getStaticProps = async ({ params }) => {
-	const { category } = params;
-	const catSlug = category[category.length - 1]
+	const { category, cat } = params;
+	console.log({category , cat})
+	const catSlug = cat[cat.length - 1]
 	const catDetail = await getCategory(catSlug)
 	const trendingPosts = catDetail && await getAllPosts();
 	const detailPosts = catDetail && await getAllPostsWithContent(catSlug, '', '', 20);
