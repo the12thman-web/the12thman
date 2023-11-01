@@ -35,7 +35,7 @@ function generateSiteMapIndex(paths) {
        <loc>https://the12thman.in/</loc>
      </url>
      <url>
-       <loc>${`${base_url}/newsitemap.xml`}/</loc>
+       <loc>${`${base_url}/news-sitemap.xml`}/</loc>
        <lastmod>${new Date().toISOString()}</lastmod>
      </url>
      <url>

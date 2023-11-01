@@ -1,4 +1,5 @@
 import config from "@config/config.json";
+import NotFound from "@layouts/404";
 import PostSingle from "@layouts/PostSingle";
 import { getAllPosts, getPost, getAllPostsWithContent } from "@lib/graphql";
 import { NextSeo } from 'next-seo';
@@ -49,7 +50,7 @@ const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 		content={content}
 		slug={slug}
 		trendingPosts={trendingPosts}
-		/>: <></>
+		/>: <NotFound title={'Sorry 404! Page not found'} />
 	}
 		 </>
 	);
