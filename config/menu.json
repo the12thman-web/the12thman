@@ -2,84 +2,84 @@
   "main": [
     {
       "name": "NBA",
-      "url": "/category/sports/nba",
+      "url": "/category/nba",
       "hasChildren": true,
       "children": [
         {
           "name": "Eastern Conference",
           "hasChildren": true,
-          "url": "/category/sports/nba/eastern-conference",
+          "url": "/category/nba/eastern-conference",
           "children": [
             {
               "name": "Miami Heat",
-              "url": "/category/sports/nba/eastern-conference/miami-heat",
+              "url": "/category/nba/eastern-conference/miami-heat",
               "hasChildren": false
             },
             {
               "name": "Washington Wizards",
-              "url": "/category/sports/nba/eastern-conference/washington-wizards"
+              "url": "/category/nba/eastern-conference/washington-wizards"
             }
           ]
         },
         {
           "name": "Western Conference",
-          "url": "/category/sports/nba/western-conference",
+          "url": "/category/nba/western-conference",
           "hasChildren": true,
           "children": [
             {
               "name": "Los Angeles Clippers",
-              "url": "/category/sports/nba/western-conference/los-angeles-clippers/"
+              "url": "/category/nba/western-conference/los-angeles-clippers/"
             },
             {
               "name": "Utah Jazz",
-              "url": "/category/sports/nba/western-conference/utah-jazz/"
+              "url": "/category/nba/western-conference/utah-jazz/"
             },
             {
-              "url": "/category/sports/nba/western-conference/phoenix-suns/",
+              "url": "/category/nba/western-conference/phoenix-suns/",
               "name": "Phoenix Suns"
             },
             {
-              "url": "/category/sports/nba/western-conference/denver-nuggets/",
+              "url": "/category/nba/western-conference/denver-nuggets/",
               "name": "Denver Nuggets"
             },
             {
-              "url": "/category/sports/nba/western-conference/dallas-mavericks/",
+              "url": "/category/nba/western-conference/dallas-mavericks/",
               "name": "Dallas Mavericks"
             },
             {
-              "url": "/category/sports/nba/western-conference/portland-trail-blazers/",
+              "url": "/category/nba/western-conference/portland-trail-blazers/",
               "name": "Portland Trail Blazers"
             },
             {
-              "url": "/category/sports/nba/western-conference/los-angeles-lakers/",
+              "url": "/category/nba/western-conference/los-angeles-lakers/",
               "name": "Los Angeles Lakers"
             },
             {
-              "url": "/category/sports/nba/western-conference/memphis-grizzlies/",
+              "url": "/category/nba/western-conference/memphis-grizzlies/",
               "name": "Memphis Grizzlies"
             },
             {
-              "url": "/category/sports/nba/western-conference/golden-state-warriors/",
+              "url": "/category/nba/western-conference/golden-state-warriors/",
               "name": "Golden State Warriors"
             },
             {
-              "url": "/category/sports/nba/western-conference/san-antonio-spurs/",
+              "url": "/category/nba/western-conference/san-antonio-spurs/",
               "name": "San Antonio Spurs"
             },
             {
-              "url": "/category/sports/nba/western-conference/new-orleans-pelicans/",
+              "url": "/category/nba/western-conference/new-orleans-pelicans/",
               "name": "New Orleans Pelicans"
             },
             {
-              "url": "/category/sports/nba/western-conference/sacramento-kings/",
+              "url": "/category/nba/western-conference/sacramento-kings/",
               "name": "Sacramento Kings"
             },
             {
-              "url": "/category/sports/nba/western-conference/oklahoma-city-thunder/",
+              "url": "/category/nba/western-conference/oklahoma-city-thunder/",
               "name": "Oklahoma City Thunder"
             },
             {
-              "url": "/category/sports/nba/western-conference/houston-rockets/",
+              "url": "/category/nba/western-conference/houston-rockets/",
               "name": "Houston Rockets"
             }
           ]
@@ -88,22 +88,22 @@
     },
     {
       "name": "Motor Sports",
-      "url": "/category/sports/motor-sports/",
+      "url": "/category/motor-sports/",
       "hasChildren": true,
       "children": [
         {
-          "url": "/category/sports/motor-sports/formula-1",
+          "url": "/category/motor-sports/formula-1",
           "name": "F1"
         },
         {
-          "url": "/category/sports/motor-sports/moto-gp",
+          "url": "/category/motor-sports/moto-gp",
           "name": "Moto GP"
         }
       ]
     },
     {
       "name": "NFL",
-      "url": "/category/sports/nfl/"
+      "url": "/category/nfl/"
     },
     {
       "name": "Football",
