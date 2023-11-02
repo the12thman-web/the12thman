@@ -17,7 +17,7 @@ const Base = ({
   const { meta_image, meta_author, meta_description, meta_keywords } = config.metadata;
   const { base_url } = config.site;
   const router = useRouter();
-  const currentPath = router.asPath;
+  const currentPath = router.asPath !== "/" ? router.asPath + "/" : router.asPath ;
 
   return (
     <>
@@ -30,7 +30,7 @@ const Base = ({
         </title>
 
         {/* canonical url */}
-        {canonical && <link rel="canonical" href={base_url+currentPath+"/"} id='canonical-link' itemProp="url" />}
+        {canonical && <link rel="canonical" href={base_url+currentPath} id='canonical-link' itemProp="url" />}
 
         {/* noindex robots */}
         {noindex && <meta name="robots" content="noindex,nofollow" />}
