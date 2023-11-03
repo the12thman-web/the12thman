@@ -1,3 +1,6 @@
+Sitemap: https://the12thman.in/sitemap.xml
+
+
 User-agent: *
 Disallow: /?
 Disallow: /;
@@ -6,5 +9,12 @@ Disallow: /page
 Disallow: /cdn-cgi
 Disallow: /image
 Disallow: /posts
+Disallow: /feed
+Disallow: /#!
+Disallow: /wp-admin/
 
-Sitemap: https://the12thman.in/sitemap.xml
+User-agent: duggmirror
+Disallow: /
+
+User-agent: grapeshot
+Disallow:
