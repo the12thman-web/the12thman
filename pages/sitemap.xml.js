@@ -6,6 +6,19 @@ const { base_url } = config.site;
 const fs = require('fs');
 const path = require('path');
 
+const excludedFiles = [
+  'sitemaps',
+  'sitemap-yoast.xml',
+  'scripts',
+  'robots.txt',
+  'main-sitemap.xsl',
+  'logos',
+  'images',
+  'ads.txt',
+  '.htaccess',
+  '.DS_Store',
+];
+
 function generateSiteMap(posts) {
     return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -102,22 +115,23 @@ export async function getServerSideProps({ res }) {
 
             fetchedPosts = [...fetchedPosts, ...newPosts.edges];
         }
-
         // We generate the XML sitemap with the posts data
         const sitemap = generateSiteMap(fetchedPosts);
 
         const fileName = `sitemap_${year}_${month}.xml`;
-        const filePath = path.join(process.cwd(), 'public', 'sitemaps', fileName);
+        const filePath = path.join(process.cwd(), 'public', fileName);
         fs.writeFileSync(filePath, sitemap, { flag: 'w' });
 
         // Move to the next month
         currentDate.setMonth(currentDate.getMonth() + 1);
     }
 
-    const folderPath = process.cwd() + '/public/sitemaps';
-
+    const folderPath = process.cwd() + '/public/';
     let files = fs.readdirSync(folderPath);
-    const fileNames = files.map(fileName => path.join('sitemaps', fileName)).reverse();
+    // Filter out excluded files and directories
+    files = files.filter(fileName => !excludedFiles.includes(fileName));
+
+    const fileNames = files.map(fileName => path.join(fileName)).reverse();
     // We generate the XML sitemap with the posts data
     const sitemap = generateSiteMapIndex(fileNames);
     res.setHeader('Content-Type', 'text/xml');
