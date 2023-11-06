@@ -54,9 +54,36 @@ const PostSingle = ({
   const router = useRouter();
 
   // content = content.replaceAll('img', 'Image');
-  console.log(content)
+  const article_schema = { 
+    "@context": "https://schema.org", 
+    "@type": "NewsArticle", 
+    "mainEntityOfPage": { 
+      "@type": "WebPage", 
+      "@id": BASE_URL + router.asPath 
+    }, 
+    "headline": title, 
+    "image": [featuredImage], 
+    "datePublished": date, 
+    "dateModified": date, 
+    "author": { 
+      "@type": "Person", 
+      "name": author 
+    }, 
+    "publisher": { 
+      "@type": "Organization", 
+      "name": "The 12th Man", 
+      "logo": { 
+      "@type": "ImageObject", 
+      "url": "https://the12thman.in/_next/image?url=%2Fimages%2Flogo%202.png&w=640&q=75", 
+      "height": 60 
+      } 
+    }, 
+    "description": description 
+    } 
+
+  // console.log({article_schema, description});
   return (
-    <Base title={title} description={description} metaKeywords={metaKeywords}>
+    <Base title={title} description={description} metaKeywords={metaKeywords} schema={article_schema}>
       <section className="section single-blog mt-1 pt-1">
         <div className="container">
           <div className="row">
