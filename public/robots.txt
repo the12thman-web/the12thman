@@ -5,12 +5,9 @@ User-agent: *
 Disallow: /?
 Disallow: /;
 Disallow: /feed
-Disallow: /page
 Disallow: /cdn-cgi
 Disallow: /image
-Disallow: /posts
 Disallow: /feed
-Disallow: /#!
 Disallow: /wp-admin/
 
 User-agent: duggmirror
