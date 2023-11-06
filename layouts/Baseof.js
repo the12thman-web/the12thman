@@ -13,6 +13,7 @@ const Base = ({
   metaKeywords,
   canonical = true,
   children,
+  schema = null
 }) => {
   const { meta_image, meta_author, meta_description, meta_keywords } = config.metadata;
   const { base_url } = config.site;
@@ -91,6 +92,11 @@ const Base = ({
           content={`${base_url}${image ? image : meta_image}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
+
+        {schema && <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />}
       </Head>
       <Header />
       {/* main site */}
