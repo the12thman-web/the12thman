@@ -1,14 +1,24 @@
 Sitemap: https://the12thman.in/sitemap.xml
 
-
 User-agent: *
 Disallow: /?
 Disallow: /;
 Disallow: /feed
 Disallow: /cdn-cgi
 Disallow: /image
-Disallow: /feed
+Disallow: /_
 Disallow: /wp-admin/
+Disallow: ?filter_by=popular7
+Disallow: ?filter_by=review_high
+Disallow: ?amp=
+Disallow: ?amp=1
+Disallow: #!
+Disallow: :
+Disallow: ?ref=academy.tradexapp.co
+Disallow: ?filter_by=random_posts
+Disallow: ?filter_by=popular
+Disallow: ?filter_by=featured
+Disallow: ?url=
 
 User-agent: duggmirror
 Disallow: /
