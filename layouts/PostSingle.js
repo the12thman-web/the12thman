@@ -81,7 +81,7 @@ const PostSingle = ({
     "description": description 
     } 
 
-  // console.log({article_schema, description});
+  console.log("Post Single",content);
   return (
     <Base title={title} description={description} metaKeywords={metaKeywords} schema={article_schema}>
       <section className="section single-blog mt-1 pt-1">
