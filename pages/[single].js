@@ -24,6 +24,7 @@ const Article = ({ post, slug, relatedPosts, trendingPosts, yoastSEO }) => {
 		featuredImage: featuredImage?.node?.sourceUrl,
 		metaKeywords
 	};
+	console.log("Single",content);
 	return (
 		<>
 		<NextSeo

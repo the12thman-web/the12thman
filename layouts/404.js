@@ -2,17 +2,17 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const NotFound = ({ title }) => {
-  const router = useRouter();
+  // const router = useRouter();
   
-  useEffect(() => {
-    const redirectTimeout = setTimeout(() => {
-      router.push('/');
-    }, 1500);
+  // useEffect(() => {
+  //   const redirectTimeout = setTimeout(() => {
+  //     router.push('/');
+  //   }, 1500);
 
-    return () => {
-      clearTimeout(redirectTimeout);
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(redirectTimeout);
+  //   };
+  // }, []);
   
   return (
     <section className="section">
