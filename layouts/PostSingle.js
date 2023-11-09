@@ -81,7 +81,7 @@ const PostSingle = ({
     "description": description 
     } 
 
-  console.log("Post Single",content);
+  console.log({content, featuredImage});
   return (
     <Base title={title} description={description} metaKeywords={metaKeywords} schema={article_schema}>
       <section className="section single-blog mt-1 pt-1">
@@ -90,7 +90,7 @@ const PostSingle = ({
             <div className="lg:col-8">
               <article>
                 <div className="relative">
-                  {featuredImage && (
+                  {/* {featuredImage && (
                     <Image
                       src={featuredImage}
                       height="500"
@@ -99,7 +99,7 @@ const PostSingle = ({
                       className="rounded-lg"
                       priority={true}
                     />
-                  )}
+                  )} */}
                   <ul className="absolute top-3 left-2 flex flex-wrap items-center">
                     {/* {featuredImage && tags?.nodes.slice(0,2).map(({name}, index) => (
                       <li
