@@ -30,19 +30,19 @@ const App = ({ Component, pageProps }) => {
   // Import Google Font CSS
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
-  const [fontcss, setFontcss] = useState('');
+  // const [fontcss, setFontcss] = useState('');
 
-  useEffect(() => {
-    fetch(
-      `https://fonts.googleapis.com/css2?family=${pf}${sf ? '&family=' + sf : ''}&display=swap`
-    )
-      .then((res) => res.text())
-      .then((css) => setFontcss(css))
-      .catch((error) => {
-        console.error('Failed to fetch font CSS:', error);
-        // Handle the error as needed.
-      });
-  }, [pf, sf]);
+  // useEffect(() => {
+  //   fetch(
+  //     `https://fonts.googleapis.com/css2?family=${pf}${sf ? '&family=' + sf : ''}&display=swap`
+  //   )
+  //     .then((res) => res.text())
+  //     .then((css) => setFontcss(css))
+  //     .catch((error) => {
+  //       console.error('Failed to fetch font CSS:', error);
+  //       // Handle the error as needed.
+  //     });
+  // }, [pf, sf]);
 
   // Google Tag Manager (GTM)
   const tagManagerArgs = {
@@ -75,12 +75,12 @@ const App = ({ Component, pageProps }) => {
         <JsonContext>
           <Head>
             {/* Google Font CSS */}
-            <link
-              rel="preconnect"
-              href="https://fonts.gstatic.com"
-              crossOrigin="true"
-            />
-            <style dangerouslySetInnerHTML={{ __html: fontcss }} />
+            {/* <link  rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/> 
+            <style dangerouslySetInnerHTML={{ __html: fontcss }} /> */}
+
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link rel="preload" as="font" href={`https://fonts.googleapis.com/css2?family=${pf}${sf ? '&family=' + sf : ''}&display=swap`}  />
 
             <script
               async
