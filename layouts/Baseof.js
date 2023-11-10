@@ -34,7 +34,8 @@ const Base = ({
         {canonical && <link rel="canonical" href={base_url+currentPath} id='canonical-link' itemProp="url" />}
 
         {/* noindex robots */}
-        {noindex && <meta name="robots" content="noindex,nofollow" />}
+        {/* {noindex && <meta name="robots" content="noindex,nofollow" />} */}
+        <meta name="robots" content="index, follow" />
 
         {/* meta-description */}
         <meta
