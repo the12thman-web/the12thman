@@ -20,60 +20,60 @@ const excludedFiles = [
 ];
 
 function generateSiteMap(posts) {
-    return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+   <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
-     <url>
+     <sitemap>
        <loc>https://the12thman.in/</loc>
-     </url>
+     </sitemap>
      ${posts
-            .map(post => {
-                return `
-       <url>
+       .map(post => {
+         return `
+       <sitemap>
            <loc>${`${base_url}/${post.node.slug}`}</loc>
            <lastmod>${new Date(post.node.date).toISOString()}</lastmod>
-       </url>
+       </sitemap>
      `;
-            })
-            .join('')}
-   </urlset>
+       })
+       .join('')}
+   </sitemapindex>
  `;
 }
 
 function generateSiteMapIndex(paths) {
-    return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+   <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
-     <url>
+     <sitemap>
        <loc>https://the12thman.in/</loc>
-     </url>
-     <url>
-       <loc>${`${base_url}/news-sitemap.xml`}/</loc>
+     </sitemap>
+     <sitemap>
+       <loc>${`${base_url}/news-sitemap.xml`}</loc>
        <lastmod>${new Date().toISOString()}</lastmod>
-     </url>
-     <url>
+     </sitemap>
+     <sitemap>
      <loc>${`${base_url}/category-sitemap.xml`}</loc>
      <lastmod>${new Date().toISOString()}</lastmod>
-     </url>
-     <url>
+     </sitemap>
+     <sitemap>
      <loc>${`${base_url}/tag-sitemap.xml`}</loc>
      <lastmod>${new Date().toISOString()}</lastmod>
-     </url>
-     <url>
+     </sitemap>
+     <sitemap>
      <loc>${`${base_url}/web-stories-sitemap.xml`}</loc>
      <lastmod>${new Date().toISOString()}</lastmod>
-     </url>
+     </sitemap>
      ${paths
-            .map(path => {
-                return `
-       <url>
+       .map(path => {
+         return `
+       <sitemap>
            <loc>${`${base_url}/${path}`}</loc>
            <lastmod>${new Date().toISOString()}</lastmod>
-       </url>
+       </sitemap>
      `;
-            })
-            .join('')}
-   </urlset>
+       })
+       .join('')}
+   </sitemapindex>
  `;
 }
 
