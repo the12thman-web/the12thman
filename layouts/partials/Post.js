@@ -13,7 +13,7 @@ const Post = ({ post }) => {
 			<div className="relative">
 				{post.featuredImage?.node?.sourceUrl && (
 					<ImageFallback
-						className="rounded"
+						className="rounded w-[405px] h-[208px] object-cover object-center"
 						src={post.featuredImage?.node?.sourceUrl}
 						alt={post.title}
 						width={405}
