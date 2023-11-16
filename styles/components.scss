@@ -1,8 +1,3 @@
-// section style
-.section {
-  @apply py-16;
-}
-
 // container
 .container {
   @apply mx-auto max-w-[1320px];
@@ -181,13 +176,6 @@ footer .socials {
 .active-tab {
   @apply bg-theme-light dark:bg-darkmode-theme-dark;
 }
-
-// .post {
-//   img {
-//     width: 100%;
-//     height: auto;
-//   }
-// }
 
 // .single-blog {
 //   blockquote {

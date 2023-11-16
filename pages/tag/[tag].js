@@ -11,7 +11,7 @@ const Tag = ({ tagDetails, trendingPosts, detailPosts }) => {
     return (
         name ?
         <Base title={name} description={description}>
-            <div className="section mt-16">
+            <div className="py-16 mt-16">
                 <div className="container">
                     <h1 className="h2 mb-12">
                         <span className="section-title ml-1 inline-block capitalize">
