@@ -40,7 +40,7 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
     },
     extend: {
       colors: {

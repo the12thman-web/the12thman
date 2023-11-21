@@ -6,8 +6,6 @@ import Post from '@layouts/partials/Post';
 import dateFormat from '@lib/utils/dateFormat';
 import Link from 'next/link';
 import { FaReadme, FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
 import { getAllPosts, getAllPostsWithContent } from '@lib/graphql';
 import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';
@@ -24,9 +22,53 @@ const settings = {
   dots: false,
   infinite: true,
   autoplay: true,
-  speed: 200,
+  speed: 500,
   arrows: true,
-  slidesToShow: 1,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  cssEase: 'linear',
+  responsive: [
+    { breakpoint: 768, settings: { arrows: false, slidesToShow: 2 } },
+    { breakpoint: 540, settings: { arrows: false, slidesToShow: 1 } },
+  ],
+};
+
+const Slide = ({ post, index, trending }) => {
+  return (
+    <div className="wrapper bg-gray-400 text-gray-900 antialiased" key={index}>
+      <div>
+        <Link href={'/' + post?.slug}>
+          <Image
+            src={post.featuredImage?.node?.sourceUrl}
+            placeholder="blur"
+            blurDataURL={post.featuredImage?.node?.sourceUrl}
+            // loading="lazy"
+            alt="post"
+            class="w-full rounded-lg object-cover object-center shadow-md"
+            width={405}
+            height={228}
+          />
+
+          <div className="relative -mt-16 px-4">
+            <div className="rounded-lg bg-white p-4 shadow-lg">
+              {trending ? (
+                <div className="flex items-baseline">
+                  <span className="inline-block rounded-full bg-teal-200 px-2 text-xs font-semibold  uppercase tracking-wide text-teal-800">Trending</span>
+                </div>
+              ) : null}
+              <h4 className="mt-1 line-clamp-2 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
+              <div className="flex-right flex">
+                <FaRegClock className="ml-2 mr-1 mt-1.5" />
+                {getTimeAgo(new Date(post.date))}
+                <FaReadme className="ml-2 mr-1 mt-1.5" />
+                {readingTime(post.content)}
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 const PostsCard = ({ post, i, arr }) => {
@@ -61,93 +103,42 @@ const PostsCard = ({ post, i, arr }) => {
 
 // Define the Home component
 const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
-  const random1 = 0;
-
   return (
     <Base>
       {/* [Web View] Top caraousel Start */}
-      <div className="carouselContainer container">
-        <div className="row">
-          <div className="col-md-12">
-            <Carousel centerMode centerSlidePercentage={33} autoPlay interval={9000} transitionTime="9000" infiniteLoop showIndicators={false} showStatus={false} showArrows={false} showThumbs={false}>
-              {/* <div className="container px-1"> */}
+      <div className="container">
+        <div className="">
+          <div className="mt-3">
+            <Slider {...settings}>
               {posts.map((post, index) => (
-                <div className="flex h-24 flex-col justify-center" key={index}>
-                  <Link href={'/' + post?.slug}>
-                    <div className="relative mx-auto flex max-w-xs flex-col space-y-3 rounded-xl border border-white bg-white p-3 shadow-lg md:max-w-3xl md:flex-row md:space-x-5 md:space-y-0">
-                      <div className="grid w-full place-items-center bg-white md:w-1/3">
-                        <Image
-                          src={post.featuredImage?.node?.sourceUrl}
-                          alt="tailwind logo"
-                          className="rounded-xl"
-                          width={123}
-                          height={82}
-                          placeholder="blur" // "empty" | "blur" | "data:image/..."
-                          blurDataURL={post.featuredImage?.node?.sourceUrl}
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="flex w-full flex-col  items-center space-y-2 bg-white p-3 md:w-2/3">
-                        <h3 className="text-xs font-black text-gray-800 md:text-xs">{post.title.slice(0, 60)}</h3>
-
-                        <div className="inline-flex  font-secondary text-xs leading-3">
-                          <FaUserAlt className="mr-1.5" />
-                          {post.author.node.name}
-                          <FaRegClock className="ml-3 mr-1" />
-                          {getTimeAgo(new Date(post.date))}
-                        </div>
-                      </div>
+                <Link className="block p-1" href={'/' + post?.slug}>
+                  <div className="relative flex h-60 flex-col gap-2 rounded-xl border bg-white p-2 shadow-lg md:h-32 md:flex-row   " key={index}>
+                    <div className="relative h-full w-full md:w-1/3">
+                      <Image
+                        src={post.featuredImage?.node?.sourceUrl}
+                        alt="post"
+                        className="h-full w-full rounded-lg object-cover object-center"
+                        fill={true}
+                        placeholder="blur"
+                        blurDataURL={post.featuredImage?.node?.sourceUrl}
+                        // loading='lazy'
+                      />
                     </div>
-                  </Link>
-                </div>
-              ))}
-
-              {/* </div> */}
-            </Carousel>
-          </div>
-        </div>
-      </div>
-      {/*Top caraousel End */}
-
-      {/* [Mobile View] Trending caraousel Start */}
-      <div className="block md:hidden lg:hidden xl:hidden">
-        <Slider {...settings}>
-          {allRecentPosts.map((post, index) => (
-            <div className="wrapper bg-gray-400 text-gray-900 antialiased" key={index}>
-              <div>
-                <Link href={'/' + post?.slug}>
-                  <Image
-                    src={post.featuredImage?.node?.sourceUrl}
-                    placeholder="blur"
-                    blurDataURL={post.featuredImage?.node?.sourceUrl}
-                    loading="lazy"
-                    alt=" random Imageee"
-                    class="w-full rounded-lg object-cover object-center shadow-md"
-                    width={405}
-                    height={228}
-                  />
-
-                  <div className="relative -mt-16 px-4  ">
-                    <div className="rounded-lg bg-white p-6 shadow-lg">
-                      <div className="flex items-baseline">
-                        <span className="inline-block rounded-full bg-teal-200 px-2 text-xs font-semibold  uppercase tracking-wide text-teal-800">Trending</span>
-                      </div>
-
-                      <h4 className="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
-
-                      <div className="flex-right mt-5 flex">
-                        <FaRegClock className="ml-3 mr-1 mt-1.5" />
+                    <div className="flex w-full flex-col gap-1 md:w-2/3 md:p-3">
+                      <h3 className="line-clamp-2 text-xs font-black text-gray-800 md:text-xs">{post.title}</h3>
+                      <div className="inline-flex w-full font-secondary text-xs leading-3">
+                        <FaUserAlt className="mr-1.5" />
+                        {post.author.node.name}
+                        <FaRegClock className="ml-3 mr-1" />
                         {getTimeAgo(new Date(post.date))}
-                        <FaReadme className="ml-3 mr-1 mt-1.5" />
-                        {readingTime(post.content)}
                       </div>
                     </div>
                   </div>
                 </Link>
-              </div>
-            </div>
-          ))}
-        </Slider>
+              ))}
+            </Slider>
+          </div>
+        </div>
       </div>
       {/*Top caraousel End */}
 
@@ -159,54 +150,20 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
             {config.cricket.enable && (
               <div className="py-16 pt-2">
                 <h2 className="section-title">{config.cricket.title}</h2>
-                {/* [Mobile View] Top caraousel Start */}
                 <div className="block md:hidden lg:hidden xl:hidden">
                   <Slider {...settings}>
                     {cricketPosts.map((post, index) => (
-                      <div className="wrapper bg-gray-400 text-gray-900 antialiased" key={index}>
-                        <div>
-                          <Image
-                            src={post.featuredImage?.node?.sourceUrl}
-                            alt=" random Imageee"
-                            class="w-full rounded-lg object-cover object-center shadow-md"
-                            width={403}
-                            height={227}
-                            placeholder="blur"
-                            blurDataURL={post.featuredImage?.node?.sourceUrl}
-                            loading="lazy"
-                          />
-
-                          <div className="relative -mt-16 px-4  ">
-                            <div className="rounded-lg bg-white p-6 shadow-lg">
-                              <div className="flex items-baseline">
-                                <span className="inline-block rounded-full bg-teal-200 px-2 text-xs font-semibold  uppercase tracking-wide text-teal-800">New</span>
-                              </div>
-
-                              <h4 className="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
-
-                              <div className="mt-5 inline-flex">
-                                <FaUserAlt className="mr-1.5 mt-1" />
-                                {post.author?.node?.name}
-                                <FaRegCalendar className="ml-3 mr-1.5 mt-1" />
-                                {dateFormat(post.date)}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <Slide post={post} index={index} />
                     ))}
                   </Slider>
-                  {/*Top caraousel End */}
                 </div>
 
-                {/* Cricket head content end */}
-
                 <div className="rounded border border-border p-6 dark:border-darkmode-border">
-                  <div className="mt-10 sm:mt-16 grid grid-cols-2 grid-rows-2  gap-6 ">
-                    <article className="col-span-2 md:col-span-1 row-span-2 relative">
+                  <div className="mt-10 grid grid-cols-2 grid-rows-2 gap-6  sm:mt-16 ">
+                    <article className="relative col-span-2 row-span-2 md:col-span-1">
                       <Post post={cricketPosts[0]} featured={true} />
                     </article>
-                    <article className="col-span-2 md:col-span-1 row-span-2 scrollbar-w-[10px]  mt-8 max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark sm:col-span-1 md:mt-0">
+                    <article className="scrollbar-w-[10px] col-span-2 row-span-2 mt-8  max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark sm:col-span-1 md:col-span-1 md:mt-0">
                       {cricketPosts.slice(1, cricketPosts.length).map((post, i, arr) => (
                         <PostsCard post={post} i={i} arr={arr} />
                       ))}
@@ -221,47 +178,14 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
             {config.football.enable && (
               <div className="py-16">
                 <h2 className="section-title">{config.football.title}</h2>
-                {/* [Mobile View] Top caraousel Start */}
                 <div className="block md:hidden lg:hidden xl:hidden">
                   <Slider {...settings}>
                     {footballPosts.map((post, index) => (
-                      <div className="wrapper bg-gray-400 text-gray-900 antialiased" key={index}>
-                        <div>
-                          <Image
-                            src={post.featuredImage?.node?.sourceUrl}
-                            alt=" random Imageee"
-                            class="w-full rounded-lg object-cover object-center shadow-md"
-                            width={373}
-                            height={210}
-                            placeholder="blur"
-                            blurDataURL={post.featuredImage?.node?.sourceUrl}
-                            loading="lazy"
-                          />
-
-                          <div className="relative -mt-16 px-4  ">
-                            <div className="rounded-lg bg-white p-6 shadow-lg">
-                              <div className="flex items-baseline">
-                                <span className="inline-block rounded-full bg-teal-200 px-2 text-xs font-semibold  uppercase tracking-wide text-teal-800">New</span>
-                              </div>
-
-                              <h4 className="mt-1 text-xl font-semibold uppercase leading-tight">{post.title}</h4>
-
-                              <div className="mt-5 justify-around">
-                                <FaUserAlt className="mr-1.5 " />
-                                {post.author?.node?.name}
-                                <FaRegCalendar className="ml-3 mr-1.5 " />
-                                {dateFormat(post.date)}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <Slide post={post} index={index} />
                     ))}
                   </Slider>
                 </div>
-                {/*Top caraousel End */}
 
-                {/* Football head content end */}
                 <div className="rounded border border-border p-6 dark:border-darkmode-border">
                   <div className="row">
                     <div className="md:col-6">
