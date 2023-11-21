@@ -6,7 +6,7 @@ const About = ({ data }) => {
   const { title, image, education, experience } = frontmatter;
 
   return (
-    <section className="section mt-16">
+    <section className="py-16 mt-16">
       <div className="container text-center">
         {image && (
           <div className="mb-8">

@@ -28,7 +28,7 @@ const SearchPage = () => {
 
   return (
     <Base title={`Search results for ${query.key}`}>
-      <div className="section">
+      <div className="py-16">
         <div className="container">
           <h1 className="h2 mb-8 text-center">
             Search results for <span className="text-primary">{query.key}</span>

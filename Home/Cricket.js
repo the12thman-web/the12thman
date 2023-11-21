@@ -43,7 +43,7 @@ const Cricket = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRec
 					<div className="mb-12 lg:col-8 lg:mb-0">
 						{/* Cricket posts start*/}
 						{config.cricket.enable && (
-							<div className="section pt-2">
+							<div className="py-16 pt-2">
 								<h2 className="section-title">{config.cricket.title}</h2>
 								{/*[Mobile View] Cricket head content start */}
 								<div className=" bg-gray-100 flex justify-center items-center block md:hidden xl:hidden lg:hidden">

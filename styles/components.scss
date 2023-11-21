@@ -1,13 +1,3 @@
-// section style
-.section {
-  @apply py-16;
-}
-
-// container
-.container {
-  @apply mx-auto max-w-[1320px];
-}
-
 // form style
 .form-inputs * {
   @apply mb-5 leading-10;
@@ -79,21 +69,21 @@
 }
 
 //banner
-.banner {
-  &-title {
-    h1 {
-      @apply font-bold leading-[1] lg:text-[72px];
-    }
+// .banner {
+//   &-title {
+//     h1 {
+//       @apply font-bold leading-[1] lg:text-[72px];
+//     }
 
-    strong {
-      @apply text-primary;
-    }
+//     strong {
+//       @apply text-primary;
+//     }
 
-    span {
-      @apply font-normal font-bold text-dark dark:text-darkmode-light lg:text-[55px];
-    }
-  }
-}
+//     span {
+//       @apply font-normal font-bold text-dark dark:text-darkmode-light lg:text-[55px];
+//     }
+//   }
+// }
 
 //section-title
 .section-title {
@@ -181,13 +171,6 @@ footer .socials {
 .active-tab {
   @apply bg-theme-light dark:bg-darkmode-theme-dark;
 }
-
-// .post {
-//   img {
-//     width: 100%;
-//     height: auto;
-//   }
-// }
 
 // .single-blog {
 //   blockquote {

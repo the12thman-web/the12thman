@@ -5,8 +5,6 @@ import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import TagManager from 'react-gtm-module';
 import 'styles/style.scss';
-import 'styles/slider.scss';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ReactGA from 'react-ga';
