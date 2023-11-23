@@ -2,15 +2,6 @@ body.menu-open {
   @apply overflow-hidden pr-0;
 }
 
-.header {
-  @apply top-0 z-50 border-b bg-body py-[33px] dark:border-darkmode-border dark:bg-darkmode-body;
-}
-
-// navbar items
-.navbar {
-  @apply relative flex flex-wrap items-center justify-between;
-}
-
 .collapse-menu {
   @apply fixed right-0 top-0 z-10 mx-0 h-[100vh] w-full max-w-[400px] items-center border-l border-l-dark  bg-body p-6 transition-transform duration-300 ease-in-out dark:bg-darkmode-body lg:static lg:flex lg:h-auto lg:w-auto lg:max-w-full lg:space-x-4 lg:border-l-0 lg:bg-transparent lg:p-0 xl:space-x-8;
 }

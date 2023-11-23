@@ -15,7 +15,7 @@ const NotFound = ({ title }) => {
   // }, []);
   
   return (
-    <section className="section">
+    <section className="py-16">
       <div className="container">
         <div className="flex h-[40vh] items-center justify-center">
           <div className="text-center">
