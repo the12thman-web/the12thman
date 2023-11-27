@@ -82,7 +82,7 @@ const PostsCard = ({ post, i, arr }) => {
         height={85}
         placeholder="blur"
         blurDataURL={post.featuredImage?.node?.sourceUrl}
-        loading="lazy"
+        // loading="lazy"
       />
       <div>
         <h3 className="h5 mb-2">
