@@ -257,7 +257,7 @@ export const getStaticProps = async () => {
   };
 
   return {
-    props: { cricketPosts, footballPosts, sidePosts, allRecentPosts },
+    props: { config, cricketPosts, footballPosts, sidePosts, allRecentPosts },
     revalidate: refresh_home_page_interval,
   };
 };
