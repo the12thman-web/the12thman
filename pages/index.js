@@ -1,4 +1,3 @@
-// Import necessary dependencies and components
 import CONFIG from '@config/config.json';
 import Base from '@layouts/Baseof';
 import ImageFallback from '@layouts/components/ImageFallback';
@@ -43,7 +42,6 @@ const Slide = ({ post, index, trending }) => {
               src={post.featuredImage?.node?.sourceUrl}
               placeholder="blur"
               blurDataURL={post.featuredImage?.node?.sourceUrl}
-              // loading="lazy"
               alt="post"
               class="w-full object-cover object-center"
               fill={true}
@@ -82,7 +80,6 @@ const PostsCard = ({ post, i, arr }) => {
         height={85}
         placeholder="blur"
         blurDataURL={post.featuredImage?.node?.sourceUrl}
-        // loading="lazy"
       />
       <div>
         <h3 className="h5 mb-2">
@@ -106,7 +103,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
   return (
     <Base>
       {/* [Web View] Top caraousel Start */}
-      {/* <div className="container">
+      <div className="container">
         <div className="">
           <div className="mt-3">
             <Slider {...settings}>
@@ -139,7 +136,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
             </Slider>
           </div>
         </div>
-      </div> */}
+      </div>
       {/*Top caraousel End */}
 
       {/* Home page content start */}
@@ -150,7 +147,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
             {config.cricket.enable && (
               <div className="pb-16 pt-2">
                 <h2 className="section-title">{config.cricket.title}</h2>
-                <div className="block mb-2 md:hidden">
+                <div className="mb-2 block md:hidden">
                   <Slider {...settings}>
                     {cricketPosts.map((post, index) => (
                       <Slide post={post} index={index} />
@@ -175,10 +172,10 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
             {/* Cricket posts end*/}
 
             {/* Football Posts start */}
-            {/* {config.football.enable && (
+            {config.football.enable && (
               <div className="pb-16">
                 <h2 className="section-title">{config.football.title}</h2>
-                <div className="block mb-2 md:hidden">
+                <div className="mb-2 block md:hidden">
                   <Slider {...settings}>
                     {footballPosts.map((post, index) => (
                       <Slide post={post} index={index} />
@@ -199,11 +196,11 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
                   </div>
                 </div>
               </div>
-            )} */}
+            )}
             {/* Football Posts end */}
 
             {/* Recent Posts start*/}
-            {/* <div className="pb-16 pt-0">
+            <div className="pb-16 pt-0">
               <div className="rounded border border-border px-6 pt-6 dark:border-darkmode-border">
                 <div className="row">
                   {allRecentPosts.map(post => (
@@ -213,11 +210,11 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
                   ))}
                 </div>
               </div>
-            </div> */}
+            </div>
             {/* Recent Posts end */}
           </div>
           {/* Home Sidebar */}
-          {/* <HomeSidebar className={'lg:mt-[4.5rem]'} postData={sidePosts} /> */}
+          <HomeSidebar className={'lg:mt-[4.5rem]'} postData={sidePosts} />
         </div>
       </div>
     </Base>
@@ -228,76 +225,39 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 export default withErrorBoundary(Home);
 
 // Fetch data for the homepage
-// export const getStaticProps = async () => {
-//   const config = CONFIG.home;
-//   const refresh_home_page_interval = 60;
-
-//   // Fetch all types of posts concurrently using Promise.all
-//   const [allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
-//     // getAllPosts('', '', '', 5),
-//     getAllPostsWithContent('', '', '', 4),
-//     config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
-//     config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
-//     config.nba.enable ? getAllPostsWithContent('nba', '', '', 3) : [],
-//     config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 3) : [],
-//     config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 3) : [],
-//   ]);
-
-//   // Extract the nodes from the fetched data
-//   // const posts = postsData.nodes;
-//   const allRecentPosts = allRecentPostsData.nodes;
-//   const cricketPosts = cricketPostsData.nodes;
-//   const footballPosts = footballPostsData.nodes;
-//   const nbaPosts = nbaPostsData.nodes;
-//   const ufcPosts = ufcPostsData.nodes;
-//   const motoGPosts = motoGPostsData.nodes;
-
-//   const sidePosts = {
-//     nba: {
-//       title: config.nba.title,
-//       posts: nbaPosts,
-//     },
-//     ufc: {
-//       title: config.ufc.title,
-//       posts: ufcPosts,
-//     },
-//     motoGP: {
-//       title: config.motoGP.title,
-//       posts: motoGPosts,
-//     },
-//     limit: 4,
-//   };
-
-//   return {
-//     props: {
-//       config,
-//       // posts,
-//       cricketPosts,
-//       footballPosts,
-//       sidePosts,
-//       allRecentPosts,
-//     },
-//     revalidate: refresh_home_page_interval,
-//   };
-// };
-
 export const getStaticProps = async () => {
   const config = CONFIG.home;
   const refresh_home_page_interval = 60;
 
   // Fetch all types of posts concurrently using Promise.all
-  const [cricketPostsData] = await Promise.all([ 
+  const [allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
+    // getAllPosts('', '', '', 5),
+    getAllPostsWithContent('', '', '', 4),
     config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
+    config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
+    config.nba.enable ? getAllPostsWithContent('nba', '', '', 3) : [],
+    config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 3) : [],
+    config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 3) : [],
   ]);
 
   // Extract the nodes from the fetched data
-
+  // const posts = postsData.nodes;
+  const allRecentPosts = allRecentPostsData.nodes;
   const cricketPosts = cricketPostsData.nodes;
+  const footballPosts = footballPostsData.nodes;
+  const nbaPosts = nbaPostsData.nodes;
+  const ufcPosts = ufcPostsData.nodes;
+  const motoGPosts = motoGPostsData.nodes;
+
+  const sidePosts = {
+    nba: { title: config.nba.title, posts: nbaPosts },
+    ufc: { title: config.ufc.title, posts: ufcPosts },
+    motoGP: { title: config.motoGP.title, posts: motoGPosts },
+    limit: 4,
+  };
+
   return {
-    props: {
-      config,
-      cricketPosts,
-    },
+    props: { cricketPosts, footballPosts, sidePosts, allRecentPosts },
     revalidate: refresh_home_page_interval,
   };
 };
