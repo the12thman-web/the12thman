@@ -1,4 +1,3 @@
-// Import necessary dependencies and components
 import CONFIG from '@config/config.json';
 import Base from '@layouts/Baseof';
 import ImageFallback from '@layouts/components/ImageFallback';
@@ -15,7 +14,7 @@ import Image from 'next/image';
 import withErrorBoundary from '../layouts/components/ErrorBoundary';
 
 // Get configuration settings from CONFIG
-const { summary_length, refresh_home_page_interval } = CONFIG.settings;
+// const { summary_length, refresh_home_page_interval } = CONFIG.settings;
 
 // Configuration for the carousel
 const settings = {
@@ -35,21 +34,20 @@ const settings = {
 
 const Slide = ({ post, index, trending }) => {
   return (
-    <div className="wrapper bg-gray-400 text-gray-900 antialiased" key={index}>
-      <div>
-        <Link href={'/' + post?.slug}>
-          <Image
-            src={post.featuredImage?.node?.sourceUrl}
-            placeholder="blur"
-            blurDataURL={post.featuredImage?.node?.sourceUrl}
-            // loading="lazy"
-            alt="post"
-            class="w-full rounded-lg object-cover object-center shadow-md"
-            width={405}
-            height={228}
-          />
-
-          <div className="relative -mt-16 px-4">
+    <div className="bg-gray-400 text-gray-900 antialiased" key={index}>
+      <Link href={'/' + post?.slug}>
+        <div className="relative">
+          <div className="relative h-60 w-full">
+            <Image
+              src={post.featuredImage?.node?.sourceUrl}
+              placeholder="blur"
+              blurDataURL={post.featuredImage?.node?.sourceUrl}
+              alt="post"
+              class="w-full object-cover object-center"
+              fill={true}
+            />
+          </div>
+          <div className="absolute bottom-1 px-4">
             <div className="rounded-lg bg-white p-4 shadow-lg">
               {trending ? (
                 <div className="flex items-baseline">
@@ -65,8 +63,8 @@ const Slide = ({ post, index, trending }) => {
               </div>
             </div>
           </div>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 };
@@ -82,7 +80,6 @@ const PostsCard = ({ post, i, arr }) => {
         height={85}
         placeholder="blur"
         blurDataURL={post.featuredImage?.node?.sourceUrl}
-        loading="lazy"
       />
       <div>
         <h3 className="h5 mb-2">
@@ -102,7 +99,7 @@ const PostsCard = ({ post, i, arr }) => {
 };
 
 // Define the Home component
-const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
+const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
   return (
     <Base>
       {/* [Web View] Top caraousel Start */}
@@ -110,7 +107,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
         <div className="">
           <div className="mt-3">
             <Slider {...settings}>
-              {posts.map((post, index) => (
+              {allRecentPosts.map((post, index) => (
                 <Link className="block p-1" href={'/' + post?.slug}>
                   <div className="relative flex h-60 flex-col gap-2 rounded-xl border bg-white p-2 shadow-lg md:h-32 md:flex-row   " key={index}>
                     <div className="relative h-full w-full md:w-1/3">
@@ -145,12 +142,12 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
       {/* Home page content start */}
       <div className="container px-1">
         <div className="row items-start">
-          <div className="mb-12 lg:col-8 lg:mb-0">
+          <div className="lg:col-8 lg:mb-0">
             {/* Cricket posts start*/}
             {config.cricket.enable && (
-              <div className="py-16 pt-2">
+              <div className="pb-16 pt-2">
                 <h2 className="section-title">{config.cricket.title}</h2>
-                <div className="block md:hidden lg:hidden xl:hidden">
+                <div className="mb-2 block md:hidden">
                   <Slider {...settings}>
                     {cricketPosts.map((post, index) => (
                       <Slide post={post} index={index} />
@@ -158,12 +155,12 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
                   </Slider>
                 </div>
 
-                <div className="rounded border border-border p-6 dark:border-darkmode-border">
-                  <div className="mt-10 grid grid-cols-2 grid-rows-2 gap-6  sm:mt-16 ">
-                    <article className="relative col-span-2 row-span-2 md:col-span-1">
+                <div className="rounded border border-border p-4 dark:border-darkmode-border">
+                  <div className="grid grid-cols-2 grid-rows-2 gap-6">
+                    <article className="relative col-span-2 row-span-2 hidden md:col-span-1 md:block">
                       <Post post={cricketPosts[0]} featured={true} />
                     </article>
-                    <article className="scrollbar-w-[10px] col-span-2 row-span-2 mt-8  max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark sm:col-span-1 md:col-span-1 md:mt-0">
+                    <article className="scrollbar-w-[10px] col-span-2 row-span-2 max-h-[480px]  scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark sm:col-span-1 md:col-span-1 ">
                       {cricketPosts.slice(1, cricketPosts.length).map((post, i, arr) => (
                         <PostsCard post={post} i={i} arr={arr} />
                       ))}
@@ -176,9 +173,9 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
 
             {/* Football Posts start */}
             {config.football.enable && (
-              <div className="py-16">
+              <div className="pb-16">
                 <h2 className="section-title">{config.football.title}</h2>
-                <div className="block md:hidden lg:hidden xl:hidden">
+                <div className="mb-2 block md:hidden">
                   <Slider {...settings}>
                     {footballPosts.map((post, index) => (
                       <Slide post={post} index={index} />
@@ -187,15 +184,15 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
                 </div>
 
                 <div className="rounded border border-border p-6 dark:border-darkmode-border">
-                  <div className="row">
-                    <div className="md:col-6">
+                  <div className="grid grid-cols-2 grid-rows-2 gap-6">
+                    <article className="relative col-span-2 row-span-2 hidden md:col-span-1 md:block">
                       <Post post={footballPosts[0]} featured={true} />
-                    </div>
-                    <div className="scrollbar-w-[10px] mt-8 max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border md:col-6 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark md:mt-0">
+                    </article>
+                    <article className="scrollbar-w-[10px] col-span-2 row-span-2 max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark sm:col-span-1 md:col-span-1">
                       {footballPosts.slice(1, footballPosts.length).map((post, i, arr) => (
                         <PostsCard post={post} i={i} arr={arr} />
                       ))}
-                    </div>
+                    </article>
                   </div>
                 </div>
               </div>
@@ -203,7 +200,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
             {/* Football Posts end */}
 
             {/* Recent Posts start*/}
-            <div className="py-16 pt-0">
+            {/* <div className="pb-16 pt-0">
               <div className="rounded border border-border px-6 pt-6 dark:border-darkmode-border">
                 <div className="row">
                   {allRecentPosts.map(post => (
@@ -213,7 +210,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* Recent Posts end */}
           </div>
           {/* Home Sidebar */}
@@ -233,8 +230,8 @@ export const getStaticProps = async () => {
   const refresh_home_page_interval = 60;
 
   // Fetch all types of posts concurrently using Promise.all
-  const [postsData, allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
-    getAllPosts('', '', '', 5),
+  const [allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
+    // getAllPosts('', '', '', 5),
     getAllPostsWithContent('', '', '', 4),
     config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
     config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
@@ -244,7 +241,7 @@ export const getStaticProps = async () => {
   ]);
 
   // Extract the nodes from the fetched data
-  const posts = postsData.nodes;
+  // const posts = postsData.nodes;
   const allRecentPosts = allRecentPostsData.nodes;
   const cricketPosts = cricketPostsData.nodes;
   const footballPosts = footballPostsData.nodes;
@@ -253,30 +250,14 @@ export const getStaticProps = async () => {
   const motoGPosts = motoGPostsData.nodes;
 
   const sidePosts = {
-    nba: {
-      title: config.nba.title,
-      posts: nbaPosts,
-    },
-    ufc: {
-      title: config.ufc.title,
-      posts: ufcPosts,
-    },
-    motoGP: {
-      title: config.motoGP.title,
-      posts: motoGPosts,
-    },
+    nba: { title: config.nba.title, posts: nbaPosts },
+    ufc: { title: config.ufc.title, posts: ufcPosts },
+    motoGP: { title: config.motoGP.title, posts: motoGPosts },
     limit: 4,
   };
 
   return {
-    props: {
-      config,
-      posts,
-      cricketPosts,
-      footballPosts,
-      sidePosts,
-      allRecentPosts,
-    },
+    props: { config, cricketPosts, footballPosts, sidePosts, allRecentPosts },
     revalidate: refresh_home_page_interval,
   };
 };
