@@ -99,7 +99,7 @@ const PostsCard = ({ post, i, arr }) => {
 };
 
 // Define the Home component
-const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
+const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
   return (
     <Base>
       {/* [Web View] Top caraousel Start */}
@@ -200,7 +200,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
             {/* Football Posts end */}
 
             {/* Recent Posts start*/}
-            <div className="pb-16 pt-0">
+            {/* <div className="pb-16 pt-0">
               <div className="rounded border border-border px-6 pt-6 dark:border-darkmode-border">
                 <div className="row">
                   {allRecentPosts.map(post => (
@@ -210,7 +210,7 @@ const Home = ({ config, posts, cricketPosts, footballPosts, sidePosts, allRecent
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* Recent Posts end */}
           </div>
           {/* Home Sidebar */}
