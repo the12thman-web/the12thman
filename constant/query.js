@@ -30,6 +30,155 @@ export const GET_ALL_POST_QUERY = ` query AllPosts($category: String!,$search: S
             }
         }`
 
+export const GET_ALL_CATEGORY_POST_QUERY = ` query AllCategoricalPost{
+  cricketPosts: posts(where: {categoryIn: ["2"]}, first: 5) {
+    nodes {
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      postId
+      slug
+      title
+      date
+      
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+  footballPosts: posts(where: {categoryIn: ["19"]}, first: 5) {
+    nodes {
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      postId
+      slug
+      title
+      date
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+  nbaPosts: posts(where: {categoryIn: ["148"]}, first: 3) {
+    nodes {
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      postId
+      slug
+      title
+      date
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+  ufcPosts: posts(where: {categoryIn: ["945"]}, first: 3) {
+    nodes {
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      postId
+      slug
+      title
+      date
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+  motoGPosts: posts(where: {categoryIn: ["14228"]}, first: 3) {
+    nodes {
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      postId
+      slug
+      title
+      date
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+}
+`        
 
 export const GET_ALL_POST_WITH_CONTENT_QUERY = `
         query AllPosts($category: String!,$search: String!,,$tag: String!, $limit:Int!) {

@@ -5,11 +5,11 @@ import Post from '@layouts/partials/Post';
 import dateFormat from '@lib/utils/dateFormat';
 import Link from 'next/link';
 import { FaReadme, FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
-import { getAllPosts, getAllPostsWithContent } from '@lib/graphql';
+import { getAllPosts, getAllPostsWithContent, getCategoricalPosts } from '@lib/graphql';
 import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';
 import { getTimeAgo } from '@lib/utils/getTimeAgo';
-import readingTime from '@lib/utils/readingTime';
+// import readingTime from '@lib/utils/readingTime';
 import Image from 'next/image';
 import withErrorBoundary from '../layouts/components/ErrorBoundary';
 
@@ -39,12 +39,11 @@ const Slide = ({ post, index, trending }) => {
         <div className="relative">
           <div className="relative h-60 w-full">
             <Image
+              className="w-full object-cover object-center"
               src={post.featuredImage?.node?.sourceUrl}
-              placeholder="blur"
-              blurDataURL={post.featuredImage?.node?.sourceUrl}
               alt="post"
-              class="w-full object-cover object-center"
               fill={true}
+              priority={true}
             />
           </div>
           <div className="absolute bottom-1 px-4">
@@ -58,8 +57,8 @@ const Slide = ({ post, index, trending }) => {
               <div className="flex-right flex">
                 <FaRegClock className="ml-2 mr-1 mt-1.5" />
                 {getTimeAgo(new Date(post.date))}
-                <FaReadme className="ml-2 mr-1 mt-1.5" />
-                {readingTime(post.content)}
+                {/* <FaReadme className="ml-2 mr-1 mt-1.5" /> */}
+                {/* {readingTime(post.content)} */}
               </div>
             </div>
           </div>
@@ -78,8 +77,7 @@ const PostsCard = ({ post, i, arr }) => {
         alt={post.title}
         width={105}
         height={85}
-        placeholder="blur"
-        blurDataURL={post.featuredImage?.node?.sourceUrl}
+        priority={true}
       />
       <div>
         <h3 className="h5 mb-2">
@@ -99,7 +97,7 @@ const PostsCard = ({ post, i, arr }) => {
 };
 
 // Define the Home component
-const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
+const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts, allCategoricalPostData }) => {
   return (
     <Base>
       {/* [Web View] Top caraousel Start */}
@@ -112,13 +110,11 @@ const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts }
                   <div className="relative flex h-60 flex-col gap-2 rounded-xl border bg-white p-2 shadow-lg md:h-32 md:flex-row   " key={index}>
                     <div className="relative h-full w-full md:w-1/3">
                       <Image
+                        className="h-full w-full rounded-lg object-cover object-center"
                         src={post.featuredImage?.node?.sourceUrl}
                         alt="post"
-                        className="h-full w-full rounded-lg object-cover object-center"
                         fill={true}
-                        placeholder="blur"
-                        blurDataURL={post.featuredImage?.node?.sourceUrl}
-                        // loading='lazy'
+                        priority={true}
                       />
                     </div>
                     <div className="flex w-full flex-col gap-1 md:w-2/3 md:p-3">
@@ -199,19 +195,6 @@ const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts }
             )}
             {/* Football Posts end */}
 
-            {/* Recent Posts start*/}
-            {/* <div className="pb-16 pt-0">
-              <div className="rounded border border-border px-6 pt-6 dark:border-darkmode-border">
-                <div className="row">
-                  {allRecentPosts.map(post => (
-                    <div className="mb-8 md:col-6" key={post.slug}>
-                      <Post post={post} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div> */}
-            {/* Recent Posts end */}
           </div>
           {/* Home Sidebar */}
           <HomeSidebar className={'lg:mt-[4.5rem]'} postData={sidePosts} />
@@ -230,34 +213,33 @@ export const getStaticProps = async () => {
   const refresh_home_page_interval = 60;
 
   // Fetch all types of posts concurrently using Promise.all
-  const [allRecentPostsData, cricketPostsData, footballPostsData, nbaPostsData, ufcPostsData, motoGPostsData] = await Promise.all([
-    // getAllPosts('', '', '', 5),
+  const [allRecentPostsData,allCategoricalPostData] = await Promise.all([
     getAllPostsWithContent('', '', '', 4),
-    config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
-    config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
-    config.nba.enable ? getAllPostsWithContent('nba', '', '', 3) : [],
-    config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 3) : [],
-    config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 3) : [],
+    getCategoricalPosts()
   ]);
+
+  // getAllPosts('', '', '', 5),
+  // config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
+  // config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
+  // config.nba.enable ? getAllPostsWithContent('nba', '', '', 3) : [],
+  // config.ufc.enable ? getAllPostsWithContent('ufc', '', '', 3) : [],
+  // config.motoGP.enable ? getAllPostsWithContent('', 'motoGP', '', 3) : [],
 
   // Extract the nodes from the fetched data
   // const posts = postsData.nodes;
+
   const allRecentPosts = allRecentPostsData.nodes;
-  const cricketPosts = cricketPostsData.nodes;
-  const footballPosts = footballPostsData.nodes;
-  const nbaPosts = nbaPostsData.nodes;
-  const ufcPosts = ufcPostsData.nodes;
-  const motoGPosts = motoGPostsData.nodes;
+  const { cricketPosts, footballPosts, nbaPosts, ufcPosts, motoGPosts } = allCategoricalPostData;
 
   const sidePosts = {
-    nba: { title: config.nba.title, posts: nbaPosts },
-    ufc: { title: config.ufc.title, posts: ufcPosts },
-    motoGP: { title: config.motoGP.title, posts: motoGPosts },
+    nba: { title: config.nba.title, posts: nbaPosts.nodes },
+    ufc: { title: config.ufc.title, posts: ufcPosts.nodes },
+    motoGP: { title: config.motoGP.title, posts: motoGPosts.nodes },
     limit: 4,
   };
 
   return {
-    props: { config, cricketPosts, footballPosts, sidePosts, allRecentPosts },
+    props: { config, cricketPosts : cricketPosts.nodes, footballPosts : footballPosts.nodes, sidePosts, allRecentPosts  },
     revalidate: refresh_home_page_interval,
   };
 };
