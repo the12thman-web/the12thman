@@ -2,7 +2,6 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import InnerPagination from "@layouts/components/InnerPagination";
 import dateFormat from "@lib/utils/dateFormat";
-// import { DiscussionEmbed } from "disqus-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +27,7 @@ import useWindow from "../hooks/useWindow";
 import { MyAdComponent } from "./partials/AdComponent";
 import { UniBotsPlayerComponent } from "./partials/UniBotsPlayer";
 import { useEffect, useRef } from "react";
+import MGIDAd from "./partials/MGIDAd";
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -169,9 +169,10 @@ const PostSingle = ({ frontmatter, content, slug, trendingPosts }) => {
                   ))} */}
                   <div className="has-drop-cap-fluid" ref={contentRef}></div>
                 </div>
+                
                 {config.settings.InnerPaginationOptions.enableBottom && <InnerPagination posts={posts} date={date} />}
               </article>
-              {/* <div className="mt-16">{disqus.enable && <DiscussionEmbed key={theme} shortname={disqus.shortname} config={disqusConfig} />}</div> */}
+              <MGIDAd />
             </div>
             <Sidebar trendingPosts={trendingPosts.filter(post => post.slug !== slug)} categories={categories} />
             {/** UniBots Player */}
