@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, Sidebar, SubMenu, MenuItem } from 'react-pro-sidebar';
 
-export const MobileMenuSideBar = ({ showMenu }) => {
+const MobileMenuSideBar = ({ showMenu }) => {
   return (
     <Sidebar
       defaultCollapsed={showMenu}
@@ -543,3 +543,5 @@ export const MobileMenuSideBar = ({ showMenu }) => {
     </Sidebar>
   );
 };
+
+export default MobileMenuSideBar

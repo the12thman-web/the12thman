@@ -1,17 +1,20 @@
 import Logo from '@components/Logo';
 import menu from '@config/menu.json';
 import socical from '@config/social.json';
+import useWindow from '@hooks/useWindow';
 import Social from '@layouts/components/Social';
+import dynamic from 'next/dynamic';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { MobileMenuSideBar } from './MobileMenuSidebar';
 
+const MobileMenuSideBar = dynamic(() => import('./MobileMenuSidebar'));
 
 const Header = () => {
   // distructuring the main menu from menu object
   const { main } = menu;
+  const isMobile = useWindow(767) < 768
 
   // states declaration
 
@@ -30,8 +33,8 @@ const Header = () => {
   }, [showMenu]);
 
   return (
-    <header className="top-0 z-50 border-b bg-body pt-[23px] pb-[12px] lg:py-[33px] dark:border-darkmode-border dark:bg-darkmode-body">
-      <nav className="relative flex flex-wrap items-center justify-between container px-1 sm:px-7">
+    <header className="top-0 z-50 border-b bg-body pb-[12px] pt-[23px] dark:border-darkmode-border dark:bg-darkmode-body lg:py-[33px]">
+      <nav className="container relative flex flex-wrap items-center justify-between px-1 sm:px-7">
         <button onClick={() => setShowMenu(!showMenu)} className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white lg:hidden">
           {showMenu ? (
             <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
@@ -57,7 +60,7 @@ const Header = () => {
                 <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)" />
               </svg>
             </button>
-            <ul id="nav-menu" className="navbar-nav ml-0 w-full group-hover:scale-100 md:w-auto md:space-x-1 lg:flex xl:space-x-2">
+            {isMobile ? null : <ul id="nav-menu" className="navbar-nav ml-0 w-full group-hover:scale-100 md:w-auto md:space-x-1 lg:flex xl:space-x-2">
               {main.map((menu, i) => (
                 <React.Fragment key={`menu-${i}`}>
                   {menu.hasChildren ? (
@@ -92,13 +95,14 @@ const Header = () => {
                   )}
                 </React.Fragment>
               ))}
-            </ul>
+            </ul>}
             {/* header social */}
             <Social source={socical} className="socials" />
           </div>
         </div>
       </nav>
 
+      
       {/* <!-- MOBILE sidebar menu  --> */}
       <div className="lg:hidden">
         <MobileMenuSideBar showMenu={showMenu}></MobileMenuSideBar>
