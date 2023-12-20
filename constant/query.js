@@ -31,6 +31,38 @@ export const GET_ALL_POST_QUERY = ` query AllPosts($category: String!,$search: S
         }`
 
 export const GET_ALL_CATEGORY_POST_QUERY = ` query AllCategoricalPost{
+  allRecentPosts: posts(
+    where: {status: PUBLISH, orderby: {field: DATE, order: DESC}, search: "", tag: ""}
+    first: 4
+  ) {
+    nodes {
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+      postId
+      slug
+      title
+      date
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }
   cricketPosts: posts(where: {categoryIn: ["2"]}, first: 5) {
     nodes {
       author {
