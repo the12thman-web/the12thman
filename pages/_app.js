@@ -49,10 +49,7 @@ const App = ({ Component, pageProps }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (
-        process.env.NODE_ENV === 'production' &&
-        config.params.tag_manager_id
-      ) {
+      if (process.env.NODE_ENV === 'production' && config.params.tag_manager_id) {
         TagManager.initialize(tagManagerArgs);
       }
     }, 5000);
@@ -78,25 +75,14 @@ const App = ({ Component, pageProps }) => {
 
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-            <link rel="preload" as="font" href={`https://fonts.googleapis.com/css2?family=${pf}${sf ? '&family=' + sf : ''}&display=swap`}  />
+            <link rel="preload" as="font" href={`https://fonts.googleapis.com/css2?family=${pf}${sf ? '&family=' + sf : ''}&display=swap`} />
 
-            <script
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803"
-              crossOrigin="anonymous"
-              strategy="lazyOnload"
-            />
-            <script
-              async
-              src="https://cdn.unibotscdn.com/ubplayer/player.js"
-              strategy="defer"
-            ></script>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803" crossOrigin="anonymous" strategy="lazyOnload" />
+            <script async src="https://cdn.unibotscdn.com/ubplayer/player.js" strategy="defer" />
+            <script async src="https://jsc.mgid.com/t/h/the12thman.in.1528623.js"  />
 
             {/* responsive meta */}
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1, maximum-scale=5"
-            />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
           </Head>
           <ThemeProvider attribute="class" defaultTheme={default_theme}>
             <Component {...pageProps} />

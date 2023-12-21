@@ -44,6 +44,7 @@ const Slide = ({ post, index, trending }) => {
               alt="post"
               fill={true}
               priority={true}
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="absolute bottom-1 px-4">
@@ -115,6 +116,7 @@ const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts, 
                         alt="post"
                         fill={true}
                         priority={true}
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                     <div className="flex w-full flex-col gap-1 md:w-2/3 md:p-3">
@@ -212,12 +214,9 @@ export const getStaticProps = async () => {
   const config = CONFIG.home;
   const refresh_home_page_interval = 60;
 
-  // Fetch all types of posts concurrently using Promise.all
-  const [allRecentPostsData,allCategoricalPostData] = await Promise.all([
-    getAllPostsWithContent('', '', '', 4),
-    getCategoricalPosts()
-  ]);
+  const allCategoricalPostData = await getCategoricalPosts()
 
+  // getAllPostsWithContent('', '', '', 4),
   // getAllPosts('', '', '', 5),
   // config.cricket.enable ? getAllPostsWithContent('cricket', '', '', 6) : [],
   // config.football.enable ? getAllPostsWithContent('football', '', '', 4) : [],
@@ -228,8 +227,8 @@ export const getStaticProps = async () => {
   // Extract the nodes from the fetched data
   // const posts = postsData.nodes;
 
-  const allRecentPosts = allRecentPostsData.nodes;
-  const { cricketPosts, footballPosts, nbaPosts, ufcPosts, motoGPosts } = allCategoricalPostData;
+  // const allRecentPosts = allRecentPostsData.nodes;
+  const { cricketPosts, footballPosts, nbaPosts, ufcPosts, motoGPosts, allRecentPosts } = allCategoricalPostData;
 
   const sidePosts = {
     nba: { title: config.nba.title, posts: nbaPosts.nodes },
@@ -239,7 +238,7 @@ export const getStaticProps = async () => {
   };
 
   return {
-    props: { config, cricketPosts : cricketPosts.nodes, footballPosts : footballPosts.nodes, sidePosts, allRecentPosts  },
+    props: { config, cricketPosts : cricketPosts.nodes, footballPosts : footballPosts.nodes, sidePosts, allRecentPosts : allRecentPosts.nodes  },
     revalidate: refresh_home_page_interval,
   };
 };
