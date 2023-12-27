@@ -77,7 +77,6 @@ const App = ({ Component, pageProps }) => {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
             <link rel="preload" as="font" href={`https://fonts.googleapis.com/css2?family=${pf}${sf ? '&family=' + sf : ''}&display=swap`} />
 
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803" crossOrigin="anonymous" strategy="lazyOnload" />
             {/* responsive meta */}
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
           </Head>
