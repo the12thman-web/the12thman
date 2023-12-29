@@ -2,7 +2,8 @@ import config from "@config/config.json";
 import Logo from "@layouts/components/Logo";
 import { useRouter } from "next/router";
 import useWindow from "../../hooks/useWindow";
-import { MyAdComponent } from "./AdComponent";
+import dynamic from "next/dynamic";
+const MyAdComponent = dynamic(() => import('./AdComponent'));
 
 const Footer = () => {
   const { copyright, footer_content } = config.params;
