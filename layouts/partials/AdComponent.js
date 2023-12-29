@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const MyAdComponent = ({ slot, adHeight, adWidth, isMobile }) => {
+const MyAdComponent = ({ slot, adHeight, adWidth, isMobile }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const script = document.createElement('script');
@@ -8,18 +8,27 @@ export const MyAdComponent = ({ slot, adHeight, adWidth, isMobile }) => {
       script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9891586352099803';
       script.crossOrigin = 'anonymous';
       script.strategy = 'lazyOnload';
-      document.head.appendChild(script);
 
-      // Try pushing to adsbygoogle, and catch errors
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (error) {
-        console.log(error);
-      }
+      const timeoutId = setTimeout(() => {
+        document.body.appendChild(script);
 
-      return () => {
-        document.head.removeChild(script);
+        // Try pushing to adsbygoogle, and catch errors
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+          console.log(error);
+        }
+      }, 1000);
+
+      const cleanup = () => {
+        clearTimeout(timeoutId);
+        if (document.body.contains(script)) {
+          document.body.removeChild(script);
+        }
       };
+
+      // Register the cleanup function
+      return cleanup;
     }
   }, []);
 
@@ -35,3 +44,5 @@ export const MyAdComponent = ({ slot, adHeight, adWidth, isMobile }) => {
     ></ins>
   );
 };
+
+export default MyAdComponent;
