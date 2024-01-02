@@ -24,10 +24,11 @@ import {
 import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
 import useWindow from "../hooks/useWindow";
-import { MyAdComponent } from "./partials/AdComponent";
 import { UniBotsPlayerComponent } from "./partials/UniBotsPlayer";
 import { useEffect, useRef } from "react";
 import MGIDAd from "./partials/MGIDAd";
+import dynamic from "next/dynamic";
+const MyAdComponent = dynamic(() => import('./partials/AdComponent'));
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
