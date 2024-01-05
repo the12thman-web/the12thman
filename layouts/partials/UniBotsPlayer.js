@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const UniBotsPlayerComponent = ({ slot, adHeight, adWidth, isMobile }) => {
+ const UniBotsPlayerComponent = ({ slot, adHeight, adWidth, isMobile }) => {
   useEffect(() => {
     // Check if the window object is defined to avoid issues during server-side rendering
     if (typeof window !== 'undefined') {
@@ -26,3 +26,5 @@ export const UniBotsPlayerComponent = ({ slot, adHeight, adWidth, isMobile }) =>
 
   return <></>;
 };
+
+export default UniBotsPlayerComponent
