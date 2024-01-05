@@ -24,11 +24,13 @@ import {
 import { useRouter } from 'next/router';
 import readingTime from "@lib/utils/readingTime";
 import useWindow from "../hooks/useWindow";
-import { UniBotsPlayerComponent } from "./partials/UniBotsPlayer";
+
 import { useEffect, useRef } from "react";
-import MGIDAd from "./partials/MGIDAd";
+
 import dynamic from "next/dynamic";
 const MyAdComponent = dynamic(() => import('./partials/AdComponent'));
+const UniBotsPlayerComponent = dynamic(()=> import('./partials/UniBotsPlayer'));
+const MGIDAd = dynamic(() => import('./partials/MGIDAd'));
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
@@ -95,7 +97,7 @@ const PostSingle = ({ frontmatter, content, slug, trendingPosts }) => {
     };
   }, [content]);
 
-  console.log({ content, featuredImage });
+  // console.log({ content, featuredImage });
   return (
     <Base title={title} description={description} metaKeywords={metaKeywords} schema={article_schema}>
       <section className="single-blog mt-1 py-16 pt-1">

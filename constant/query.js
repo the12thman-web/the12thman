@@ -294,6 +294,38 @@ export const GET_SINGLE_POST_QUERY = `query post($slug: ID!) {
         }
       }
       title
+    },
+    trendingPosts: posts(
+      where: {status: PUBLISH, orderby: {field: DATE, order: DESC}, categoryName: "", search: "", tag: ""}
+      first: 10
+    ) {
+      nodes {
+        author {
+          node {
+            name
+          }
+        }
+        categories {
+          nodes {
+            name
+          }
+        }
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+        postId
+        slug
+        title
+        date
+        tags {
+          nodes {
+            name
+          }
+        }
+      }
     }
   }`
 
