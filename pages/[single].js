@@ -1,10 +1,11 @@
 import config from '@config/config.json';
 import NotFound from '@layouts/404';
-import PostSingle from '@layouts/PostSingle';
 import { getAllPosts, getPost, getAllPostsWithContent } from '@lib/graphql';
 import { NextSeo } from 'next-seo';
 import { useEffect } from 'react';
 const SITE_URL = config.site.base_url;
+import dynamic from 'next/dynamic';
+const PostSingle = dynamic(() => import('../layouts/PostSingle'));
 import ReactGA from 'react-ga';
 
 // post single layout
@@ -62,16 +63,16 @@ export const getStaticPaths = async () => {
 // get post single content
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
-  const post = await getPost(single);
-  const trendingPosts = await getAllPosts('', '', '', 10);
+  const data = await getPost(single);
+  // const trendingPosts = await getAllPosts('', '', '', 10);
   // const relatedPosts = await getAllPostsWithContent(post?.categories.nodes[0].name);
   return {
     props: {
-      post: post,
+      post: data.post,
       slug: single,
       relatedPosts: [],
-      trendingPosts: trendingPosts?.nodes || [],
-      yoastSEO: post?.seo || null,
+      trendingPosts: data?.trendingPosts.nodes || [],
+      yoastSEO: data?.post?.seo || null,
     },
   };
 };
