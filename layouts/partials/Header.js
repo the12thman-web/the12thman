@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 
 const MobileMenuSideBar = dynamic(() => import('./MobileMenuSidebar'));
 
@@ -62,7 +62,7 @@ const Header = () => {
             </button>
             {isMobile ? null : <ul id="nav-menu" className="navbar-nav ml-0 w-full group-hover:scale-100 md:w-auto md:space-x-1 lg:flex xl:space-x-2">
               {main.map((menu, i) => (
-                <React.Fragment key={`menu-${i}`}>
+                <Fragment key={`menu-${i}`}>
                   {menu.hasChildren ? (
                     <li className="nav-item nav-dropdown group relative">
                       <Link href={menu.url} className={`nav-link ${menu.children.map(c => c.url).includes(router.asPath) && 'active'} inline-flex items-center`}>
@@ -93,7 +93,7 @@ const Header = () => {
                       </Link>
                     </li>
                   )}
-                </React.Fragment>
+                </Fragment>
               ))}
             </ul>}
             {/* header social */}
@@ -105,7 +105,7 @@ const Header = () => {
       
       {/* <!-- MOBILE sidebar menu  --> */}
       <div className="lg:hidden">
-        <MobileMenuSideBar showMenu={showMenu}></MobileMenuSideBar>
+        {showMenu ? <MobileMenuSideBar showMenu={showMenu}></MobileMenuSideBar> : null}
       </div>
     </header>
   );

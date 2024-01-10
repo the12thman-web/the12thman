@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
- const UniBotsPlayerComponent = ({ slot, adHeight, adWidth, isMobile }) => {
+const UniBotsPlayerComponent = ({ slot, adHeight, adWidth, isMobile }) => {
   useEffect(() => {
     // Check if the window object is defined to avoid issues during server-side rendering
     if (typeof window !== 'undefined') {
@@ -10,21 +10,28 @@ import { useEffect } from 'react';
       script.src = 'https://cdn.unibotscdn.com/ubplayer/player.js';
       script.defer = true;
 
-      document.body.appendChild(script);
+      const timeoutId = setTimeout(() => {
+        document.body.appendChild(script);
 
-      // Define the unibots global variable and push the command
-      window.unibots = window.unibots || { cmd: [] };
-      window.unibots.cmd.push(() => {
-        window.unibotsPlayer('the12thman');
-      });
+        // Define the unibots global variable and push the command
+        window.unibots = window.unibots || { cmd: [] };
+        window.unibots.cmd.push(() => {
+          window.unibotsPlayer('the12thman');
+        });
+      }, 3000);
 
-      return () => {
-        document.body.removeChild(script);
+      const cleanup = () => {
+        clearTimeout(timeoutId);
+        if (document.body.contains(script)) {
+          document.body.removeChild(script);
+        }
       };
+
+      return cleanup;
     }
   }, []);
 
   return <></>;
 };
 
-export default UniBotsPlayerComponent
+export default UniBotsPlayerComponent;
