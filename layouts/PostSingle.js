@@ -1,41 +1,33 @@
-import config from "@config/config.json";
-import Base from "@layouts/Baseof";
-import InnerPagination from "@layouts/components/InnerPagination";
-import dateFormat from "@lib/utils/dateFormat";
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import Link from "next/link";
-import { FaRegCalendar, FaUserAlt, FaReadme } from "react-icons/fa";
-import Sidebar from "./partials/Sidebar";
+import config from '@config/config.json';
+import Base from '@layouts/Baseof';
+import InnerPagination from '@layouts/components/InnerPagination';
+import dateFormat from '@lib/utils/dateFormat';
+import { useTheme } from 'next-themes';
+import Link from 'next/link';
+import { FaRegCalendar, FaUserAlt, FaReadme } from 'react-icons/fa';
+
 import CONFIG from '@config/config.json';
 
 const BASE_URL = CONFIG.site.base_url;
 
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  PinterestShareButton,
-  PinterestIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-} from 'next-share';
+import { FacebookShareButton, FacebookIcon, PinterestShareButton, PinterestIcon, WhatsappShareButton, WhatsappIcon, LinkedinShareButton, LinkedinIcon } from 'next-share';
 import { useRouter } from 'next/router';
-import readingTime from "@lib/utils/readingTime";
-import useWindow from "../hooks/useWindow";
+import readingTime from '@lib/utils/readingTime';
+import useWindow from '../hooks/useWindow';
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from 'react';
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 const MyAdComponent = dynamic(() => import('./partials/AdComponent'));
-const UniBotsPlayerComponent = dynamic(()=> import('./partials/UniBotsPlayer'));
+const UniBotsPlayerComponent = dynamic(() => import('./partials/UniBotsPlayer'));
 const MGIDAd = dynamic(() => import('./partials/MGIDAd'));
+const Sidebar = dynamic(() => import('./partials/Sidebar'));
 
 const { disqus } = config;
 const { meta_author } = config.metadata;
 
 const PostSingle = ({ frontmatter, content, slug, trendingPosts }) => {
+  const [isVisible, setIsVisible] = useState(false);
   const isMobile = useWindow(767) < 768;
 
   let { tags, description, title, date, featuredImage, categories, metaKeywords } = frontmatter;
@@ -97,7 +89,27 @@ const PostSingle = ({ frontmatter, content, slug, trendingPosts }) => {
     };
   }, [content]);
 
-  // console.log({ content, featuredImage });
+  const handleScroll = () => {
+    const scrollThreshold = window.innerHeight / 2;
+
+    // Check if the user has scrolled to a certain position
+    if (window.scrollY > scrollThreshold) {
+      setIsVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      window.addEventListener('scroll', handleScroll);
+    } else {
+      setIsVisible(true); // Always visible on desktop
+    }
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <Base title={title} description={description} metaKeywords={metaKeywords} schema={article_schema}>
       <section className="single-blog mt-1 py-16 pt-1">
@@ -172,15 +184,15 @@ const PostSingle = ({ frontmatter, content, slug, trendingPosts }) => {
                   ))} */}
                   <div className="has-drop-cap-fluid" ref={contentRef}></div>
                 </div>
-                
+
                 {config.settings.InnerPaginationOptions.enableBottom && <InnerPagination posts={posts} date={date} />}
               </article>
               <MGIDAd />
             </div>
-            <Sidebar trendingPosts={trendingPosts.filter(post => post.slug !== slug)} categories={categories} />
+            {isVisible ? <Sidebar trendingPosts={trendingPosts.filter(post => post.slug !== slug)} categories={categories} /> : null}
             {/** UniBots Player */}
             <div id="div-ub-the12thman">
-              <UniBotsPlayerComponent></UniBotsPlayerComponent>
+              <UniBotsPlayerComponent />
             </div>
           </div>
         </div>
@@ -198,14 +210,11 @@ const PostSingle = ({ frontmatter, content, slug, trendingPosts }) => {
         </div> */}
       </section>
       {/* Mobile Share button links */}
-        <div className="ads-block" style={{ width: '100%', bottom: '65px' }}>
-          {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
-        </div>
+      <div className="ads-block" style={{ width: '100%', bottom: '65px' }}>
+        {isMobile && <MyAdComponent slot="3700818465" adHeight="50px" adWidth="300px" isMobile={true}></MyAdComponent>}
+      </div>
 
-      <footer
-        className="fixed inset-x-0 bottom-0 block bg-neutral-100 p-4 md:hidden lg:hidden xl:hidden"
-        style={{ zIndex: '500' }}
-      >
+      <footer className="fixed inset-x-0 bottom-0 block bg-neutral-100 p-4 md:hidden lg:hidden xl:hidden" style={{ zIndex: '500' }}>
         <ul id="social_link" className="justify-around">
           <li className="list-inline-item">
             <FacebookShareButton url={BASE_URL + router.asPath}>
