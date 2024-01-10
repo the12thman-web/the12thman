@@ -4,7 +4,7 @@ import ImageFallback from '@layouts/components/ImageFallback';
 import Post from '@layouts/partials/Post';
 import dateFormat from '@lib/utils/dateFormat';
 import Link from 'next/link';
-import { FaReadme, FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
+import { FaRegCalendar, FaRegClock, FaUserAlt } from 'react-icons/fa';
 import { getAllPosts, getAllPostsWithContent, getCategoricalPosts } from '@lib/graphql';
 import HomeSidebar from '@layouts/partials/HomeSidebar';
 import Slider from 'react-slick';

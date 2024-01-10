@@ -1,6 +1,5 @@
 // pages/_app.js
-
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import TagManager from 'react-gtm-module';
@@ -8,13 +7,12 @@ import 'styles/style.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ReactGA from 'react-ga';
-import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
-import { ApolloProvider } from '@apollo/client'; // Import ApolloProvider
+// import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
+// import { ApolloProvider } from '@apollo/client'; 
 
 import config from '@config/config.json';
 import theme from '@config/theme.json';
 import { JsonContext } from 'context/state';
-import Script from 'next/script';
 import Hydration from '../layouts/components/Hydration';
 
 const GA_TRACKING_ID = config.site.ga_id;
@@ -57,15 +55,15 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   // Create an instance of the Apollo Client
-  const apolloClient = new ApolloClient({
-    cache: new InMemoryCache(),
-    link: new HttpLink({
-      uri: 'https://backendrsw.the12thman.in/graphql', // Replace with your GraphQL API URL
-    }),
-  });
+  // const apolloClient = new ApolloClient({
+  //   cache: new InMemoryCache(),
+  //   link: new HttpLink({
+  //     uri: 'https://backendrsw.the12thman.in/graphql', // Replace with your GraphQL API URL
+  //   }),
+  // });
 
   return (
-    <ApolloProvider client={apolloClient}>
+    // <ApolloProvider client={apolloClient}>
       <Hydration>
         <JsonContext>
           <Head>
@@ -85,7 +83,7 @@ const App = ({ Component, pageProps }) => {
           </ThemeProvider>
         </JsonContext>
       </Hydration>
-    </ApolloProvider>
+    // </ApolloProvider>
   );
 };
 
