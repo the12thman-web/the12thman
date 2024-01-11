@@ -12,6 +12,7 @@ import { getTimeAgo } from '@lib/utils/getTimeAgo';
 // import readingTime from '@lib/utils/readingTime';
 import Image from 'next/image';
 import withErrorBoundary from '../layouts/components/ErrorBoundary';
+import useWindow from '@hooks/useWindow';
 
 // Get configuration settings from CONFIG
 // const { summary_length, refresh_home_page_interval } = CONFIG.settings;
@@ -72,14 +73,7 @@ const Slide = ({ post, index, trending }) => {
 const PostsCard = ({ post, i, arr }) => {
   return (
     <div className={`mb-6 flex items-center pb-6 ${i !== arr.length - 1 && 'border-b border-border dark:border-darkmode-border'}`} key={`key-${i}`}>
-      <ImageFallback
-        className="mr-3 h-[85px] rounded object-cover"
-        src={post.featuredImage?.node?.sourceUrl}
-        alt={post.title}
-        width={105}
-        height={85}
-        priority={true}
-      />
+      <ImageFallback className="mr-3 h-[85px] rounded object-cover" src={post.featuredImage?.node?.sourceUrl} alt={post.title} width={105} height={85} priority={true} />
       <div>
         <h3 className="h5 mb-2">
           <Link href={`/${post.slug}`} className="block hover:text-primary">
@@ -98,7 +92,9 @@ const PostsCard = ({ post, i, arr }) => {
 };
 
 // Define the Home component
-const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts, allCategoricalPostData }) => {
+const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts }) => {
+  const isMobile = useWindow(767) < 768;
+  console.log({ isMobile });
   return (
     <Base>
       {/* [Web View] Top caraousel Start */}
@@ -155,9 +151,11 @@ const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts, 
 
                 <div className="rounded border border-border p-4 dark:border-darkmode-border">
                   <div className="grid grid-cols-2 grid-rows-2 gap-6">
-                    <article className="relative col-span-2 row-span-2 hidden md:col-span-1 md:block">
-                      <Post post={cricketPosts[0]} featured={true} />
-                    </article>
+                    {isMobile ? null : (
+                      <article className="relative col-span-2 row-span-2 hidden md:col-span-1 md:block">
+                        <Post post={cricketPosts[0]} featured={true} />
+                      </article>
+                    )}
                     <article className="scrollbar-w-[10px] col-span-2 row-span-2 max-h-[480px]  scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark sm:col-span-1 md:col-span-1 ">
                       {cricketPosts.slice(1, cricketPosts.length).map((post, i, arr) => (
                         <PostsCard post={post} i={i} arr={arr} />
@@ -183,9 +181,11 @@ const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts, 
 
                 <div className="rounded border border-border p-6 dark:border-darkmode-border">
                   <div className="grid grid-cols-2 grid-rows-2 gap-6">
-                    <article className="relative col-span-2 row-span-2 hidden md:col-span-1 md:block">
-                      <Post post={footballPosts[0]} featured={true} />
-                    </article>
+                    {isMobile ? null : (
+                      <article className="relative col-span-2 row-span-2 hidden md:col-span-1 md:block">
+                        <Post post={footballPosts[0]} featured={true} />
+                      </article>
+                    )}
                     <article className="scrollbar-w-[10px] col-span-2 row-span-2 max-h-[480px] scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-border dark:scrollbar-track-gray-800 dark:scrollbar-thumb-darkmode-theme-dark sm:col-span-1 md:col-span-1">
                       {footballPosts.slice(1, footballPosts.length).map((post, i, arr) => (
                         <PostsCard post={post} i={i} arr={arr} />
@@ -196,7 +196,6 @@ const Home = ({ config, cricketPosts, footballPosts, sidePosts, allRecentPosts, 
               </div>
             )}
             {/* Football Posts end */}
-
           </div>
           {/* Home Sidebar */}
           <HomeSidebar className={'lg:mt-[4.5rem]'} postData={sidePosts} />
@@ -214,7 +213,7 @@ export const getStaticProps = async () => {
   const config = CONFIG.home;
   const refresh_home_page_interval = 60;
 
-  const allCategoricalPostData = await getCategoricalPosts()
+  const allCategoricalPostData = await getCategoricalPosts();
 
   // getAllPostsWithContent('', '', '', 4),
   // getAllPosts('', '', '', 5),
@@ -238,7 +237,7 @@ export const getStaticProps = async () => {
   };
 
   return {
-    props: { config, cricketPosts : cricketPosts.nodes, footballPosts : footballPosts.nodes, sidePosts, allRecentPosts : allRecentPosts.nodes  },
+    props: { config, cricketPosts: cricketPosts.nodes, footballPosts: footballPosts.nodes, sidePosts, allRecentPosts: allRecentPosts.nodes },
     revalidate: refresh_home_page_interval,
   };
 };
